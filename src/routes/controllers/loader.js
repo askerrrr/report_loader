@@ -37,13 +37,13 @@ var loadingReports = async (req, res, next) => {
 
       report.dateTo = dateTo;
       report.userId = userId;
+      report.taxRate = taxRate;
       report.dateFrom = dateFrom;
       report.reportId = reportId;
       report.recordTo = { year, month };
-      console.log({ report });
 
       var success = await db.saveReportToDb(userId, report);
-      console.log({ success });
+      console.log({ success, shouldBeLoaded });
       await db.updateReportsQueue(userId, reportsQueue);
     } catch (e) {
       console.log({ e });

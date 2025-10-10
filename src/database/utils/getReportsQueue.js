@@ -1,7 +1,7 @@
 var getReportsQueue = async (collection, userId) => {
   var { reportsQueue } = await collection.findOne({ userId });
 
-  return { reportsQueue: reportsQueue.toObject() };
+  return { reportsQueue };
 };
 
 module.exports = getReportsQueue;

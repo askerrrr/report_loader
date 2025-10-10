@@ -1,42 +1,45 @@
 var env = require("../env");
-var mongoose = require("mongoose");
+var { MongoClient } = require("mongodb");
+
+var client = new MongoClient(env.MONGO_URI);
 
 var timerId = null;
 var connectionAttempts = 0;
 var eventsConfigured = false;
-var mongooseReconnected = false;
+var mongodbReconnected = false;
 const MAX_CONNECTION_ATTEMPTS = 5;
 
-var mongooseConnection = async () => await mongoose.connect(env.MONGO_URI);
+var mongodbConnection = async () => await client.connect();
 
-var setupMongooseEvents = () => {
+var setupMongoDBEvents = () => {
   if (eventsConfigured) {
     return;
   }
 
   eventsConfigured = true;
-  console.log("connection to mongoose...\n");
 
-  mongoose.connection.on("error", (e) => {
-    console.log("mongoose connection error: ", { name: e.name, msg: e.message });
-    mongoose.disconnect();
+  console.log("connection to mongodb...\n");
+
+  client.on("error", (e) => {
+    console.log("mongodb connection error: ", { name: e.name, msg: e.message });
+    client.close();
   });
 
-  mongoose.connection.on("disconnected", async () => {
-    console.log("mongoose disconnected\n");
+  client.on("serverClosed", () => {
+    console.log("mongodb disconnected\n");
 
     if (timerId) {
       clearTimeout(timerId);
       timerId = null;
     }
 
-    timerId = setTimeout(mongooseConnection, 1000);
+    timerId = setTimeout(mongodbConnection, 1000);
 
     if (connectionAttempts === MAX_CONNECTION_ATTEMPTS) {
       clearTimeout(timerId);
       timerId = null;
-      mongoose.connection.removeAllListeners();
-      console.log("mongoose connection was been destroed");
+      client.removeAllListeners();
+      console.log("mongodb connection was been destroed");
 
       return;
     }
@@ -44,30 +47,30 @@ var setupMongooseEvents = () => {
     connectionAttempts++;
   });
 
-  mongoose.connection.on("connected", async () => {
+  client.on("serverOpening", () => {
     if (timerId) {
       console.clear();
-      console.log("mongoose reconnected\n");
+      console.log("mongodb reconnected\n");
 
-      mongooseReconnected = true;
+      mongodbReconnected = true;
       clearTimeout(timerId);
       timerId = null;
       serverEmitter.emit("start");
     }
 
-    if (!mongooseReconnected) {
+    if (!mongodbReconnected) {
       console.clear();
-      console.log("mongoose connected\n");
+      console.log("mongodb connected\n");
     }
 
-    mongooseReconnected = false;
+    mongodbReconnected = false;
     connectionAttempts = 0;
   });
 };
 
 var runDB = async () => {
-  setupMongooseEvents();
-  await mongooseConnection();
+  setupMongoDBEvents();
+  await mongodbConnection();
 };
 
-module.exports = { runDB, connection: mongoose.connection };
+module.exports = { runDB, connection: client };

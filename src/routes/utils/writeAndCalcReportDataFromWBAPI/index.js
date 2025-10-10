@@ -21,6 +21,13 @@ var parseReports = async (taxRate, reports) => {
 
     sku.id = id;
     sku.skuName = name;
+    sku.costPrice = 0;
+    sku.revenuePerSKU = 0;
+    sku.profitMargin = 0;
+    sku.finalProfitPerSKU = 0;
+    sku.preTaxProfitPerSKU = 0;
+    sku.isCostPriceSet = false;
+    sku.isInsuranceFeeIncluded = false;
     sku.qty = await calc.quantityPerSKU(skuFilteredReport);
     sku.finesPerSKU = calc.finesPerSKU(skuFilteredReport);
     sku.acceptancePerSKU = calc.acceptancePerSKU(skuFilteredReport);
@@ -69,6 +76,11 @@ var parseReports = async (taxRate, reports) => {
     totalAdvertisingCosts,
     totalAdditionalPayment,
     totalDeductionOrPayment,
+    totalProductCosts: 0,
+    tolalInsuranceFee: 0,
+    totalPreTaxProfit: 0,
+    totalFinalProfit: 0,
+    totalProfitMargin: 0,
   };
 
   return { report, skuNamesAndIds };

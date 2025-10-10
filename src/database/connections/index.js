@@ -1,9 +1,9 @@
 var { connection } = require("../index");
 
-var tokens_model = connection.model("Token", require("../schemas/token"));
-var reports_model = connection.model("Report", require("../schemas/reports").reportsSchema);
-var tax_params_model = connection.model("Tax_Param", require("../schemas/tax_params"));
-var reports_tree_model = connection.model("Reports_Tree", require("../schemas/reports_tree"));
-var report_loading_states_model = connection.model("Report_Loading_States", require("../schemas/report_loading_states"));
+var tokens_collection = connection.db("test").collection("tokens");
+var reports_collection = connection.db("test").collection("reports");
+var tax_params_collection = connection.db("test").collection("tax_params");
+var reports_tree_collection = connection.db("test").collection("reports_trees");
+var report_loading_states_collection = connection.db("test").collection("report_loading_states");
 
-module.exports = { tokens_model, tax_params_model, reports_model, reports_tree_model, report_loading_states_model };
+module.exports = { tokens_collection, tax_params_collection, reports_collection, reports_tree_collection, report_loading_states_collection };

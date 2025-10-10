@@ -1,4 +1,10 @@
-var { tokens_model, report_loading_states_model, reports_model, tax_params_model, reports_tree_model } = require("../connections");
+var {
+  tokens_collection,
+  report_loading_states_collection,
+  reports_collection,
+  tax_params_collection,
+  reports_tree_collection,
+} = require("../connections");
 
 var getToken = require("./getToken");
 var getUsersData = require("./getUsersData");
@@ -17,25 +23,25 @@ var getLoadingProgressStatus = require("./getLoadingProgressStatus");
 const changePaidTaxAmountToDb = require("./changePaidTaxAmountToDb");
 
 var db = {
-  getToken: (userId) => getToken(tokens_model, userId),
+  getToken: (userId) => getToken(tokens_collection, userId),
 
-  getReportsTree: (userId) => getReportsTree(reports_tree_model, userId),
-  updateReportTree: (userId, years) => updateReportTree(reports_tree_model, userId, years),
+  getReportsTree: (userId) => getReportsTree(reports_tree_collection, userId),
+  updateReportTree: (userId, years) => updateReportTree(reports_tree_collection, userId, years),
 
-  addNewTaxYearToDb: (userId, year) => addNewTaxYearToDb(tax_params_model, userId, year),
-  changePaidTaxAmountToDb: (userId, year, paidTaxAmount) => changePaidTaxAmountToDb(tax_params_model, userId, year, paidTaxAmount),
+  addNewTaxYearToDb: (userId, year) => addNewTaxYearToDb(tax_params_collection, userId, year),
+  changePaidTaxAmountToDb: (userId, year, paidTaxAmount) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount),
 
-  saveReportToDb: (userId, report) => saveReportToDb(reports_model, userId, report),
+  saveReportToDb: (userId, report) => saveReportToDb(reports_collection, userId, report),
 
-  getUsersData: (userId) => getUsersData(report_loading_states_model, userId),
-  getReportsQueue: (userId) => getReportsQueue(report_loading_states_model, userId),
-  updateFailedQueue: (userId, reportPeriod) => updateFailedQueue(report_loading_states_model, userId, reportPeriod),
-  pushToReportsQueue: (userId, reportPeriod) => pushToReportsQueue(report_loading_states_model, userId, reportPeriod),
-  updateReportsQueue: (userId, reportQueue) => updateReportsQueue(report_loading_states_model, userId, reportQueue),
-  createReportsQueue: (userId, reportQueue) => createReportsQueue(report_loading_states_model, userId, reportQueue),
-  addReportToFailedQueue: (userId, reportPeriod) => addReportToFailedQueue(report_loading_states_model, userId, reportPeriod),
-  setLoadingProgressStatus: (userId, loadingStatus) => setLoadingProgressStatus(report_loading_states_model, userId, loadingStatus),
-  getLoadingProgressStatus: (userId) => getLoadingProgressStatus(report_loading_states_model, userId),
+  getUsersData: (userId) => getUsersData(report_loading_states_collection, userId),
+  getReportsQueue: (userId) => getReportsQueue(report_loading_states_collection, userId),
+  updateFailedQueue: (userId, reportPeriod) => updateFailedQueue(report_loading_states_collection, userId, reportPeriod),
+  pushToReportsQueue: (userId, reportPeriod) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod),
+  updateReportsQueue: (userId, reportQueue) => updateReportsQueue(report_loading_states_collection, userId, reportQueue),
+  createReportsQueue: (userId, reportQueue) => createReportsQueue(report_loading_states_collection, userId, reportQueue),
+  addReportToFailedQueue: (userId, reportPeriod) => addReportToFailedQueue(report_loading_states_collection, userId, reportPeriod),
+  setLoadingProgressStatus: (userId, loadingStatus) => setLoadingProgressStatus(report_loading_states_collection, userId, loadingStatus),
+  getLoadingProgressStatus: (userId) => getLoadingProgressStatus(report_loading_states_collection, userId),
 };
 
 module.exports = db;
