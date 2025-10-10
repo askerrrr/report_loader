@@ -1,4 +1,4 @@
-var reportPeriods = require("../../reportPeriods/reportPeriods");
+var reportPeriods = require("../../../reportPeriods/reportPeriods");
 var filterExistRequiredReportPeriods = require("../utils/filterExistRequiredReportPeriods");
 
 var periodsFilter = async (req, res, next) => {

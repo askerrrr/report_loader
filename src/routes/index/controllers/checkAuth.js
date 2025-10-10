@@ -1,4 +1,4 @@
-var env = require("../../env");
+var env = require("../../../env");
 
 var checkAuth = (req, res, next) => {
   var authHeader = req.headers?.authorization;

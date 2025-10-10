@@ -17,6 +17,6 @@ var app = express();
 app.use(express.urlencoded());
 app.use(express.json());
 
-app.use("/", require("./routes"));
+app.use("/", require("./routes/index"));
 
 app.use(require("./middleware/errorHandler"));
