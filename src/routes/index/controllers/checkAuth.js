@@ -1,5 +1,3 @@
-var env = require("../../../env");
-
 var checkAuth = (req, res, next) => {
   var authHeader = req.headers?.authorization;
 
@@ -9,7 +7,7 @@ var checkAuth = (req, res, next) => {
 
   var [type, secretKey] = authHeader.split(" ");
 
-  if (type !== "Bearer" || secretKey !== env.secretKey) {
+  if (type !== "Bearer" || secretKey !== process.env.secretKey) {
     return res.sendStatus(401);
   }
 

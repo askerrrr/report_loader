@@ -1,4 +1,3 @@
-var env = require("./env");
 var express = require("express");
 var { runDB } = require("./database/");
 var runReportPeriodsWriter = require("./reportPeriods");
@@ -9,9 +8,9 @@ var app = express();
   runReportPeriodsWriter();
 
   await runDB();
+  console.log(process.env.PORT);
   app.locals.db = require("./database/utils");
-
-  app.listen(env.PORT, env.HOST, console.log("server run..."));
+  app.listen(process.env.PORT, process.env.HOST, console.log("server run..."));
 })();
 
 app.use(express.urlencoded());

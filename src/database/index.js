@@ -1,7 +1,6 @@
-var env = require("../env");
 var { MongoClient } = require("mongodb");
 
-var client = new MongoClient(env.MONGO_URI);
+var client = new MongoClient(process.env.MONGO_URI);
 
 var timerId = null;
 var connectionAttempts = 0;
