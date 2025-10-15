@@ -8,7 +8,6 @@ var app = express();
   runReportPeriodsWriter();
 
   await runDB();
-  console.log(process.env.PORT);
   app.locals.db = require("./database/utils");
   app.listen(process.env.PORT, process.env.HOST, console.log("server run..."));
 })();

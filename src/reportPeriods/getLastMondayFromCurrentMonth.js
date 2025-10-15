@@ -1,6 +1,6 @@
-var getWeekDaysFromMonth = require("./getWeekDaysFromMonth");
 var getPreviousMonthMondays = require("./getPreviousMonthMondays");
 var getPreviousMonthSundays = require("./getPreviousMonthSundays");
+var { getWeekDaysFromMonth } = require("../periodUtils/services/getWeekDaysFromMonth");
 
 var getLastMondayFromCurrentMonth = () => {
   var date = new Date();
@@ -37,7 +37,6 @@ var getLastMonday = async (monthNumFromDateFrom, mondays, dateTo) => {
     if (sundayIndex === 0) {
       var lastMonday = mondays[mondays.length - 1];
       var lastMondayDayNum = +lastMonday.split("-")[2];
-      console.log({ lastMonday });
     }
   }
 };
@@ -47,15 +46,13 @@ var getLastSunday = async () => {
   var currentDay = date.getDate();
   var currentDate = date.toISOString().split("T")[0];
   var sundays = getWeekDaysFromMonth(currentDate, "sunday");
-  console.log({ sundays });
   var daysAsNum = sundays.map((sunday) => {
     if (sunday) {
       return +sunday.split("T")[0].split("-")[2];
     }
   });
-  console.log({ daysAsNum });
+
   var previousDays = daysAsNum.filter((day) => day <= currentDay);
-  console.log({ previousDays });
   var penultimateDay = previousDays.at(-2);
   var penultimateSundayIndex = previousDays.indexOf(penultimateDay);
 

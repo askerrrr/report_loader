@@ -4,36 +4,44 @@ var hasPeriodOverlap = require("./services/hasPeriodOverlap.js");
 var { getWeekDaysFromMonth } = require("./services/getWeekDaysFromMonth.js");
 
 var getDateToByDateFrom = (dateFrom) => {
-  var [year, month, day] = dateFrom.split("-").map(Number);
+  try {
+    var [year, month, day] = dateFrom.split("-").map(Number);
 
-  var sundays, dateTo;
+    var sundays, dateTo;
 
-  var overlap = hasPeriodOverlap(year, month, day);
+    var overlap = hasPeriodOverlap(year, month, day);
 
-  if (overlap) {
-    var nextPeriod = getNextPeriod(year, month);
-    sundays = getWeekDaysFromMonth(nextPeriod, "sunday");
+    if (overlap) {
+      var nextPeriod = getNextPeriod(year, month);
+      sundays = getWeekDaysFromMonth(nextPeriod, "sunday");
 
-    var firstSandayIndex = 0;
+      var firstSundayIndex = 0;
 
-    dateTo = sundays[firstSandayIndex];
+      dateTo = sundays[firstSundayIndex];
+
+      var trancatedDate = truncateDate(dateTo);
+
+      return trancatedDate;
+    }
+
+    var mondays = getWeekDaysFromMonth(dateFrom, "monday");
+
+    var dateFromISO = new Date(dateFrom).toISOString();
+    var mondayIndex = mondays.indexOf(dateFromISO);
+
+    sundays = getWeekDaysFromMonth(dateFrom, "sunday");
+
+    var sundayIndex = mondayIndex + 1;
+
+    if (sundayIndex === sundays.length) {
+      sundayIndex--;
+    }
+    dateTo = sundays[sundayIndex];
 
     var trancatedDate = truncateDate(dateTo);
-
-    return trancatedDate;
+  } catch (e) {
+    console.log({ dateFrom, date: new Date(dateFrom), dateTo, mondays, sundays, mondayIndex, sundayIndex, e });
   }
-
-  var mondays = getWeekDaysFromMonth(dateFrom, "monday");
-  var dateFromISO = new Date(dateFrom).toISOString();
-  var mondayIndex = mondays.indexOf(dateFromISO);
-
-  sundays = getWeekDaysFromMonth(dateFrom, "sunday");
-
-  var sandayIndex = ++mondayIndex;
-
-  dateTo = sundays[sandayIndex];
-
-  var trancatedDate = truncateDate(dateTo);
 
   return trancatedDate;
 };

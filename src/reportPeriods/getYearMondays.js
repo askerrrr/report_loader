@@ -1,4 +1,4 @@
-var getWeekDaysFromMonth = require("./getWeekDaysFromMonth");
+var { getWeekDaysFromMonth } = require("../periodUtils/services/getWeekDaysFromMonth");
 
 var getNextDateFrom = (monthNum, year) => (monthNum < 10 ? `${year}-0${monthNum}-15` : `${year}-${monthNum}-15`);
 

@@ -1,4 +1,14 @@
+var getYearMondays = require("./getYearMondays");
+var getDateToByDateFrom = require("../periodUtils");
 var getLastMondayByDateTo = require("./getLastMondayByDateTo");
+
+var getFullPeriods = (mondays) =>
+  Promise.all(
+    mondays.map((monday) => {
+      var sunday = getDateToByDateFrom(monday);
+      return { dateFrom: monday, dateTo: sunday };
+    })
+  );
 
 var getReportPeriods = async (dateFrom, dateTo) => {
   if (!dateFrom) {
@@ -6,15 +16,18 @@ var getReportPeriods = async (dateFrom, dateTo) => {
   }
 
   var { lastMonday } = getLastMondayByDateTo(dateTo);
+
   var startYear = +dateFrom.split("-")[0];
   var endYear = +lastMonday.split("-")[0];
 
   if (startYear === endYear) {
-    var mondays = await getYearMondays(dateFrom);
+    var mondays = getYearMondays(dateFrom);
     var firstMondayIndex = mondays.findIndex((monday) => monday === dateFrom);
     var lastMondayIndex = mondays.findIndex((monday) => monday === lastMonday);
     var requiredMondays = mondays.slice(firstMondayIndex, lastMondayIndex + 1);
-    return { requiredMondays };
+    var fullPeriods = await getFullPeriods(requiredMondays);
+
+    return { fullPeriods };
   }
 
   var mondays = [];
@@ -28,12 +41,9 @@ var getReportPeriods = async (dateFrom, dateTo) => {
   var firstMondayIndex = mondays.findIndex((monday) => monday === dateFrom);
   var lastMondayIndex = mondays.findIndex((monday) => monday === lastMonday);
   var requiredMondays = mondays.slice(firstMondayIndex, lastMondayIndex + 1);
-  var fullPeriods = await Promise.all(
-    requiredMondays.map((monday) => {
-      var sunday = getDateToByDateFrom(monday);
-      return { dateFrom: monday, dateTo: sunday };
-    })
-  );
+  var fullPeriods = await getFullPeriods(requiredMondays);
 
   return { fullPeriods };
 };
+
+module.exports = getReportPeriods;

@@ -1,10 +1,11 @@
-var getWeekDaysFromMonth = require("./getWeekDaysFromMonth");
 var getPreviousMonthMondays = require("./getPreviousMonthMondays");
 var { getLastMondayFromCurrentMonth } = require("./getLastMondayFromCurrentMonth");
+var { getWeekDaysFromMonth } = require("../periodUtils/services/getWeekDaysFromMonth");
 
 var getLastMondayByDateTo = (dateTo) => {
   if (!dateTo) {
     var { lastMonday } = getLastMondayFromCurrentMonth();
+
     return { lastMonday };
   }
 
@@ -13,7 +14,7 @@ var getLastMondayByDateTo = (dateTo) => {
   if (sundayIndex === 0) {
     var { mondays } = getPreviousMonthMondays(dateTo);
     var lastMonday = mondays[mondays.length - 1].split("T")[0];
-    return lastMonday;
+    return { lastMonday };
   }
 
   var mondays = getWeekDaysFromMonth(dateTo, "monday");
