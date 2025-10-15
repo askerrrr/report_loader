@@ -3,8 +3,6 @@ var getNextMonth = (currentMonth) => {
 
   if (currentMonth < 9) {
     nextMonth = "0" + (currentMonth + 1);
-  } else if (currentMonth === 9) {
-    nextMonth = 10 + "";
   } else {
     nextMonth = currentMonth + 1 + "";
   }
