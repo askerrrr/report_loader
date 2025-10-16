@@ -1,20 +1,10 @@
-var { getMondaysQtyInMonth } = require("./monday");
-var { setReportIdInReports } = require("./reports");
-var { getMonthReportIds, getMonthNameAndIndex } = require("./month");
+var { getMondayIndex } = require("./monday");
+var { getMonthNameAndIndex } = require("./month");
+var getMondaysOrSundaysOfMonth = require("../../../../../periodUtils/utils/getMondaysOrSundaysOfMonth");
 
-var getMonthsForCurrentYear = async (monthNum, reports) => {
-  var { monthName, monthIndex } = await getMonthNameAndIndex(monthNum);
-
-  var months = new Array(12).fill(null);
-
-  months[monthIndex] = { month: monthName, reports };
-
-  return months;
-};
-
-var getMonthsForNewYear = async (reportIds) => {
-  var firstMonthIndex = 11,
-    firstMonthName = "январь";
+var createNextYearMonths = (reportIds) => {
+  var firstMonthIndex = 11;
+  var firstMonthName = "январь";
 
   var months = new Array(12).fill(null);
 
@@ -23,42 +13,46 @@ var getMonthsForNewYear = async (reportIds) => {
   return months;
 };
 
-var getFirstMonthReporstForNewYear = async (date, fullPeriod, reportId) => {
-  var mondaysQty = await getMondaysQtyInMonth(date);
+/**
+ * @param {'overlap - yes' | 'overlap - no'} overlapStatus
+ */
 
-  var reportIds = new Array(5).fill(null);
+var insertReportIdAndFullPeriodToReportIds = (date, fullPeriod, reportId, overlapStatus, reportIds = null) => {
+  if (!reportIds) {
+    reportIds = new Array(5).fill(null);
+  }
 
-  reportIds[mondaysQty] = { reportId, ...fullPeriod };
+  var { mondays } = getMondaysOrSundaysOfMonth(date, "monday");
+
+  if (overlapStatus === "overlap - yes") {
+    reportIds[mondays.length] = { reportId, ...fullPeriod };
+  } else {
+    var { mondayIndex } = getMondayIndex(date, mondays);
+    reportIds[mondayIndex] = { reportId, ...fullPeriod };
+  }
 
   return reportIds;
 };
 
-var getMonthsData = async (reportId, fullPeriod, date, carry = null) => {
-  var reportIds = await getMonthReportIds(date, fullPeriod, reportId, carry);
-
+var insertMonthDataToMonths = async (reportId, fullPeriod, date, overlapStatus) => {
+  var reportIds = insertReportIdAndFullPeriodToReportIds(date, fullPeriod, reportId, overlapStatus);
   var monthNum = date.split("-")[1];
-
-  var { monthName, monthIndex } = await getMonthNameAndIndex(monthNum);
-
+  var { monthName, monthIndex } = getMonthNameAndIndex(monthNum);
   var months = new Array(12).fill(null);
-
   months[monthIndex] = { month: monthName, reportIds };
-
   return months;
 };
 
-var getMonthsFromYear = async (years, yearIndex) => {
-  var { months } = years[yearIndex];
+/**
+ * @param {'overlap - yes' | 'overlap - no'} overlapStatus
+ */
 
-  return months;
-};
-
-var updateYearStructure = async (months, year, monthNum, reportDate, reportId, fullPeriod, carry) => {
-  var { monthName, monthIndex } = await getMonthNameAndIndex(monthNum);
+var updateYearStructure = async (months, year, monthNum, reportDate, reportId, fullPeriod, overlapStatus) => {
+  var { monthName, monthIndex } = getMonthNameAndIndex(monthNum);
 
   var reportIds = months[monthIndex]?.reportIds ?? new Array(5).fill(null);
 
-  reportIds = await setReportIdInReports(reportDate, reportIds, reportId, fullPeriod, carry);
+  reportIds = insertReportIdAndFullPeriodToReportIds(reportDate, fullPeriod, reportId, overlapStatus, reportIds);
 
   months[monthIndex] = { month: monthName, reportIds };
 
@@ -66,28 +60,25 @@ var updateYearStructure = async (months, year, monthNum, reportDate, reportId, f
 };
 
 var isNextMonthReportNeeded = async (dateFrom, dateTo) => {
-  var [year, monthFrom, dayFrom] = dateFrom.split("-");
-  var [y, monthTo, dayTo] = dateTo.split("-");
+  var [startYear, startMonth, startDay] = dateFrom.split("-");
+  var [_, endMonth, endDay] = dateTo.split("-");
 
-  if (monthFrom === monthTo) {
+  if (startMonth === endMonth) {
     return;
   }
 
-  var daysInCurrentMonth = new Date(year, monthFrom, 0).getDate();
+  var daysInCurrentMonth = new Date(startYear, startMonth, 0).getDate();
 
-  return daysInCurrentMonth - dayFrom + 1 < +dayTo;
+  return daysInCurrentMonth - startDay + 1 < +endDay;
 };
 
-var getNextYearFirstMonth = async (months) => months[11] ?? { month: "январь", reportIds: new Array(5).fill(null) };
+var getFirstMonthFromNextYear = (months) => months[11] ?? { month: "январь", reportIds: new Array(5).fill(null) };
 
 module.exports = {
-  getMonthsData,
-  getMonthsFromYear,
   updateYearStructure,
-  getMonthsForNewYear,
-  setReportIdInReports,
-  getNextYearFirstMonth,
-  getMonthsForCurrentYear,
+  createNextYearMonths,
+  getFirstMonthFromNextYear,
+  insertMonthDataToMonths,
   isNextMonthReportNeeded,
-  getFirstMonthReporstForNewYear,
+  insertReportIdAndFullPeriodToReportIds,
 };

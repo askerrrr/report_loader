@@ -1,41 +1,37 @@
 var {
-  getMonthsData,
-  getMonthsFromYear,
-  getMonthsForNewYear,
   updateYearStructure,
-  getNextYearFirstMonth,
+  createNextYearMonths,
   isNextMonthReportNeeded,
-  getFirstMonthReporstForNewYear,
+  insertMonthDataToMonths,
+  getFirstMonthFromNextYear,
+  insertReportIdAndFullPeriodToReportIds,
 } = require("./services/months");
-var { getMonthName } = require("./services/month");
-var { setReportIdInReports } = require("./services/reports");
-var { getYearIndex, compareYears, checkYearExists } = require("./services/year");
+var { getMonthNameAndIndex } = require("./services/month");
+var { getYearIndex, checkYearExists } = require("./services/year");
 
 var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
   var [startYear, startMonth] = dateFrom.split("-");
   var [endYear, endMonth] = dateTo.split("-");
 
-  var startMonthName = await getMonthName(startMonth);
-  var endMonthName = await getMonthName(endMonth);
+  var startMonthName = getMonthNameAndIndex(startMonth).monthName;
+  var endMonthName = getMonthNameAndIndex(endMonth).monthName;
 
   var fullPeriod = { dateFrom, dateTo };
 
-  var yearIsExist = await checkYearExists(years, startYear);
+  var yearIsExist = checkYearExists(years, startYear);
 
   if (!yearIsExist) {
-    var isSingleYearReport = await compareYears(startYear, endYear);
-
-    if (!isSingleYearReport) {
+    if (startYear !== end) {
       if (await isNextMonthReportNeeded(dateFrom, dateTo)) {
-        var endYearIsExist = await checkYearExists(years, endYear);
+        var endYearIsExist = checkYearExists(years, endYear);
 
         if (endYearIsExist) {
-          var endYearIndex = await getYearIndex(years, endYear);
+          var endYearIndex = getYearIndex(years, endYear);
           var { months } = years[endYearIndex];
 
-          var { month, reportIds } = await getNextYearFirstMonth(months);
+          var { month, reportIds } = getFirstMonthFromNextYear(months);
 
-          reportIds = await setReportIdInReports(dateTo, reportIds, reportId, fullPeriod, "carry");
+          reportIds = insertReportIdAndFullPeriodToReportIds(dateTo, fullPeriod, reportId, "overlap - yes", reportIds);
 
           months[11] = { month, reportIds };
 
@@ -43,9 +39,9 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
 
           return { years, year: endYear, month: endMonthName };
         } else {
-          var reportIds = await getFirstMonthReporstForNewYear(dateTo, fullPeriod, reportId);
+          var reportIds = insertReportIdAndFullPeriodToReportIds(dateTo, fullPeriod, reportId, "overlap - no");
 
-          var months = await getMonthsForNewYear(reportIds);
+          var months = createNextYearMonths(reportIds);
 
           years.push({ year: endYear, months });
 
@@ -53,72 +49,70 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
         }
       }
 
-      var months = await getMonthsData(reportId, dateFrom);
+      var months = await insertMonthDataToMonths(reportId, dateFrom);
       years.push({ year: startYear, months });
 
       return { years, year: startYear, month: startMonthName };
     }
 
     if (await isNextMonthReportNeeded(dateFrom, dateTo)) {
-      var months = await getMonthsData(reportId, fullPeriod, dateTo, "carry");
+      var months = await insertMonthDataToMonths(reportId, fullPeriod, dateTo, "carry");
 
       years.push({ year: startYear, months });
 
       return { years, year: startYear, month: endMonthName };
     }
 
-    var months = await getMonthsData(reportId, fullPeriod, dateFrom);
+    var months = await insertMonthDataToMonths(reportId, fullPeriod, dateFrom);
 
     years.push({ year: startYear, months });
 
     return { years, year: startYear, month: startMonthName };
   }
 
-  var isSingleYearReport = await compareYears(startYear, endYear);
-
-  if (!isSingleYearReport) {
+  if (startYear !== end) {
     if (await isNextMonthReportNeeded(dateFrom, dateTo)) {
-      var nextYearIsExist = await checkYearExists(years, endYear);
+      var nextYearIsExist = checkYearExists(years, endYear);
 
       if (!nextYearIsExist) {
-        var reportIds = await getFirstMonthReporstForNewYear(dateTo, fullPeriod, reportId);
+        var reportIds = insertReportIdAndFullPeriodToReportIds(dateTo, fullPeriod, reportId, "overlap - no");
 
-        var months = await getMonthsForNewYear(reportIds);
+        var months = createNextYearMonths(reportIds);
 
         years.push({ year: endYear, months });
 
         return { years, year: endYear, month: endMonthName };
       } else {
-        var yearIndex = await getYearIndex(years, endYear);
-        var months = await getMonthsFromYear(years, yearIndex);
+        var yearIndex = getYearIndex(years, endYear);
+        var { months } = years[yearIndex];
 
-        years[yearIndex] = await updateYearStructure(months, endYear, endMonth, dateTo, reportId, fullPeriod);
+        years[yearIndex] = await updateYearStructure(months, endYear, endMonth, dateTo, reportId, fullPeriod, "overlap - no");
 
         return { years, year: endYear, month: endMonthName };
       }
     }
 
-    var yearIndex = await getYearIndex(years, startYear);
-    var months = await getMonthsFromYear(years, yearIndex);
+    var yearIndex = getYearIndex(years, startYear);
+    var { months } = years[yearIndex];
 
-    years[yearIndex] = await updateYearStructure(months, startYear, startMonth, dateFrom, reportId, fullPeriod);
+    years[yearIndex] = await updateYearStructure(months, startYear, startMonth, dateFrom, reportId, fullPeriod, "overlap - no");
 
     return { years, year: startYear, month: startMonthName };
   }
 
   if (await isNextMonthReportNeeded(dateFrom, dateTo)) {
-    var yearIndex = await getYearIndex(years, startYear);
-    var months = await getMonthsFromYear(years, yearIndex);
+    var yearIndex = getYearIndex(years, startYear);
+    var { months } = years[yearIndex];
 
-    years[yearIndex] = await updateYearStructure(months, startYear, endMonth, dateTo, reportId, fullPeriod, "carry");
+    years[yearIndex] = await updateYearStructure(months, startYear, endMonth, dateTo, reportId, fullPeriod, "overlap - yes");
 
     return { years, year: startYear, month: endMonthName };
   }
 
-  var yearIndex = await getYearIndex(years, startYear);
-  var months = await getMonthsFromYear(years, yearIndex);
+  var yearIndex = getYearIndex(years, startYear);
+  var { months } = years[yearIndex];
 
-  years[yearIndex] = await updateYearStructure(months, startYear, startMonth, dateFrom, reportId, fullPeriod);
+  years[yearIndex] = await updateYearStructure(months, startYear, startMonth, dateFrom, reportId, fullPeriod, "overlap - no");
 
   return { years, year: startYear, month: startMonthName };
 };
