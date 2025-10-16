@@ -1,26 +1,7 @@
-var getMonthMondays = async (reportsDate) => {
-  var date = new Date(reportsDate);
-  var month = date.getMonth();
-  var mondays = [];
-
-  date.setDate(1);
-
-  while (date.getDay() !== 1) {
-    date.setDate(date.getDate() + 1);
-  }
-
-  while (date.getMonth() === month) {
-    var monday = new Date(date.getTime()).toISOString();
-    mondays.push(monday);
-
-    date.setDate(date.getDate() + 7);
-  }
-
-  return mondays.reverse();
-};
+var getMondaysOrSundaysOfMonth = require("../../../../../periodUtils/utils/getMondaysOrSundaysOfMonth");
 
 var getMondayIndex = async (date) => {
-  var mondays = await getMonthMondays(date);
+  var { mondays } = getMondaysOrSundaysOfMonth(date, "monday");
 
   var mondayIndex = mondays.findIndex((monday) => monday === new Date(date).toISOString());
 
@@ -28,7 +9,7 @@ var getMondayIndex = async (date) => {
 };
 
 var getMondaysQtyInMonth = async (date) => {
-  var mondays = await getMonthMondays(date);
+  var { mondays } = getMondaysOrSundaysOfMonth(date, "monday");
   return mondays.length;
 };
 
