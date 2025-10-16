@@ -1,17 +1,10 @@
-var {
-  updateYearStructure,
-  createNextYearMonths,
-  isNextMonthReportNeeded,
-  insertMonthDataToMonths,
-  getFirstMonthFromNextYear,
-  insertReportIdAndFullPeriodToReportIds,
-} = require("./services/months");
+var { updateYearStructure, createNextYearMonths, isNextMonthReportNeeded, insertMonthDataToMonths, getFirstMonthFromNextYear, insertReportIdAndFullPeriodToReportIds } = require("./services/months");
 var { getMonthNameAndIndex } = require("./services/month");
 var { getYearIndex, checkYearExists } = require("./services/year");
 
 var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
-  var [startYear, startMonth] = dateFrom.split("-");
-  var [endYear, endMonth] = dateTo.split("-");
+  var [startYear, startMonth] = dateFrom.split("-"); //.map(Number);
+  var [endYear, endMonth] = dateTo.split("-"); //.map(Number);
 
   var startMonthName = getMonthNameAndIndex(startMonth).monthName;
   var endMonthName = getMonthNameAndIndex(endMonth).monthName;
@@ -21,7 +14,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
   var yearIsExist = checkYearExists(years, startYear);
 
   if (!yearIsExist) {
-    if (startYear !== end) {
+    if (startYear !== endYear) {
       if (await isNextMonthReportNeeded(dateFrom, dateTo)) {
         var endYearIsExist = checkYearExists(years, endYear);
 
@@ -70,7 +63,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
     return { years, year: startYear, month: startMonthName };
   }
 
-  if (startYear !== end) {
+  if (startYear !== endYear) {
     if (await isNextMonthReportNeeded(dateFrom, dateTo)) {
       var nextYearIsExist = checkYearExists(years, endYear);
 
@@ -118,3 +111,43 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
 };
 
 module.exports = insertReportToReportTree;
+
+var years = [
+  {
+    year: "2025",
+    months: [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        month: "апрель",
+        reportIds: [
+          null,
+          null,
+          {
+            reportId: "337986030",
+            dateFrom: "2025-04-14",
+            dateTo: "2025-04-20",
+          },
+          null,
+          null,
+        ],
+      },
+      null,
+      null,
+      null,
+    ],
+  },
+];
+
+var dateFrom = "2025-10-06";
+var dateTo = "2025-10-12";
+
+var reportId = "new_report";
+
+insertReportToReportTree(dateFrom, dateTo, reportId, years).then(({ year, years, month }) => console.log(...years));
