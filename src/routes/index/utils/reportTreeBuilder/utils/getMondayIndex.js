@@ -4,4 +4,4 @@ var getMondayIndex = (date, mondays) => {
   return mondayIndex === -1 ? { mondayIndex: 0 } : { mondayIndex };
 };
 
-module.exports = { getMondayIndex };
+module.exports = getMondayIndex;
