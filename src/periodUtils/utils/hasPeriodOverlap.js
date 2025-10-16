@@ -3,7 +3,7 @@ var hasPeriodOverlap = (year, month, day) => {
   var daysInMonth = new Date(year, month, 0).getDate();
 
   var overlap = daysInMonth - day < reportRange;
-  return overlap;
+  return { overlap };
 };
 
 module.exports = hasPeriodOverlap;

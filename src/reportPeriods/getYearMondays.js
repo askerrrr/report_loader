@@ -1,6 +1,6 @@
-var { getWeekDaysFromMonth } = require("../periodUtils/services/getWeekDaysFromMonth");
+var getMondaysOrSundaysOfMonth = require("../periodUtils/utils/getMondaysOrSundaysOfMonth");
 
-var getNextDateFrom = (monthNum, year) => (monthNum < 10 ? `${year}-0${monthNum}-15` : `${year}-${monthNum}-15`);
+var getNextDateFrom = (monthNum, year) => `${year}-${String(monthNum).padStart(2, "0")}-${15}`;
 
 var getYearMondays = (date) => {
   var [year, monthNum] = date.split("-").map(Number);
@@ -8,13 +8,12 @@ var getYearMondays = (date) => {
   var yearMondays = [];
 
   for (var i = monthNum; i <= 12; i++) {
-    var mondays = getWeekDaysFromMonth(date, "monday");
+    var { mondays } = getMondaysOrSundaysOfMonth(date, "monday");
     date = getNextDateFrom(i + 1, year);
-
     yearMondays.push(...mondays);
   }
 
-  return yearMondays.map((monday) => monday.split("T")[0]);
+  return { yearMondays: yearMondays.map((monday) => monday.split("T")[0]) };
 };
 
 module.exports = getYearMondays;

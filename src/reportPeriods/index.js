@@ -6,18 +6,10 @@
 var getAllReportPeriods = require("./getAllReportPeriods");
 var writeReportPeriodsToFile = require("./writeReportPeriodsToFile");
 
-const TWENTY_DAYS_MS = 1728e6;
-
-var runReportPeriodsWriter = async () => {
+var runReportPeriodsWriter = () => {
   var { allPeriods } = getAllReportPeriods();
 
   writeReportPeriodsToFile(allPeriods);
-
-  setInterval(() => {
-    var { allPeriods } = getAllReportPeriods();
-
-    writeReportPeriodsToFile(allPeriods);
-  }, TWENTY_DAYS_MS);
 };
 
 module.exports = runReportPeriodsWriter;
