@@ -50,7 +50,6 @@ var loadingReports = async (req, res, next) => {
 
       await db.addReportToFailedQueue(userId, shouldBeLoaded);
       await db.updateReportsQueue(userId, reportsQueue);
-      continue;
     }
 
     await new Promise((res) => setTimeout(res, NEXT_REPORT_DELAY_MS));
