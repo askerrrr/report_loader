@@ -14,7 +14,7 @@ var saveReportToDb = async (collection, userId, report) => {
     return result.acknowledged;
   } catch (e) {
     console.log({ e });
-    throw new DatabaseError(userId, e);
+    //throw new DatabaseError(userId, e);
   }
 };
 

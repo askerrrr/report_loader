@@ -11,7 +11,7 @@ var changePaidTaxAmountToDb = async (collection, userId, year, paidTaxAmount) =>
 
     return result.modifiedCount;
   } catch (e) {
-    throw new DatabaseError(userId, e);
+    //throw new DatabaseError(userId, e);
   }
 };
 

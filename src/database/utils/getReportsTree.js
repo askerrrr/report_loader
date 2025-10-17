@@ -6,7 +6,7 @@ var getReportsTree = async (collection, userId) => {
 
     return reportTree;
   } catch (e) {
-    throw new DatabaseError(userId, e);
+    //throw new DatabaseError(userId, e);
   }
 };
 

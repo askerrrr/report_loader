@@ -46,7 +46,7 @@ var addNewTaxYearToDb = async (collection, userId, year) => {
           }
         );
       }
-      console.log({ existTaxYear });
+
       return existTaxYear;
     }
 
@@ -64,7 +64,7 @@ var addNewTaxYearToDb = async (collection, userId, year) => {
 
     return { taxRate: 6, paidTaxAmount };
   } catch (e) {
-    throw new DatabaseError(userId, e);
+    //throw new DatabaseError(userId, e);
   }
 };
 

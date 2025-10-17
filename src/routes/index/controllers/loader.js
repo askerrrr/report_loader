@@ -46,8 +46,6 @@ var loadingReports = async (req, res, next) => {
       console.log({ success, shouldBeLoaded });
       await db.updateReportsQueue(userId, reportsQueue);
     } catch (e) {
-      console.log({ e });
-
       await db.addReportToFailedQueue(userId, shouldBeLoaded);
       await db.updateReportsQueue(userId, reportsQueue);
     }

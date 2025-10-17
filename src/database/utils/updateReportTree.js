@@ -11,7 +11,7 @@ var updateReportsTree = async (collection, userId, years) => {
 
     return result.modifiedCount;
   } catch (e) {
-    throw new DatabaseError(userId, e);
+    //throw new DatabaseError(userId, e);
   }
 };
 
