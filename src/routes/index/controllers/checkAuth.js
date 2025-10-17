@@ -7,7 +7,7 @@ var checkAuth = (req, res, next) => {
 
   var [type, secretKey] = authHeader.split(" ");
 
-  if (type !== "Bearer" || secretKey !== process.env.secretKey) {
+  if (type !== "Bearer" || secretKey !== process.env.SECRET_KEY) {
     return res.sendStatus(401);
   }
 
