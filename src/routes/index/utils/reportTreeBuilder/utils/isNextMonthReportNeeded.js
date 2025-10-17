@@ -1,4 +1,4 @@
-var isNextMonthReportNeeded = async (dateFrom, dateTo) => {
+var isNextMonthReportNeeded = (dateFrom, dateTo) => {
   var [startYear, startMonth, startDay] = dateFrom.split("-");
   var [_, endMonth, endDay] = dateTo.split("-");
 

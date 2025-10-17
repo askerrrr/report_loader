@@ -13,7 +13,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
 
   if (!yearIsExist) {
     if (startYear !== endYear) {
-      if (await utils.isNextMonthReportNeeded(dateFrom, dateTo)) {
+      if (utils.isNextMonthReportNeeded(dateFrom, dateTo)) {
         var endYearIsExist = utils.checkYearExists(years, endYear);
 
         if (endYearIsExist) {
@@ -46,7 +46,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
       return { years, year: startYear, month: startMonthName };
     }
 
-    if (await utils.isNextMonthReportNeeded(dateFrom, dateTo)) {
+    if (utils.isNextMonthReportNeeded(dateFrom, dateTo)) {
       var months = await utils.insertMonthDataToMonths(reportId, fullPeriod, dateTo, "carry");
 
       years.push({ year: startYear, months });
@@ -62,7 +62,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
   }
 
   if (startYear !== endYear) {
-    if (await utils.isNextMonthReportNeeded(dateFrom, dateTo)) {
+    if (utils.isNextMonthReportNeeded(dateFrom, dateTo)) {
       var nextYearIsExist = utils.checkYearExists(years, endYear);
 
       if (!nextYearIsExist) {
@@ -91,7 +91,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
     return { years, year: startYear, month: startMonthName };
   }
 
-  if (await utils.isNextMonthReportNeeded(dateFrom, dateTo)) {
+  if (utils.isNextMonthReportNeeded(dateFrom, dateTo)) {
     var yearIndex = utils.getYearIndex(years, startYear);
     var { months } = years[yearIndex];
 
