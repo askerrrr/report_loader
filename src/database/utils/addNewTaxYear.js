@@ -7,6 +7,14 @@ var mandatoryInsuranceFees = [
   { year: 2027, value: 61154 },
 ];
 
+var defaultTaxOptions = {
+  taxRate: 6,
+  paidTaxAmount: 0,
+  paidInsuranceFee: 0,
+  isInsuranceFeePaid: false,
+  insuranceFeePercentage: 10,
+};
+
 var addNewTaxYearToDb = async (collection, userId, year) => {
   try {
     var mandatoryInsuranceFee;
@@ -24,11 +32,21 @@ var addNewTaxYearToDb = async (collection, userId, year) => {
         await collection.updateOne(
           { userId },
           {
-            $push: { years: { year: nextYear, mandatoryInsuranceFee, paidTaxAmount: nextYearPaidTaxAmount } },
+            $push: {
+              years: {
+                taxRate: 6,
+                year: nextYear,
+                paidInsuranceFee: 0,
+                mandatoryInsuranceFee,
+                isInsuranceFeePaid: false,
+                insuranceFeePercentage: 10,
+                paidTaxAmount: nextYearPaidTaxAmount,
+              },
+            },
           }
         );
       }
-
+      console.log({ existTaxYear });
       return existTaxYear;
     }
 
@@ -40,7 +58,7 @@ var addNewTaxYearToDb = async (collection, userId, year) => {
     await collection.updateOne(
       { userId },
       {
-        $push: { years: { year, mandatoryInsuranceFee } },
+        $push: { years: { year, mandatoryInsuranceFee, ...defaultTaxOptions } },
       }
     );
 

@@ -12,6 +12,8 @@ var insertReportIdAndFullPeriodToReportIds = (date, fullPeriod, reportId, overla
 
   var { mondays } = getMondaysOrSundaysOfMonth(date, "monday");
 
+  mondays.reverse();
+
   if (overlapStatus === "overlap - yes") {
     reportIds[mondays.length] = { reportId, ...fullPeriod };
   } else {
