@@ -90,6 +90,11 @@ var getMondaysOrSundaysOfMonth = (date, weekDayName) => {
     }
 
     if (weekDayName === "sunday") {
+      var isSundayMultipleOfSeven = checkIfSundaysAreMultipleOfSeven(weekDays);
+
+      if (isSundayMultipleOfSeven) {
+        weekDays = [null, ...weekDays];
+      }
       return { sundays: weekDays };
     }
     return { mondays: weekDays };
