@@ -1,10 +1,4 @@
-var {
-  tokens_collection,
-  report_loading_states_collection,
-  reports_collection,
-  tax_params_collection,
-  reports_tree_collection,
-} = require("../connections");
+var { tokens_collection, report_loading_states_collection, reports_collection, tax_params_collection, reports_tree_collection } = require("../connections");
 
 var getToken = require("./getToken");
 var getUsersData = require("./getUsersData");
@@ -35,7 +29,7 @@ var db = {
 
   saveReportToDb: (userId, report) => saveReportToDb(reports_collection, userId, report),
 
-  getUsersData: (userId) => getUsersData(report_loading_states_collection, userId),
+  getUsersData: () => getUsersData(report_loading_states_collection),
   getReportsQueue: (userId) => getReportsQueue(report_loading_states_collection, userId),
   getFailedReports: (userId) => getFailedReports(report_loading_states_collection, userId),
   updateFailedQueue: (userId, reportQueue) => updateFailedQueue(report_loading_states_collection, userId, reportQueue),
