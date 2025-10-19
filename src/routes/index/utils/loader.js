@@ -4,14 +4,14 @@ var reportProcessing = require("./reportProcessing");
 var NEXT_REPORT_DELAY_MS = 65000;
 
 var loader = async (userId, token) => {
-  var { reportsQueue } = await dbUtils.getReportsQueue(userId);
+  var ignition = 1;
 
   await dbUtils.setLoadingProgressStatus(userId, "loading");
 
-  while (reportsQueue.length) {
-    var { reportsQueue } = await dbUtils.getReportsQueue(userId);
-
+  while (ignition) {
     try {
+      var { reportsQueue } = await dbUtils.getReportsQueue(userId);
+      ignition = reportsQueue.length - 1;
       var reportToUpload = reportsQueue.shift();
 
       var { dateFrom, dateTo } = reportToUpload;
