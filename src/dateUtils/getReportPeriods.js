@@ -1,5 +1,5 @@
 var getYearMondays = require("./getYearMondays");
-var getDateToByDateFrom = require("../periodUtils");
+var getDateToByDateFrom = require("./getDateToByDateFrom");
 var getLastMondayByDateTo = require("./getLastMondayByDateTo");
 
 var getFullPeriods = (mondays) =>
@@ -10,7 +10,7 @@ var getFullPeriods = (mondays) =>
     })
   );
 
-var getReportPeriods = async (dateFrom, dateTo) => {
+var getdateUtils = async (dateFrom, dateTo) => {
   if (!dateFrom) {
     dateFrom = "2024-01-29";
   }
@@ -44,4 +44,4 @@ var getReportPeriods = async (dateFrom, dateTo) => {
   return { fullPeriods };
 };
 
-module.exports = getReportPeriods;
+module.exports = getdateUtils;

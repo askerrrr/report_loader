@@ -1,4 +1,4 @@
-var getMondaysOrSundaysOfMonth = require("../periodUtils/utils/getMondaysOrSundaysOfMonth");
+var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
 
 var getNextDateFrom = (monthNum, year) => `${year}-${String(monthNum).padStart(2, "0")}-${15}`;
 

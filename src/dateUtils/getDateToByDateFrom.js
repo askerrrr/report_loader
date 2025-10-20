@@ -1,6 +1,6 @@
-var getNextPeriod = require("./utils/getNextPeriod.js");
-var hasPeriodOverlap = require("./utils/hasPeriodOverlap.js");
-var getMondaysOrSundaysOfMonth = require("./utils/getMondaysOrSundaysOfMonth.js");
+var getNextPeriod = require("./getNextPeriod.js");
+var hasPeriodOverlap = require("./hasPeriodOverlap.js");
+var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth.js");
 
 var getDateToByDateFrom = (dateFrom) => {
   var [year, month, day] = dateFrom.split("-").map(Number);

@@ -1,4 +1,4 @@
-var getMondaysOrSundaysOfMonth = require("../periodUtils/utils/getMondaysOrSundaysOfMonth");
+var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
 
 var getPreviousMonthMondays = (dateTo) => {
   if (!dateTo) {

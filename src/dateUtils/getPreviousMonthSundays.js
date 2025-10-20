@@ -1,4 +1,4 @@
-var getMondaysOrSundaysOfMonth = require("../periodUtils/utils/getMondaysOrSundaysOfMonth");
+var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
 
 var getPreviousMonthSundays = (date) => {
   var [year, monthNum] = date.split("-").map(Number);

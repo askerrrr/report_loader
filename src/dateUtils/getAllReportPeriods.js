@@ -1,5 +1,5 @@
 var getYearMondays = require("./getYearMondays");
-var getDateToByDateFrom = require("../periodUtils");
+var getDateToByDateFrom = require("./getDateToByDateFrom");
 
 var getAllReportPeriods = () => {
   var mondays = [];

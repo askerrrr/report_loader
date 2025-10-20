@@ -1,6 +1,6 @@
 var getPreviousMonthMondays = require("./getPreviousMonthMondays");
+var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
 var { getLastMondayFromCurrentMonth } = require("./getLastMondayFromCurrentMonth");
-var getMondaysOrSundaysOfMonth = require("../periodUtils/utils/getMondaysOrSundaysOfMonth");
 
 var getLastMondayByDateTo = (dateTo) => {
   if (!dateTo) {

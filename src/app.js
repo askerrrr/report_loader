@@ -1,6 +1,6 @@
 var express = require("express");
 var { runDB } = require("./database/");
-var runReportPeriodsWriter = require("./reportPeriods");
+var runReportPeriodsWriter = require("./dateUtils");
 var retryFailedReports = require("./retryFailedReports.js");
 
 var app = express();

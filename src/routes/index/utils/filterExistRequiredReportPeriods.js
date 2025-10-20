@@ -1,27 +1,27 @@
-var filterExistRequiredReportPeriods = (requiredReportPeriods, reportQueue) => {
-  var filteredRequiredReportPeriods = [];
+var filterExistRequiredReportPeriods = (requireddateUtils, reportQueue) => {
+  var filteredRequireddateUtils = [];
 
   if (!reportQueue.length) {
-    return { filteredRequiredReportPeriods: requiredReportPeriods };
+    return { filteredRequireddateUtils: requireddateUtils };
   }
 
-  if (requiredReportPeriods.length > reportQueue.length) {
+  if (requireddateUtils.length > reportQueue.length) {
     for (var queueItem of reportQueue) {
-      if (!requiredReportPeriods.find((item) => item.dateFrom === queueItem.dateFrom)) {
-        filteredRequiredReportPeriods.push(queueItem);
+      if (!requireddateUtils.find((item) => item.dateFrom === queueItem.dateFrom)) {
+        filteredRequireddateUtils.push(queueItem);
       }
     }
 
-    return { filteredRequiredReportPeriods };
+    return { filteredRequireddateUtils };
   }
 
-  for (var item of requiredReportPeriods) {
+  for (var item of requireddateUtils) {
     if (!reportQueue.find((queueItem) => queueItem.dateFrom === item.dateFrom)) {
-      filteredRequiredReportPeriods.push(item);
+      filteredRequireddateUtils.push(item);
     }
   }
 
-  return { filteredRequiredReportPeriods };
+  return { filteredRequireddateUtils };
 };
 
 module.exports = filterExistRequiredReportPeriods;

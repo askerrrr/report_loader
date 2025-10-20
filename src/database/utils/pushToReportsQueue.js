@@ -1,5 +1,5 @@
-var pushToReportsQueue = async (collection, userId, newReportPeriods) => {
-  for (var period of newReportPeriods) {
+var pushToReportsQueue = async (collection, userId, periods) => {
+  for (var period of periods) {
     await collection.updateOne({ userId }, { $push: { reportsQueue: period } });
   }
 };

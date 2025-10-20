@@ -10,7 +10,7 @@ var writeTestsToFIle = (tests, funcName, funcPath) => {
   var imports = `var {  it, describe } = require('node:test');\nvar ${funcName} = require('${funcPath}');\n\n`;
   var describe = `describe('test func ${funcName}()', () => {\n${tests}})`;
   var fileContent = imports + describe;
-  var filePath = join("test", "periodUtils", `${funcName}.test.js`);
+  var filePath = join("test", "dateUtils", `${funcName}.test.js`);
   writeFileSync(filePath, fileContent);
 };
 

@@ -1,4 +1,4 @@
-var reportPeriods = require("../../../reportPeriods/reportPeriods");
+var reportPeriods = require("../../../dateUtils/reportPeriods");
 var filterExistRequiredReportPeriods = require("../utils/filterExistRequiredReportPeriods");
 
 var periodsFilter = async (req, res, next) => {
@@ -8,12 +8,12 @@ var periodsFilter = async (req, res, next) => {
   var dateFromIndex = reportPeriods.findIndex((date) => date.dateFrom === dateFrom);
   var dateToIndex = reportPeriods.findIndex((date) => date.dateTo === dateTo);
 
-  var requiredReportPeriods = reportPeriods.slice(dateFromIndex, dateToIndex + 1);
+  var requireddateUtils = dateUtils.slice(dateFromIndex, dateToIndex + 1);
   var { reportsQueue } = await db.getReportsQueue(userId);
 
-  var { filteredRequiredReportPeriods } = filterExistRequiredReportPeriods(requiredReportPeriods, reportsQueue);
+  var { filteredRequireddateUtils } = filterExistRequiredReportPeriods(requireddateUtils, reportsQueue);
 
-  req.body = { userId, filteredRequiredReportPeriods };
+  req.body = { userId, filteredRequireddateUtils };
   next();
 };
 
