@@ -1,4 +1,4 @@
-var getReports = require("./getReports");
+var getReports = require("./WBAPI");
 var sortYearsTree = require("./sortYearTree");
 var dbUtils = require("../../../database/utils");
 var insertReportToReportTree = require("./reportTreeBuilder");
@@ -10,7 +10,7 @@ var reportProcessing = async (userId, dateFrom, dateTo, token) => {
 
   var { years } = await dbUtils.getReportsTree(userId);
   var { years, year, month } = await insertReportToReportTree(dateFrom, dateTo, reportId, years);
-  var sortedYears = await sortYearsTree(years);
+  var sortedYears = sortYearsTree(years);
   await dbUtils.updateReportTree(userId, sortedYears);
 
   var { taxRate, paidTaxAmount } = await dbUtils.addNewTaxYearToDb(userId, +year);

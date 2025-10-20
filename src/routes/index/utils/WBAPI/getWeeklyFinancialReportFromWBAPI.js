@@ -1,15 +1,6 @@
-//var { WBAPIError } = require("../../../../customError/");
-class WBAPIError extends Error {
-  constructor(userId, status, message) {
-    super(message);
-    this.userId = userId;
-    this.status = status;
-    this.message = message;
-    this.name = this.constructor.name;
-  }
-}
+var { WBAPIError } = require("../../../../customError");
 
-var getReportByPeriodFromWBAPI = async (dateFrom, dateTo, token, userId) => {
+var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) => {
   var url = `https://statistics-api.wildberries.ru/api/v5/supplier/reportDetailByPeriod?dateFrom=${dateFrom}&dateTo=${dateTo}`;
 
   var res = await fetch(url, {
@@ -18,9 +9,9 @@ var getReportByPeriodFromWBAPI = async (dateFrom, dateTo, token, userId) => {
   });
 
   if (res.ok) {
-    var mainReport = await res.json();
+    var report = await res.json();
 
-    return mainReport;
+    return report;
   }
 
   var errMsg = "Возникла ошибка при получении финансового отчета, попробуйте позже";
@@ -30,7 +21,8 @@ var getReportByPeriodFromWBAPI = async (dateFrom, dateTo, token, userId) => {
   } else if (res.status === 401) {
     errMsg = "Не удалось авторизоваться с помощью сохраненного токена";
   }
-  WBAPIError(userId, res.status, errMsg);
+
+  throw new WBAPIError(userId, res.status, errMsg);
 };
 
-module.exports = getReportByPeriodFromWBAPI;
+module.exports = getWeeklyFinancialReportFromWBAPI;

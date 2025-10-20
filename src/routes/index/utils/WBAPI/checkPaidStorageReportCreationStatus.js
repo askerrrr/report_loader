@@ -1,15 +1,6 @@
-//var { WBAPIError } = require("../../../../customError");
-class WBAPIError extends Error {
-  constructor(userId, status, message) {
-    super(message);
-    this.userId = userId;
-    this.status = status;
-    this.message = message;
-    this.name = this.constructor.name;
-  }
-}
+var { WBAPIError } = require("../../../../customError");
 
-var getCreationStatus = async (url, token) => {
+var getCreationStatus = async (url, token, userId) => {
   var res = await fetch(url, {
     method: "GET",
     headers: { Authorization: "Bearer " + token },
@@ -18,29 +9,31 @@ var getCreationStatus = async (url, token) => {
   if (!res.ok) {
     var errMsg = "Возникла ошибка при получении отчета о платном хранении";
 
-    new WBAPIError("userId", res.status, res.statusText, errMsg);
+    throw new WBAPIError(userId, res.status, errMsg);
   }
+
   var result = await res.json();
+
   var { status } = result?.data;
 
-  return status;
+  return { status };
 };
 
-var checkPaidStorageReportCreationStatus = async (taskId, token) => {
+var checkPaidStorageReportCreationStatus = async (taskId, token, userId) => {
   var url = `https://seller-analytics-api.wildberries.ru/api/v1/paid_storage/tasks/${taskId}/status`;
 
-  var status = await getCreationStatus(url, token);
+  var { status } = await getCreationStatus(url, token, userId);
 
   if (status == "done") {
     return true;
   }
 
-  return new Promise((resolve, reject) => {
+  return await new Promise((resolve, reject) => {
     var attempts = 0;
 
     try {
       var timerId = setInterval(async () => {
-        var status = await getCreationStatus(url, token);
+        var { status } = await getCreationStatus(url, token, userId);
 
         if (status === "done") {
           clearInterval(timerId);

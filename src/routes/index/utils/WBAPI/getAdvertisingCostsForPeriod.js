@@ -1,13 +1,4 @@
-//var { WBAPIError } = require("../../../../customError");
-class WBAPIError extends Error {
-  constructor(userId, status, message) {
-    super(message);
-    this.userId = userId;
-    this.status = status;
-    this.message = message;
-    this.name = this.constructor.name;
-  }
-}
+var { WBAPIError } = require("../../../../customError");
 
 var calculateTotalAdvertisingСosts = async (data) => data.reduce((acc, i) => acc + i.updSum, 0);
 
@@ -35,7 +26,8 @@ var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
     errMsg =
       "Не удалось авторизоваться для получения отчета о затратах на рекламу с помощью сохраненного токена. Получить токен с нужными правами можно получить в личном кабинете продавца";
   }
-  WBAPIError(userId, res.status, errMsg);
+
+  throw new WBAPIError(userId, res.status, errMsg);
 };
 
 module.exports = getAdvertisingCostsForPeriod;
