@@ -1,6 +1,7 @@
+var dbUtils = require("../database/utils");
 var failedLoader = require("../routes/index/utils/failedLoader");
 
-var retryFailedReports = async (dbUtils) => {
+var retryFailedReports = async () => {
   var users = await dbUtils.getUsersData();
 
   Promise.all(
@@ -8,6 +9,8 @@ var retryFailedReports = async (dbUtils) => {
       try {
         if (!loadingInProgress && failedReports.length) {
           var { token } = await dbUtils.getToken(userId);
+
+          await failedLoader(userId, token);
         }
       } catch (e) {
         console.log({ retryError: e });

@@ -5,13 +5,15 @@ var retryFailedReports = require("./retryFailedReports.js");
 
 var app = express();
 
+var TWO_HOURS_MS = 7200000;
+
 (async () => {
   runReportPeriodsWriter();
 
+  setInterval(retryFailedReports, TWO_HOURS_MS);
+
   await runDB();
   app.locals.db = require("./database/utils");
-
-  retryFailedReports(app.locals.db);
 
   app.listen(process.env.PORT, process.env.HOST, console.log("server run..."));
 })();
