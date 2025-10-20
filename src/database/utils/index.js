@@ -5,11 +5,11 @@ var getToken = require("./getToken");
 var getUsersData = require("./getUsersData");
 var getReportsTree = require("./getReportsTree");
 var saveReportToDb = require("./saveReportToDb");
-var getFailedReports = require("./getFailedQueue");
+var getFailedReportsQueue = require("./getFailedReportsQueue");
 var addNewTaxYearToDb = require("./addNewTaxYear");
 var getReportsQueue = require("./getReportsQueue");
 var updateReportTree = require("./updateReportTree");
-var updateFailedQueue = require("./updateFailedQueue");
+var updateFailedReportsQueue = require("./updateFailedReportsQueue");
 var pushToReportsQueue = require("./pushToReportsQueue");
 var updateReportsQueue = require("./updateReportsQueue");
 var createReportsQueue = require("./createReportsQueue");
@@ -25,11 +25,11 @@ var db = {
   getUser: (userId) => getUser(report_loading_states_collection, userId),
   getReportsTree: (userId) => getReportsTree(reports_tree_collection, userId),
   getReportsQueue: (userId) => getReportsQueue(report_loading_states_collection, userId),
-  getFailedReports: (userId) => getFailedReports(report_loading_states_collection, userId),
+  getFailedReportsQueue: (userId) => getFailedReportsQueue(report_loading_states_collection, userId),
   getLoadingProgressStatus: (userId) => getLoadingProgressStatus(report_loading_states_collection, userId),
 
   updateReportTree: (userId, years) => updateReportTree(reports_tree_collection, userId, years),
-  updateFailedQueue: (userId, reportQueue) => updateFailedQueue(report_loading_states_collection, userId, reportQueue),
+  updateFailedReportsQueue: (userId, reportQueue) => updateFailedReportsQueue(report_loading_states_collection, userId, reportQueue),
   updateReportsQueue: (userId, reportQueue) => updateReportsQueue(report_loading_states_collection, userId, reportQueue),
 
   addNewTaxYearToDb: (userId, year) => addNewTaxYearToDb(tax_params_collection, userId, year),

@@ -10,9 +10,9 @@ var failedLoader = async (userId, token) => {
 
   while (ignition) {
     try {
-      var { failedReports } = await dbUtils.getFailedReports(userId);
-      ignition = failedReports.length - 1;
-      var reportToUpload = failedReports.shift();
+      var { failedReportsQueue } = await dbUtils.getFailedReportsQueue(userId);
+      ignition = failedReportsQueue.length - 1;
+      var reportToUpload = failedReportsQueue.shift();
 
       var { dateFrom, dateTo } = reportToUpload;
 
@@ -20,11 +20,11 @@ var failedLoader = async (userId, token) => {
 
       console.log({ reportToUpload });
 
-      await dbUtils.updateFailedQueue(userId, failedReports);
+      await dbUtils.updateFailedReportsQueue(userId, failedReportsQueue);
     } catch (e) {
       if (reportToUpload.failedCount === 4) {
         await dbUtils.addReportToAbandonedReports(userId, reportToUpload);
-        await dbUtils.updateFailedQueue(userId, failedReports);
+        await dbUtils.updateFailedReportsQueue(userId, failedReportsQueue);
       } else {
         reportToUpload.failedCount += 1;
 

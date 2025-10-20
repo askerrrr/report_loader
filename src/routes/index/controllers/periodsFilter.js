@@ -10,8 +10,8 @@ var periodsFilter = async (req, res, next) => {
   var dateToIndex = reportPeriods.findIndex((date) => date.dateTo === dateTo);
 
   var requiredReportPeriods = dateUtils.slice(dateFromIndex, dateToIndex + 1);
-  var { reportsQueue, failedReports } = await db.getUser(userId);
-  var filteredRequiredReportPeriods = filterAlreadyFailedReports(failedReports, requiredReportPeriods)
+  var { reportsQueue, failedReportsQueue } = await db.getUser(userId);
+  var filteredRequiredReportPeriods = filterAlreadyFailedReports(failedReportsQueue, requiredReportPeriods);
   var { filteredRequiredReportPeriods } = filterExistRequiredReportPeriods(requiredReportPeriods, reportsQueue);
 
   req.body = { userId, filteredRequiredReportPeriods };

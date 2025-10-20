@@ -1,4 +1,4 @@
-var { WBAPIError } = require("../../../../customError");
+//var { WBAPIError } = require("../../../../customError");
 
 var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) => {
   var url = `https://statistics-api.wildberries.ru/api/v5/supplier/reportDetailByPeriod?dateFrom=${dateFrom}&dateTo=${dateTo}`;

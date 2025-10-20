@@ -1,9 +1,9 @@
-var filterAlreadyFailedReports = (failedReports, incomingReports) => {
+var filterAlreadyFailedReports = (failedReportsQueue, incomingReports) => {
   var arr = [];
 
   while (incomingReports) {
     var elem = incomingReports.shift();
-    if (!failedReports.includes(elem)) {
+    if (!failedReportsQueue.includes(elem)) {
       arr.push(elem);
     }
   }
