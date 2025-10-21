@@ -1,8 +1,8 @@
 var writeReportsToQueue = async (req, res, next) => {
   var db = req.app.locals.db;
-  var { userId, filteredRequireddateUtils } = req.body;
+  var { userId, filteredRequiredReportPeriods } = req.body;
 
-  await db.pushToReportsQueue(userId, filteredRequireddateUtils);
+  await db.pushToReportsQueue(userId, filteredRequiredReportPeriods);
 
   var { loadingInProgress } = await db.getLoadingProgressStatus(userId);
 
