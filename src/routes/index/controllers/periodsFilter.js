@@ -11,7 +11,9 @@ var periodsFilter = async (req, res, next) => {
   var requiredReportPeriods = reportPeriods.slice(dateFromIndex, dateToIndex + 1);
   var userLoadingsStates = await db.getUser(userId);
 
-  var { filteredRequiredReportPeriods } = filteringOfRequiredReportPeriods(userLoadingsStates, requiredReportPeriods);
+  var { reportTree } = await db.getReportsTree(userId);
+
+  var { filteredRequiredReportPeriods } = filteringOfRequiredReportPeriods(userLoadingsStates, requiredReportPeriods, reportTree);
 
   req.body = { userId, filteredRequiredReportPeriods };
   next();

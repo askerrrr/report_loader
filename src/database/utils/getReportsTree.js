@@ -2,9 +2,9 @@
 
 var getReportsTree = async (collection, userId) => {
   try {
-    var reportTree = await collection.findOne({ userId });
+    var { years } = await collection.findOne({ userId });
 
-    return reportTree;
+    return { reportTree: years };
   } catch (e) {
     //throw new DatabaseError(userId, e);
   }

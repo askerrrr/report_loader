@@ -8,8 +8,8 @@ var reportProcessing = async (userId, dateFrom, dateTo, token) => {
   var reports = await getReports(userId, dateFrom, dateTo, token);
   var reportId = reports.mainReport[0].realizationreport_id;
 
-  var { years } = await dbUtils.getReportsTree(userId);
-  var { years, year, month } = await insertReportToReportTree(dateFrom, dateTo, reportId, years);
+  var { reportTree } = await dbUtils.getReportsTree(userId);
+  var { years, year, month } = await insertReportToReportTree(dateFrom, dateTo, reportId, reportTree);
   var sortedYears = sortYearsTree(years);
   await dbUtils.updateReportTree(userId, sortedYears);
 
