@@ -10,7 +10,7 @@ var TWO_HOURS_MS = 7200000;
 (async () => {
   runReportPeriodsWriter();
 
-  setInterval(retryFailedReports, TWO_HOURS_MS);
+  // setInterval(retryFailedReports, TWO_HOURS_MS);
 
   await runDB();
   app.locals.db = require("./database/utils");
