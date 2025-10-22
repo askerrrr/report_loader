@@ -38,6 +38,7 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, aban
   }
 
   return { filteredRequiredReportPeriods };
+  //comment
 };
 
 module.exports = filteringOfRequiredReportPeriods;
