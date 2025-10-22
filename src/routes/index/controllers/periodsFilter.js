@@ -14,7 +14,10 @@ var periodsFilter = async (req, res, next) => {
   var { reportTree } = await db.getReportsTree(userId);
 
   var { filteredRequiredReportPeriods } = filteringOfRequiredReportPeriods(userLoadingsStates, requiredReportPeriods, reportTree);
-
+  console.log({ filteredRequiredReportPeriods });
+  if (!filteredRequiredReportPeriods.length) {
+    return res.status(409).json({ msg: "Отчёты за выбранный период уже есть" });
+  }
   req.body = { userId, filteredRequiredReportPeriods };
   next();
 };

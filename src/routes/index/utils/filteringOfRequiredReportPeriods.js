@@ -13,15 +13,27 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, aban
     }
   }
 
-  var cb = (period) => period.dateFrom === dateFrom;
+  if (filteredRequiredReportPeriods.length === 0) {
+    return { filteredRequiredReportPeriods };
+  }
 
-  for (var { dateFrom, dateTo, index } of requiredReportPeriods) {
-    if (!reportsQueue.find(cb)) {
-      if (!failedReportsQueue.find(cb)) {
-        if (!abandonedReports.find(cb)) {
-          filteredRequiredReportPeriods.push({ dateFrom, dateTo, index });
-        }
-      }
+  var cb = (item) => item.dateFrom === filteredRequiredReportPeriods[i].dateFrom;
+
+  for (var i = 0; i < filteredRequiredReportPeriods.length; i++) {
+    if (reportsQueue.find(cb)) {
+      filteredRequiredReportPeriods.splice(i, 1);
+    }
+  }
+
+  for (var i = 0; i < filteredRequiredReportPeriods.length; i++) {
+    if (failedReportsQueue.find(cb)) {
+      filteredRequiredReportPeriods.splice(i, 1);
+    }
+  }
+
+  for (var i = 0; i < filteredRequiredReportPeriods.length; i++) {
+    if (abandonedReports.find(cb)) {
+      filteredRequiredReportPeriods.splice(i, 1);
     }
   }
 
