@@ -1,6 +1,4 @@
 /**
- * @param {object} collectin
- * @param {string} userId
  * @param {"loading" | "completed"} loadingStatus
  */
 var setLoadingProgressStatus = async (userId, loadingStatus) => {
