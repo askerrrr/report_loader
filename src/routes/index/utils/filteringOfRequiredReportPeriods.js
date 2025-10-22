@@ -1,7 +1,7 @@
 var checkReportExistsInTree = require("./checkReportExistsInTree");
 
 var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, abandonedReports }, requiredReportPeriods, reportTree) => {
-  var filteredRequiredReportPeriods = [];
+  var resultOfTheFirstFiltering = [];
 
   while (requiredReportPeriods.length) {
     var period = requiredReportPeriods.shift();
@@ -9,36 +9,51 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, aban
     var { reportIsExist } = checkReportExistsInTree(period.dateFrom, reportTree);
 
     if (!reportIsExist) {
-      filteredRequiredReportPeriods.push(period);
+      resultOfTheFirstFiltering.push(period);
     }
   }
 
-  if (filteredRequiredReportPeriods.length === 0) {
-    return { filteredRequiredReportPeriods };
+  if (resultOfTheFirstFiltering.length === 0) {
+    return { filteredRequiredReportPeriods: [] };
   }
 
-  var cb = (item) => item.dateFrom === filteredRequiredReportPeriods[i].dateFrom;
+  var cb = (item) => item.dateFrom === elem.dateFrom;
+  var resultOfTheSecondFiltering = [];
 
-  for (var i = 0; i < filteredRequiredReportPeriods.length; i++) {
-    if (reportsQueue.find(cb)) {
-      filteredRequiredReportPeriods.splice(i, 1);
+  while (resultOfTheFirstFiltering.length) {
+    var elem = resultOfTheFirstFiltering.shift();
+    if (!reportsQueue.find(cb)) {
+      resultOfTheSecondFiltering.push(elem);
     }
   }
 
-  for (var i = 0; i < filteredRequiredReportPeriods.length; i++) {
-    if (failedReportsQueue.find(cb)) {
-      filteredRequiredReportPeriods.splice(i, 1);
+  if (resultOfTheSecondFiltering.length === 0) {
+    return { filteredRequiredReportPeriods: resultOfTheSecondFiltering };
+  }
+
+  var resultOfTheThirdFiltering = [];
+
+  while (resultOfTheSecondFiltering.length) {
+    var elem = resultOfTheSecondFiltering.shift();
+    if (!failedReportsQueue.find(cb)) {
+      resultOfTheThirdFiltering.push(elem);
     }
   }
 
-  for (var i = 0; i < filteredRequiredReportPeriods.length; i++) {
-    if (abandonedReports.find(cb)) {
-      filteredRequiredReportPeriods.splice(i, 1);
+  if (resultOfTheThirdFiltering.length === 0) {
+    return { filteredRequiredReportPeriods: resultOfTheThirdFiltering };
+  }
+
+  var resultOfTheFourthFiltering = [];
+
+  while (resultOfTheThirdFiltering.length) {
+    var elem = resultOfTheThirdFiltering.shift();
+    if (!abandonedReports.find(cb)) {
+      resultOfTheFourthFiltering.push(elem);
     }
   }
 
-  return { filteredRequiredReportPeriods };
-  //comment
+  return { filteredRequiredReportPeriods: resultOfTheFourthFiltering };
 };
 
 module.exports = filteringOfRequiredReportPeriods;

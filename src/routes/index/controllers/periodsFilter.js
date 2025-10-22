@@ -18,6 +18,7 @@ var periodsFilter = async (req, res, next) => {
   if (!filteredRequiredReportPeriods.length) {
     return res.status(409).json({ msg: "Отчёты за выбранный период уже есть" });
   }
+
   req.body = { userId, filteredRequiredReportPeriods };
   next();
 };
