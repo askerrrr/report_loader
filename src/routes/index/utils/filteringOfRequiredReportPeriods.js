@@ -3,13 +3,13 @@ var checkReportExistsInTree = require("./checkReportExistsInTree");
 var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, abandonedReports }, requiredReportPeriods, reportTree) => {
   var filteredRequiredReportPeriods = [];
 
-  for (var i = 0; i < requiredReportPeriods.length; i++) {
-    var { dateFrom } = requiredReportPeriods[i];
-    var { reportIsExist } = checkReportExistsInTree(dateFrom, reportTree);
+  while (requiredReportPeriods.length) {
+    var period = requiredReportPeriods.shift();
+
+    var { reportIsExist } = checkReportExistsInTree(period.dateFrom, reportTree);
 
     if (!reportIsExist) {
-      var splicedElem = requiredReportPeriods.splice(i, 1);
-      filteredRequiredReportPeriods.push(...splicedElem);
+      filteredRequiredReportPeriods.push(period);
     }
   }
 

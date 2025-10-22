@@ -1,6 +1,10 @@
 var checkReportExistsInTree = (date, tree) => {
   var reportIsExist;
 
+  if (!tree.length) {
+    return { reportIsExist };
+  }
+
   for (var { months } of tree) {
     for (var item of months) {
       if (item) {
