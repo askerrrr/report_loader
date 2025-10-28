@@ -1,8 +1,8 @@
 var utils = require("./utils");
 
 var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
-  var [startYear, startMonth] = dateFrom.split("-");
-  var [endYear, endMonth] = dateTo.split("-");
+  var [startYear, startMonth] = dateFrom.split("-").map(Number);
+  var [endYear, endMonth] = dateTo.split("-").map(Number);
 
   var startMonthName = utils.getMonthNameAndIndex(startMonth).monthName;
   var endMonthName = utils.getMonthNameAndIndex(endMonth).monthName;
