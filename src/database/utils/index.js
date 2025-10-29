@@ -39,7 +39,7 @@ var db = {
   changePaidTaxAmountToDb: (userId, year, paidTaxAmount) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount),
 
   saveReportToDb: (userId, report) => saveReportToDb(reports_collection, userId, report),
-  setLoadingProgressStatus: (userId, loadingStatus) => setLoadingProgressStatus(report_loading_states_collection, userId, loadingStatus),
+  setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
   pushToReportsQueue: (userId, reportPeriod) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod),
   createReportsQueue: (userId, reportQueue) => createReportsQueue(report_loading_states_collection, userId, reportQueue),
