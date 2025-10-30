@@ -16,7 +16,7 @@ var getAllReportPeriods = () => {
   var requiredMondays = mondays.slice(indexOfDateFrom);
   var fullPeriods = requiredMondays.map((monday, index) => {
     var sunday = getDateToByDateFrom(monday);
-    return { dateFrom: monday, dateTo: sunday, index };
+    return { dateFrom: monday, dateTo: sunday, index, failedCount: 1 };
   });
 
   return { allPeriods: fullPeriods };
