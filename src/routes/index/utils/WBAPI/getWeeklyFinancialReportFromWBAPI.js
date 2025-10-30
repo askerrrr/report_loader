@@ -1,5 +1,3 @@
-//var { WBAPIError } = require("../../../../customError");
-
 var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) => {
   var url = `https://statistics-api.wildberries.ru/api/v5/supplier/reportDetailByPeriod?dateFrom=${dateFrom}&dateTo=${dateTo}`;
 
@@ -22,7 +20,7 @@ var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) 
     errMsg = "Не удалось авторизоваться с помощью сохраненного токена";
   }
 
-  throw new WBAPIError(userId, res.status, errMsg);
+  throw new Error(errMsg);
 };
 
 module.exports = getWeeklyFinancialReportFromWBAPI;
