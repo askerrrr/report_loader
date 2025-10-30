@@ -18,8 +18,6 @@ var failedLoader = async (userId, token) => {
 
       await reportProcessing(userId, dateFrom, dateTo, token);
 
-      console.log({ reportToUpload });
-
       await dbUtils.updateFailedReportsQueue(userId, failedReportsQueue);
     } catch (e) {
       if (reportToUpload.failedCount === 4) {
