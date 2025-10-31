@@ -10,7 +10,7 @@ var getFullPeriods = (mondays) =>
     })
   );
 
-var getdateUtils = async (dateFrom, dateTo) => {
+var getReportPeriodsByRange = async (dateFrom, dateTo) => {
   if (!dateFrom) {
     dateFrom = "2024-01-29";
   }
@@ -44,4 +44,4 @@ var getdateUtils = async (dateFrom, dateTo) => {
   return { fullPeriods };
 };
 
-module.exports = getdateUtils;
+module.exports = getReportPeriodsByRange;
