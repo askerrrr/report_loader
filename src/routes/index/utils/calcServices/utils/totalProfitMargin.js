@@ -1,4 +1,4 @@
-var shortNum = require("../../shortNum");
+var shortNum = require("../../writeAndCalcReportDataFromWBAPI/shortNum");
 
 var calcTotalProfitMargin = (totalRetailAmount, totalFinalProfit) => {
   if (totalFinalProfit === 0 || totalRetailAmount === 0) {

@@ -1,5 +1,5 @@
+var calc = require("../calcServices");
 var getSKUNamesFromPaidStorageReport = require("./getSKUNamesFromPaidStorageReport");
-var SKUStorageCostFromPaidStorageReport = require("./calcServices/services/SKUStorageCostFromPaidStorageReport");
 
 var parsePaidStorageReport = async (report) => {
   var skuNames = await getSKUNamesFromPaidStorageReport(report);
@@ -7,10 +7,7 @@ var parsePaidStorageReport = async (report) => {
   var data = [];
 
   for (var name of skuNames) {
-    var skuStorageCost = await SKUStorageCostFromPaidStorageReport(
-      report,
-      name
-    );
+    var skuStorageCost = await calc.sku.storageCostFromPaidStorageReport(report, name);
 
     data.push({ name, skuStorageCost });
   }
