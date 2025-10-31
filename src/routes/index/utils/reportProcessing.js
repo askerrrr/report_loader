@@ -6,15 +6,10 @@ var parseReports = require("./writeAndCalcReportDataFromWBAPI");
 
 var reportProcessing = async (userId, dateFrom, dateTo, token) => {
   var reports = await wbapi.getReports(userId, dateFrom, dateTo, token);
-  var reportId = reports.mainReport[0].realizationreport_id;
+  var reportId = reports.weeklyFinancialReport[0].realizationreport_id;
 
   var { reportTree } = await dbUtils.getReportsTree(userId);
-  var { years, year, month } = await insertReportToReportTree(
-    dateFrom,
-    dateTo,
-    reportId,
-    reportTree
-  );
+  var { years, year, month } = await insertReportToReportTree(dateFrom, dateTo, reportId, reportTree);
   var sortedYears = sortYearsTree(years);
   await dbUtils.updateReportTree(userId, sortedYears);
 
