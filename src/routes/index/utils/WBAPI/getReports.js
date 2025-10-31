@@ -13,13 +13,13 @@ var getReports = async (userId, dateFrom, dateTo, token) => {
     throw new Error("can not create paid storage report task");
   }
 
-  var [mainReport, paidStorageReport, totalAdvertisingCosts] = await Promise.all([
+  var [weeklyFinancialReport, paidStorageReport, totalAdvertisingCosts] = await Promise.all([
     getWeeklyFinancialReportFromWBAPI(dateFrom, dateTo, token, userId),
     getPaidStorageReportByTaskIdFromWBAPI(taskId, token, userId),
     getAdvertisingCostsForPeriod(dateFrom, dateTo, token, userId),
   ]);
 
-  return { mainReport, paidStorageReport, totalAdvertisingCosts };
+  return { weeklyFinancialReport, paidStorageReport, totalAdvertisingCosts };
 };
 
 module.exports = getReports;

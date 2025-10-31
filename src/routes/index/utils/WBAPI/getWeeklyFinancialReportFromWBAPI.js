@@ -7,9 +7,9 @@ var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) 
   });
 
   if (res.ok) {
-    var report = await res.json();
+    var weeklyFinancialReport = await res.json();
 
-    return report;
+    return weeklyFinancialReport;
   }
 
   var errMsg = "Возникла ошибка при получении финансового отчета, попробуйте позже";
