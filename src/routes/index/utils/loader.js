@@ -21,6 +21,11 @@ var loader = async (userId, token) => {
       await reportProcessing(userId, dateFrom, dateTo, token);
       await dbUtils.updateReportsQueue(userId, reportsQueue);
     } catch (e) {
+      if (e.message === "there is no data available for the selected reporting period") {
+        await nextReportDelay();
+        continue;
+      }
+
       if (reportToUpload.failedCount === MAX_FAILED_ATTEMPTS) {
         await dbUtils.addReportToAbandonedReports(userId, reportToUpload);
       } else {
