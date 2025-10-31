@@ -4,9 +4,9 @@ var getLastMondayByDateTo = require("./getLastMondayByDateTo");
 
 var getFullPeriods = (mondays) =>
   Promise.all(
-    mondays.map((monday) => {
+    mondays.map((monday, index) => {
       var sunday = getDateToByDateFrom(monday);
-      return { dateFrom: monday, dateTo: sunday };
+      return { dateFrom: monday, dateTo: sunday, index, failedCount: 0 };
     })
   );
 
