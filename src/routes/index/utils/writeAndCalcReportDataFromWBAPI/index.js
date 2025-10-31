@@ -21,7 +21,6 @@ var parseReports = async (taxRate, reports) => {
 
     sku.id = id;
     sku.skuName = name;
-    sku.schemaVersion = skuSchemaVersion;
     sku.qty = await calc.sku.quantity(skuFilteredReport);
     sku.fines = calc.sku.fines(skuFilteredReport);
     sku.acceptance = calc.sku.paidAcceptance(skuFilteredReport);
