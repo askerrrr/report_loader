@@ -1,5 +1,6 @@
 var reportPeriods = require("../../../dateUtils/reportPeriods");
 var filteringOfRequiredReportPeriods = require("../utils/filteringOfRequiredReportPeriods");
+var { getLastMondayFromCurrentMonth } = require("../../../dateUtils/getLastMondayFromCurrentMonth");
 
 var periodsFilter = async (req, res, next) => {
   var db = req.app.locals.db;
@@ -8,7 +9,23 @@ var periodsFilter = async (req, res, next) => {
   var dateFromIndex = reportPeriods.findIndex((date) => date.dateFrom === dateFrom);
   var dateToIndex = reportPeriods.findIndex((date) => date.dateTo === dateTo);
 
-  var requiredReportPeriods = reportPeriods.slice(dateFromIndex, dateToIndex + 1);
+  var requiredReportPeriods;
+
+  if (![dateFromIndex, dateToIndex].every((index) => index >= 0)) {
+    if (dateFromIndex < 0) {
+      dateFromIndex = 0;
+    }
+
+    if (dateToIndex < 0) {
+      var { lastMonday } = getLastMondayFromCurrentMonth();
+      var dateToIndex = reportPeriods.findIndex((date) => date.dateFrom === lastMonday);
+    }
+
+    requiredReportPeriods = reportPeriods.slice(dateFromIndex, dateToIndex + 1);
+  } else {
+    requiredReportPeriods = reportPeriods.slice(dateFromIndex, dateToIndex + 1);
+  }
+
   var userLoadingsStates = await db.getUser(userId);
 
   var { reportTree } = await db.getReportsTree(userId);
