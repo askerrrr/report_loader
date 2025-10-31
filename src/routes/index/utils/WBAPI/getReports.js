@@ -19,6 +19,10 @@ var getReports = async (userId, dateFrom, dateTo, token) => {
     getAdvertisingCostsForPeriod(dateFrom, dateTo, token, userId),
   ]);
 
+  if (!weeklyFinancialReport.length && !paidStorageReport.length && !totalAdvertisingCosts.length) {
+    throw new Error("there is no data available for the selected reporting period");
+  }
+
   return { weeklyFinancialReport, paidStorageReport, totalAdvertisingCosts };
 };
 
