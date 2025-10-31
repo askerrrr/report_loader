@@ -1,5 +1,5 @@
 var getYearMondays = require("./getYearMondays");
-var getDateToByDateFrom = require("./getDateToByDateFrom");
+var getFullPeriods = require("./getFullPeriods");
 
 var getAllReportPeriods = () => {
   var mondays = [];
@@ -14,10 +14,7 @@ var getAllReportPeriods = () => {
 
   var indexOfDateFrom = 4;
   var requiredMondays = mondays.slice(indexOfDateFrom);
-  var fullPeriods = requiredMondays.map((monday, index) => {
-    var sunday = getDateToByDateFrom(monday);
-    return { dateFrom: monday, dateTo: sunday, index, failedCount: 0 };
-  });
+  var fullPeriods = getFullPeriods(requiredMondays);
 
   return { allPeriods: fullPeriods };
 };

@@ -1,14 +1,6 @@
 var getYearMondays = require("./getYearMondays");
-var getDateToByDateFrom = require("./getDateToByDateFrom");
+var getFullPeriods = require("./getFullPeriods");
 var getLastMondayByDateTo = require("./getLastMondayByDateTo");
-
-var getFullPeriods = (mondays) =>
-  Promise.all(
-    mondays.map((monday, index) => {
-      var sunday = getDateToByDateFrom(monday);
-      return { dateFrom: monday, dateTo: sunday, index, failedCount: 0 };
-    })
-  );
 
 var getReportPeriodsByRange = async (dateFrom, dateTo) => {
   if (!dateFrom) {
@@ -25,7 +17,7 @@ var getReportPeriodsByRange = async (dateFrom, dateTo) => {
     var firstMondayIndex = yearMondays.findIndex((monday) => monday === dateFrom);
     var lastMondayIndex = yearMondays.findIndex((monday) => monday === lastMonday);
     var requiredMondays = yearMondays.slice(firstMondayIndex, lastMondayIndex + 1);
-    var fullPeriods = await getFullPeriods(requiredMondays);
+    var fullPeriods = getFullPeriods(requiredMondays);
     return { fullPeriods };
   }
 
@@ -40,7 +32,7 @@ var getReportPeriodsByRange = async (dateFrom, dateTo) => {
   var firstMondayIndex = mondays.findIndex((monday) => monday === dateFrom);
   var lastMondayIndex = mondays.findIndex((monday) => monday === lastMonday);
   var requiredMondays = mondays.slice(firstMondayIndex, lastMondayIndex + 1);
-  var fullPeriods = await getFullPeriods(requiredMondays);
+  var fullPeriods = getFullPeriods(requiredMondays);
   return { fullPeriods };
 };
 
