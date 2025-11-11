@@ -1,7 +1,9 @@
 var dbUtils = require("../../../database/utils");
 var reportProcessing = require("./reportProcessing");
 
+var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65000;
+var nextReportDelay = async () => new Promise((res) => setTimeout(res, NEXT_REPORT_DELAY_MS));
 
 var loader = async (userId, token) => {
   var ignition = 1;
@@ -17,20 +19,27 @@ var loader = async (userId, token) => {
       var { dateFrom, dateTo } = reportToUpload;
 
       await reportProcessing(userId, dateFrom, dateTo, token);
-
-      console.log({ reportToUpload });
-
       await dbUtils.updateReportsQueue(userId, reportsQueue);
     } catch (e) {
-      reportToUpload.failedCount = 1;
+      if (e.message === "there is no data available for the selected reporting period") {
+        await nextReportDelay();
+        continue;
+      }
 
-      await dbUtils.addReportToFailedQueue(userId, reportToUpload);
-      await dbUtils.updateReportsQueue(userId, reportsQueue);
+      if (reportToUpload.failedCount === MAX_FAILED_ATTEMPTS) {
+        await dbUtils.addReportToAbandonedReports(userId, reportToUpload);
+      } else {
+        ignition += 1;
+        reportToUpload.failedCount += 1;
+        reportsQueue.push(reportToUpload);
+        await dbUtils.updateReportsQueue(userId, reportsQueue);
+      }
     }
 
-    await new Promise((res) => setTimeout(res, NEXT_REPORT_DELAY_MS));
+    await nextReportDelay();
   }
 
+  console.log("LOADING COMPLETED");
   await dbUtils.setLoadingProgressStatus(userId, "completed");
 };
 

@@ -1,5 +1,3 @@
-//var { WBAPIError } = require("../../../../customError");
-
 var getCreationStatus = async (url, token, userId) => {
   var res = await fetch(url, {
     method: "GET",
@@ -8,8 +6,7 @@ var getCreationStatus = async (url, token, userId) => {
 
   if (!res.ok) {
     var errMsg = "Возникла ошибка при получении отчета о платном хранении";
-
-    throw new WBAPIError(userId, res.status, errMsg);
+    throw new Error(errMsg);
   }
 
   var result = await res.json();

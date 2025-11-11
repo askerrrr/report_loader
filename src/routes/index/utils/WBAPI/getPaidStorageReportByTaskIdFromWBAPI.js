@@ -1,5 +1,3 @@
-//var { WBAPIError } = require("../../../../customError/");
-
 var getPaidStorageReportByTaskIdFromWBAPI = async (taskId, token, userId) => {
   var url = `https://seller-analytics-api.wildberries.ru/api/v1/paid_storage/tasks/${taskId}/download`;
 
@@ -25,7 +23,7 @@ var getPaidStorageReportByTaskIdFromWBAPI = async (taskId, token, userId) => {
       "Не удалось авторизоваться для получения отчета о платном хранении с помощью сохраненного токена. Получить токен с нужными правами можно получить в личном кабинете продавца";
   }
 
-  throw new WBAPIError(userId, res.status, errMsg);
+  throw new Error(errMsg);
 };
 
 module.exports = getPaidStorageReportByTaskIdFromWBAPI;
