@@ -32,13 +32,13 @@ var db = {
   updateFailedReportsQueue: (userId, reportQueue) => updateFailedReportsQueue(report_loading_states_collection, userId, reportQueue),
   updateReportsQueue: (userId, reportQueue) => updateReportsQueue(report_loading_states_collection, userId, reportQueue),
 
-  addNewTaxYearToDb: (userId, year) => addNewTaxYearToDb(tax_params_collection, userId, year),
+  addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
   addReportToFailedQueue: (userId, reportPeriod) => addReportToFailedQueue(report_loading_states_collection, userId, reportPeriod),
   addReportToAbandonedReports: (userId, reportPeriod) => addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod),
 
-  changePaidTaxAmountToDb: (userId, year, paidTaxAmount) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount),
+  changePaidTaxAmountToDb: (userId, year, paidTaxAmount, session) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount, session),
 
-  saveReportToDb: (userId, report) => saveReportToDb(reports_collection, userId, report),
+  saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
   pushToReportsQueue: (userId, reportPeriod) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod),

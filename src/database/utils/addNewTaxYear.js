@@ -15,7 +15,7 @@ var defaultTaxOptions = {
   insuranceFeePercentage: 10,
 };
 
-var addNewTaxYearToDb = async (collection, userId, year) => {
+var addNewTaxYearToDb = async (collection, userId, year, session) => {
   try {
     var mandatoryInsuranceFee;
 
@@ -43,7 +43,8 @@ var addNewTaxYearToDb = async (collection, userId, year) => {
                 paidTaxAmount: nextYearPaidTaxAmount,
               },
             },
-          }
+          },
+          { session }
         );
       }
 
@@ -59,7 +60,8 @@ var addNewTaxYearToDb = async (collection, userId, year) => {
       { userId },
       {
         $push: { years: { year, mandatoryInsuranceFee, ...defaultTaxOptions } },
-      }
+      },
+      { session }
     );
 
     return { taxRate: 6, paidTaxAmount };
