@@ -7,7 +7,7 @@ var changePaidTaxAmountToDb = async (collection, userId, year, paidTaxAmount, se
       {
         $set: { "years.$.paidTaxAmount": paidTaxAmount },
       },
-      { session }
+      { session: session }
     );
 
     return result.modifiedCount;

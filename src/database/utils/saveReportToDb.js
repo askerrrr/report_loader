@@ -9,7 +9,7 @@ var saveReportToDb = async (collection, userId, report, session) => {
           reports: { $each: [report], $position: 0 },
         },
       },
-      { session }
+      { session: session }
     );
 
     return result.acknowledged;

@@ -44,7 +44,7 @@ var addNewTaxYearToDb = async (collection, userId, year, session) => {
               },
             },
           },
-          { session }
+          { session: session }
         );
       }
 
@@ -61,7 +61,7 @@ var addNewTaxYearToDb = async (collection, userId, year, session) => {
       {
         $push: { years: { year, mandatoryInsuranceFee, ...defaultTaxOptions } },
       },
-      { session }
+      { session: session }
     );
 
     return { taxRate: 6, paidTaxAmount };
