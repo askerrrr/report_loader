@@ -1,4 +1,5 @@
-// var { DatabaseError } = require("../../../../customError");
+var { DatabaseError } = require("../../customError");
+
 var mandatoryInsuranceFees = [
   { year: 2023, value: 45842 },
   { year: 2024, value: 49500 },
@@ -66,7 +67,7 @@ var addNewTaxYearToDb = async (collection, userId, year, session) => {
 
     return { taxRate: 6, paidTaxAmount };
   } catch (e) {
-    //throw new DatabaseError(userId, e);
+    throw new DatabaseError(userId, e);
   }
 };
 

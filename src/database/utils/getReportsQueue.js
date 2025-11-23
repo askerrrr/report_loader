@@ -1,7 +1,13 @@
-var getReportsQueue = async (collection, userId) => {
-  var { reportsQueue } = await collection.findOne({ userId });
+var { DatabaseError } = require("../../customError");
 
-  return { reportsQueue };
+var getReportsQueue = async (collection, userId) => {
+  try {
+    var { reportsQueue } = await collection.findOne({ userId });
+
+    return { reportsQueue };
+  } catch (e) {
+    throw new DatabaseError(userId, e);
+  }
 };
 
 module.exports = getReportsQueue;

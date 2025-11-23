@@ -1,4 +1,4 @@
-// var { DatabaseError } = require("../../../../customError");
+var { DatabaseError } = require("../../customError");
 
 var saveReportToDb = async (collection, userId, report, session) => {
   try {
@@ -14,8 +14,7 @@ var saveReportToDb = async (collection, userId, report, session) => {
 
     return result.acknowledged;
   } catch (e) {
-    console.log({ e });
-    //throw new DatabaseError(userId, e);
+    throw new DatabaseError(userId, e);
   }
 };
 

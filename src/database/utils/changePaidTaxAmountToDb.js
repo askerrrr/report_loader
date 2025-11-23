@@ -1,4 +1,4 @@
-// var { DatabaseError } = require("../../../../customError");
+var { DatabaseError } = require("../../customError");
 
 var changePaidTaxAmountToDb = async (collection, userId, year, paidTaxAmount, session) => {
   try {
@@ -12,7 +12,7 @@ var changePaidTaxAmountToDb = async (collection, userId, year, paidTaxAmount, se
 
     return result.modifiedCount;
   } catch (e) {
-    //throw new DatabaseError(userId, e);
+    throw new DatabaseError(userId, e);
   }
 };
 

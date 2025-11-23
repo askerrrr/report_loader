@@ -1,4 +1,4 @@
-// var { DatabaseError } = require("../../../../customError");
+var { DatabaseError } = require("../../customError");
 
 var getReportsTree = async (collection, userId) => {
   try {
@@ -6,7 +6,7 @@ var getReportsTree = async (collection, userId) => {
 
     return { reportTree: years };
   } catch (e) {
-    //throw new DatabaseError(userId, e);
+    throw new DatabaseError(userId, e);
   }
 };
 
