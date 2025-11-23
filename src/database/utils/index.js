@@ -17,7 +17,9 @@ var addReportToFailedQueue = require("./addReportToFailedQueue");
 var setLoadingProgressStatus = require("./setLoadingProgressStatus");
 var getLoadingProgressStatus = require("./getLoadingProgressStatus");
 var changePaidTaxAmountToDb = require("./changePaidTaxAmountToDb");
+var getFreshReportPeriodIndex = require('./getFreshReportPeriodIndex')
 var addReportToAbandonedReports = require("./addReportToAbandonedReports");
+var updateFreshReportPeriodIndex = require('./updateFreshReportPeriodIndex')
 
 var db = {
   getToken: (userId) => getToken(tokens_collection, userId),
@@ -26,11 +28,13 @@ var db = {
   getReportsTree: (userId) => getReportsTree(reports_tree_collection, userId),
   getReportsQueue: (userId) => getReportsQueue(report_loading_states_collection, userId),
   getFailedReportsQueue: (userId) => getFailedReportsQueue(report_loading_states_collection, userId),
+  getFreshReportPeriodIndex: (userId) => getFreshReportPeriodIndex(report_loading_states_collection, userId),
   getLoadingProgressStatus: (userId) => getLoadingProgressStatus(report_loading_states_collection, userId),
 
   updateReportTree: (userId, years) => updateReportTree(reports_tree_collection, userId, years),
   updateFailedReportsQueue: (userId, reportQueue) => updateFailedReportsQueue(report_loading_states_collection, userId, reportQueue),
   updateReportsQueue: (userId, reportQueue) => updateReportsQueue(report_loading_states_collection, userId, reportQueue),
+  updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) => updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
 
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
   addReportToFailedQueue: (userId, reportPeriod) => addReportToFailedQueue(report_loading_states_collection, userId, reportPeriod),
