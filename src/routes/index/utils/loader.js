@@ -1,4 +1,5 @@
 var dbUtils = require("../../../database/utils");
+var { connection } = require("../../../database");
 var reportProcessing = require("./reportProcessing");
 
 var MAX_FAILED_ATTEMPTS = 3;
@@ -7,33 +8,45 @@ var noDataForPeriodMessage = "there is no data available for the selected report
 var nextReportDelay = async () => new Promise((res) => setTimeout(res, NEXT_REPORT_DELAY_MS));
 
 var loader = async (userId, token) => {
-  var ignition = 1;
-
   await dbUtils.setLoadingProgressStatus(userId, "loading");
 
-  while (ignition) {
+  while (true) {
     try {
-      var { reportsQueue } = await dbUtils.getReportsQueue(userId);
-      ignition = reportsQueue.length - 1;
-      var reportToUpload = reportsQueue.shift();
+      var session = await connection.startSession();
 
-      var { dateFrom, dateTo } = reportToUpload;
+      await session.withTransaction(async () => {
+        var { report } = await dbUtils.getReportsQueue(userId, session);
 
-      await reportProcessing(userId, dateFrom, dateTo, token);
-      await dbUtils.updateReportsQueue(userId, reportsQueue);
-    } catch (e) {
-      if (e.message === noDataForPeriodMessage) {
-        await nextReportDelay();
-        continue;
+        if (!report) {
+          throw new Error("QUEUE_EMPTY");
+        }
+
+        var { dateFrom, dateTo } = report;
+
+        try {
+          await reportProcessing(userId, dateFrom, dateTo, token, session);
+        } catch (processingError) {
+          if (processingError.message === noDataForPeriodMessage) {
+            return;
+          } else {
+            if (report.failedCount >= MAX_FAILED_ATTEMPTS) {
+              await dbUtils.addReportToAbandonedReports(userId, report, session);
+            } else {
+              var failedCount = report.failedCount + 1;
+              await dbUtils.updateReportsQueue(userId, { ...report, failedCount }, session);
+            }
+          }
+        }
+      });
+    } catch (err) {
+      if (err.message === "QUEUE_EMPTY") {
+        break;
       }
 
-      if (reportToUpload.failedCount === MAX_FAILED_ATTEMPTS) {
-        await dbUtils.addReportToAbandonedReports(userId, reportToUpload);
-      } else {
-        ignition += 1;
-        reportToUpload.failedCount += 1;
-        reportsQueue.push(reportToUpload);
-        await dbUtils.updateReportsQueue(userId, reportsQueue);
+      console.error({ loadingError: err });
+    } finally {
+      if (session) {
+        await session.endSession();
       }
     }
 

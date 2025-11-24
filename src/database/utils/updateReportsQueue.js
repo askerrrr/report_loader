@@ -1,8 +1,8 @@
 var { DatabaseError } = require("../../customError");
 
-var updateReportsQueue = async (collection, userId, updatedReportsQueue, session) => {
+var updateReportsQueue = async (collection, userId, reportToUpload, session) => {
   try {
-    await collection.updateOne({ userId }, { $push: { reportsQueue: updatedReportsQueue } }, { session: session });
+    await collection.updateOne({ userId }, { $push: { reportsQueue: reportToUpload } }, { session: session });
   } catch (e) {
     throw new DatabaseError(userId, e);
   }

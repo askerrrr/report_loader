@@ -33,12 +33,12 @@ var db = {
 
   updateReportTree: (userId, years) => updateReportTree(reports_tree_collection, userId, years),
   updateFailedReportsQueue: (userId, reportQueue) => updateFailedReportsQueue(report_loading_states_collection, userId, reportQueue),
-  updateReportsQueue: (userId, reportQueue) => updateReportsQueue(report_loading_states_collection, userId, reportQueue),
+  updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
   updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) => updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
 
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
   addReportToFailedQueue: (userId, reportPeriod) => addReportToFailedQueue(report_loading_states_collection, userId, reportPeriod),
-  addReportToAbandonedReports: (userId, reportPeriod) => addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod),
+  addReportToAbandonedReports: (userId, reportPeriod, session) => addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
 
   changePaidTaxAmountToDb: (userId, year, paidTaxAmount, session) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount, session),
 
