@@ -1,8 +1,12 @@
 var { DatabaseError } = require("../../customError");
 
-var getReportsQueue = async (collection, userId) => {
+var getReportsQueue = async (collection, userId, session) => {
   try {
-    var { reportsQueue } = await collection.findOne({ userId });
+    var { reportsQueue } = await collection.findOneAndUpdate(
+      { userId },
+      { $pop: { reportsQueue: -1 } },
+      { session: session, returnDocument: "before" }
+    );
 
     return { reportsQueue };
   } catch (e) {
