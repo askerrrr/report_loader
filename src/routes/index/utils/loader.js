@@ -12,13 +12,18 @@ var loader = async (userId, token) => {
 
   while (true) {
     try {
+      var queueIsEmpty = false;
       var session = await connection.startSession();
 
       await session.withTransaction(async () => {
-        var { report } = await dbUtils.getReportsQueue(userId, session);
+        var { report, queueLength } = await dbUtils.getReportsQueue(userId, session);
 
         if (!report) {
           throw new Error("QUEUE_EMPTY");
+        }
+
+        if (queueLength === 1) {
+          queueIsEmpty = true;
         }
 
         var { dateFrom, dateTo } = report;
@@ -50,11 +55,12 @@ var loader = async (userId, token) => {
       }
     }
 
-    await nextReportDelay();
+    if (!queueIsEmpty) {
+      await nextReportDelay();
+    }
   }
 
-  console.log("LOADING COMPLETED");
-  await dbUtils.setLoadingProgressStatus(userId, "completed");
+  await dbUtils.setLoadingProgressStatus(userId, "completed").then(() => console.log("LOADING COMPLETED"));
 };
 
 module.exports = loader;

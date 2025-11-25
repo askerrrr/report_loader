@@ -9,10 +9,10 @@ var getReportsQueue = async (collection, userId, session) => {
     );
 
     if (!data?.reportsQueue || !data?.reportsQueue?.length) {
-      return { report: null };
+      return { report: null, queueLength: 0 };
     }
 
-    return { report: data.reportsQueue[0] };
+    return { report: data.reportsQueue[0], queueLength: data.reportsQueue.length };
   } catch (e) {
     throw new DatabaseError(userId, e);
   }
