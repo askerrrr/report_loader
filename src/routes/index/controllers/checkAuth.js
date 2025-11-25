@@ -11,6 +11,10 @@ var checkAuth = async (req, res, next) => {
     return res.sendStatus(401);
   }
 
+  if (req.body.isWeeklyLoadingOfFreshReport) {
+    next();
+  }
+
   var { getUser } = req.app.locals.db;
 
   var user = await getUser(req.body.userId);
