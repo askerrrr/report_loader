@@ -31,7 +31,7 @@ var db = {
   getFreshReportPeriodIndex: (userId, session) => getFreshReportPeriodIndex(report_loading_states_collection, userId, session),
   getLoadingProgressStatus: (userId, session) => getLoadingProgressStatus(report_loading_states_collection, userId, session),
 
-  updateReportTree: (userId, years) => updateReportTree(reports_tree_collection, userId, years),
+  updateReportTree: (userId, years, session) => updateReportTree(reports_tree_collection, userId, years, session),
   updateFailedReportsQueue: (userId, reportQueue) => updateFailedReportsQueue(report_loading_states_collection, userId, reportQueue),
   updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
   updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) => updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
@@ -46,7 +46,7 @@ var db = {
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
   pushToReportsQueue: (userId, reportPeriod, session) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod, session),
-  createReportsQueue: (userId, reportQueue) => createReportsQueue(report_loading_states_collection, userId, reportQueue),
+  createReportsQueue: (userId, reportQueue, session) => createReportsQueue(report_loading_states_collection, userId, reportQueue, session),
 };
 
 module.exports = db;
