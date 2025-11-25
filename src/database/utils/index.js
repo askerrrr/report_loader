@@ -22,14 +22,14 @@ var addReportToAbandonedReports = require("./addReportToAbandonedReports");
 var updateFreshReportPeriodIndex = require('./updateFreshReportPeriodIndex')
 
 var db = {
-  getToken: (userId) => getToken(tokens_collection, userId),
+  getToken: (userId, session) => getToken(tokens_collection, userId, session),
   getUsersData: () => getUsersData(report_loading_states_collection),
   getUser: (userId, session) => getUser(report_loading_states_collection, userId, session),
   getReportsTree: (userId, session) => getReportsTree(reports_tree_collection, userId, session),
   getReportsQueue: (userId, session) => getReportsQueue(report_loading_states_collection, userId, session),
   getFailedReportsQueue: (userId) => getFailedReportsQueue(report_loading_states_collection, userId),
   getFreshReportPeriodIndex: (userId, session) => getFreshReportPeriodIndex(report_loading_states_collection, userId, session),
-  getLoadingProgressStatus: (userId) => getLoadingProgressStatus(report_loading_states_collection, userId),
+  getLoadingProgressStatus: (userId, session) => getLoadingProgressStatus(report_loading_states_collection, userId, session),
 
   updateReportTree: (userId, years) => updateReportTree(reports_tree_collection, userId, years),
   updateFailedReportsQueue: (userId, reportQueue) => updateFailedReportsQueue(report_loading_states_collection, userId, reportQueue),
@@ -45,7 +45,7 @@ var db = {
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
-  pushToReportsQueue: (userId, reportPeriod) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod),
+  pushToReportsQueue: (userId, reportPeriod, session) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod, session),
   createReportsQueue: (userId, reportQueue) => createReportsQueue(report_loading_states_collection, userId, reportQueue),
 };
 

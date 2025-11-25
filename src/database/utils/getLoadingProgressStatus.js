@@ -1,8 +1,8 @@
 var { DatabaseError } = require("../../customError");
 
-var getLoadingProgressStatus = async (collection, userId) => {
+var getLoadingProgressStatus = async (collection, userId, session) => {
   try {
-    var { loadingInProgress } = await collection.findOne({ userId });
+    var { loadingInProgress } = await collection.findOne({ userId }, { session });
 
     return { loadingInProgress };
   } catch (e) {
