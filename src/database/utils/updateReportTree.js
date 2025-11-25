@@ -1,17 +1,18 @@
-// var { DatabaseError } = require("../../../../customError");
+var { DatabaseError } = require("../../customError");
 
-var updateReportsTree = async (collection, userId, years) => {
+var updateReportsTree = async (collection, userId, years, session) => {
   try {
-    var result = await collection.updateOne(
-      { userId },
-      {
-        $set: { years: years },
-      }
-    );
+    var result;
+
+    if (session) {
+      result = await collection.updateOne({ userId }, { $set: { years } }, { session: session });
+    } else {
+      result = await collection.updateOne({ userId }, { $set: { years } });
+    }
 
     return result.modifiedCount;
   } catch (e) {
-    //throw new DatabaseError(userId, e);
+    throw new DatabaseError(userId, e);
   }
 };
 

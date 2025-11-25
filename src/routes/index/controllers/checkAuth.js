@@ -11,15 +11,19 @@ var checkAuth = async (req, res, next) => {
     return res.sendStatus(401);
   }
 
-  var { getUser } = req.app.locals.db;
+  if (req.body.isWeeklyLoadingOfFreshReport) {
+    next();
+  } else {
+    var { getUser } = req.app.locals.db;
 
-  var user = await getUser(req.body.userId);
+    var user = await getUser(req.body.userId);
 
-  if (!user) {
-    return res.status(404).json({ msg: "user not found" });
+    if (!user) {
+      return res.status(404).json({ msg: "user not found" });
+    }
+
+    next();
   }
-
-  next();
 };
 
 module.exports = checkAuth;

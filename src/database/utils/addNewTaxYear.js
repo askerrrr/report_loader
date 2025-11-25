@@ -1,4 +1,5 @@
-// var { DatabaseError } = require("../../../../customError");
+var { DatabaseError } = require("../../customError");
+
 var mandatoryInsuranceFees = [
   { year: 2023, value: 45842 },
   { year: 2024, value: 49500 },
@@ -15,7 +16,7 @@ var defaultTaxOptions = {
   insuranceFeePercentage: 10,
 };
 
-var addNewTaxYearToDb = async (collection, userId, year) => {
+var addNewTaxYearToDb = async (collection, userId, year, session) => {
   try {
     var mandatoryInsuranceFee;
 
@@ -43,7 +44,8 @@ var addNewTaxYearToDb = async (collection, userId, year) => {
                 paidTaxAmount: nextYearPaidTaxAmount,
               },
             },
-          }
+          },
+          { session: session }
         );
       }
 
@@ -59,12 +61,13 @@ var addNewTaxYearToDb = async (collection, userId, year) => {
       { userId },
       {
         $push: { years: { year, mandatoryInsuranceFee, ...defaultTaxOptions } },
-      }
+      },
+      { session: session }
     );
 
     return { taxRate: 6, paidTaxAmount };
   } catch (e) {
-    //throw new DatabaseError(userId, e);
+    throw new DatabaseError(userId, e);
   }
 };
 

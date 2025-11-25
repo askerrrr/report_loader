@@ -17,32 +17,36 @@ var addReportToFailedQueue = require("./addReportToFailedQueue");
 var setLoadingProgressStatus = require("./setLoadingProgressStatus");
 var getLoadingProgressStatus = require("./getLoadingProgressStatus");
 var changePaidTaxAmountToDb = require("./changePaidTaxAmountToDb");
+var getFreshReportPeriodIndex = require('./getFreshReportPeriodIndex')
 var addReportToAbandonedReports = require("./addReportToAbandonedReports");
+var updateFreshReportPeriodIndex = require('./updateFreshReportPeriodIndex')
 
 var db = {
-  getToken: (userId) => getToken(tokens_collection, userId),
+  getToken: (userId, session) => getToken(tokens_collection, userId, session),
   getUsersData: () => getUsersData(report_loading_states_collection),
-  getUser: (userId) => getUser(report_loading_states_collection, userId),
-  getReportsTree: (userId) => getReportsTree(reports_tree_collection, userId),
-  getReportsQueue: (userId) => getReportsQueue(report_loading_states_collection, userId),
+  getUser: (userId, session) => getUser(report_loading_states_collection, userId, session),
+  getReportsTree: (userId, session) => getReportsTree(reports_tree_collection, userId, session),
+  getReportsQueue: (userId, session) => getReportsQueue(report_loading_states_collection, userId, session),
   getFailedReportsQueue: (userId) => getFailedReportsQueue(report_loading_states_collection, userId),
-  getLoadingProgressStatus: (userId) => getLoadingProgressStatus(report_loading_states_collection, userId),
+  getFreshReportPeriodIndex: (userId, session) => getFreshReportPeriodIndex(report_loading_states_collection, userId, session),
+  getLoadingProgressStatus: (userId, session) => getLoadingProgressStatus(report_loading_states_collection, userId, session),
 
-  updateReportTree: (userId, years) => updateReportTree(reports_tree_collection, userId, years),
+  updateReportTree: (userId, years, session) => updateReportTree(reports_tree_collection, userId, years, session),
   updateFailedReportsQueue: (userId, reportQueue) => updateFailedReportsQueue(report_loading_states_collection, userId, reportQueue),
-  updateReportsQueue: (userId, reportQueue) => updateReportsQueue(report_loading_states_collection, userId, reportQueue),
+  updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
+  updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) => updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
 
-  addNewTaxYearToDb: (userId, year) => addNewTaxYearToDb(tax_params_collection, userId, year),
+  addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
   addReportToFailedQueue: (userId, reportPeriod) => addReportToFailedQueue(report_loading_states_collection, userId, reportPeriod),
-  addReportToAbandonedReports: (userId, reportPeriod) => addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod),
+  addReportToAbandonedReports: (userId, reportPeriod, session) => addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
 
-  changePaidTaxAmountToDb: (userId, year, paidTaxAmount) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount),
+  changePaidTaxAmountToDb: (userId, year, paidTaxAmount, session) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount, session),
 
-  saveReportToDb: (userId, report) => saveReportToDb(reports_collection, userId, report),
+  saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
-  pushToReportsQueue: (userId, reportPeriod) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod),
-  createReportsQueue: (userId, reportQueue) => createReportsQueue(report_loading_states_collection, userId, reportQueue),
+  pushToReportsQueue: (userId, reportPeriod, session) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod, session),
+  createReportsQueue: (userId, reportQueue, session) => createReportsQueue(report_loading_states_collection, userId, reportQueue, session),
 };
 
 module.exports = db;

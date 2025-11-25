@@ -1,7 +1,11 @@
-var updateReportsQueue = async (collection, userId, updatedReportsQueue) => {
-  var result = await collection.updateOne({ userId }, { $set: { reportsQueue: updatedReportsQueue } });
+var { DatabaseError } = require("../../customError");
 
-  return result;
+var updateReportsQueue = async (collection, userId, reportToUpload, session) => {
+  try {
+    await collection.updateOne({ userId }, { $push: { reportsQueue: reportToUpload } }, { session: session });
+  } catch (e) {
+    throw new DatabaseError(userId, e);
+  }
 };
 
 module.exports = updateReportsQueue;

@@ -6,7 +6,7 @@ var timerId = null;
 var connectionAttempts = 0;
 var eventsConfigured = false;
 var mongodbReconnected = false;
-const MAX_CONNECTION_ATTEMPTS = 5;
+var MAX_CONNECTION_ATTEMPTS = 5;
 
 var mongodbConnection = async () => await client.connect();
 
