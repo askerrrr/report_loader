@@ -56,12 +56,11 @@ var loadFreshReports = async (req, res, next) => {
         }
       });
     } catch (err) {
+      console.error({ err });
+
       if (err.message === "EMPTY_QUEUE" || err.message === "LOADING_IN_PROGRESS") {
         continue;
       }
-
-      console.error({ err });
-      //log error
     } finally {
       if (session) {
         await session.endSession();
