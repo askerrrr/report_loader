@@ -1,8 +1,8 @@
 var { DatabaseError } = require("../../customError");
 
-var getReportsTree = async (collection, userId) => {
+var getReportsTree = async (collection, userId, session) => {
   try {
-    var { years } = await collection.findOne({ userId });
+    var { years } = await collection.findOne({ userId }, { session: session });
 
     return { reportTree: years };
   } catch (e) {

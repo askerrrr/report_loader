@@ -24,11 +24,11 @@ var updateFreshReportPeriodIndex = require('./updateFreshReportPeriodIndex')
 var db = {
   getToken: (userId) => getToken(tokens_collection, userId),
   getUsersData: () => getUsersData(report_loading_states_collection),
-  getUser: (userId) => getUser(report_loading_states_collection, userId),
-  getReportsTree: (userId) => getReportsTree(reports_tree_collection, userId),
+  getUser: (userId, session) => getUser(report_loading_states_collection, userId, session),
+  getReportsTree: (userId, session) => getReportsTree(reports_tree_collection, userId, session),
   getReportsQueue: (userId, session) => getReportsQueue(report_loading_states_collection, userId, session),
   getFailedReportsQueue: (userId) => getFailedReportsQueue(report_loading_states_collection, userId),
-  getFreshReportPeriodIndex: (userId) => getFreshReportPeriodIndex(report_loading_states_collection, userId),
+  getFreshReportPeriodIndex: (userId, session) => getFreshReportPeriodIndex(report_loading_states_collection, userId, session),
   getLoadingProgressStatus: (userId) => getLoadingProgressStatus(report_loading_states_collection, userId),
 
   updateReportTree: (userId, years) => updateReportTree(reports_tree_collection, userId, years),
