@@ -28,7 +28,7 @@ var reportProcessing = async (userId, dateFrom, dateTo, token, session) => {
   report.recordTo = { year, month };
 
   var success = await dbUtils.saveReportToDb(userId, report, session);
-  console.log({ success });
+  console.log({ userId, success });
 };
 
 module.exports = reportProcessing;
