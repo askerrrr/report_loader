@@ -1,3 +1,5 @@
+var { WBAPIError } = require("../../../../../customError");
+
 var getCreationStatus = async (url, token, userId) => {
   var res = await fetch(url, {
     method: "GET",
@@ -6,7 +8,8 @@ var getCreationStatus = async (url, token, userId) => {
 
   if (!res.ok) {
     var errMsg = "Возникла ошибка при получении отчета о платном хранении";
-    throw new Error(errMsg);
+
+    throw new WBAPIError(userId, res.status, errMsg);
   }
 
   var result = await res.json();
@@ -25,8 +28,8 @@ var checkPaidStorageReportCreationStatus = async (taskId, token, userId) => {
     return true;
   }
 
-  return await new Promise((resolve, reject) => {
-    var attempts = 0;
+  var { statusIsDone } = await new Promise((resolve) => {
+    var failedAttempts = 0;
 
     try {
       var timerId = setInterval(async () => {
@@ -34,21 +37,23 @@ var checkPaidStorageReportCreationStatus = async (taskId, token, userId) => {
 
         if (status === "done") {
           clearInterval(timerId);
-          resolve(true);
+          resolve({ statusIsDone: true });
         }
 
-        if (attempts > 1) {
+        if (failedAttempts >= 2) {
           clearInterval(timerId);
-          resolve(false);
+          resolve({ statusIsDone: false });
         }
 
-        ++attempts;
-      }, 5000);
+        ++failedAttempts;
+      }, 8000);
     } catch {
       clearInterval(timerId);
-      resolve(false);
+      resolve({ statusIsDone: false });
     }
   });
+
+  return { statusIsDone };
 };
 
 module.exports = checkPaidStorageReportCreationStatus;

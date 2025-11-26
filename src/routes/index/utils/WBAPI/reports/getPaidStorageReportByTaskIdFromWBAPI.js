@@ -1,15 +1,19 @@
-var createPaidStorageReportTask = async (dateFrom, dateTo, token, userId) => {
-  var url = `https://seller-analytics-api.wildberries.ru/api/v1/paid_storage?dateFrom=${dateFrom}&dateTo=${dateTo}`;
+var { WBAPIError } = require("../../../../../customError");
+
+var getPaidStorageReportByTaskIdFromWBAPI = async (taskId, token, userId) => {
+  var url = `https://seller-analytics-api.wildberries.ru/api/v1/paid_storage/tasks/${taskId}/download`;
 
   var res = await fetch(url, {
     method: "GET",
-    headers: { Authorization: "Bearer " + token },
+    headers: {
+      Authorization: "Bearer " + token,
+    },
   });
 
   if (res.ok) {
-    var { data } = await res.json();
+    var paidStorageReport = await res.json();
 
-    return { taskId: data.taskId };
+    return paidStorageReport;
   }
 
   var errMsg = "Возникла ошибка при получении отчета о платном хранении, попробуйте позже";
@@ -21,7 +25,7 @@ var createPaidStorageReportTask = async (dateFrom, dateTo, token, userId) => {
       "Не удалось авторизоваться для получения отчета о платном хранении с помощью сохраненного токена. Получить токен с нужными правами можно получить в личном кабинете продавца";
   }
 
-  throw new Error(errMsg);
+  throw new WBAPIError(userId, res.status, errMsg);
 };
 
-module.exports = createPaidStorageReportTask;
+module.exports = getPaidStorageReportByTaskIdFromWBAPI;

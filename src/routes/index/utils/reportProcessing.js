@@ -1,4 +1,4 @@
-var wbapi = require("./WBAPI");
+var wbapi = require("../utils/WBAPI");
 var sortYearsTree = require("./sortYearTree");
 var dbUtils = require("../../../database/utils");
 var insertReportToReportTree = require("./reportTreeBuilder");
