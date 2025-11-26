@@ -10,6 +10,6 @@ router.post(
   require("./controllers/reportLoading")
 );
 
-router.post("/background-tasks/load-fresh-reports", require("./controllers/checkAuth"), require("./controllers/loadeFreshReports"));
+router.post("/background-tasks/load-fresh-reports", require("./controllers/checkAuth"), require("./controllers/loadFreshReports"));
 
 module.exports = router;
