@@ -19,7 +19,7 @@ var loadFreshReports = async (req, res, next) => {
         var { reportTree } = await dbUtils.getReportsTree(userId, session);
         var { freshReportPeriodIndex } = await dbUtils.getFreshReportPeriodIndex(userId, session);
 
-        if (!freshReportPeriodIndex) {
+        if (freshReportPeriodIndex < 0) {
           var { lastMonday } = getLastMondayFromCurrentMonth();
           freshReportPeriodIndex = reportPeriods.findIndex((item) => item.dateFrom === lastMonday);
         }
