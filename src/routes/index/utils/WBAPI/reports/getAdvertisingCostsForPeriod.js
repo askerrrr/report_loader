@@ -1,3 +1,5 @@
+var { WBAPIError } = require("../../../../../customError");
+
 var calculateTotalAdvertisingСosts = async (data) => data.reduce((acc, i) => acc + i.updSum, 0);
 
 var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
@@ -10,6 +12,10 @@ var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
 
   if (res.ok) {
     var data = await res.json();
+
+    if (!data.length) {
+      return 0;
+    }
 
     var totalAdvertisingCosts = await calculateTotalAdvertisingСosts(data);
 
@@ -25,7 +31,7 @@ var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
       "Не удалось авторизоваться для получения отчета о затратах на рекламу с помощью сохраненного токена. Получить токен с нужными правами можно получить в личном кабинете продавца";
   }
 
-  throw new Error(errMsg);
+  throw new WBAPIError(userId, res.status, errMsg);
 };
 
 module.exports = getAdvertisingCostsForPeriod;

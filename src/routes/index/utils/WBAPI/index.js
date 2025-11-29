@@ -1,5 +1,4 @@
 var wbapi = {};
 
-wbapi.getReports = require("./getReports");
-
+wbapi.getReports = require("./reports");
 module.exports = wbapi;

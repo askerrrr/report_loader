@@ -6,8 +6,6 @@ var writeReportsToQueue = async (req, res, next) => {
 
   var { loadingInProgress } = await db.getLoadingProgressStatus(userId);
 
-  console.log({ loadingInProgress });
-
   if (loadingInProgress) {
     return res.sendStatus(200);
   }

@@ -1,16 +1,11 @@
 var express = require("express");
 var { runDB } = require("./database/");
 var runReportPeriodsWriter = require("./dateUtils");
-var retryFailedReports = require("./retryFailedReports.js");
 
 var app = express();
 
-var TWO_HOURS_MS = 7200000;
-
 (async () => {
   runReportPeriodsWriter();
-
-  // setInterval(retryFailedReports, TWO_HOURS_MS);
 
   await runDB();
   app.locals.db = require("./database/utils");
