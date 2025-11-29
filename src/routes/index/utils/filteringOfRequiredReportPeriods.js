@@ -35,16 +35,9 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, abandonedReports }, requ
     return { filteredRequiredReportPeriods: resultOfTheSecondFiltering };
   }
 
-  var resultOfTheThirdFiltering = [];
+  resultOfTheSecondFiltering.push(...abandonedReports);
 
-  while (resultOfTheSecondFiltering.length) {
-    var elem = resultOfTheSecondFiltering.shift();
-    if (!abandonedReports.find(cb)) {
-      resultOfTheThirdFiltering.push(elem);
-    }
-  }
-
-  return { filteredRequiredReportPeriods: resultOfTheThirdFiltering };
+  return { filteredRequiredReportPeriods: resultOfTheSecondFiltering };
 };
 
 module.exports = filteringOfRequiredReportPeriods;
