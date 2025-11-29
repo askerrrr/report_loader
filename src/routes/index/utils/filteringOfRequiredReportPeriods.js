@@ -1,7 +1,8 @@
 var checkReportExistsInTree = require("./checkReportExistsInTree");
 
-var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, abandonedReports }, requiredReportPeriods, reportTree) => {
+var filteringOfRequiredReportPeriods = ({ reportsQueue, abandonedReports }, requiredReportPeriods, reportTree) => {
   var resultOfTheFirstFiltering = [];
+  var abandonedReportsAddedToQueue = false;
 
   while (requiredReportPeriods.length) {
     var period = requiredReportPeriods.shift();
@@ -14,7 +15,7 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, aban
   }
 
   if (resultOfTheFirstFiltering.length === 0) {
-    return { filteredRequiredReportPeriods: [] };
+    return { filteredRequiredReportPeriods: [], abandonedReportsAddedToQueue };
   }
 
   var cb = (item) => item.dateFrom === elem.dateFrom;
@@ -28,32 +29,16 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, aban
   }
 
   if (resultOfTheSecondFiltering.length === 0) {
-    return { filteredRequiredReportPeriods: resultOfTheSecondFiltering };
+    return { filteredRequiredReportPeriods: [], abandonedReportsAddedToQueue };
   }
 
-  var resultOfTheThirdFiltering = [];
-
-  while (resultOfTheSecondFiltering.length) {
-    var elem = resultOfTheSecondFiltering.shift();
-    if (!failedReportsQueue.find(cb)) {
-      resultOfTheThirdFiltering.push(elem);
-    }
+  if (abandonedReports.length === 0) {
+    return { filteredRequiredReportPeriods: resultOfTheSecondFiltering, abandonedReportsAddedToQueue };
   }
 
-  if (resultOfTheThirdFiltering.length === 0) {
-    return { filteredRequiredReportPeriods: resultOfTheThirdFiltering };
-  }
+  resultOfTheSecondFiltering.push(...abandonedReports);
 
-  var resultOfTheFourthFiltering = [];
-
-  while (resultOfTheThirdFiltering.length) {
-    var elem = resultOfTheThirdFiltering.shift();
-    if (!abandonedReports.find(cb)) {
-      resultOfTheFourthFiltering.push(elem);
-    }
-  }
-
-  return { filteredRequiredReportPeriods: resultOfTheFourthFiltering };
+  return { filteredRequiredReportPeriods: resultOfTheSecondFiltering, abandonedReportsAddedToQueue: true };
 };
 
 module.exports = filteringOfRequiredReportPeriods;
