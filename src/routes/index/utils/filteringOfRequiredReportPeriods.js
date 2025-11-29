@@ -1,6 +1,6 @@
 var checkReportExistsInTree = require("./checkReportExistsInTree");
 
-var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, abandonedReports }, requiredReportPeriods, reportTree) => {
+var filteringOfRequiredReportPeriods = ({ reportsQueue, abandonedReports }, requiredReportPeriods, reportTree) => {
   var resultOfTheFirstFiltering = [];
 
   while (requiredReportPeriods.length) {
@@ -28,6 +28,10 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, aban
   }
 
   if (resultOfTheSecondFiltering.length === 0) {
+    return { filteredRequiredReportPeriods: [] };
+  }
+
+  if (abandonedReports.length === 0) {
     return { filteredRequiredReportPeriods: resultOfTheSecondFiltering };
   }
 
@@ -35,25 +39,12 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, failedReportsQueue, aban
 
   while (resultOfTheSecondFiltering.length) {
     var elem = resultOfTheSecondFiltering.shift();
-    if (!failedReportsQueue.find(cb)) {
+    if (!abandonedReports.find(cb)) {
       resultOfTheThirdFiltering.push(elem);
     }
   }
 
-  if (resultOfTheThirdFiltering.length === 0) {
-    return { filteredRequiredReportPeriods: resultOfTheThirdFiltering };
-  }
-
-  var resultOfTheFourthFiltering = [];
-
-  while (resultOfTheThirdFiltering.length) {
-    var elem = resultOfTheThirdFiltering.shift();
-    if (!abandonedReports.find(cb)) {
-      resultOfTheFourthFiltering.push(elem);
-    }
-  }
-
-  return { filteredRequiredReportPeriods: resultOfTheFourthFiltering };
+  return { filteredRequiredReportPeriods: resultOfTheThirdFiltering };
 };
 
 module.exports = filteringOfRequiredReportPeriods;
