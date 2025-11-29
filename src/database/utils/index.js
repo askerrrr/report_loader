@@ -11,6 +11,7 @@ var updateReportTree = require("./updateReportTree");
 var pushToReportsQueue = require("./pushToReportsQueue");
 var updateReportsQueue = require("./updateReportsQueue");
 var createReportsQueue = require("./createReportsQueue");
+var resetAbandonedReports = require('./resetAbandonedReports')
 var setLoadingProgressStatus = require("./setLoadingProgressStatus");
 var getLoadingProgressStatus = require("./getLoadingProgressStatus");
 var changePaidTaxAmountToDb = require("./changePaidTaxAmountToDb");
@@ -39,6 +40,7 @@ var db = {
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
+  resetAbandonedReports: (userId) => resetAbandonedReports(report_loading_states_collection, userId),
   pushToReportsQueue: (userId, reportPeriod, session) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod, session),
   createReportsQueue: (userId, reportQueue, session) => createReportsQueue(report_loading_states_collection, userId, reportQueue, session),
 };
