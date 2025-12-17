@@ -1,7 +1,7 @@
 var { WBAPIError } = require("../../../../../customError");
-var getWeeklyFinancialReportFromWBAPI = require("./getWeeklyFinancialReportFromWBAPI");
 var createPaidStorageReportTask = require("./createPaidStorageReportTask");
 var getAdvertisingCostsForPeriod = require("./getAdvertisingCostsForPeriod");
+var getWeeklyFinancialReportFromWBAPI = require("./getWeeklyFinancialReportFromWBAPI");
 var checkPaidStorageReportCreationStatus = require("./checkPaidStorageReportCreationStatus");
 var getPaidStorageReportByTaskIdFromWBAPI = require("./getPaidStorageReportByTaskIdFromWBAPI");
 
@@ -9,8 +9,7 @@ var noDataForPeriodMessage = "there is no data available for the selected report
 
 var getReports = async (userId, dateFrom, dateTo, token) => {
   var { taskId } = await createPaidStorageReportTask(dateFrom, dateTo, token, userId);
-
-  var statusIsDone = await checkPaidStorageReportCreationStatus(taskId, token, userId);
+  var { statusIsDone } = await checkPaidStorageReportCreationStatus(taskId, token, userId);
 
   if (!statusIsDone) {
     throw new WBAPIError(userId, 304, "can not create paid storage report task");
@@ -22,7 +21,7 @@ var getReports = async (userId, dateFrom, dateTo, token) => {
     getAdvertisingCostsForPeriod(dateFrom, dateTo, token, userId),
   ]);
 
-  if ([weeklyFinancialReport, paidStorageReport].every((report) => report.length === 0) && totalAdvertisingCosts === 0) {
+  if ([weeklyFinancialReport, paidStorageReport, totalAdvertisingCosts].every(() => !i.length)) {
     throw new Error(noDataForPeriodMessage);
   }
 
