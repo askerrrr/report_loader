@@ -3,7 +3,7 @@ var { connection } = require("../../../database");
 var reportsProcessing = require("./reportsProcessing");
 
 var MAX_FAILED_ATTEMPTS = 3;
-var NEXT_REPORT_DELAY_MS = 90000;
+var NEXT_REPORT_DELAY_MS = 65000;
 var noDataForPeriodMessage = "there is no data available for the selected reporting period";
 var nextReportDelay = async () => new Promise((res) => setTimeout(res, NEXT_REPORT_DELAY_MS));
 
