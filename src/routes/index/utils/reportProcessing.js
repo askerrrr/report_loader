@@ -18,7 +18,7 @@ var reportProcessing = async (userId, dateFrom, dateTo, token, session) => {
   var { report } = await parseReports(taxRate, reports);
 
   paidTaxAmount += report.totalTaxAmount;
-  await dbUtils.changePaidTaxAmountToDb(userId, year, paidTaxAmount, session);
+  await dbUtils.changeTaxParamsToDb(userId, year, session, { paidTaxAmount });
 
   report.dateTo = dateTo;
   report.userId = userId;

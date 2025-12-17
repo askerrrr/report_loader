@@ -11,6 +11,7 @@ var updateReportTree = require("./updateReportTree");
 var pushToReportsQueue = require("./pushToReportsQueue");
 var updateReportsQueue = require("./updateReportsQueue");
 var createReportsQueue = require("./createReportsQueue");
+var changeTaxParamsToDb = require('./changeTaxParamsToDb')
 var resetAbandonedReports = require('./resetAbandonedReports')
 var setLoadingProgressStatus = require("./setLoadingProgressStatus");
 var getLoadingProgressStatus = require("./getLoadingProgressStatus");
@@ -35,6 +36,7 @@ var db = {
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
   addReportToAbandonedReports: (userId, reportPeriod, session) => addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
 
+  changeTaxParamsToDb: (userId, year, session, newTaxParams) => changeTaxParamsToDb(tax_params_collection, userId, year, session, newTaxParams),
   changePaidTaxAmountToDb: (userId, year, paidTaxAmount, session) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount, session),
 
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
