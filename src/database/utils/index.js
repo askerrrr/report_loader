@@ -1,4 +1,11 @@
-var { tokens_collection, report_loading_states_collection, reports_collection, tax_params_collection, reports_tree_collection } = require("../connections");
+var {
+  goods_collection,
+  tokens_collection,
+  reports_collection,
+  tax_params_collection,
+  reports_tree_collection,
+  report_loading_states_collection,
+} = require("../connections");
 
 var getUser = require("./getUser");
 var getToken = require("./getToken");
@@ -8,10 +15,14 @@ var saveReportToDb = require("./saveReportToDb");
 var addNewTaxYearToDb = require("./addNewTaxYear");
 var getReportsQueue = require("./getReportsQueue");
 var updateReportTree = require("./updateReportTree");
+var saveListGoodsToDb = require('./saveListGoodsToDb')
+var getListGoodsFromDb = require('./getListGoodsFromDb')
 var pushToReportsQueue = require("./pushToReportsQueue");
 var updateReportsQueue = require("./updateReportsQueue");
 var createReportsQueue = require("./createReportsQueue");
+var changeTaxParamsToDb = require('./changeTaxParamsToDb')
 var resetAbandonedReports = require('./resetAbandonedReports')
+var addNewSkusToListGoods = require('./addNewSkusToListGoods')
 var setLoadingProgressStatus = require("./setLoadingProgressStatus");
 var getLoadingProgressStatus = require("./getLoadingProgressStatus");
 var changePaidTaxAmountToDb = require("./changePaidTaxAmountToDb");
@@ -25,6 +36,7 @@ var db = {
   getUser: (userId, session) => getUser(report_loading_states_collection, userId, session),
   getReportsTree: (userId, session) => getReportsTree(reports_tree_collection, userId, session),
   getReportsQueue: (userId, session) => getReportsQueue(report_loading_states_collection, userId, session),
+  getListGoodsFromDb: (userId, session) => getListGoodsFromDb(goods_collection, userId, session),
   getFreshReportPeriodIndex: (userId, session) => getFreshReportPeriodIndex(report_loading_states_collection, userId, session),
   getLoadingProgressStatus: (userId, session) => getLoadingProgressStatus(report_loading_states_collection, userId, session),
 
@@ -35,11 +47,14 @@ var db = {
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
   addReportToAbandonedReports: (userId, reportPeriod, session) => addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
 
+  changeTaxParamsToDb: (userId, year, session, newTaxParams) => changeTaxParamsToDb(tax_params_collection, userId, year, session, newTaxParams),
   changePaidTaxAmountToDb: (userId, year, paidTaxAmount, session) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount, session),
 
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
+  saveListGoodsToDb: (userId, listGoods, session) => saveListGoodsToDb(goods_collection, userId, listGoods, session),
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
+  addNewSkusToListGoods: (userId, newSkus, session) => addNewSkusToListGoods(goods_collection, userId, newSkus, session),
   resetAbandonedReports: (userId) => resetAbandonedReports(report_loading_states_collection, userId),
   pushToReportsQueue: (userId, reportPeriod, session) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod, session),
   createReportsQueue: (userId, reportQueue, session) => createReportsQueue(report_loading_states_collection, userId, reportQueue, session),

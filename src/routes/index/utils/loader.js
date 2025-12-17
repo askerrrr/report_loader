@@ -1,6 +1,6 @@
 var dbUtils = require("../../../database/utils");
 var { connection } = require("../../../database");
-var reportProcessing = require("./reportProcessing");
+var reportsProcessing = require("./reportsProcessing");
 
 var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 90000;
@@ -8,7 +8,7 @@ var noDataForPeriodMessage = "there is no data available for the selected report
 var nextReportDelay = async () => new Promise((res) => setTimeout(res, NEXT_REPORT_DELAY_MS));
 
 var loader = async (userId, token) => {
-  await dbUtils.setLoadingProgressStatus(userId, "loading");
+  await dbUtils.setLoadingProgressStatus(userId, "loading").then(() => console.log("loading is started"));
 
   while (true) {
     try {
@@ -29,8 +29,9 @@ var loader = async (userId, token) => {
         var { dateFrom, dateTo } = report;
 
         try {
-          await reportProcessing(userId, dateFrom, dateTo, token, session);
+          await reportsProcessing(userId, dateFrom, dateTo, token, session);
         } catch (processingError) {
+          console.log({ processingError });
           if (processingError.message === noDataForPeriodMessage) {
             return;
           } else {
@@ -44,6 +45,7 @@ var loader = async (userId, token) => {
         }
       });
     } catch (err) {
+      console.log({ err });
       if (err.message === "QUEUE_EMPTY") {
         break;
       }

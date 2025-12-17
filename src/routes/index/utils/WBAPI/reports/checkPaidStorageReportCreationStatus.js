@@ -25,11 +25,11 @@ var checkPaidStorageReportCreationStatus = async (taskId, token, userId) => {
   var { status } = await getCreationStatus(url, token, userId);
 
   if (status == "done") {
-    return true;
+    return { statusIsDone: true };
   }
 
-  var { statusIsDone } = await new Promise((resolve) => {
-    var failedAttempts = 0;
+  return await new Promise((resolve) => {
+    var attempts = 0;
 
     try {
       var timerId = setInterval(async () => {
@@ -40,20 +40,18 @@ var checkPaidStorageReportCreationStatus = async (taskId, token, userId) => {
           resolve({ statusIsDone: true });
         }
 
-        if (failedAttempts >= 2) {
+        if (attempts > 1) {
           clearInterval(timerId);
           resolve({ statusIsDone: false });
         }
 
-        ++failedAttempts;
-      }, 8000);
+        ++attempts;
+      }, 5000);
     } catch {
       clearInterval(timerId);
       resolve({ statusIsDone: false });
     }
   });
-
-  return { statusIsDone };
 };
 
 module.exports = checkPaidStorageReportCreationStatus;

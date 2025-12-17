@@ -1,9 +1,4 @@
-var shortNum = require("../../writeAndCalcReportDataFromWBAPI/shortNum");
+var caclAverageAdvertisingCost = (totalSKUs, totalAdCampaignCosts) =>
+  totalAdCampaignCosts / totalSKUs;
 
-var caclAverageAdvertisingCostPerSKU = (totalSKUs, totalAdCampaignCosts) => {
-  var averageAdvertisingCost = totalAdCampaignCosts / totalSKUs;
-
-  return shortNum(averageAdvertisingCost);
-};
-
-module.exports = caclAverageAdvertisingCostPerSKU;
+module.exports = caclAverageAdvertisingCost;

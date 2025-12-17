@@ -1,4 +1,4 @@
-var calcAverageRetailPricePerItem = (quantity, sku) => {
+var calcAverageRetailPrice = (quantity, sku) => {
   var allRetailPricesZero = sku.every((e) => e.retail_price === 0);
 
   if (allRetailPricesZero) {
@@ -12,4 +12,4 @@ var calcAverageRetailPricePerItem = (quantity, sku) => {
   return averageRetailPrice;
 };
 
-module.exports = calcAverageRetailPricePerItem;
+module.exports = calcAverageRetailPrice;

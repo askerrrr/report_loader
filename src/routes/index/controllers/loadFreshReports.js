@@ -1,6 +1,6 @@
 var dbUtils = require("../../../database/utils");
 var { connection } = require("../../../database");
-var reportProcessing = require("../utils/reportProcessing");
+var reportsProcessing = require("../utils/reportsProcessing");
 var reportPeriods = require("../../../dateUtils/reportPeriods");
 var filteringOfRequiredReportPeriods = require("../utils/filteringOfRequiredReportPeriods");
 var { getLastMondayFromCurrentMonth } = require("../../../dateUtils/getLastMondayFromCurrentMonth");
@@ -45,7 +45,7 @@ var loadFreshReports = async (req, res, next) => {
         var { token } = await dbUtils.getToken(userId, session);
 
         try {
-          await reportProcessing(userId, dateFrom, dateTo, token, session);
+          await reportsProcessing(userId, dateFrom, dateTo, token, session);
           await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
         } catch (processingError) {
           if (processingError.message === noDataForPeriodMessage) {

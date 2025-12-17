@@ -36,9 +36,10 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, abandonedReports }, requ
     return { filteredRequiredReportPeriods: resultOfTheSecondFiltering, abandonedReportsAddedToQueue };
   }
 
-  resultOfTheSecondFiltering.push(...abandonedReports);
+  var mergedArray = [...abandonedReports, ...resultOfTheSecondFiltering];
+  var mergedArrayWithoutRepeat = [...new Set([...mergedArray])];
 
-  return { filteredRequiredReportPeriods: resultOfTheSecondFiltering, abandonedReportsAddedToQueue: true };
+  return { filteredRequiredReportPeriods: mergedArrayWithoutRepeat, abandonedReportsAddedToQueue: true };
 };
 
 module.exports = filteringOfRequiredReportPeriods;
