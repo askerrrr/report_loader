@@ -1,4 +1,11 @@
-var { tokens_collection, report_loading_states_collection, reports_collection, tax_params_collection, reports_tree_collection } = require("../connections");
+var {
+  goods_collection,
+  tokens_collection,
+  reports_collection,
+  tax_params_collection,
+  reports_tree_collection,
+  report_loading_states_collection,
+} = require("../connections");
 
 var getUser = require("./getUser");
 var getToken = require("./getToken");
@@ -8,6 +15,7 @@ var saveReportToDb = require("./saveReportToDb");
 var addNewTaxYearToDb = require("./addNewTaxYear");
 var getReportsQueue = require("./getReportsQueue");
 var updateReportTree = require("./updateReportTree");
+var getListGoodsFromDb = require('./getListGoodsFromDb')
 var pushToReportsQueue = require("./pushToReportsQueue");
 var updateReportsQueue = require("./updateReportsQueue");
 var createReportsQueue = require("./createReportsQueue");
@@ -20,12 +28,14 @@ var getFreshReportPeriodIndex = require('./getFreshReportPeriodIndex')
 var addReportToAbandonedReports = require("./addReportToAbandonedReports");
 var updateFreshReportPeriodIndex = require('./updateFreshReportPeriodIndex')
 
+
 var db = {
   getToken: (userId, session) => getToken(tokens_collection, userId, session),
   getUsersData: () => getUsersData(report_loading_states_collection),
   getUser: (userId, session) => getUser(report_loading_states_collection, userId, session),
   getReportsTree: (userId, session) => getReportsTree(reports_tree_collection, userId, session),
   getReportsQueue: (userId, session) => getReportsQueue(report_loading_states_collection, userId, session),
+  getListGoodsFromDb: (userId, session) => getListGoodsFromDb(goods_collection, userId, session),
   getFreshReportPeriodIndex: (userId, session) => getFreshReportPeriodIndex(report_loading_states_collection, userId, session),
   getLoadingProgressStatus: (userId, session) => getLoadingProgressStatus(report_loading_states_collection, userId, session),
 
