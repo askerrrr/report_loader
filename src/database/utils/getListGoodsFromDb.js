@@ -2,7 +2,7 @@ var { WBAPIError } = require("../../customError");
 
 var getListGoodsFromDb = async (collection, userId, session) => {
   try {
-    var { listGoods } = await collection.findOne({ userId }, null, { session: session });
+    var { listGoods } = await collection.findOne({ userId }, { session: session });
 
     return { listGoods };
   } catch (e) {

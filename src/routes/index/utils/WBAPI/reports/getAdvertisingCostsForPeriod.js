@@ -1,7 +1,5 @@
 var { WBAPIError } = require("../../../../../customError");
 
-var calculateTotalAdvertisingСosts = async (data) => data.reduce((acc, i) => acc + i.updSum, 0);
-
 var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
   var url = `https://advert-api.wildberries.ru/adv/v1/upd?from=${dateFrom}&to=${dateTo}`;
 
@@ -11,15 +9,13 @@ var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
   });
 
   if (res.ok) {
-    var data = await res.json();
+    var advertisingReport = await res.json();
 
-    if (!data.length) {
-      return 0;
+    if (!advertisingReport.length) {
+      return [];
     }
 
-    var totalAdvertisingCosts = await calculateTotalAdvertisingСosts(data);
-
-    return totalAdvertisingCosts;
+    return advertisingReport;
   }
 
   var errMsg = "Возникла ошибка при получении отчета о платном хранении, попробуйте позже";

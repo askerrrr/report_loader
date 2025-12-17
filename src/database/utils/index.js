@@ -15,6 +15,7 @@ var saveReportToDb = require("./saveReportToDb");
 var addNewTaxYearToDb = require("./addNewTaxYear");
 var getReportsQueue = require("./getReportsQueue");
 var updateReportTree = require("./updateReportTree");
+var saveListGoodsToDb = require('./saveListGoodsToDb')
 var getListGoodsFromDb = require('./getListGoodsFromDb')
 var pushToReportsQueue = require("./pushToReportsQueue");
 var updateReportsQueue = require("./updateReportsQueue");
@@ -28,7 +29,6 @@ var changePaidTaxAmountToDb = require("./changePaidTaxAmountToDb");
 var getFreshReportPeriodIndex = require('./getFreshReportPeriodIndex')
 var addReportToAbandonedReports = require("./addReportToAbandonedReports");
 var updateFreshReportPeriodIndex = require('./updateFreshReportPeriodIndex')
-
 
 var db = {
   getToken: (userId, session) => getToken(tokens_collection, userId, session),
@@ -51,6 +51,7 @@ var db = {
   changePaidTaxAmountToDb: (userId, year, paidTaxAmount, session) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount, session),
 
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
+  saveListGoodsToDb: (userId, listGoods, session) => saveListGoodsToDb(goods_collection, userId, listGoods, session),
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
   addNewSkusToListGoods: (userId, newSkus, session) => addNewSkusToListGoods(goods_collection, userId, newSkus, session),

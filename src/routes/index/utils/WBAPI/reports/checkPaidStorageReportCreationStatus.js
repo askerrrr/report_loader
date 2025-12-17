@@ -25,7 +25,7 @@ var checkPaidStorageReportCreationStatus = async (taskId, token, userId) => {
   var { status } = await getCreationStatus(url, token, userId);
 
   if (status == "done") {
-    return true;
+    return { statusIsDone: true };
   }
 
   return await new Promise((resolve) => {
@@ -37,19 +37,19 @@ var checkPaidStorageReportCreationStatus = async (taskId, token, userId) => {
 
         if (status === "done") {
           clearInterval(timerId);
-          resolve({ statusIdDone: true });
+          resolve({ statusIsDone: true });
         }
 
         if (attempts > 1) {
           clearInterval(timerId);
-          resolve({ statusIdDone: false });
+          resolve({ statusIsDone: false });
         }
 
         ++attempts;
       }, 5000);
     } catch {
       clearInterval(timerId);
-      resolve({ statusIdDone: false });
+      resolve({ statusIsDone: false });
     }
   });
 };

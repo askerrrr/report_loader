@@ -15,17 +15,17 @@ var getReports = async (userId, dateFrom, dateTo, token) => {
     throw new WBAPIError(userId, 304, "can not create paid storage report task");
   }
 
-  var [weeklyFinancialReport, paidStorageReport, totalAdvertisingCosts] = await Promise.all([
+  var [weeklyFinancialReport, paidStorageReport, advertisingReport] = await Promise.all([
     getWeeklyFinancialReportFromWBAPI(dateFrom, dateTo, token, userId),
     getPaidStorageReportByTaskIdFromWBAPI(taskId, token, userId),
     getAdvertisingCostsForPeriod(dateFrom, dateTo, token, userId),
   ]);
 
-  if ([weeklyFinancialReport, paidStorageReport, totalAdvertisingCosts].every(() => !i.length)) {
+  if ([weeklyFinancialReport, paidStorageReport, advertisingReport].every((i) => !i.length)) {
     throw new Error(noDataForPeriodMessage);
   }
 
-  return { weeklyFinancialReport, paidStorageReport, totalAdvertisingCosts };
+  return { weeklyFinancialReport, paidStorageReport, advertisingReport };
 };
 
 module.exports = getReports;

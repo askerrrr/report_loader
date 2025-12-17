@@ -1,36 +1,56 @@
-var shortNum = require("../../writeAndCalcReportDataFromWBAPI/shortNum");
+var calcFinalProfit = require("./finalProfit");
 var calcProfitMargin = require("./profitMargin");
-var calcFinalProfitPerSKU = require("./finalProfit");
-var calcInsuranceFeePerSKU = require("./insuranceFee");
-var calcPreTaxProfitPerSKU = require("./preTaxProfit");
+var calcInsuranceFee = require("./insuranceFee");
+var calcPreTaxProfit = require("./preTaxProfit");
 
-var calcRestSKUParams = (sku, costPrice, taxParams) => {
-  sku.preTaxProfit = calcPreTaxProfitPerSKU(sku, costPrice);
+var calcRestSKUParams = (sku, taxParams, propPostfix = "") => {
+  sku["preTaxProfit" + propPostfix] = calcPreTaxProfit(sku["qty" + propPostfix], sku["profit" + propPostfix], sku.costPrice);
+  sku["finalProfit" + propPostfix] = calcFinalProfit(sku["preTaxProfit" + propPostfix], 0, sku["tax" + propPostfix]);
 
-  var { insuranceFeePercentage, paidTaxAmount, mandatoryInsuranceFee } = taxParams;
+  // if (taxParams.isInsuranceFeePaid) {
+  //   sku["insuranceFee" + propPostfix] = 0;
+  //   sku["isInsuranceFeeIncluded" + propPostfix] = false;
 
-  var newInsuranceFee = calcInsuranceFeePerSKU(sku.preTaxProfit, insuranceFeePercentage);
-
-  var isInsuranceFeeIncluded = true;
-
-  // if (paidTaxAmount >= mandatoryInsuranceFee) {
-  //   insuranceFeePercentage = 0;
-  //   isInsuranceFeeIncluded = false;
-
-  //   finalProfit = calcFinalProfitPerSKU(preTaxProfit, 0, sku.tax);
+  //   sku["finalProfit" + propPostfix] = calcFinalProfit(
+  //     sku["preTaxProfit" + propPostfix],
+  //     sku["insuranceFee" + propPostfix],
+  //     sku["tax" + propPostfix]
+  //   );
   // } else {
-  //   finalProfit = calcFinalProfitPerSKU(preTaxProfit, newInsuranceFee);
+  //   sku["isInsuranceFeeIncluded" + propPostfix] = true;
+  //   sku["previousInsuranceFee" + propPostfix] = sku["insuranceFee" + propPostfix] ?? 0;
+
+  //   sku["insuranceFee" + propPostfix] = calcInsuranceFee(sku["preTaxProfit" + propPostfix], taxParams.insuranceFeePercentage);
+
+  //   taxParams.paidInsuranceFee = taxParams.paidInsuranceFee - sku["previousInsuranceFee" + propPostfix] + sku["insuranceFee" + propPostfix];
+
+  //   if (taxParams.paidInsuranceFee >= taxParams.mandatoryInsuranceFee) {
+  //     taxParams.isInsuranceFeePaid = true;
+  //     taxParams.insuranceFeePercentage = 0;
+  //     taxParams.paidInsuranceFee = taxParams.mandatoryInsuranceFee;
+
+  //     sku["insuranceFee" + propPostfix] = 0;
+  //     sku["isInsuranceFeeIncluded" + propPostfix] = false;
+  //     sku["finalProfit" + propPostfix] = calcFinalProfit(
+  //       sku["preTaxProfit" + propPostfix],
+  //       sku["insuranceFee" + propPostfix],
+  //       sku["tax" + propPostfix]
+  //     );
+  //   } else {
+  //     sku["tax" + propPostfix] = 0;
+
+  //     sku["finalProfit" + propPostfix] = calcFinalProfit(
+  //       sku["preTaxProfit" + propPostfix],
+  //       sku["insuranceFee" + propPostfix],
+  //       sku["tax" + propPostfix]
+  //     );
+  //   }
   // }
 
-  sku.isCostPriceSet = true;
-  sku.insuranceFee = newInsuranceFee;
-  sku.isInsuranceFeeIncluded = isInsuranceFeeIncluded;
-  sku.finalProfit = calcFinalProfitPerSKU(sku.preTaxProfit, 0, sku.tax);
-  sku.profitMargin = calcProfitMargin(sku);
+  sku["isCostPriceSet" + propPostfix] = true;
+  sku["profitMargin" + propPostfix] = calcProfitMargin(sku["finalProfit" + propPostfix], sku["retailAmount" + propPostfix]);
 
-  var recalculatedPaidInsuranceFee = mandatoryInsuranceFee - sku.insuranceFee + newInsuranceFee;
-
-  return { recalculatedPaidInsuranceFee, insuranceFeePercentage, skuWithCalculatedParams: sku };
+  return { updatedTaxParams: taxParams, skuWithCalculatedParams: sku };
 };
 
 module.exports = calcRestSKUParams;
