@@ -1,9 +1,9 @@
-var wbapi = require("../WBAPI");
+var wbapi = require("./WBAPI");
 var sortYearsTree = require("./sortYearTree");
-var parseReports = require("../reportParsing");
-var dbutils = require("../../../../database/collections");
+var parseReports = require("./reportParsing");
+var dbutils = require("../../../database/utils");
 var addNewSkusToListGoods = require("./addNewSkusToListGoods");
-var insertReportToReportTree = require("../reportTreeBuilder");
+var insertReportToReportTree = require("./reportTreeBuilder");
 
 var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
   var { saveReportToDb } = dbutils.reportCollectionServices;
