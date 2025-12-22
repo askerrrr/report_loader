@@ -5,19 +5,12 @@ var dbutils = require("../../../database/utils");
 var addNewSkusToListGoods = require("./addNewSkusToListGoods");
 var insertReportToReportTree = require("./reportTreeBuilder");
 
-var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
-  var { saveReportToDb } = dbutils.reportCollectionServices;
-  var { getWBTokenByUserId } = dbutils.tokenCollectionServices;
-  var { getListGoodsFromDb, saveListGoodsToDb } = dbutils.goodsCollectionServices;
-  var { getReportTree, updateReportTree } = dbutils.reportsTreeCollectionServices;
-  var { addNewTaxYearToDb, changeTaxParamsToDb } = dbutils.taxParamsCollectionServices;
-
+var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   var startYear = +dateFrom.split("-")[0];
   var endYear = +dateTo.split("-")[0];
   var isCrossYearReport = startYear !== endYear;
 
-  var { token } = await getWBTokenByUserId(userId, session);
-  var { reportTree } = await getReportTree(userId, session);
+  var { reportTree } = await dbutils.getReportsTree(userId, session);
   var reports = await wbapi.getReports(userId, dateFrom, dateTo, token);
   var reportId = reports.weeklyFinancialReport[0].realizationreport_id;
 
@@ -30,8 +23,8 @@ var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
   var sortedYears = sortYearsTree(years);
 
   if (isCrossYearReport) {
-    var startYearTaxParams = await addNewTaxYearToDb(userId, startYear, session);
-    var endYearTaxParams = await addNewTaxYearToDb(userId, endYear, session);
+    var startYearTaxParams = await dbutils.addNewTaxYearToDb(userId, startYear, session);
+    var endYearTaxParams = await dbutils.addNewTaxYearToDb(userId, endYear, session);
     var taxParams = { startYearTaxParams, endYearTaxParams };
 
     var { report, skuNamesAndIds, recalculatedTaxParams } = await parseReports(
@@ -40,13 +33,23 @@ var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
       isCrossYearReport
     );
 
-    await changeTaxParamsToDb(userId, startYear, session, recalculatedTaxParams.startYearTaxParams);
-    await changeTaxParamsToDb(userId, endYear, session, recalculatedTaxParams.endYearTaxParams);
+    await dbutils.changeTaxParamsToDb(
+      userId,
+      startYear,
+      session,
+      recalculatedTaxParams.startYearTaxParams
+    );
+    await dbutils.changeTaxParamsToDb(
+      userId,
+      endYear,
+      session,
+      recalculatedTaxParams.endYearTaxParams
+    );
   } else {
-    var taxParams = await addNewTaxYearToDb(userId, year, session);
+    var taxParams = await dbutils.addNewTaxYearToDb(userId, year, session);
     var { report, skuNamesAndIds, recalculatedTaxParams } = await parseReports(reports, taxParams);
 
-    await changeTaxParamsToDb(userId, year, session, recalculatedTaxParams);
+    await dbutils.changeTaxParamsToDb(userId, year, session, recalculatedTaxParams);
   }
 
   report.dateTo = dateTo;
@@ -56,12 +59,12 @@ var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
   report.crossesTaxYears = isCrossYearReport;
   report.recordTo = { year, month };
 
-  var { listGoods } = await getListGoodsFromDb(userId, session);
+  var { listGoods } = await dbutils.getListGoodsFromDb(userId, session);
   var { updatedListGoods } = await addNewSkusToListGoods(listGoods, skuNamesAndIds);
 
-  await saveReportToDb(userId, report, session);
-  await updateReportTree(userId, sortedYears, session);
-  await saveListGoodsToDb(userId, updatedListGoods, session);
+  await dbutils.saveReportToDb(userId, report, session);
+  await dbutils.updateReportTree(userId, sortedYears, session);
+  await dbutils.saveListGoodsToDb(userId, updatedListGoods, session);
 
   return { reportId, year, month, dateFrom, dateTo, totalTaxAmount: report.totalTaxAmount };
 };
