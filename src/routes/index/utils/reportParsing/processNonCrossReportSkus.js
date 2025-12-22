@@ -3,10 +3,11 @@ var calc = require("../calcServices");
 var truncateSkuNums = require("./truncateSkuNums");
 var getSkuNamesAndIds = require("./getSkuNamesAndIds");
 var parsePaidStorageReport = require("./parsePaidStorageReport");
+var recalculateSkuAndTaxParams = require("./recalculateSkuAndTaxParams");
 
 var processNonCrossReportSkus = async (reports, taxParams) => {
   var skus = [];
-
+  var recalculatedTaxParams = Object.assign({}, taxParams);
   var { weeklyFinancialReport, paidStorageReport, advertisingReport } = reports;
 
   var totalSold = await calc.total.sold(weeklyFinancialReport);
@@ -26,20 +27,19 @@ var processNonCrossReportSkus = async (reports, taxParams) => {
     sku.id = id;
     sku.skuName = name;
 
-    skus.push(sku);
+    var result = recalculateSkuAndTaxParams(sku, recalculatedTaxParams);
+
+    recalculatedTaxParams = result.recalculatedTaxParams;
+    skus.push(result.updatedSku);
   }
 
   skus = await truncateSkuNums(skus);
 
-  return { skus, skuNamesAndIds, ...totals };
+  return { skus, recalculatedTaxParams, skuNamesAndIds, ...totals };
 };
 
 module.exports = processNonCrossReportSkus;
 
 var calculateTotalAdvertisingCosts = async function (data) {
-  if (!data.length) {
-    return 0;
-  }
-
   return data.reduce((acc, i) => acc + i.updSum, 0);
 };

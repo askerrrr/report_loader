@@ -4,6 +4,7 @@ var splitSkuByYear = require("./splitSkuByYear");
 var truncateSkuNums = require("./truncateSkuNums");
 var getSkuNamesAndIds = require("./getSkuNamesAndIds");
 var parsePaidStorageReport = require("./parsePaidStorageReport");
+var recalculateSkuAndTaxParams = require("./recalculateSkuAndTaxParams");
 var splitPaidStorageReportByYear = require("./splitPaidStorageReportByYear");
 var splitAdvertisingReportByYear = require("./splitAdvertisingReportByYear");
 var splitWeeklyFinancialReportByYear = require("./splitWeeklyFinancialReportByYear");
@@ -11,7 +12,12 @@ var splitWeeklyFinancialReportByYear = require("./splitWeeklyFinancialReportByYe
 var calculateTotalAdvertisingCosts = async (data) => data.reduce((acc, i) => acc + i.updSum, 0);
 
 var processCrossReportSkus = async (reports, taxParams) => {
-  var { startYearTaxParams, endYearTaxParams } = taxParams;
+  var recalculatedTaxParams = {};
+  recalculatedTaxParams.startYearTaxParams = Object.assign({}, taxParams.startYearTaxParams);
+  recalculatedTaxParams.endYearTaxParams = Object.assign({}, taxParams.endYearTaxParams);
+
+  var { endYearTaxParams, startYearTaxParams } = recalculatedTaxParams;
+
   var { weeklyFinancialReport, paidStorageReport, advertisingReport } = reports;
 
   var { startYearAd, endYearAd } = await splitAdvertisingReportByYear(advertisingReport, startYearTaxParams.year);
@@ -61,6 +67,12 @@ var processCrossReportSkus = async (reports, taxParams) => {
       currentYearPropPostfix
     );
 
+    var resultOfStartYearRecalculation = recalculateSkuAndTaxParams(
+      currentYearSkuData,
+      recalculatedTaxParams.startYearTaxParams,
+      currentYearPropPostfix
+    );
+
     var nextYearSkuData = await parseSku(
       name,
       skuNamesAndIdsInNextYear.length,
@@ -71,6 +83,8 @@ var processCrossReportSkus = async (reports, taxParams) => {
       nextYearPropPostfix
     );
 
+    var resultOfEndYearRecalculation = recalculateSkuAndTaxParams(nextYearSkuData, recalculatedTaxParams.endYearTaxParams, nextYearPropPostfix);
+
     var middleTaxRate = (startYearTaxParams.taxRate + endYearTaxParams.taxRate) / 2;
 
     var totalSkuData = await parseSku(name, totalSold, skuFilteredReport, paidStorageReport, middleTaxRate, {
@@ -79,16 +93,19 @@ var processCrossReportSkus = async (reports, taxParams) => {
       totalAdvertisingCosts,
     });
 
-    var sku = Object.assign({}, currentYearSkuData, nextYearSkuData, totalSkuData);
+    var sku = Object.assign({}, resultOfStartYearRecalculation.updatedSku, resultOfEndYearRecalculation.updatedSku, totalSkuData);
     sku.id = id;
     sku.skuName = name;
+
+    recalculatedTaxParams.startYearTaxParams = resultOfStartYearRecalculation.recalculatedTaxParams;
+    recalculatedTaxParams.endYearTaxParams = resultOfStartYearRecalculation.recalculatedTaxParams;
 
     skus.push(sku);
   }
 
   skus = await truncateSkuNums(skus);
 
-  return { skus, skuNamesAndIds, totalSold, totalStorageCost, totalAdvertisingCosts };
+  return { skus, skuNamesAndIds, totalSold, totalStorageCost, totalAdvertisingCosts, recalculatedTaxParams };
 };
 
 module.exports = processCrossReportSkus;
