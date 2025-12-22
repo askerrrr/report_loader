@@ -1,71 +1,118 @@
-var { DatabaseError } = require("../../customError");
+var { DatabaseError } = require("../../../../customError");
 
-var mandatoryInsuranceFees = [
-  { year: 2023, value: 45842 },
-  { year: 2024, value: 49500 },
-  { year: 2025, value: 53658 },
-  { year: 2026, value: 57390 },
-  { year: 2027, value: 61154 },
+var defaultTaxParams = [
+  {
+    year: 2023,
+    taxRate: 6,
+    mandatoryInsuranceFee: 45842,
+    paidTaxAmount: -45842,
+    maxInsuranceFee: 0,
+    retailAmount: 0,
+    finalProfit: 0,
+    additionalInsuranceFee: 0,
+    requiresAdditionalInsuranceFee: false,
+    mandatoryInsuranceFeeRate: 10,
+    hasExcessIncomeForInsurance: false,
+    mandatoryInsuranceFeeIsPaid: false,
+    additionalInsuranceFeeIsPaid: false,
+    excessInsuranceRate: 1,
+  },
+  {
+    year: 2024,
+    taxRate: 6,
+    mandatoryInsuranceFee: 49500,
+    paidTaxAmount: -49500,
+    maxInsuranceFee: 277571,
+    retailAmount: 0,
+    finalProfit: 0,
+    additionalInsuranceFee: 0,
+    requiresAdditionalInsuranceFee: false,
+    mandatoryInsuranceFeeRate: 10,
+    hasExcessIncomeForInsurance: false,
+    mandatoryInsuranceFeeIsPaid: false,
+    additionalInsuranceFeeIsPaid: false,
+    excessInsuranceRate: 1,
+  },
+  {
+    year: 2025,
+    taxRate: 6,
+    mandatoryInsuranceFee: 53658,
+    paidTaxAmount: -53658,
+    maxInsuranceFee: 300888,
+    retailAmount: 0,
+    finalProfit: 0,
+    additionalInsuranceFee: 0,
+    requiresAdditionalInsuranceFee: false,
+    mandatoryInsuranceFeeRate: 10,
+    hasExcessIncomeForInsurance: false,
+    mandatoryInsuranceFeeIsPaid: false,
+    additionalInsuranceFeeIsPaid: false,
+    excessInsuranceRate: 1,
+  },
+  {
+    year: 2026,
+    taxRate: 6,
+    mandatoryInsuranceFee: 57390,
+    paidTaxAmount: -57390,
+    maxInsuranceFee: 0,
+    retailAmount: 0,
+    finalProfit: 0,
+    additionalInsuranceFee: 0,
+    requiresAdditionalInsuranceFee: false,
+    mandatoryInsuranceFeeRate: 10,
+    hasExcessIncomeForInsurance: false,
+    mandatoryInsuranceFeeIsPaid: false,
+    additionalInsuranceFeeIsPaid: false,
+    excessInsuranceRate: 1,
+  },
+  {
+    year: 2027,
+    taxRate: 6,
+    mandatoryInsuranceFee: 61154,
+    paidTaxAmount: -61154,
+    maxInsuranceFee: 0,
+    retailAmount: 0,
+    finalProfit: 0,
+    additionalInsuranceFee: 0,
+    requiresAdditionalInsuranceFee: false,
+    mandatoryInsuranceFeeRate: 10,
+    hasExcessIncomeForInsurance: false,
+    mandatoryInsuranceFeeIsPaid: false,
+    additionalInsuranceFeeIsPaid: false,
+    excessInsuranceRate: 1,
+  },
 ];
-
-var defaultTaxOptions = {
-  taxRate: 6,
-  paidTaxAmount: 0,
-  paidInsuranceFee: 0,
-  isInsuranceFeePaid: false,
-  insuranceFeePercentage: 10,
-};
 
 var addNewTaxYearToDb = async (collection, userId, year, session) => {
   try {
-    var mandatoryInsuranceFee;
+    var data = await collection.findOne({ userId }, null, { session: session });
+    var taxYears = data.toObject().years;
 
-    var { years } = await collection.findOne({ userId });
-    var existTaxYear = years.find((date) => date.year === year);
-
-    if (existTaxYear) {
+    var existTaxParams = taxYears.find((params) => params.year === year);
+    if (existTaxParams) {
       var nextYear = year + 1;
-      var nextYearIsExist = years.find((date) => date.year === nextYear);
-      mandatoryInsuranceFee = mandatoryInsuranceFees.find((item) => item.year === nextYear).value;
-      var nextYearPaidTaxAmount = -mandatoryInsuranceFee;
-
-      if (!nextYearIsExist) {
+      var nextYearTaxParams = taxYears.find((params) => params.year === nextYear);
+      if (!nextYearTaxParams) {
+        var defaultNextYearTaxParams = defaultTaxParams.find((i) => i.year === nextYear);
         await collection.updateOne(
           { userId },
-          {
-            $push: {
-              years: {
-                taxRate: 6,
-                year: nextYear,
-                paidInsuranceFee: 0,
-                mandatoryInsuranceFee,
-                isInsuranceFeePaid: false,
-                insuranceFeePercentage: 10,
-                paidTaxAmount: nextYearPaidTaxAmount,
-              },
-            },
-          },
+          { $push: { years: { ...defaultNextYearTaxParams } } },
           { session: session }
         );
       }
 
-      return existTaxYear;
+      return existTaxParams;
     }
 
-    var previousYear = year - 1;
-    var previousYearMandatoryInsuranceFee = mandatoryInsuranceFees.find((item) => item.year === previousYear).value;
-    mandatoryInsuranceFee = mandatoryInsuranceFees.find((item) => item.year === year).value;
-    var paidTaxAmount = -previousYearMandatoryInsuranceFee;
+    var defaultCurrentYearTaxParams = defaultTaxParams.find((i) => i.year === year);
 
     await collection.updateOne(
       { userId },
-      {
-        $push: { years: { year, mandatoryInsuranceFee, ...defaultTaxOptions } },
-      },
+      { $push: { years: { ...defaultCurrentYearTaxParams } } },
       { session: session }
     );
 
-    return { taxRate: 6, paidTaxAmount };
+    return defaultCurrentYearTaxParams;
   } catch (e) {
     throw new DatabaseError(userId, e);
   }
