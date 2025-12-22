@@ -1,5 +1,4 @@
 var calc = require("../calcServices");
-var { skuSchemaVersion } = require("../../../../database/migration/schemaVersioning/reportsCollection");
 
 var parseSku = async (name, skuQty, skuFilteredReport, storageData, taxRate, totals, propPostfix = "") => {
   try {
@@ -22,7 +21,6 @@ var parseSku = async (name, skuQty, skuFilteredReport, storageData, taxRate, tot
     sku["averageAdvertisingCost" + propPostfix] = calc.averageAdvertisingCost(skuQty, totalAdvertisingCosts);
     sku["profit" + propPostfix] = calc.profit(sku, propPostfix);
     sku["averageProfit" + propPostfix] = calc.averageProfit(sku, propPostfix);
-    sku.schemaVersion = skuSchemaVersion;
     return sku;
   } catch (e) {
     console.log({ skuError: e });
