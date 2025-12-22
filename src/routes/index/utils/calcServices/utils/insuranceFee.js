@@ -5,7 +5,7 @@ var calcInsuranceFee = (preTaxProfit, insuranceFeePercentage) => {
 
   var insuranceFee = (preTaxProfit * insuranceFeePercentage) / 100;
 
-  return insuranceFee;
+  return +insuranceFee.toFixed(2);
 };
 
 module.exports = calcInsuranceFee;
