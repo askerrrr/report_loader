@@ -6,26 +6,21 @@ var calcPreTaxProfit = require("./preTaxProfit");
 var calcRestSKUParams = (sku, taxParams, propPostfix = "") => {
   sku["isCostPriceSet" + propPostfix] = true;
 
-  sku["preTaxProfit" + propPostfix] = calcPreTaxProfit(
-    sku["qty" + propPostfix],
-    sku["profit" + propPostfix],
-    sku.costPrice
-  );
+  sku["preTaxProfit" + propPostfix] = calcPreTaxProfit(sku["qty" + propPostfix], sku["profit" + propPostfix], sku.costPrice);
 
   var { sku, taxParams } = recalculateInsuranceFee(sku, taxParams, propPostfix);
 
   var previousSkuFinalProfit = sku["finalProfit" + propPostfix];
-  sku["profitMargin" + propPostfix] = calcProfitMargin(
-    sku["finalProfit" + propPostfix],
-    sku["retailAmount" + propPostfix]
-  );
+  sku["profitMargin" + propPostfix] = calcProfitMargin(sku["finalProfit" + propPostfix], sku["retailAmount" + propPostfix]);
+
   sku["finalProfit" + propPostfix] = calcFinalProfit(
     sku["preTaxProfit" + propPostfix],
     sku["insuranceFee" + propPostfix],
-    sku["tax" + propPostfix]
+    sku["tax" + propPostfix],
+    sku["additionalInsuranceFee" + propPostfix]
   );
-  taxParams.finalProfit =
-    taxParams.finalProfit - previousSkuFinalProfit + sku["finalProfit" + propPostfix];
+
+  taxParams.finalProfit = taxParams.finalProfit - previousSkuFinalProfit + sku["finalProfit" + propPostfix];
   return { updatedTaxParams: taxParams, skuWithCalculatedParams: sku };
 };
 
@@ -39,10 +34,7 @@ var recalculateInsuranceFee = function (sku, taxParams, propPostfix) {
     return { sku, taxParams };
   }
 
-  sku["insuranceFee" + propPostfix] = calcInsuranceFee(
-    sku["preTaxProfit" + propPostfix],
-    taxParams.mandatoryInsuranceFeeRate
-  );
+  sku["insuranceFee" + propPostfix] = calcInsuranceFee(sku["preTaxProfit" + propPostfix], taxParams.mandatoryInsuranceFeeRate);
   sku["isInsuranceFeeIncluded" + propPostfix] = true;
 
   taxParams.paidInsuranceFee += sku["insuranceFee" + propPostfix];
