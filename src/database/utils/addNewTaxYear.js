@@ -4,7 +4,7 @@ var defaultTaxParams = require("../defaultTaxParams");
 var addNewTaxYearToDb = async (collection, userId, year, session) => {
   try {
     var data = await collection.findOne({ userId }, { session: session });
-    var taxYears = data.toObject().years;
+    var taxYears = data.years;
 
     var existTaxParams = taxYears.find((params) => params.year === year);
     if (existTaxParams) {
