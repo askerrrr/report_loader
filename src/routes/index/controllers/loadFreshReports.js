@@ -10,6 +10,10 @@ var noDataForPeriodMessage = "there is no data available for the selected report
 var loadFreshReports = async (req, res, next) => {
   var users = await dbUtils.getUsersData();
 
+  if (!users.length) {
+    return res.sendStatus(200);
+  }
+
   for (var { userId } of users) {
     var session = await connection.startSession();
 
