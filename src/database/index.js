@@ -68,7 +68,7 @@ var setupMongoDBEvents = () => {
 };
 
 var killAllSessions = async () =>
-  connection
+  client
     .db("admin")
     .command({ killAllSessions: [] })
     .then(() => console.log("all sessions killed"));
