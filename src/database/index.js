@@ -67,9 +67,16 @@ var setupMongoDBEvents = () => {
   });
 };
 
+var killAllSessions = async () =>
+  connection
+    .db("admin")
+    .command({ killAllSessions: [] })
+    .then(() => console.log("all sessions killed"));
+
 var runDB = async () => {
   setupMongoDBEvents();
   await mongodbConnection();
+  await killAllSessions();
 };
 
 module.exports = { runDB, connection: client };
