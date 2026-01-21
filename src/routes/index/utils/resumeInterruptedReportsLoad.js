@@ -13,8 +13,6 @@ var resumeInterruptedReportsLoad = async () => {
 
   var users = await dbUtils.getUsersData();
 
-  console.log({ users });
-
   if (!users.length) {
     return;
   }
