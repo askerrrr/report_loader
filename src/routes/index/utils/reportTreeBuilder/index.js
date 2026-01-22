@@ -67,7 +67,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
 
       if (!nextYearIsExist) {
         var reportIds = utils.insertReportIdAndFullPeriodToReportIds(dateTo, fullPeriod, reportId, "overlap - no");
-
+        
         var months = utils.createNextYearMonths(reportIds);
 
         years.push({ year: endYear, months });

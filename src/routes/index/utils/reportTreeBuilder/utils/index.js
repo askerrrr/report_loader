@@ -2,6 +2,7 @@ module.exports = {
   getYearIndex: require("./getYearIndex"),
   checkYearExists: require("./checkYearExists"),
   updateYearStructure: require("./updateYearStructure"),
+  createNextYearMonths: require("./createNextYearMonths"),
   getMonthNameAndIndex: require("./getMonthNameAndIndex"),
   isNextMonthReportNeeded: require("./isNextMonthReportNeeded"),
   insertMonthDataToMonths: require("./insertMonthDataToMonths"),

@@ -1,5 +1,5 @@
 var getMondayIndex = require("./getMondayIndex");
-var getMondaysOrSundaysOfMonth = require("../../../../../dateUtils/getMondaysOrSundaysOfMonth");
+var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
 
 /**
  * @param {'overlap - yes' | 'overlap - no'} overlapStatus
