@@ -6,8 +6,8 @@ var addNewSkusToListGoods = async (listGoods, skusFromFinancialReports) => {
       listGoods.push({ id, skuName: name, deleted: true });
     }
 
-    if (existSku && existSku.deleted) {
-      listGoods.push({ ...existSku, deleted: false });
+    if (existSku && existSku.deleted && existSku.skuName !== name) {
+      listGoods.push({ ...existSku, skuName: name, deleted: false });
     }
   }
 

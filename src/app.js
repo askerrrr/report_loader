@@ -1,6 +1,7 @@
 var express = require("express");
 var { runDB } = require("./database/");
 var runReportPeriodsWriter = require("./dateUtils");
+var resumeInterruptedReportsLoad = require("./routes/index/utils/resumeInterruptedReportsLoad");
 
 var app = express();
 
@@ -11,6 +12,7 @@ var app = express();
   app.locals.db = require("./database/utils");
 
   app.listen(process.env.PORT, process.env.HOST, console.log("server run..."));
+  await resumeInterruptedReportsLoad();
 })();
 
 app.use(express.urlencoded());
