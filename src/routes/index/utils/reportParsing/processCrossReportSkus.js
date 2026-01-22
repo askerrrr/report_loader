@@ -98,7 +98,7 @@ var processCrossReportSkus = async (reports, taxParams) => {
     sku.skuName = name;
 
     recalculatedTaxParams.startYearTaxParams = resultOfStartYearRecalculation.recalculatedTaxParams;
-    recalculatedTaxParams.endYearTaxParams = resultOfStartYearRecalculation.recalculatedTaxParams;
+    recalculatedTaxParams.endYearTaxParams = resultOfEndYearRecalculation.recalculatedTaxParams;
 
     skus.push(sku);
   }
