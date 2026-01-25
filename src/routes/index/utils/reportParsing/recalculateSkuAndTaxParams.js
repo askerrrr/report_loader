@@ -1,3 +1,4 @@
+var truncateNum = require("./truncateNum");
 var calcInsuranceFee = require("../calcServices/utils/insuranceFee");
 
 var recalculateSkuAndTaxParams = (sku, taxParams, skuPropPostfix = "") => {
@@ -22,15 +23,9 @@ var recalculateRetailAmount = function (sku, taxParams, skuPropPostfix) {
 
     if (difference > 0) {
       difference = sku["retailAmount" + skuPropPostfix] - difference;
-      sku["additionalInsuranceFee" + skuPropPostfix] = calcInsuranceFee(
-        difference,
-        taxParams.excessInsuranceRate
-      );
+      sku["additionalInsuranceFee" + skuPropPostfix] = calcInsuranceFee(difference, taxParams.excessInsuranceRate);
     } else {
-      sku["additionalInsuranceFee" + skuPropPostfix] = calcInsuranceFee(
-        sku["retailAmount" + skuPropPostfix],
-        taxParams.excessInsuranceRate
-      );
+      sku["additionalInsuranceFee" + skuPropPostfix] = calcInsuranceFee(sku["retailAmount" + skuPropPostfix], taxParams.excessInsuranceRate);
     }
   } else {
     sku["additionalInsuranceFee" + skuPropPostfix] = 0;
@@ -57,8 +52,7 @@ var recalculateInsuranceFee = function (sku, taxParams, skuPropPostfix) {
     var difference = maxAdditionalInsuranceFee - oldAdditionalInsuranceFee;
 
     if (difference > 0) {
-      var recalculatedSkuAdditionalInsuranceFee =
-        sku["additionalInsuranceFee" + skuPropPostfix] + difference;
+      var recalculatedSkuAdditionalInsuranceFee = sku["additionalInsuranceFee" + skuPropPostfix] + difference;
       sku["additionalInsuranceFee" + skuPropPostfix] = recalculatedSkuAdditionalInsuranceFee;
     }
   }
@@ -84,16 +78,7 @@ var recalculateInsuranceFee = function (sku, taxParams, skuPropPostfix) {
 
 var recalculatePaidTaxAmount = function (sku, taxParams, skuPropPostfix) {
   taxParams.paidTaxAmount += sku["tax" + skuPropPostfix];
-
-  // if (taxParams.paidTaxAmount <= 0) {
-  //   sku["tax" + skuPropPostfix] = 0;
-  // } else {
-  //   var difference = taxParams.paidTaxAmount - sku["tax" + skuPropPostfix];
-
-  //   if (difference < 0) {
-  //     sku["tax" + skuPropPostfix] += difference;
-  //   }
-  // }
+  taxParams.paidTaxAmount = truncateNum(taxParams.paidTaxAmount);
 
   return { sku, taxParams };
 };
