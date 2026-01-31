@@ -1,3 +1,5 @@
+var truncateNum = require("./reportParsing/truncateNum");
+
 var aggregateSkuMetrics = (skuMetrics, sku, postfix = "") => {
   skuMetrics.qty += sku["qty" + postfix];
   skuMetrics.tax += sku["tax" + postfix];
@@ -10,6 +12,10 @@ var aggregateSkuMetrics = (skuMetrics, sku, postfix = "") => {
   skuMetrics.sellerPayoutAmount += sku["sellerPayoutAmount" + postfix];
   skuMetrics.deductionOrPayment += sku["deductionOrPayment" + postfix];
   skuMetrics.additionalInsuranceFee += sku["additionalInsuranceFee" + postfix];
+
+  for (var key in skuMetrics) {
+    skuMetrics[key] = truncateNum(skuMetrics[key]);
+  }
 
   return skuMetrics;
 };
