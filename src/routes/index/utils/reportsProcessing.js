@@ -41,13 +41,13 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   report.crossesTaxYears = isCrossYearReport;
   report.recordTo = { year, month };
 
-  var { listGoods } = await getListGoodsFromDb(userId, session);
-  var { updatedListGoods } = await addNewSkusToListGoods(listGoods, skuNamesAndIds, isCrossYearReport, startYear, endYear);
-  var { listGoods } = await updateListGoodsMetrics(report, updatedListGoods);
+  var { listGoods } = await dbutils.getListGoodsFromDb(userId, session);
+  var { listGoodsWithNewSkus } = await addNewSkusToListGoods(listGoods, skuNamesAndIds, isCrossYearReport, startYear, endYear);
+  var { listGoodsWithUpdatedSkuMetrics } = await updateListGoodsMetrics(report, listGoodsWithNewSkus);
 
   await dbutils.saveReportToDb(userId, report, session);
   await dbutils.updateReportTree(userId, sortedYears, session);
-  await dbutils.saveListGoodsToDb(userId, updatedListGoods, session);
+  await dbutils.saveListGoodsToDb(userId, listGoodsWithUpdatedSkuMetrics, session);
 
   return { reportId, year, month, dateFrom, dateTo, totalTaxAmount: report.totalTaxAmount };
 };

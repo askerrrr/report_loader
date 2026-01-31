@@ -46,7 +46,7 @@ var updateListGoodsMetrics = async (report, listGoods) => {
     }
   }
 
-  return { listGoods };
+  return { listGoodsWithUpdatedSkuMetrics };
 };
 
 module.exports = updateListGoodsMetrics;
