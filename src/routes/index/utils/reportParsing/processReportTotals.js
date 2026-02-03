@@ -16,6 +16,8 @@ var processReportTotals = async (skus, propPostfix = "") => {
   report["totalSellerPayoutAmount" + propPostfix] = calc.sum(skus, "sellerPayoutAmount" + propPostfix, "truncate-on");
   report["totalAdditionalInsuranceFee" + propPostfix] = calc.sum(skus, "additionalInsuranceFee" + propPostfix);
 
+  report["totalFinalProfit" + propPostfix] = 0;
+
   report = truncateTotals(report);
 
   return report;
