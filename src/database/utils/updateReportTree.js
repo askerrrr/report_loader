@@ -2,13 +2,8 @@ var { DatabaseError } = require("../../customError");
 
 var updateReportsTree = async (collection, userId, years, session) => {
   try {
-    var result;
-
-    if (session) {
-      result = await collection.updateOne({ userId }, { $set: { years } }, { session: session });
-    } else {
-      result = await collection.updateOne({ userId }, { $set: { years } });
-    }
+    var sessionOpt = session ? { session } : {};
+    var result = await collection.updateOne({ userId }, { $set: { years } }, { ...sessionOpt });
 
     return result.modifiedCount;
   } catch (e) {
