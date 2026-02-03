@@ -2,6 +2,8 @@ var defaultSkuMetricsField = {
   qty: 0,
   tax: 0,
   fines: 0,
+  netProfit: 0,
+  profitMargin: 0,
   retailAmount: 0,
   returnAmount: 0,
   storageCost: 0,
