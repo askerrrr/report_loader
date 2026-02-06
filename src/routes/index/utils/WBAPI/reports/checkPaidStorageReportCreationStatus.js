@@ -19,8 +19,12 @@ var getCreationStatus = async (url, token, userId) => {
   return { status };
 };
 
+var waitForReportCreation = async () => new Promise((res) => setTimeout(res, 5000));
+
 var checkPaidStorageReportCreationStatus = async (taskId, token, userId) => {
   var url = `https://seller-analytics-api.wildberries.ru/api/v1/paid_storage/tasks/${taskId}/status`;
+
+  await waitForReportCreation();
 
   var { status } = await getCreationStatus(url, token, userId);
 

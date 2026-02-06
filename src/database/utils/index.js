@@ -15,20 +15,18 @@ var saveReportToDb = require("./saveReportToDb");
 var addNewTaxYearToDb = require("./addNewTaxYear");
 var getReportsQueue = require("./getReportsQueue");
 var updateReportTree = require("./updateReportTree");
-var saveListGoodsToDb = require('./saveListGoodsToDb')
-var getListGoodsFromDb = require('./getListGoodsFromDb')
+var saveListGoodsToDb = require("./saveListGoodsToDb");
+var getListGoodsFromDb = require("./getListGoodsFromDb");
 var pushToReportsQueue = require("./pushToReportsQueue");
 var updateReportsQueue = require("./updateReportsQueue");
-var createReportsQueue = require("./createReportsQueue");
-var changeTaxParamsToDb = require('./changeTaxParamsToDb')
-var resetAbandonedReports = require('./resetAbandonedReports')
-var addNewSkusToListGoods = require('./addNewSkusToListGoods')
+var changeTaxParamsToDb = require("./changeTaxParamsToDb");
+var resetAbandonedReports = require("./resetAbandonedReports");
+var addNewSkusToListGoods = require("./addNewSkusToListGoods");
 var setLoadingProgressStatus = require("./setLoadingProgressStatus");
 var getLoadingProgressStatus = require("./getLoadingProgressStatus");
-var changePaidTaxAmountToDb = require("./changePaidTaxAmountToDb");
-var getFreshReportPeriodIndex = require('./getFreshReportPeriodIndex')
+var getFreshReportPeriodIndex = require("./getFreshReportPeriodIndex");
 var addReportToAbandonedReports = require("./addReportToAbandonedReports");
-var updateFreshReportPeriodIndex = require('./updateFreshReportPeriodIndex')
+var updateFreshReportPeriodIndex = require("./updateFreshReportPeriodIndex");
 
 var db = {
   getToken: (userId, session) => getToken(tokens_collection, userId, session),
@@ -42,13 +40,14 @@ var db = {
 
   updateReportTree: (userId, years, session) => updateReportTree(reports_tree_collection, userId, years, session),
   updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
-  updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) => updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
+  updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) =>
+    updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
 
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
-  addReportToAbandonedReports: (userId, reportPeriod, session) => addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
+  addReportToAbandonedReports: (userId, reportPeriod, session) =>
+    addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
 
   changeTaxParamsToDb: (userId, year, session, newTaxParams) => changeTaxParamsToDb(tax_params_collection, userId, year, session, newTaxParams),
-  changePaidTaxAmountToDb: (userId, year, paidTaxAmount, session) => changePaidTaxAmountToDb(tax_params_collection, userId, year, paidTaxAmount, session),
 
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   saveListGoodsToDb: (userId, listGoods, session) => saveListGoodsToDb(goods_collection, userId, listGoods, session),
