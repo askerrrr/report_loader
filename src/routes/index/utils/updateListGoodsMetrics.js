@@ -33,14 +33,14 @@ var updateListGoodsMetrics = async (report, listGoods) => {
 
   for (var sku of report.skus) {
     if (report.crossesTaxYears) {
-      var skuMetrics = listGoods.find((i) => i.id === sku.id).metrics;
+      var skuMetrics = listGoods.find((i) => i.id === sku.id && i.skuName === sku.skuName).metrics;
       var startYearMetrics = skuMetrics.find((i) => i.year === startYear);
       var endYearMetrics = skuMetrics.find((i) => i.year === endYear);
 
       startYearMetrics = aggregateSkuMetrics(startYearMetrics, sku, startYearPropPostfix);
       endYearMetrics = aggregateSkuMetrics(endYearMetrics, sku, endYearPropPostfix);
     } else {
-      var skuMetrics = listGoods.find((i) => i.id === sku.id).metrics;
+      var skuMetrics = listGoods.find((i) => i.id === sku.id && i.skuName === sku.skuName).metrics;
       var skuMetricsOfCurrentYear = skuMetrics.find((i) => i.year === year);
       skuMetricsOfCurrentYear = aggregateSkuMetrics(skuMetricsOfCurrentYear, sku);
     }
