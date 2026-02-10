@@ -35,16 +35,15 @@ var addMetricsToSku = (listGoods, isCrossYearReport, startYear, endYear) => {
 };
 
 var addNewSkusToListGoods = async (listGoods, skusFromFinancialReports, isCrossYearReport, startYear, endYear) => {
+  var metrics = [];
+
   for (var { name, id } of skusFromFinancialReports) {
-    var existSku = listGoods.find((item) => item.id === id);
+    var listGoodsFilteredBySkuId = listGoods.filter((item) => item.id === id);
+    var skuIsExist = listGoodsFilteredBySkuId.find((item) => item.skuName === name);
 
-    if (!existSku) {
-      var newSku = { id, skuName: name, deleted: true, metrics: [] };
+    if (!skuIsExist) {
+      var newSku = { id, skuName: name, metrics, deleted: true };
       listGoods.push(newSku);
-    }
-
-    if (existSku && existSku.deleted && existSku.skuName !== name) {
-      listGoods.push({ ...existSku, skuName: name, deleted: false });
     }
   }
 
