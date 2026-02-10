@@ -14,6 +14,7 @@ module.exports = recalculateSkuAndTaxParams;
 var recalculateRetailAmount = function (sku, taxParams, skuPropPostfix) {
   var oldRetailAmount = taxParams.retailAmount;
   taxParams.retailAmount += sku["retailAmount" + skuPropPostfix];
+  taxParams.retailAmount = truncateNum(taxParams.retailAmount);
 
   if (taxParams.retailAmount > taxParams.excessIncomeForAdditionalInsuranceFee) {
     taxParams.hasExcessIncomeForInsurance = true;
