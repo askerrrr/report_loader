@@ -1,8 +1,8 @@
 var shouldWaitBeforeNextRequest = (lastReportRequestTimestamp) => {
-  var nextRequestDelaySec = 0;
+  var nextRequestDelayMs = 0;
 
   if (lastReportRequestTimestamp === 0) {
-    return { nextRequestDelaySec };
+    return { nextRequestDelayMs };
   }
 
   var { currentTimeMs } = getCurrentTimeStamp();
@@ -10,10 +10,10 @@ var shouldWaitBeforeNextRequest = (lastReportRequestTimestamp) => {
   var hasMinutePassed = difference > oneMinuteMs;
 
   if (hasMinutePassed) {
-    return { nextRequestDelaySec };
+    return { nextRequestDelayMs };
   }
 
-  return { nextRequestDelaySec: difference };
+  return { nextRequestDelayMs: difference };
 };
 
 module.exports = shouldWaitBeforeNextRequest;
