@@ -27,6 +27,7 @@ var getLoadingProgressStatus = require("./getLoadingProgressStatus");
 var getFreshReportPeriodIndex = require("./getFreshReportPeriodIndex");
 var addReportToAbandonedReports = require("./addReportToAbandonedReports");
 var updateFreshReportPeriodIndex = require("./updateFreshReportPeriodIndex");
+var getLastReportRequestTimestamp = require("./getLastReportRequestTimestamp");
 
 var db = {
   getToken: (userId, session) => getToken(tokens_collection, userId, session),
@@ -37,6 +38,7 @@ var db = {
   getListGoodsFromDb: (userId, session) => getListGoodsFromDb(goods_collection, userId, session),
   getFreshReportPeriodIndex: (userId, session) => getFreshReportPeriodIndex(report_loading_states_collection, userId, session),
   getLoadingProgressStatus: (userId, session) => getLoadingProgressStatus(report_loading_states_collection, userId, session),
+  getLastReportRequestTimestamp: (userId, session) => getLastReportRequestTimestamp(report_loading_states_collection, userId, session),
 
   updateReportTree: (userId, years, session) => updateReportTree(reports_tree_collection, userId, years, session),
   updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
