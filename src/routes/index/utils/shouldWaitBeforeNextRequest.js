@@ -1,3 +1,5 @@
+var getCurrentTimeStamp = require("./getCurrentTimeStamp");
+
 var oneMinuteMs = 60 * 1000;
 
 var shouldWaitBeforeNextRequest = (lastReportRequestTimestamp) => {
