@@ -1,3 +1,5 @@
+var oneMinuteMs = 60 * 1000;
+
 var shouldWaitBeforeNextRequest = (lastReportRequestTimestamp) => {
   var nextRequestDelayMs = 0;
 
