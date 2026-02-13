@@ -20,6 +20,14 @@ var parseSku = async (name, skuQty, skuFilteredReport, storageData, taxRate, tot
     sku["averageAdvertisingCost" + propPostfix] = calc.averageAdvertisingCost(skuQty, totalAdvertisingCosts);
     sku["profit" + propPostfix] = calc.profit(sku, propPostfix);
     sku["averageProfit" + propPostfix] = calc.averageProfit(sku, propPostfix);
+    sku["insuranceFee" + propPostfix] = 0;
+    sku["additionalInsuranceFee" + propPostfix] = 0;
+    sku["revenue" + propPostfix] = 0;
+    sku["preTaxProfit" + propPostfix] = 0;
+    sku["profit" + propPostfix] = 0;
+    sku["finalProfit" + propPostfix] = 0;
+    sku["profitMargin" + propPostfix] = 0;
+
     return sku;
   } catch (e) {
     console.log({ skuError: e });
