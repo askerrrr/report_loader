@@ -28,6 +28,7 @@ var getFreshReportPeriodIndex = require("./getFreshReportPeriodIndex");
 var addReportToAbandonedReports = require("./addReportToAbandonedReports");
 var updateFreshReportPeriodIndex = require("./updateFreshReportPeriodIndex");
 var getLastReportRequestTimestamp = require("./getLastReportRequestTimestamp");
+var updateLastReportRequestTimestamp = require("./updateLastReportRequestTimestamp");
 
 var db = {
   getToken: (userId, session) => getToken(tokens_collection, userId, session),
@@ -44,6 +45,7 @@ var db = {
   updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
   updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) =>
     updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
+  updateLastReportRequestTimestamp: (userId, session) => updateLastReportRequestTimestamp(report_loading_states_collection, userId, session),
 
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
   addReportToAbandonedReports: (userId, reportPeriod, session) =>
