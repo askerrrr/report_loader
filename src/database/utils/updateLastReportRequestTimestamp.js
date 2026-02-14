@@ -1,5 +1,5 @@
 var updateLastReportRequestTimestamp = async (collection, userId, session) => {
-  var { lastReportRequestTimestamp } = await collection.findOne(
+  var { lastReportRequestTimestamp } = await collection.updateOne(
     { userId },
     { $set: { lastReportRequestTimestamp: new Date().getTime() } },
     { session: session },
