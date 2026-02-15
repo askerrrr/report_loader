@@ -4,9 +4,14 @@ var { DatabaseError } = require("../../customError");
  * @param {"loading" | "completed"} loadingStatus
  */
 var setLoadingProgressStatus = async function (userId, loadingStatus) {
+  var options =
+    loadingStatus === "loading"
+      ? { loadingInProgress: "loading" }
+      : { loadingInProgress: "completed", lastReportRequestTimestamp: new Date().getTime() };
+
   try {
     var collection = this;
-    await collection.updateOne({ userId }, { $set: { loadingInProgress: loadingStatus === "loading" } });
+    await collection.updateOne({ userId }, { $set: options });
   } catch (e) {
     throw new DatabaseError(userId, e);
   }
