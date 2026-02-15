@@ -1,6 +1,8 @@
 var loader = require("./loader");
 var dbUtils = require("../../../database/utils");
 
+var isServerStartupLoad = true;
+
 var resumeInterruptedReportsLoad = async () => {
   var users = await dbUtils.getUsersData();
 
@@ -14,7 +16,7 @@ var resumeInterruptedReportsLoad = async () => {
     }
 
     var { token } = await dbUtils.getToken(userId);
-    await loader(userId, token);
+    loader(userId, token, isServerStartupLoad);
   }
 };
 
