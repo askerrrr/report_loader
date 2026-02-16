@@ -29,6 +29,7 @@ var getFreshReportPeriodIndex = require("./getFreshReportPeriodIndex");
 var addReportToAbandonedReports = require("./addReportToAbandonedReports");
 var updateFreshReportPeriodIndex = require("./updateFreshReportPeriodIndex");
 var getLastReportRequestTimestamp = require("./getLastReportRequestTimestamp");
+var updateReportLoadingDelayStatus = require("./updateReportLoadingDelayStatus");
 var updateLastReportRequestTimestamp = require("./updateLastReportRequestTimestamp");
 
 var db = {
@@ -47,6 +48,8 @@ var db = {
   updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) =>
     updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
   updateLastReportRequestTimestamp: (userId, session) => updateLastReportRequestTimestamp(report_loading_states_collection, userId, session),
+  updateReportLoadingDelayStatus: (userId, isReportLoadingDelayed) =>
+    updateReportLoadingDelayStatus(report_loading_states_collection, userId, isReportLoadingDelayed),
 
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
   addReportToAbandonedReports: (userId, reportPeriod, session) =>
