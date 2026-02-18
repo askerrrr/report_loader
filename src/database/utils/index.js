@@ -22,11 +22,15 @@ var updateReportsQueue = require("./updateReportsQueue");
 var changeTaxParamsToDb = require("./changeTaxParamsToDb");
 var resetAbandonedReports = require("./resetAbandonedReports");
 var addNewSkusToListGoods = require("./addNewSkusToListGoods");
+var setAllUsersLoadingFlag = require("./setAllUsersLoadingFlag");
 var setLoadingProgressStatus = require("./setLoadingProgressStatus");
 var getLoadingProgressStatus = require("./getLoadingProgressStatus");
 var getFreshReportPeriodIndex = require("./getFreshReportPeriodIndex");
 var addReportToAbandonedReports = require("./addReportToAbandonedReports");
 var updateFreshReportPeriodIndex = require("./updateFreshReportPeriodIndex");
+var getLastReportRequestTimestamp = require("./getLastReportRequestTimestamp");
+var updateReportLoadingDelayStatus = require("./updateReportLoadingDelayStatus");
+var updateLastReportRequestTimestamp = require("./updateLastReportRequestTimestamp");
 
 var db = {
   getToken: (userId, session) => getToken(tokens_collection, userId, session),
@@ -37,11 +41,15 @@ var db = {
   getListGoodsFromDb: (userId, session) => getListGoodsFromDb(goods_collection, userId, session),
   getFreshReportPeriodIndex: (userId, session) => getFreshReportPeriodIndex(report_loading_states_collection, userId, session),
   getLoadingProgressStatus: (userId, session) => getLoadingProgressStatus(report_loading_states_collection, userId, session),
+  getLastReportRequestTimestamp: (userId, session) => getLastReportRequestTimestamp(report_loading_states_collection, userId, session),
 
   updateReportTree: (userId, years, session) => updateReportTree(reports_tree_collection, userId, years, session),
   updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
   updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) =>
     updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
+  updateLastReportRequestTimestamp: (userId, session) => updateLastReportRequestTimestamp(report_loading_states_collection, userId, session),
+  updateReportLoadingDelayStatus: (userId, isReportLoadingDelayed) =>
+    updateReportLoadingDelayStatus(report_loading_states_collection, userId, isReportLoadingDelayed),
 
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
   addReportToAbandonedReports: (userId, reportPeriod, session) =>
@@ -51,6 +59,7 @@ var db = {
 
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   saveListGoodsToDb: (userId, listGoods, session) => saveListGoodsToDb(goods_collection, userId, listGoods, session),
+  setAllUsersLoadingFlag: () => setAllUsersLoadingFlag(report_loading_states_collection),
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
   addNewSkusToListGoods: (userId, newSkus, session) => addNewSkusToListGoods(goods_collection, userId, newSkus, session),

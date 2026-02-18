@@ -20,7 +20,7 @@ var recalculateRetailAmount = function (sku, taxParams, skuPropPostfix) {
     taxParams.hasExcessIncomeForInsurance = true;
     taxParams.requiresAdditionalInsuranceFee = true;
 
-    var difference = taxParams.excessIncomeForInsurance - oldRetailAmount;
+    var difference = taxParams.excessIncomeForAdditionalInsuranceFee - oldRetailAmount;
 
     if (difference > 0) {
       difference = sku["retailAmount" + skuPropPostfix] - difference;
@@ -41,7 +41,7 @@ var recalculateInsuranceFee = function (sku, taxParams, skuPropPostfix) {
   }
 
   var oldAdditionalInsuranceFee = taxParams.additionalInsuranceFee;
-  taxParams.additionalInsuranceFee += sku.additionalInsuranceFee;
+  taxParams.additionalInsuranceFee += sku["additionalInsuranceFee" + skuPropPostfix];
 
   var paidInsuranceFee = taxParams.paidInsuranceFee + taxParams.additionalInsuranceFee;
   var maxAdditionalInsuranceFee = taxParams.maxInsuranceFee - taxParams.mandatoryInsuranceFee;

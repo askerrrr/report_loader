@@ -5,10 +5,14 @@ var reportsProcessing = require("./reportsProcessing");
 var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65000;
 var noDataForPeriodMessage = "there is no data available for the selected reporting period";
-var nextReportDelay = async () => new Promise((res) => setTimeout(res, NEXT_REPORT_DELAY_MS));
+var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTimeout(res, delayMs) : setTimeout(res, NEXT_REPORT_DELAY_MS)));
 
-var loader = async (userId, token) => {
-  await dbUtils.setLoadingProgressStatus(userId, "loading").then(() => console.log("loading is started"));
+var loader = async (userId, token, isServerStartupLoad) => {
+  await dbUtils.setLoadingProgressStatus(userId, "loading").then(() => console.log("the download has started for the user: " + userId));
+
+  if (isServerStartupLoad) {
+    await nextReportDelay();
+  }
 
   while (true) {
     try {
