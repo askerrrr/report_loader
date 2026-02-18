@@ -41,7 +41,7 @@ var recalculateInsuranceFee = function (sku, taxParams, skuPropPostfix) {
   }
 
   var oldAdditionalInsuranceFee = taxParams.additionalInsuranceFee;
-  taxParams.additionalInsuranceFee += sku.additionalInsuranceFee;
+  taxParams.additionalInsuranceFee += sku["additionalInsuranceFee" + skuPropPostfix];
 
   var paidInsuranceFee = taxParams.paidInsuranceFee + taxParams.additionalInsuranceFee;
   var maxAdditionalInsuranceFee = taxParams.maxInsuranceFee - taxParams.mandatoryInsuranceFee;
