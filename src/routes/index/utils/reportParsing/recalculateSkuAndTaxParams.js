@@ -6,6 +6,10 @@ var recalculateSkuAndTaxParams = (sku, taxParams, skuPropPostfix = "") => {
   var { sku, taxParams } = recalculateInsuranceFee(sku, taxParams, skuPropPostfix);
   var { sku, taxParams } = recalculatePaidTaxAmount(sku, taxParams, skuPropPostfix);
 
+  taxParams.retailAmount = truncateNum(taxParams.retailAmount);
+  taxParams.paidTaxAmount = truncateNum(taxParams.paidTaxAmount);
+  taxParams.additionalInsuranceFee = truncateNum(taxParams.additionalInsuranceFee);
+
   return { updatedSku: sku, recalculatedTaxParams: taxParams };
 };
 
@@ -14,7 +18,6 @@ module.exports = recalculateSkuAndTaxParams;
 var recalculateRetailAmount = function (sku, taxParams, skuPropPostfix) {
   var oldRetailAmount = taxParams.retailAmount;
   taxParams.retailAmount += sku["retailAmount" + skuPropPostfix];
-  taxParams.retailAmount = truncateNum(taxParams.retailAmount);
 
   if (taxParams.retailAmount > taxParams.excessIncomeForAdditionalInsuranceFee) {
     taxParams.hasExcessIncomeForInsurance = true;
@@ -79,7 +82,6 @@ var recalculateInsuranceFee = function (sku, taxParams, skuPropPostfix) {
 
 var recalculatePaidTaxAmount = function (sku, taxParams, skuPropPostfix) {
   taxParams.paidTaxAmount += sku["tax" + skuPropPostfix];
-  taxParams.paidTaxAmount = truncateNum(taxParams.paidTaxAmount);
 
   return { sku, taxParams };
 };
