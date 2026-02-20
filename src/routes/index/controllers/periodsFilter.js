@@ -46,6 +46,8 @@ var periodsFilter = async (req, res, next) => {
 
   req.body.userId = userId;
   req.body.filteredRequiredReportPeriods = filteredRequiredReportPeriods;
+
+  next();
 };
 
 module.exports = periodsFilter;
