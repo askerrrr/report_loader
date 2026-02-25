@@ -40,6 +40,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   report.reportId = reportId;
   report.crossesTaxYears = isCrossYearReport;
   report.recordTo = { year, month };
+  report.isFinancesAccounted = false;
 
   var { listGoods } = await dbutils.getListGoodsFromDb(userId, session);
   var { listGoodsWithNewSkus } = await addNewSkusToListGoods(listGoods, skuNamesAndIds, isCrossYearReport, startYear, endYear);
