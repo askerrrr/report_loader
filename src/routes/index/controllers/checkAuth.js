@@ -2,8 +2,8 @@ var Joi = require("joi");
 
 var schema = Joi.object({
   userId: Joi.string().required(),
-  dateFrom: Joi.string(),
-  dateTo: Joi.string(),
+  dateFrom: Joi.string().allow("").required(),
+  dateTo: Joi.string().allow("").required(),
   nextRequestDelayMs: Joi.number(),
   isPeriodWithinSameWeek: Joi.boolean(),
   needsReportLoadingDelay: Joi.boolean(),
