@@ -7,7 +7,6 @@ var schema = Joi.object({
   nextRequestDelayMs: Joi.number(),
   isPeriodWithinSameWeek: Joi.boolean(),
   needsReportLoadingDelay: Joi.boolean(),
-  isWeeklyLoadingOfFreshReport: Joi.boolean(),
 });
 
 var checkAuth = async (req, res, next) => {
@@ -29,19 +28,15 @@ var checkAuth = async (req, res, next) => {
     return res.status(400).json({ error: `Key ${error.details[0].message}` });
   }
 
-  if (req.body.isWeeklyLoadingOfFreshReport) {
-    next();
-  } else {
-    var { getUser } = req.app.locals.db;
+  var { getUser } = req.app.locals.db;
 
-    var user = await getUser(req.body.userId);
+  var user = await getUser(req.body.userId);
 
-    if (!user) {
-      return res.status(404).json({ msg: "user not found" });
-    }
-
-    next();
+  if (!user) {
+    return res.status(404).json({ msg: "user not found" });
   }
+
+  next();
 };
 
 module.exports = checkAuth;

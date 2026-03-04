@@ -8,6 +8,22 @@ var { getLastMondayFromCurrentMonth } = require("../../../dateUtils/getLastMonda
 var noDataForPeriodMessage = "there is no data available for the selected reporting period";
 
 var loadFreshReports = async (req, res, next) => {
+  var authHeader = req.headers?.authorization;
+
+  if (!authHeader) {
+    return res.sendStatus(401);
+  }
+
+  var [type, secretKey] = authHeader.split(" ");
+
+  if (type !== "Bearer" || secretKey !== process.env.SECRET_KEY) {
+    return res.sendStatus(401);
+  }
+
+  if (!req.body?.isWeeklyLoadingOfFreshReport) {
+    return;
+  }
+
   var users = await dbUtils.getUsersData();
 
   if (!users.length) {
@@ -31,7 +47,6 @@ var loadFreshReports = async (req, res, next) => {
         var reportPeriodToLoad = reportPeriods[freshReportPeriodIndex];
         var nextReportPeriodIndex = freshReportPeriodIndex + 1;
         var { filteredRequiredReportPeriods } = filteringOfRequiredReportPeriods(userLoadingStates, [reportPeriodToLoad], reportTree);
-
         var { dateFrom, dateTo } = reportPeriodToLoad;
 
         if (!filteredRequiredReportPeriods.length) {

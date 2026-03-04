@@ -7,9 +7,9 @@ router.post(
   require("./controllers/checkAuth"),
   require("./controllers/periodsFilter"),
   require("./controllers/writeReportsToQueue"),
-  require("./controllers/reportLoading")
+  require("./controllers/reportLoading"),
 );
 
-router.post("/background-tasks/load-fresh-reports", require("./controllers/checkAuth"), require("./controllers/loadFreshReports"));
+router.post("/background-tasks/load-fresh-reports", require("./controllers/loadFreshReports"));
 
 module.exports = router;
