@@ -5,9 +5,7 @@ var { DatabaseError } = require("../../customError");
  */
 var setLoadingProgressStatus = async function (userId, loadingStatus) {
   var options =
-    loadingStatus === "loading"
-      ? { loadingInProgress: "loading" }
-      : { loadingInProgress: "completed", lastReportRequestTimestamp: new Date().getTime() };
+    loadingStatus === "loading" ? { loadingInProgress: true } : { loadingInProgress: false, lastReportRequestTimestamp: new Date().getTime() };
 
   try {
     var collection = this;

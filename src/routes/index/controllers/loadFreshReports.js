@@ -8,11 +8,29 @@ var { getLastMondayFromCurrentMonth } = require("../../../dateUtils/getLastMonda
 var noDataForPeriodMessage = "there is no data available for the selected reporting period";
 
 var loadFreshReports = async (req, res, next) => {
+  var authHeader = req.headers?.authorization;
+
+  if (!authHeader) {
+    return res.sendStatus(401);
+  }
+
+  var [type, secretKey] = authHeader.split(" ");
+
+  if (type !== "Bearer" || secretKey !== process.env.SECRET_KEY) {
+    return res.sendStatus(401);
+  }
+
+  if (!req.body?.isWeeklyLoadingOfFreshReport) {
+    return;
+  }
+
   var users = await dbUtils.getUsersData();
 
   if (!users.length) {
     return res.sendStatus(200);
   }
+
+  res.sendStatus(202);
 
   for (var { userId } of users) {
     var session = await connection.startSession();
@@ -21,9 +39,9 @@ var loadFreshReports = async (req, res, next) => {
       await session.withTransaction(async () => {
         var userLoadingStates = await dbUtils.getUser(userId, session);
         var { reportTree } = await dbUtils.getReportsTree(userId, session);
-        var { freshReportPeriodIndex } = await dbUtils.getFreshReportPeriodIndex(userId, session);
+        var { freshReportPeriodIndex, freshReportPeriodIndexIsExist } = await dbUtils.getFreshReportPeriodIndex(userId, session);
 
-        if (freshReportPeriodIndex < 0) {
+        if (!freshReportPeriodIndexIsExist || freshReportPeriodIndex < 0) {
           var { lastMonday } = getLastMondayFromCurrentMonth();
           freshReportPeriodIndex = reportPeriods.findIndex((item) => item.dateFrom === lastMonday);
         }
@@ -31,7 +49,6 @@ var loadFreshReports = async (req, res, next) => {
         var reportPeriodToLoad = reportPeriods[freshReportPeriodIndex];
         var nextReportPeriodIndex = freshReportPeriodIndex + 1;
         var { filteredRequiredReportPeriods } = filteringOfRequiredReportPeriods(userLoadingStates, [reportPeriodToLoad], reportTree);
-
         var { dateFrom, dateTo } = reportPeriodToLoad;
 
         if (!filteredRequiredReportPeriods.length) {

@@ -33,7 +33,7 @@ var periodsFilter = async (req, res, next) => {
   var { filteredRequiredReportPeriods, abandonedReportsAddedToQueue } = filteringOfRequiredReportPeriods(
     userLoadingsStates,
     requiredReportPeriods,
-    reportTree
+    reportTree,
   );
 
   if (!filteredRequiredReportPeriods.length) {
@@ -44,7 +44,9 @@ var periodsFilter = async (req, res, next) => {
     await dbUtils.resetAbandonedReports(userId);
   }
 
-  req.body = { userId, filteredRequiredReportPeriods };
+  req.body.userId = userId;
+  req.body.filteredRequiredReportPeriods = filteredRequiredReportPeriods;
+
   next();
 };
 

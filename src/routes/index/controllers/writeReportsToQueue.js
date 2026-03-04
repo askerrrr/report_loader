@@ -1,18 +1,31 @@
+var dbUtils = require("../../../database/utils");
+
 var writeReportsToQueue = async (req, res, next) => {
-  var db = req.app.locals.db;
   var { userId, filteredRequiredReportPeriods } = req.body;
+  await dbUtils.pushToReportsQueue(userId, filteredRequiredReportPeriods);
 
-  await db.pushToReportsQueue(userId, filteredRequiredReportPeriods);
-
-  var { loadingInProgress } = await db.getLoadingProgressStatus(userId);
-
+  var { loadingInProgress, isReportLoadingDelayed } = await dbUtils.getReportLoadingState(userId);
   if (loadingInProgress) {
     return res.sendStatus(200);
   }
 
+  if (isReportLoadingDelayed) {
+    return res.sendStatus(202);
+  }
+
   res.sendStatus(202);
+
+  if (req.body.needsReportLoadingDelay) {
+    await dbUtils.updateReportLoadingDelayStatus(userId, true);
+    await delay(req.body.nextRequestDelayMs);
+    await dbUtils.updateReportLoadingDelayStatus(userId, false);
+  }
 
   next();
 };
 
 module.exports = writeReportsToQueue;
+
+var delay = async function (ms) {
+  return new Promise((res) => setTimeout(res, ms));
+};
