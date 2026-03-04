@@ -30,6 +30,8 @@ var loadFreshReports = async (req, res, next) => {
     return res.sendStatus(200);
   }
 
+  res.sendStatus(202);
+
   for (var { userId } of users) {
     var session = await connection.startSession();
 
@@ -37,9 +39,9 @@ var loadFreshReports = async (req, res, next) => {
       await session.withTransaction(async () => {
         var userLoadingStates = await dbUtils.getUser(userId, session);
         var { reportTree } = await dbUtils.getReportsTree(userId, session);
-        var { freshReportPeriodIndex } = await dbUtils.getFreshReportPeriodIndex(userId, session);
+        var { freshReportPeriodIndex, freshReportPeriodIndexIsExist } = await dbUtils.getFreshReportPeriodIndex(userId, session);
 
-        if (freshReportPeriodIndex < 0) {
+        if (!freshReportPeriodIndexIsExist || freshReportPeriodIndex < 0) {
           var { lastMonday } = getLastMondayFromCurrentMonth();
           freshReportPeriodIndex = reportPeriods.findIndex((item) => item.dateFrom === lastMonday);
         }
