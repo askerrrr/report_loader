@@ -7,6 +7,7 @@ var schema = Joi.object({
   nextRequestDelayMs: Joi.number(),
   isPeriodWithinSameWeek: Joi.boolean(),
   needsReportLoadingDelay: Joi.boolean(),
+  uploadAllReports: Joi.boolean().required(),
 });
 
 var checkAuth = async (req, res, next) => {
