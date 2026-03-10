@@ -8,7 +8,8 @@ var isNextMonthReportNeeded = (dateFrom, dateTo) => {
 
   var daysInCurrentMonth = new Date(startYear, startMonth, 0).getDate();
 
-  return daysInCurrentMonth - startDay + 1 < +endDay;
+  var isCarryoverRequired = daysInCurrentMonth - startDay + 1 < +endDay;
+  return isCarryoverRequired;
 };
 
 module.exports = isNextMonthReportNeeded;
