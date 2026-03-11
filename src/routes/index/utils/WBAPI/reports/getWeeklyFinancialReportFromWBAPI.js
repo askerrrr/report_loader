@@ -8,18 +8,28 @@ var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) 
     headers: { Authorization: "Bearer " + token },
   });
 
-  if (res.ok) {
+  if (res.status === 200) {
     var report = await res.json();
-
     return report;
+  } else if (res.status === 204) {
+    return [];
   }
 
-  var errMsg = "Возникла ошибка при получении финансового отчета, попробуйте позже";
-
-  if (res.status === 429) {
-    errMsg = "Подождите минуту перед получением нового отчёта";
-  } else if (res.status === 401) {
-    errMsg = "Не удалось авторизоваться с помощью сохраненного токена";
+  switch (res.status) {
+    case 400:
+      errMsg = "Неправильный запрос";
+      break;
+    case 401:
+      errMsg = "Не удалось авторизоваться с помощью сохраненного токена";
+      break;
+    case 429:
+      errMsg = "Подождите минуту перед получением нового отчёта";
+      break;
+    case 402:
+      errMsg = "Требуется платеж";
+      break;
+    default:
+      errMsg = "Возникла ошибка при получении финансового отчета, попробуйте позже";
   }
 
   throw new WBAPIError(userId, res.status, errMsg);
