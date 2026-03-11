@@ -10,6 +10,10 @@ var getPaidStorageReportByTaskIdFromWBAPI = async (taskId, token, userId) => {
     },
   });
 
+  if (res.status === 204) {
+    return [];
+  }
+
   if (res.ok) {
     var paidStorageReport = await res.json();
 
