@@ -8,19 +8,24 @@ var createPaidStorageReportTask = async (dateFrom, dateTo, token, userId) => {
     headers: { Authorization: "Bearer " + token },
   });
 
-  if (res.ok) {
+  if (res.status === 200) {
     var { data } = await res.json();
 
     return { taskId: data.taskId };
   }
 
-  var errMsg = "Возникла ошибка при получении отчета о платном хранении, попробуйте позже";
-
-  if (res.status === 429) {
-    errMsg = "Подождите минуту перед получением нового отчёта о платном хранении";
-  } else if (res.status === 401) {
-    errMsg =
-      "Не удалось авторизоваться для получения отчета о платном хранении с помощью сохраненного токена. Получить токен с нужными правами можно получить в личном кабинете продавца";
+  switch (res.status) {
+    case 400:
+      errMsg = "Неправильный запрос";
+      break;
+    case 401:
+      errMsg = "Не удалось авторизоваться для создания отчета о платном хранении с помощью сохраненного токена";
+      break;
+    case 429:
+      errMsg = "Подождите минуту перед получением нового отчёта";
+      break;
+    default:
+      errMsg = "Возникла ошибка при получении отчета о платном хранении, попробуйте позже";
   }
 
   throw new WBAPIError(userId, res.status, errMsg);
