@@ -29,5 +29,8 @@ calc.averageProfit = require("./utils/averageProfit");
 calc.averageRetailPrice = require("./utils/averageRetailPrice");
 calc.averageStorageCost = require("./utils/averageStorageCost");
 calc.averageAdvertisingCost = require("./utils/averageAdvertisingCost");
+calc.sellerPayoutAmount = require("./utils/sellerPayoutAmount");
+calc.retailAmount = require("./utils/retailAmount");
+calc.returnAmount = require("./utils/returnAmount");
 
 module.exports = calc;
