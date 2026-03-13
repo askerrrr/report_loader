@@ -1,5 +1,6 @@
 var parseSku = require("./parseSku");
 var calc = require("../calcServices");
+var truncateNum = require("./truncateNum");
 var splitSkuByYear = require("./splitSkuByYear");
 var truncateSkuNums = require("./truncateSkuNums");
 var getSkuNamesAndIds = require("./getSkuNamesAndIds");
@@ -28,7 +29,7 @@ var processCrossReportSkus = async (reports, taxParams) => {
 
   var { startYearWeeklyFinancialReport, endYearWeeklyFinancialReport } = await splitWeeklyFinancialReportByYear(
     weeklyFinancialReport,
-    startYearTaxParams.year
+    startYearTaxParams.year,
   );
 
   var startYearTotals = {};
@@ -42,7 +43,7 @@ var processCrossReportSkus = async (reports, taxParams) => {
   endYearTotals.totalAdvertisingCosts = await calculateTotalAdvertisingCosts(endYearAd);
 
   var totalSold = startYearTotals.totalSold + endYearTotals.totalSold;
-  var totalStorageCost = startYearTotals.totalStorageCost + endYearTotals.totalStorageCost;
+  var totalStorageCost = truncateNum(startYearTotals.totalStorageCost + endYearTotals.totalStorageCost);
   var totalAdvertisingCosts = startYearTotals.totalAdvertisingCosts + endYearTotals.totalAdvertisingCosts;
 
   var skus = [];
@@ -64,13 +65,13 @@ var processCrossReportSkus = async (reports, taxParams) => {
       startYearStorageData,
       startYearTaxParams.taxRate,
       startYearTotals,
-      currentYearPropPostfix
+      currentYearPropPostfix,
     );
 
     var resultOfStartYearRecalculation = recalculateSkuAndTaxParams(
       currentYearSkuData,
       recalculatedTaxParams.startYearTaxParams,
-      currentYearPropPostfix
+      currentYearPropPostfix,
     );
 
     var nextYearSkuData = await parseSku(
@@ -80,7 +81,7 @@ var processCrossReportSkus = async (reports, taxParams) => {
       endYearStorageData,
       endYearTaxParams.taxRate,
       endYearTotals,
-      nextYearPropPostfix
+      nextYearPropPostfix,
     );
 
     var resultOfEndYearRecalculation = recalculateSkuAndTaxParams(nextYearSkuData, recalculatedTaxParams.endYearTaxParams, nextYearPropPostfix);
