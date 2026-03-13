@@ -27,6 +27,7 @@ var parseSku = async (name, skuQty, skuFilteredReport, storageData, taxRate, tot
     sku["profit" + propPostfix] = 0;
     sku["finalProfit" + propPostfix] = 0;
     sku["profitMargin" + propPostfix] = 0;
+    sku["otherExpenses" + propPostfix] = 0;
 
     return sku;
   } catch (e) {
