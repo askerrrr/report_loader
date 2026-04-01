@@ -32,5 +32,6 @@ calc.averageAdvertisingCost = require("./utils/averageAdvertisingCost");
 calc.sellerPayoutAmount = require("./utils/sellerPayoutAmount");
 calc.retailAmount = require("./utils/retailAmount");
 calc.returnAmount = require("./utils/returnAmount");
+calc.taxableAmount = require("./utils/taxableAmountOfReport");
 
 module.exports = calc;
