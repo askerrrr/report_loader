@@ -54,7 +54,6 @@ var setupMongoDBEvents = () => {
       mongodbReconnected = true;
       clearTimeout(timerId);
       timerId = null;
-      serverEmitter.emit("start");
     }
 
     if (!mongodbReconnected) {
@@ -68,7 +67,7 @@ var setupMongoDBEvents = () => {
   });
 };
 
-var killAllSessions = () =>
+var killAllSessions = async () =>
   dbClient
     .db("admin")
     .command({ killAllSessions: [] })
@@ -77,7 +76,7 @@ var killAllSessions = () =>
 var runDB = async () => {
   setupMongoDBEvents();
   await mongodbConnection();
-  killAllSessions();
+  await killAllSessions();
 };
 
 export { runDB, dbClient };
