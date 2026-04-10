@@ -1,5 +1,5 @@
-var loader = require("./loader");
-var dbUtils = require("../../../database/utils");
+import loader from "./loader.js";
+import dbUtils from "../../../database/utils/index.js";
 
 var isServerStartupLoad = true;
 
@@ -20,4 +20,4 @@ var resumeInterruptedReportsLoad = async () => {
   }
 };
 
-module.exports = resumeInterruptedReportsLoad;
+export default resumeInterruptedReportsLoad;

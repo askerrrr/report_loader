@@ -11,7 +11,7 @@ var getMondaysOrSundaysOfMonth = (date, weekDayName) => {
     var [year, month] = date.split("-");
 
     date = new Date(year, month, 0);
-    daysPerMonth = date.getDate();
+    var daysPerMonth = date.getDate();
 
     for (var i = 0; i <= daysPerMonth; i++) {
       var nextDay = new Date(`${year}-${month}-${String(i).padStart(2, "0")}`);
@@ -35,4 +35,4 @@ var getMondaysOrSundaysOfMonth = (date, weekDayName) => {
   }
 };
 
-module.exports = getMondaysOrSundaysOfMonth;
+export default getMondaysOrSundaysOfMonth;

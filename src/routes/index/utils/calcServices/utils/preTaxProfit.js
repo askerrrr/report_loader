@@ -1,12 +1,12 @@
-var truncateNum = require("../../reportParsing/truncateNum");
+import truncateNum from "../../reportParsing/truncateNum.js";
 
-var calcPreTaxProfit = (qty, profit, costPrice) => {
-  if (profit === 0 || qty === 0) {
+var calcPreTaxProfit = (sku, propPostfix = "") => {
+  if (sku["profit" + propPostfix] === 0 || sku["qty" + propPostfix] === 0) {
     return 0;
   }
 
-  var preTaxProfit = profit - qty * costPrice;
+  var preTaxProfit = sku["profit" + propPostfix] - sku["otherExpenses" + propPostfix] - sku["qty" + propPostfix] * sku.costPrice;
   return truncateNum(preTaxProfit);
 };
 
-module.exports = calcPreTaxProfit;
+export default calcPreTaxProfit;

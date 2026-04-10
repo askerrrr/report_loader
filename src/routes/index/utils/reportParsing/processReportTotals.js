@@ -1,5 +1,5 @@
-var calc = require("../calcServices");
-var truncateTotals = require("./truncateTotals");
+import calc from "../calcServices/index.js";
+import truncateTotals from "./truncateTotals.js";
 
 var processReportTotals = async (skus, propPostfix = "") => {
   var report = {};
@@ -25,4 +25,4 @@ var processReportTotals = async (skus, propPostfix = "") => {
   return report;
 };
 
-module.exports = processReportTotals;
+export default processReportTotals;

@@ -1,6 +1,6 @@
-var { MongoClient } = require("mongodb");
+import { MongoClient } from "mongodb";
 
-var client = new MongoClient(process.env.MONGO_URI);
+var dbClient = new MongoClient(process.env.MONGO_URI);
 
 var timerId = null;
 var connectionAttempts = 0;
@@ -8,7 +8,7 @@ var eventsConfigured = false;
 var mongodbReconnected = false;
 var MAX_CONNECTION_ATTEMPTS = 5;
 
-var mongodbConnection = async () => await client.connect();
+var mongodbConnection = async () => await dbClient.connect();
 
 var setupMongoDBEvents = () => {
   if (eventsConfigured) {
@@ -19,12 +19,12 @@ var setupMongoDBEvents = () => {
 
   console.log("connection to mongodb...\n");
 
-  client.on("error", (e) => {
+  dbClient.on("error", (e) => {
     console.log("mongodb connection error: ", { name: e.name, msg: e.message });
-    client.close();
+    dbClient.close();
   });
 
-  client.on("serverClosed", () => {
+  dbClient.on("serverClosed", () => {
     console.log("mongodb disconnected\n");
 
     if (timerId) {
@@ -37,7 +37,7 @@ var setupMongoDBEvents = () => {
     if (connectionAttempts === MAX_CONNECTION_ATTEMPTS) {
       clearTimeout(timerId);
       timerId = null;
-      client.removeAllListeners();
+      dbClient.removeAllListeners();
       console.log("mongodb connection was been destroed");
 
       return;
@@ -46,7 +46,7 @@ var setupMongoDBEvents = () => {
     connectionAttempts++;
   });
 
-  client.on("serverOpening", () => {
+  dbClient.on("serverOpening", () => {
     if (timerId) {
       console.clear();
       console.log("mongodb reconnected\n");
@@ -59,6 +59,7 @@ var setupMongoDBEvents = () => {
 
     if (!mongodbReconnected) {
       console.clear();
+
       console.log("mongodb connected\n");
     }
 
@@ -67,8 +68,8 @@ var setupMongoDBEvents = () => {
   });
 };
 
-var killAllSessions = async () =>
-  client
+var killAllSessions = () =>
+  dbClient
     .db("admin")
     .command({ killAllSessions: [] })
     .then(() => console.log("all sessions killed"));
@@ -76,7 +77,7 @@ var killAllSessions = async () =>
 var runDB = async () => {
   setupMongoDBEvents();
   await mongodbConnection();
-  await killAllSessions();
+  killAllSessions();
 };
 
-module.exports = { runDB, connection: client };
+export { runDB, dbClient };

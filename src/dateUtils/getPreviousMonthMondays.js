@@ -1,4 +1,4 @@
-var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
+import getMondaysOrSundaysOfMonth from "./getMondaysOrSundaysOfMonth.js";
 
 var getPreviousMonthMondays = (dateTo) => {
   if (!dateTo) {
@@ -21,4 +21,4 @@ var getPreviousMonthMondays = (dateTo) => {
   return { mondays };
 };
 
-module.exports = getPreviousMonthMondays;
+export default getPreviousMonthMondays;

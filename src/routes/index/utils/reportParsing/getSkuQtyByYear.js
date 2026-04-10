@@ -8,4 +8,4 @@ var getSkuQtyByYear = (report, year) => {
   return qty;
 };
 
-module.exports = getSkuQtyByYear;
+export default getSkuQtyByYear;

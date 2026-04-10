@@ -8,4 +8,4 @@ var calcAverageStorageCost = (totalStorageCost, totalSold, qty) => {
   return averageStorageCost;
 };
 
-module.exports = calcAverageStorageCost;
+export default calcAverageStorageCost;

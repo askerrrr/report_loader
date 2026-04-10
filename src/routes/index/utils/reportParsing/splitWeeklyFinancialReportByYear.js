@@ -17,4 +17,4 @@ var splitWeeklyFinancialReportByYear = async (report) => {
   return { startYearWeeklyFinancialReport, endYearWeeklyFinancialReport };
 };
 
-module.exports = splitWeeklyFinancialReportByYear;
+export default splitWeeklyFinancialReportByYear;

@@ -39,9 +39,4 @@ class ReportNotFoundError extends Error {
   }
 }
 
-module.exports = {
-  WBAPIError,
-  DatabaseError,
-  ReportNotFoundError,
-  DatabaseConnectionError,
-};
+export { WBAPIError, DatabaseError, ReportNotFoundError, DatabaseConnectionError };

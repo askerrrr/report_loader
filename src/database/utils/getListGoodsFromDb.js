@@ -1,4 +1,4 @@
-var { WBAPIError } = require("../../customError");
+import { WBAPIError } from "../../customError/index.js";
 
 var getListGoodsFromDb = async (collection, userId, session) => {
   try {
@@ -10,4 +10,4 @@ var getListGoodsFromDb = async (collection, userId, session) => {
   }
 };
 
-module.exports = getListGoodsFromDb;
+export default getListGoodsFromDb;

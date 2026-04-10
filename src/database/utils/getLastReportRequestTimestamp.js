@@ -3,4 +3,4 @@ var getLastReportRequestTimestamp = async (collection, userId, session) => {
   return { lastReportRequestTimestamp };
 };
 
-module.exports = getLastReportRequestTimestamp;
+export default getLastReportRequestTimestamp;

@@ -1,4 +1,4 @@
-var { DatabaseError } = require("../../customError");
+import { DatabaseError } from "../../customError/index.js";
 
 var getToken = async (collection, userId, session) => {
   try {
@@ -14,4 +14,4 @@ var getToken = async (collection, userId, session) => {
   }
 };
 
-module.exports = getToken;
+export default getToken;

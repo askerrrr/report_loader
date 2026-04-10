@@ -1,6 +1,6 @@
-var getPreviousMonthMondays = require("./getPreviousMonthMondays");
-var getPreviousMonthSundays = require("./getPreviousMonthSundays");
-var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
+import getPreviousMonthMondays from "./getPreviousMonthMondays.js";
+import getPreviousMonthSundays from "./getPreviousMonthSundays.js";
+import getMondaysOrSundaysOfMonth from "./getMondaysOrSundaysOfMonth.js";
 
 var getLastMondayFromCurrentMonth = () => {
   var date = new Date();
@@ -66,4 +66,4 @@ var getLastSunday = async () => {
   return { sunday: sunday.split("T")[0] };
 };
 
-module.exports = { getLastMonday, getLastSunday, getLastMondayFromCurrentMonth };
+export { getLastMonday, getLastSunday, getLastMondayFromCurrentMonth };

@@ -6,4 +6,4 @@ var getMonthNameAndIndex = (monthNum) => {
   return { monthName, monthIndex };
 };
 
-module.exports = getMonthNameAndIndex;
+export default getMonthNameAndIndex;

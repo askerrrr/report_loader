@@ -53,4 +53,4 @@ var addNewSkusToListGoods = async (listGoods, skusFromFinancialReports, isCrossY
   return { listGoodsWithNewSkus: listGoods };
 };
 
-module.exports = addNewSkusToListGoods;
+export default addNewSkusToListGoods;

@@ -1,4 +1,5 @@
-var calc = require("../calcServices");
+import calc from "../calcServices/index.js";
+
 var parseSku = async (name, skuQty, skuFilteredReport, storageData, taxRate, totals, propPostfix = "") => {
   try {
     var { totalSold, totalStorageCost, totalAdvertisingCosts } = totals;
@@ -36,4 +37,4 @@ var parseSku = async (name, skuQty, skuFilteredReport, storageData, taxRate, tot
   }
 };
 
-module.exports = parseSku;
+export default parseSku;

@@ -1,4 +1,4 @@
-var loader = require("../utils/loader");
+import loader from "../utils/loader.js";
 
 var reportLoading = async (req, res, next) => {
   var { userId } = req.body;
@@ -8,4 +8,4 @@ var reportLoading = async (req, res, next) => {
   await loader(userId, token);
 };
 
-module.exports = reportLoading;
+export default reportLoading;

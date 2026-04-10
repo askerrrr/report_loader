@@ -1,4 +1,4 @@
-var { WBAPIError } = require("../../../../../customError");
+import { WBAPIError } from "../../../../../customError/index.js";
 
 var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) => {
   var url = `https://statistics-api.wildberries.ru/api/v5/supplier/reportDetailByPeriod?dateFrom=${dateFrom}&dateTo=${dateTo}`;
@@ -35,4 +35,4 @@ var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) 
   throw new WBAPIError(userId, res.status, errMsg);
 };
 
-module.exports = getWeeklyFinancialReportFromWBAPI;
+export default getWeeklyFinancialReportFromWBAPI;

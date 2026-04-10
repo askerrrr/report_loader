@@ -8,4 +8,4 @@ var updateSkuInArray = async (skus, { skuIndex, costPrice, fieldName }) => {
   return skus;
 };
 
-module.exports = updateSkuInArray;
+export default updateSkuInArray;

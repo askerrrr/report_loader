@@ -1,30 +1,30 @@
-var calcFinalProfit = require("./finalProfit");
-var calcProfitMargin = require("./profitMargin");
-var calcInsuranceFee = require("./insuranceFee");
-var calcPreTaxProfit = require("./preTaxProfit");
+import calcFinalProfit from "./finalProfit.js";
+import calcProfitMargin from "./profitMargin.js";
+import calcInsuranceFee from "./insuranceFee.js";
+import calcPreTaxProfit from "./preTaxProfit.js";
 
 var calcRestSKUParams = (sku, taxParams, propPostfix = "") => {
   sku["isCostPriceSet" + propPostfix] = true;
 
-  sku["preTaxProfit" + propPostfix] = calcPreTaxProfit(sku["qty" + propPostfix], sku["profit" + propPostfix], sku.costPrice);
+  sku["preTaxProfit" + propPostfix] = calcPreTaxProfit(sku, propPostfix);
 
   var { sku, taxParams } = recalculateInsuranceFee(sku, taxParams, propPostfix);
 
-  var previousSkuFinalProfit = sku["finalProfit" + propPostfix];
-  sku["profitMargin" + propPostfix] = calcProfitMargin(sku["finalProfit" + propPostfix], sku["retailAmount" + propPostfix]);
+  if (!sku["finalProfit" + propPostfix]) {
+    sku["finalProfit" + propPostfix] = 0;
+  }
 
-  sku["finalProfit" + propPostfix] = calcFinalProfit(
-    sku["preTaxProfit" + propPostfix],
-    sku["insuranceFee" + propPostfix],
-    sku["tax" + propPostfix],
-    sku["additionalInsuranceFee" + propPostfix]
-  );
+  var previousSkuFinalProfit = sku["finalProfit" + propPostfix];
+
+  sku["finalProfit" + propPostfix] = calcFinalProfit(sku, propPostfix);
+
+  sku["profitMargin" + propPostfix] = calcProfitMargin(sku["finalProfit" + propPostfix], sku["retailAmount" + propPostfix]);
 
   taxParams.finalProfit = taxParams.finalProfit - previousSkuFinalProfit + sku["finalProfit" + propPostfix];
   return { updatedTaxParams: taxParams, skuWithCalculatedParams: sku };
 };
 
-module.exports = calcRestSKUParams;
+export default calcRestSKUParams;
 
 var recalculateInsuranceFee = function (sku, taxParams, propPostfix) {
   if (taxParams.mandatoryInsuranceFeeIsPaid) {

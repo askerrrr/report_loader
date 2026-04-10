@@ -1,4 +1,6 @@
-var wbapi = {};
+import getReports from "./reports/index.js";
 
-wbapi.getReports = require("./reports");
-module.exports = wbapi;
+var wbapi = {};
+wbapi.getReports = getReports;
+
+export default wbapi;

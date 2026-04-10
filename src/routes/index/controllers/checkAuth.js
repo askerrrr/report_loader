@@ -1,4 +1,4 @@
-var Joi = require("joi");
+import Joi from "joi";
 
 var schema = Joi.object({
   userId: Joi.string().required(),
@@ -40,4 +40,4 @@ var checkAuth = async (req, res, next) => {
   next();
 };
 
-module.exports = checkAuth;
+export default checkAuth;

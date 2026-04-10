@@ -1,4 +1,4 @@
-var { WBAPIError } = require("../../customError");
+import { WBAPIError } from "../../customError/index.js";
 
 var saveListGoodsToDb = async (collection, userId, listGoods, session) => {
   try {
@@ -16,4 +16,4 @@ var saveListGoodsToDb = async (collection, userId, listGoods, session) => {
   }
 };
 
-module.exports = saveListGoodsToDb;
+export default saveListGoodsToDb;

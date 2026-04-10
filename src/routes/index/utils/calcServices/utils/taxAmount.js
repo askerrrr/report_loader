@@ -8,4 +8,4 @@ var taxAmount = (retailAmount, taxRate) => {
   return tax;
 };
 
-module.exports = taxAmount;
+export default taxAmount;

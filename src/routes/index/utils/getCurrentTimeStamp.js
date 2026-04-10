@@ -2,4 +2,4 @@ var getCurrentTimeStamp = () => {
   return { currentTimeMs: new Date().getTime() };
 };
 
-module.exports = getCurrentTimeStamp;
+export default getCurrentTimeStamp;

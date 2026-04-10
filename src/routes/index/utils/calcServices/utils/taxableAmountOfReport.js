@@ -1,4 +1,4 @@
-var truncateNum = require("../../reportParsing/truncateNum");
+import truncateNum from "../../reportParsing/truncateNum.js";
 
 var taxableAmountOfReport = (report) => {
   var buybackReportIsExist = report.find((item) => item.report_type !== 1);
@@ -28,4 +28,4 @@ var taxableAmountOfReport = (report) => {
   return truncateNum(taxableAmount);
 };
 
-module.exports = taxableAmountOfReport;
+export default taxableAmountOfReport;

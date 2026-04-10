@@ -1,5 +1,5 @@
-var calc = require("../calcServices");
-var getSKUNamesFromPaidStorageReport = require("./getSKUNamesFromPaidStorageReport");
+import calc from "../calcServices/index.js";
+import getSKUNamesFromPaidStorageReport from "./getSKUNamesFromPaidStorageReport.js";
 
 var parsePaidStorageReport = async (report) => {
   var skuNames = await getSKUNamesFromPaidStorageReport(report);
@@ -15,4 +15,4 @@ var parsePaidStorageReport = async (report) => {
   return data;
 };
 
-module.exports = parsePaidStorageReport;
+export default parsePaidStorageReport;

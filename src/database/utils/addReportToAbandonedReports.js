@@ -1,4 +1,4 @@
-var { DatabaseError } = require("../../customError");
+import { DatabaseError } from "../../customError/index.js";
 
 var addReportToAbandonedReports = async (collection, userId, reportPeriod, session) => {
   try {
@@ -8,4 +8,4 @@ var addReportToAbandonedReports = async (collection, userId, reportPeriod, sessi
   }
 };
 
-module.exports = addReportToAbandonedReports;
+export default addReportToAbandonedReports;

@@ -1,9 +1,9 @@
-var parseSku = require("./parseSku");
-var calc = require("../calcServices");
-var truncateSkuNums = require("./truncateSkuNums");
-var getSkuNamesAndIds = require("./getSkuNamesAndIds");
-var parsePaidStorageReport = require("./parsePaidStorageReport");
-var recalculateSkuAndTaxParams = require("./recalculateSkuAndTaxParams");
+import parseSku from "./parseSku.js";
+import calc from "../calcServices/index.js";
+import truncateSkuNums from "./truncateSkuNums.js";
+import getSkuNamesAndIds from "./getSkuNamesAndIds.js";
+import parsePaidStorageReport from "./parsePaidStorageReport.js";
+import recalculateSkuAndTaxParams from "./recalculateSkuAndTaxParams.js";
 
 var processNonCrossReportSkus = async (reports, taxParams) => {
   var skus = [];
@@ -38,7 +38,7 @@ var processNonCrossReportSkus = async (reports, taxParams) => {
   return { skus, recalculatedTaxParams, skuNamesAndIds, ...totals };
 };
 
-module.exports = processNonCrossReportSkus;
+export default processNonCrossReportSkus;
 
 var calculateTotalAdvertisingCosts = async function (data) {
   return data.reduce((acc, i) => acc + i.updSum, 0);

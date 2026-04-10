@@ -93,4 +93,4 @@ var defaultTaxParams = [
   },
 ];
 
-module.exports = defaultTaxParams;
+export default defaultTaxParams;

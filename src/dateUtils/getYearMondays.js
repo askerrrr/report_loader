@@ -1,4 +1,4 @@
-var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
+import getMondaysOrSundaysOfMonth from "./getMondaysOrSundaysOfMonth.js";
 
 var getNextDateFrom = (monthNum, year) => `${year}-${String(monthNum).padStart(2, "0")}-${15}`;
 
@@ -16,4 +16,4 @@ var getYearMondays = (date) => {
   return { yearMondays: yearMondays.map((monday) => monday.split("T")[0]) };
 };
 
-module.exports = getYearMondays;
+export default getYearMondays;

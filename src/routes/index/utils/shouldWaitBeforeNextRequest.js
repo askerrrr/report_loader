@@ -1,4 +1,4 @@
-var getCurrentTimeStamp = require("./getCurrentTimeStamp");
+import getCurrentTimeStamp from "./getCurrentTimeStamp.js";
 
 var oneMinuteMs = 60 * 1000;
 
@@ -20,4 +20,4 @@ var shouldWaitBeforeNextRequest = (lastReportRequestTimestamp) => {
   return { nextRequestDelayMs: difference };
 };
 
-module.exports = shouldWaitBeforeNextRequest;
+export default shouldWaitBeforeNextRequest;

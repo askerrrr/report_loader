@@ -1,4 +1,4 @@
-var truncateNum = require("./reportParsing/truncateNum");
+import truncateNum from "./reportParsing/truncateNum.js";
 
 var aggregateSkuMetrics = (skuMetrics, sku, postfix = "") => {
   skuMetrics.qty += sku["qty" + postfix];
@@ -49,4 +49,4 @@ var updateListGoodsMetrics = async (report, listGoods) => {
   return { listGoodsWithUpdatedSkuMetrics: listGoods };
 };
 
-module.exports = updateListGoodsMetrics;
+export default updateListGoodsMetrics;

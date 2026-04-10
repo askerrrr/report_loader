@@ -12,4 +12,4 @@ var calcAverageRetailPrice = (quantity, sku) => {
   return averageRetailPrice;
 };
 
-module.exports = calcAverageRetailPrice;
+export default calcAverageRetailPrice;

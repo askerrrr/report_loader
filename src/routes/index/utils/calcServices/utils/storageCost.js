@@ -1,4 +1,4 @@
-var truncateNum = require("../../reportParsing/truncateNum");
+import truncateNum from "../../reportParsing/truncateNum.js";
 
 var calcStorageCost = (skuName, storageData) => {
   var sku = storageData.find((e) => skuName === e.name);
@@ -6,4 +6,4 @@ var calcStorageCost = (skuName, storageData) => {
   return truncateNum(sku?.skuStorageCost ?? 0);
 };
 
-module.exports = calcStorageCost;
+export default calcStorageCost;

@@ -1,4 +1,4 @@
-var { WBAPIError } = require("../../../../../customError");
+import { WBAPIError } from "../../../../../customError/index.js";
 
 var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
   var url = `https://advert-api.wildberries.ru/adv/v1/upd?from=${dateFrom}&to=${dateTo}`;
@@ -32,4 +32,4 @@ var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
   throw new WBAPIError(userId, res.status, errMsg);
 };
 
-module.exports = getAdvertisingCostsForPeriod;
+export default getAdvertisingCostsForPeriod;

@@ -1,4 +1,4 @@
-var checkReportExistsInTree = require("./checkReportExistsInTree");
+import checkReportExistsInTree from "./checkReportExistsInTree.js";
 
 var filteringOfRequiredReportPeriods = ({ reportsQueue, abandonedReports }, requiredReportPeriods, reportTree) => {
   var resultOfTheFirstFiltering = [];
@@ -42,4 +42,4 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, abandonedReports }, requ
   return { filteredRequiredReportPeriods: mergedArrayWithoutRepeat, abandonedReportsAddedToQueue: true };
 };
 
-module.exports = filteringOfRequiredReportPeriods;
+export default filteringOfRequiredReportPeriods;

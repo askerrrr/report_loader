@@ -1,4 +1,4 @@
-var { DatabaseError } = require("../../customError");
+import { DatabaseError } from "../../customError/index.js";
 
 var changeTaxParamsToDb = async (collection, userId, year, session, newTaxParams) => {
   try {
@@ -8,11 +8,7 @@ var changeTaxParamsToDb = async (collection, userId, year, session, newTaxParams
       query[`years.$.${key}`] = newTaxParams[key];
     }
 
-    var result = await collection.updateOne(
-      { userId, "years.year": year },
-      { $set: query },
-      { session: session }
-    );
+    var result = await collection.updateOne({ userId, "years.year": year }, { $set: query }, { session: session });
 
     return result.acknowledged;
   } catch (e) {
@@ -20,4 +16,4 @@ var changeTaxParamsToDb = async (collection, userId, year, session, newTaxParams
   }
 };
 
-module.exports = changeTaxParamsToDb;
+export default changeTaxParamsToDb;

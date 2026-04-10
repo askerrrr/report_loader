@@ -1,5 +1,5 @@
-var getMondayIndex = require("./getMondayIndex");
-var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
+import getMondayIndex from "./getMondayIndex.js";
+import getMondaysOrSundaysOfMonth from "./getMondaysOrSundaysOfMonth.js";
 
 /**
  * @param {'overlap - yes' | 'overlap - no'} overlapStatus
@@ -24,4 +24,4 @@ var insertReportIdAndFullPeriodToReportIds = (date, fullPeriod, reportId, overla
   return reportIds;
 };
 
-module.exports = insertReportIdAndFullPeriodToReportIds;
+export default insertReportIdAndFullPeriodToReportIds;

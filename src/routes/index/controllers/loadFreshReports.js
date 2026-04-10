@@ -1,9 +1,9 @@
-var dbUtils = require("../../../database/utils");
-var { connection } = require("../../../database");
-var reportsProcessing = require("../utils/reportsProcessing");
-var reportPeriods = require("../../../dateUtils/reportPeriods");
-var filteringOfRequiredReportPeriods = require("../utils/filteringOfRequiredReportPeriods");
-var { getLastMondayFromCurrentMonth } = require("../../../dateUtils/getLastMondayFromCurrentMonth");
+import dbUtils from "../../../database/utils/index.js";
+import { dbClient } from "../../../database/index.js";
+import reportsProcessing from "../utils/reportsProcessing.js";
+import reportPeriods from "../../../dateUtils/reportPeriods.js";
+import filteringOfRequiredReportPeriods from "../utils/filteringOfRequiredReportPeriods.js";
+import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayFromCurrentMonth.js";
 
 var noDataForPeriodMessage = "there is no data available for the selected reporting period";
 
@@ -90,4 +90,4 @@ var loadFreshReports = async (req, res, next) => {
   }
 };
 
-module.exports = loadFreshReports;
+export default loadFreshReports;

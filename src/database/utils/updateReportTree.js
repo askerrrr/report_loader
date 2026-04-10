@@ -1,4 +1,4 @@
-var { DatabaseError } = require("../../customError");
+import { DatabaseError } from "../../customError/index.js";
 
 var updateReportsTree = async (collection, userId, years, session) => {
   try {
@@ -11,4 +11,4 @@ var updateReportsTree = async (collection, userId, years, session) => {
   }
 };
 
-module.exports = updateReportsTree;
+export default updateReportsTree;

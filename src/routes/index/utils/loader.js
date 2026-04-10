@@ -1,6 +1,6 @@
-var dbUtils = require("../../../database/utils");
-var { connection } = require("../../../database");
-var reportsProcessing = require("./reportsProcessing");
+import { dbClient } from "../../../database/index.js";
+import dbUtils from "../../../database/utils/index.js";
+import reportsProcessing from "./reportsProcessing.js";
 
 var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65000;
@@ -15,10 +15,8 @@ var loader = async (userId, token, isServerStartupLoad) => {
   }
 
   while (true) {
+    var session = await dbClient.startSession();
     try {
-      var queueIsEmpty = false;
-      var session = await connection.startSession();
-
       await session.withTransaction(async () => {
         var { report, queueLength } = await dbUtils.getReportsQueue(userId, session);
 
@@ -69,4 +67,4 @@ var loader = async (userId, token, isServerStartupLoad) => {
   await dbUtils.setLoadingProgressStatus(userId, "completed").then(() => console.log("LOADING COMPLETED"));
 };
 
-module.exports = loader;
+export default loader;

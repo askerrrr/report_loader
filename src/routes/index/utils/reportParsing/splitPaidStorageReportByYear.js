@@ -19,4 +19,4 @@ var splitPaidStorageReportByYear = async (storageReport, startYear) => {
   return { startYearStorageData, endYearStorageData };
 };
 
-module.exports = splitPaidStorageReportByYear;
+export default splitPaidStorageReportByYear;

@@ -1,4 +1,4 @@
-var truncateNum = require("../../reportParsing/truncateNum");
+import truncateNum from "../../reportParsing/truncateNum.js";
 
 /**
  * @param {'truncate-on' | 'truncate-off'} truncate
@@ -13,4 +13,4 @@ var sum = (data, filedName, truncate) => {
   return result;
 };
 
-module.exports = sum;
+export default sum;

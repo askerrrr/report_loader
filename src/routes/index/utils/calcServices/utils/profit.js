@@ -7,4 +7,4 @@ var calcProfit = (sku, propPostfix = "") =>
   sku["additionalPayment" + propPostfix] -
   sku["averageAdvertisingCost" + propPostfix];
 
-module.exports = calcProfit;
+export default calcProfit;

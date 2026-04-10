@@ -1,5 +1,5 @@
-var getMonthNameAndIndex = require("./getMonthNameAndIndex");
-var insertReportIdAndFullPeriodToReportIds = require("./insertReportIdAndFullPeriodToReportIds");
+import getMonthNameAndIndex from "./getMonthNameAndIndex.js";
+import insertReportIdAndFullPeriodToReportIds from "./insertReportIdAndFullPeriodToReportIds.js";
 
 var insertMonthDataToMonths = async (reportId, fullPeriod, date, overlapStatus) => {
   var reportIds = insertReportIdAndFullPeriodToReportIds(date, fullPeriod, reportId, overlapStatus);
@@ -10,4 +10,4 @@ var insertMonthDataToMonths = async (reportId, fullPeriod, date, overlapStatus) 
   return months;
 };
 
-module.exports = insertMonthDataToMonths;
+export default insertMonthDataToMonths;

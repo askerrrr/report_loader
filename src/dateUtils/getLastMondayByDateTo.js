@@ -1,6 +1,6 @@
-var getPreviousMonthMondays = require("./getPreviousMonthMondays");
-var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
-var { getLastMondayFromCurrentMonth } = require("./getLastMondayFromCurrentMonth");
+import getPreviousMonthMondays from "./getPreviousMonthMondays.js";
+import getMondaysOrSundaysOfMonth from "./getMondaysOrSundaysOfMonth.js";
+import { getLastMondayFromCurrentMonth } from "./getLastMondayFromCurrentMonth.js";
 
 var getLastMondayByDateTo = (dateTo) => {
   if (!dateTo) {
@@ -22,4 +22,4 @@ var getLastMondayByDateTo = (dateTo) => {
   return { lastMonday };
 };
 
-module.exports = getLastMondayByDateTo;
+export default getLastMondayByDateTo;

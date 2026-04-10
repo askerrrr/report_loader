@@ -7,4 +7,4 @@ var caclAverageAdvertisingCost = (skuQty, totalAdvertisingCosts) => {
   return averageAdvertisingCost;
 };
 
-module.exports = caclAverageAdvertisingCost;
+export default caclAverageAdvertisingCost;

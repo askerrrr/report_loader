@@ -6,4 +6,4 @@ var calcSKUStorageCostFromPaidStorageReport = (report, skuName) => {
   return SKUStorageCost;
 };
 
-module.exports = calcSKUStorageCostFromPaidStorageReport;
+export default calcSKUStorageCostFromPaidStorageReport;
