@@ -15,6 +15,7 @@ var loader = async (userId, token, isServerStartupLoad) => {
   }
 
   while (true) {
+    var queueIsEmpty = false;
     var session = await dbClient.startSession();
     try {
       await session.withTransaction(async () => {
