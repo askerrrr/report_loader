@@ -1,5 +1,5 @@
-var { DatabaseError } = require("../../customError");
-var defaultTaxParams = require("../defaultTaxParams");
+import defaultTaxParams from "../defaultTaxParams.js";
+import { DatabaseError } from "../../customError/index.js";
 
 var addNewTaxYearToDb = async (collection, userId, year, session) => {
   try {
@@ -12,11 +12,7 @@ var addNewTaxYearToDb = async (collection, userId, year, session) => {
       var nextYearTaxParams = taxYears.find((params) => params.year === nextYear);
       if (!nextYearTaxParams) {
         var defaultNextYearTaxParams = defaultTaxParams.find((i) => i.year === nextYear);
-        await collection.updateOne(
-          { userId },
-          { $push: { years: { ...defaultNextYearTaxParams } } },
-          { session: session }
-        );
+        await collection.updateOne({ userId }, { $push: { years: { ...defaultNextYearTaxParams } } }, { session: session });
       }
 
       return existTaxParams;
@@ -24,11 +20,7 @@ var addNewTaxYearToDb = async (collection, userId, year, session) => {
 
     var defaultCurrentYearTaxParams = defaultTaxParams.find((i) => i.year === year);
 
-    await collection.updateOne(
-      { userId },
-      { $push: { years: { ...defaultCurrentYearTaxParams } } },
-      { session: session }
-    );
+    await collection.updateOne({ userId }, { $push: { years: { ...defaultCurrentYearTaxParams } } }, { session: session });
 
     return defaultCurrentYearTaxParams;
   } catch (e) {
@@ -36,4 +28,4 @@ var addNewTaxYearToDb = async (collection, userId, year, session) => {
   }
 };
 
-module.exports = addNewTaxYearToDb;
+export default addNewTaxYearToDb;

@@ -3,13 +3,16 @@
  * https://dev.wildberries.ru/openapi/financial-reports-and-accounting#tag/Finansovye-otchyoty/paths/~1api~1v5~1supplier~1reportDetailByPeriod/get
  **/
 
-var getAllReportPeriods = require("./getAllReportPeriods");
-var writeReportPeriodsToFile = require("./writeReportPeriodsToFile");
+import reportPeriods from "./reportPeriods.js";
+import getAllReportPeriods from "./getAllReportPeriods.js";
+import writeReportPeriodsToFile from "./writeReportPeriodsToFile.js";
 
 var runReportPeriodsWriter = () => {
+  if (reportPeriods.length) {
+    return;
+  }
   var { allPeriods } = getAllReportPeriods();
-
   writeReportPeriodsToFile(allPeriods);
 };
 
-module.exports = runReportPeriodsWriter;
+export default runReportPeriodsWriter;

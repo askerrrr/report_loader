@@ -1,4 +1,4 @@
-var { DatabaseError } = require("../../customError");
+import { DatabaseError } from "../../customError/index.js";
 
 /**
  * @param {"loading" | "completed"} loadingStatus
@@ -15,4 +15,4 @@ var setLoadingProgressStatus = async function (userId, loadingStatus) {
   }
 };
 
-module.exports = setLoadingProgressStatus;
+export default setLoadingProgressStatus;

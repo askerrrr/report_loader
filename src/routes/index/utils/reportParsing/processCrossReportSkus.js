@@ -1,14 +1,14 @@
-var parseSku = require("./parseSku");
-var calc = require("../calcServices");
-var truncateNum = require("./truncateNum");
-var splitSkuByYear = require("./splitSkuByYear");
-var truncateSkuNums = require("./truncateSkuNums");
-var getSkuNamesAndIds = require("./getSkuNamesAndIds");
-var parsePaidStorageReport = require("./parsePaidStorageReport");
-var recalculateSkuAndTaxParams = require("./recalculateSkuAndTaxParams");
-var splitPaidStorageReportByYear = require("./splitPaidStorageReportByYear");
-var splitAdvertisingReportByYear = require("./splitAdvertisingReportByYear");
-var splitWeeklyFinancialReportByYear = require("./splitWeeklyFinancialReportByYear");
+import parseSku from "./parseSku.js";
+import truncateNum from "./truncateNum.js";
+import calc from "../calcServices/index.js";
+import splitSkuByYear from "./splitSkuByYear.js";
+import truncateSkuNums from "./truncateSkuNums.js";
+import getSkuNamesAndIds from "./getSkuNamesAndIds.js";
+import parsePaidStorageReport from "./parsePaidStorageReport.js";
+import recalculateSkuAndTaxParams from "./recalculateSkuAndTaxParams.js";
+import splitPaidStorageReportByYear from "./splitPaidStorageReportByYear.js";
+import splitAdvertisingReportByYear from "./splitAdvertisingReportByYear.js";
+import splitWeeklyFinancialReportByYear from "./splitWeeklyFinancialReportByYear.js";
 
 var calculateTotalAdvertisingCosts = async (data) => data.reduce((acc, i) => acc + i.updSum, 0);
 
@@ -109,4 +109,4 @@ var processCrossReportSkus = async (reports, taxParams) => {
   return { skus, skuNamesAndIds, totalSold, totalStorageCost, totalAdvertisingCosts, recalculatedTaxParams };
 };
 
-module.exports = processCrossReportSkus;
+export default processCrossReportSkus;

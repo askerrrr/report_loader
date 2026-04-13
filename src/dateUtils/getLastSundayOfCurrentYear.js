@@ -1,4 +1,4 @@
-var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
+import getMondaysOrSundaysOfMonth from "./getMondaysOrSundaysOfMonth.js";
 
 var getLastSundayOfCurrentYear = () => {
   var date = new Date();
@@ -9,4 +9,4 @@ var getLastSundayOfCurrentYear = () => {
   return { lastSunday: lastSunday.split("T")[0] };
 };
 
-module.exports = getLastSundayOfCurrentYear;
+export default getLastSundayOfCurrentYear;

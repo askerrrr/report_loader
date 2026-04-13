@@ -12,4 +12,4 @@ var getSkuNamesAndIds = (report) => {
   return [...uniqueMap.values()];
 };
 
-module.exports = getSkuNamesAndIds;
+export default getSkuNamesAndIds;

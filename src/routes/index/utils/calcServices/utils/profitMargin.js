@@ -1,4 +1,4 @@
-var truncateNum = require("../../reportParsing/truncateNum");
+import truncateNum from "../../reportParsing/truncateNum.js";
 
 var calcProfitMargin = (finalProfit, retailAmount) => {
   if (finalProfit === 0) {
@@ -9,4 +9,4 @@ var calcProfitMargin = (finalProfit, retailAmount) => {
   return truncateNum(profitMargin);
 };
 
-module.exports = calcProfitMargin;
+export default calcProfitMargin;

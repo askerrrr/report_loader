@@ -19,4 +19,4 @@ var splitAdvertisingReportByYear = async (advertisingReport, startYear) => {
   return { startYearAd, endYearAd };
 };
 
-module.exports = splitAdvertisingReportByYear;
+export default splitAdvertisingReportByYear;

@@ -12,4 +12,4 @@ var isNextMonthReportNeeded = (dateFrom, dateTo) => {
   return isCarryoverRequired;
 };
 
-module.exports = isNextMonthReportNeeded;
+export default isNextMonthReportNeeded;

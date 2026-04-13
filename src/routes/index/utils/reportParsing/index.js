@@ -1,6 +1,6 @@
-var processReportTotals = require("./processReportTotals");
-var processCrossReportSkus = require("./processCrossReportSkus");
-var processNonCrossReportSkus = require("./processNonCrossReportSkus");
+import processReportTotals from "./processReportTotals.js";
+import processCrossReportSkus from "./processCrossReportSkus.js";
+import processNonCrossReportSkus from "./processNonCrossReportSkus.js";
 
 var parseReports = async (reports, taxParams, isCrossYearReport) => {
   if (isCrossYearReport) {
@@ -26,4 +26,4 @@ var parseReports = async (reports, taxParams, isCrossYearReport) => {
   }
 };
 
-module.exports = parseReports;
+export default parseReports;

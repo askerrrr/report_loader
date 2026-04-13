@@ -1,4 +1,4 @@
-var truncateNum = require("../../reportParsing/truncateNum");
+import truncateNum from "../../reportParsing/truncateNum.js";
 
 var calcSellerPayoutAmount = (report) => {
   var sellerPayoutAmount =
@@ -8,4 +8,4 @@ var calcSellerPayoutAmount = (report) => {
   return truncateNum(sellerPayoutAmount);
 };
 
-module.exports = calcSellerPayoutAmount;
+export default calcSellerPayoutAmount;

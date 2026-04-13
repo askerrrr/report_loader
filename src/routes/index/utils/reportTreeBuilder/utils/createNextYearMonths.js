@@ -9,4 +9,4 @@ var createNextYearMonths = (reportIds) => {
   return months;
 };
 
-module.exports = createNextYearMonths;
+export default createNextYearMonths;

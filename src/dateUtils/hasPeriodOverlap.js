@@ -6,4 +6,4 @@ var hasPeriodOverlap = (year, month, day) => {
   return { overlap };
 };
 
-module.exports = hasPeriodOverlap;
+export default hasPeriodOverlap;

@@ -1,4 +1,4 @@
-var dbUtils = require("../../../database/utils");
+import dbUtils from "../../../database/utils/index.js";
 
 var writeReportsToQueue = async (req, res, next) => {
   var { userId, filteredRequiredReportPeriods } = req.body;
@@ -24,7 +24,7 @@ var writeReportsToQueue = async (req, res, next) => {
   next();
 };
 
-module.exports = writeReportsToQueue;
+export default writeReportsToQueue;
 
 var delay = async function (ms) {
   return new Promise((res) => setTimeout(res, ms));

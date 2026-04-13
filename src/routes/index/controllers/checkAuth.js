@@ -1,4 +1,5 @@
-var Joi = require("joi");
+import Joi from "joi";
+import dbUtils from "../../../database/utils/index.js";
 
 var schema = Joi.object({
   userId: Joi.string().required(),
@@ -29,9 +30,7 @@ var checkAuth = async (req, res, next) => {
     return res.status(400).json({ error: `Key ${error.details[0].message}` });
   }
 
-  var { getUser } = req.app.locals.db;
-
-  var user = await getUser(req.body.userId);
+  var user = await dbUtils.getUser(req.body.userId);
 
   if (!user) {
     return res.status(404).json({ msg: "user not found" });
@@ -40,4 +39,4 @@ var checkAuth = async (req, res, next) => {
   next();
 };
 
-module.exports = checkAuth;
+export default checkAuth;

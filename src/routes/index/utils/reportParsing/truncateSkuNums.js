@@ -1,4 +1,4 @@
-var truncateNum = require("./truncateNum");
+import truncateNum from "./truncateNum.js";
 
 var truncateSkuNums = (skus) =>
   skus.map((sku) => {
@@ -9,4 +9,4 @@ var truncateSkuNums = (skus) =>
     return sku;
   });
 
-module.exports = truncateSkuNums;
+export default truncateSkuNums;

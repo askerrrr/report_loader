@@ -4,4 +4,4 @@ var getReportLoadingState = async (collection, userId, session) => {
   return doc;
 };
 
-module.exports = getReportLoadingState;
+export default getReportLoadingState;

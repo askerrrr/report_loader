@@ -1,4 +1,4 @@
-var { DatabaseError } = require("../../customError");
+import { DatabaseError } from "../../customError/index.js";
 
 var getUsersData = async (collection) => {
   try {
@@ -11,4 +11,4 @@ var getUsersData = async (collection) => {
   }
 };
 
-module.exports = getUsersData;
+export default getUsersData;

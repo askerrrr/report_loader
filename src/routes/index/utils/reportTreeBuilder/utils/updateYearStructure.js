@@ -1,5 +1,5 @@
-var getMonthNameAndIndex = require("./getMonthNameAndIndex");
-var insertReportIdAndFullPeriodToReportIds = require("./insertReportIdAndFullPeriodToReportIds");
+import getMonthNameAndIndex from "./getMonthNameAndIndex.js";
+import insertReportIdAndFullPeriodToReportIds from "./insertReportIdAndFullPeriodToReportIds.js";
 
 /**
  * @param {'overlap - yes' | 'overlap - no'} overlapStatus
@@ -17,4 +17,4 @@ var updateYearStructure = async (months, year, monthNum, reportDate, reportId, f
   return { year, months };
 };
 
-module.exports = updateYearStructure;
+export default updateYearStructure;

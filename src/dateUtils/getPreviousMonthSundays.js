@@ -1,4 +1,4 @@
-var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth");
+import getMondaysOrSundaysOfMonth from "./getMondaysOrSundaysOfMonth.js";
 
 var getPreviousMonthSundays = (date) => {
   var [year, monthNum] = date.split("-").map(Number);
@@ -18,4 +18,4 @@ var getPreviousMonthSundays = (date) => {
   return { sundays };
 };
 
-module.exports = getPreviousMonthSundays;
+export default getPreviousMonthSundays;

@@ -1,37 +1,37 @@
-var {
+import {
   goods_collection,
   tokens_collection,
   reports_collection,
   tax_params_collection,
   reports_tree_collection,
   report_loading_states_collection,
-} = require("../connections");
+} from "../connections/index.js";
 
-var getUser = require("./getUser");
-var getToken = require("./getToken");
-var getUsersData = require("./getUsersData");
-var getReportsTree = require("./getReportsTree");
-var saveReportToDb = require("./saveReportToDb");
-var addNewTaxYearToDb = require("./addNewTaxYear");
-var getReportsQueue = require("./getReportsQueue");
-var updateReportTree = require("./updateReportTree");
-var saveListGoodsToDb = require("./saveListGoodsToDb");
-var getListGoodsFromDb = require("./getListGoodsFromDb");
-var pushToReportsQueue = require("./pushToReportsQueue");
-var updateReportsQueue = require("./updateReportsQueue");
-var changeTaxParamsToDb = require("./changeTaxParamsToDb");
-var resetAbandonedReports = require("./resetAbandonedReports");
-var getReportLoadingState = require("./getReportLoadingState");
-var addNewSkusToListGoods = require("./addNewSkusToListGoods");
-var setAllUsersLoadingFlag = require("./setAllUsersLoadingFlag");
-var setLoadingProgressStatus = require("./setLoadingProgressStatus");
-var getLoadingProgressStatus = require("./getLoadingProgressStatus");
-var getFreshReportPeriodIndex = require("./getFreshReportPeriodIndex");
-var addReportToAbandonedReports = require("./addReportToAbandonedReports");
-var updateFreshReportPeriodIndex = require("./updateFreshReportPeriodIndex");
-var getLastReportRequestTimestamp = require("./getLastReportRequestTimestamp");
-var updateReportLoadingDelayStatus = require("./updateReportLoadingDelayStatus");
-var updateLastReportRequestTimestamp = require("./updateLastReportRequestTimestamp");
+import getUser from "./getUser.js";
+import getToken from "./getToken.js";
+import getUsersData from "./getUsersData.js";
+import getReportsTree from "./getReportsTree.js";
+import saveReportToDb from "./saveReportToDb.js";
+import addNewTaxYearToDb from "./addNewTaxYear.js";
+import getReportsQueue from "./getReportsQueue.js";
+import updateReportTree from "./updateReportTree.js";
+import saveListGoodsToDb from "./saveListGoodsToDb.js";
+import getListGoodsFromDb from "./getListGoodsFromDb.js";
+import pushToReportsQueue from "./pushToReportsQueue.js";
+import updateReportsQueue from "./updateReportsQueue.js";
+import changeTaxParamsToDb from "./changeTaxParamsToDb.js";
+import resetAbandonedReports from "./resetAbandonedReports.js";
+import getReportLoadingState from "./getReportLoadingState.js";
+import addNewSkusToListGoods from "./addNewSkusToListGoods.js";
+import setAllUsersLoadingFlag from "./setAllUsersLoadingFlag.js";
+import setLoadingProgressStatus from "./setLoadingProgressStatus.js";
+import getLoadingProgressStatus from "./getLoadingProgressStatus.js";
+import getFreshReportPeriodIndex from "./getFreshReportPeriodIndex.js";
+import addReportToAbandonedReports from "./addReportToAbandonedReports.js";
+import updateFreshReportPeriodIndex from "./updateFreshReportPeriodIndex.js";
+import getLastReportRequestTimestamp from "./getLastReportRequestTimestamp.js";
+import updateReportLoadingDelayStatus from "./updateReportLoadingDelayStatus.js";
+import updateLastReportRequestTimestamp from "./updateLastReportRequestTimestamp.js";
 
 var db = {
   getToken: (userId, session) => getToken(tokens_collection, userId, session),
@@ -70,4 +70,4 @@ var db = {
   createReportsQueue: (userId, reportQueue, session) => createReportsQueue(report_loading_states_collection, userId, reportQueue, session),
 };
 
-module.exports = db;
+export default db;

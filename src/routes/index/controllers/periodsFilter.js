@@ -1,7 +1,7 @@
-var dbUtils = require("../../../database/utils");
-var reportPeriods = require("../../../dateUtils/reportPeriods");
-var filteringOfRequiredReportPeriods = require("../utils/filteringOfRequiredReportPeriods");
-var { getLastMondayFromCurrentMonth } = require("../../../dateUtils/getLastMondayFromCurrentMonth");
+import dbUtils from "../../../database/utils/index.js";
+import reportPeriods from "../../../dateUtils/reportPeriods.js";
+import filteringOfRequiredReportPeriods from "../utils/filteringOfRequiredReportPeriods.js";
+import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayFromCurrentMonth.js";
 
 var periodsFilter = async (req, res, next) => {
   var { userId, dateFrom, dateTo } = req.body;
@@ -50,4 +50,4 @@ var periodsFilter = async (req, res, next) => {
   next();
 };
 
-module.exports = periodsFilter;
+export default periodsFilter;

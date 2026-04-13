@@ -1,4 +1,4 @@
-var truncateNum = require("../../reportParsing/truncateNum");
+import truncateNum from "../../reportParsing/truncateNum.js";
 
 var calcInsuranceFee = (preTaxProfit, insuranceFeePercentage) => {
   if (insuranceFeePercentage == 0) {
@@ -10,4 +10,4 @@ var calcInsuranceFee = (preTaxProfit, insuranceFeePercentage) => {
   return truncateNum(insuranceFee);
 };
 
-module.exports = calcInsuranceFee;
+export default calcInsuranceFee;

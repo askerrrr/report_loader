@@ -8,4 +8,4 @@ var calcAverageProfit = (sku, propPostfix = "") => {
   return averageProfit;
 };
 
-module.exports = calcAverageProfit;
+export default calcAverageProfit;

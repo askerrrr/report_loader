@@ -1,4 +1,4 @@
-var getDateToByDateFrom = require("./getDateToByDateFrom");
+import getDateToByDateFrom from "./getDateToByDateFrom.js";
 
 var getFullPeriods = (mondays) =>
   mondays.map((monday, index) => {
@@ -6,4 +6,4 @@ var getFullPeriods = (mondays) =>
     return { dateFrom: monday, dateTo: sunday, index, failedCount: 0 };
   });
 
-module.exports = getFullPeriods;
+export default getFullPeriods;

@@ -7,4 +7,4 @@ var updateLastReportRequestTimestamp = async (collection, userId, session) => {
   return { lastReportRequestTimestamp };
 };
 
-module.exports = updateLastReportRequestTimestamp;
+export default updateLastReportRequestTimestamp;

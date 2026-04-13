@@ -1,11 +1,11 @@
-var loader = require("../utils/loader");
+import loader from "../utils/loader.js";
+import dbUtils from "../../../database/utils/index.js";
 
 var reportLoading = async (req, res, next) => {
   var { userId } = req.body;
-  var { getToken } = req.app.locals.db;
-  var { token } = await getToken(userId);
+  var { token } = await dbUtils.getToken(userId);
 
   await loader(userId, token);
 };
 
-module.exports = reportLoading;
+export default reportLoading;

@@ -1,15 +1,14 @@
-var { Router } = require("express");
+import { Router } from "express";
+import checkAuth from "./controllers/checkAuth.js";
+import periodsFilter from "./controllers/periodsFilter.js";
+import reportLoading from "./controllers/reportLoading.js";
+import loadFreshReports from "./controllers/loadFreshReports.js";
+import writeReportsToQueue from "./controllers/writeReportsToQueue.js";
 
 var router = Router({ caseSensitive: true });
 
-router.post(
-  "/",
-  require("./controllers/checkAuth"),
-  require("./controllers/periodsFilter"),
-  require("./controllers/writeReportsToQueue"),
-  require("./controllers/reportLoading"),
-);
+router.post("/", checkAuth, periodsFilter, writeReportsToQueue, reportLoading);
 
-router.post("/background-tasks/load-fresh-reports", require("./controllers/loadFreshReports"));
+router.post("/background-tasks/load-fresh-reports", loadFreshReports);
 
-module.exports = router;
+export default router;

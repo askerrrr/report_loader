@@ -17,4 +17,4 @@ var splitSkuByYear = (skuFilteredReport) => {
   return { startYearSku, endYearSku };
 };
 
-module.exports = splitSkuByYear;
+export default splitSkuByYear;

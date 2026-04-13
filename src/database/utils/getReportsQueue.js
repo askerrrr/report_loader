@@ -1,11 +1,11 @@
-var { DatabaseError } = require("../../customError");
+import { DatabaseError } from "../../customError/index.js";
 
 var getReportsQueue = async (collection, userId, session) => {
   try {
     var data = await collection.findOneAndUpdate(
       { userId, "reportsQueue.0": { $exists: true } },
       { $pop: { reportsQueue: -1 } },
-      { session: session, returnDocument: "before" }
+      { session: session, returnDocument: "before" },
     );
 
     if (!data?.reportsQueue || !data?.reportsQueue?.length) {
@@ -18,4 +18,4 @@ var getReportsQueue = async (collection, userId, session) => {
   }
 };
 
-module.exports = getReportsQueue;
+export default getReportsQueue;

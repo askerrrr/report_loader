@@ -1,6 +1,6 @@
-var getNextPeriod = require("./getNextPeriod.js");
-var hasPeriodOverlap = require("./hasPeriodOverlap.js");
-var getMondaysOrSundaysOfMonth = require("./getMondaysOrSundaysOfMonth.js");
+import getNextPeriod from "./getNextPeriod.js";
+import hasPeriodOverlap from "./hasPeriodOverlap.js";
+import getMondaysOrSundaysOfMonth from "./getMondaysOrSundaysOfMonth.js";
 
 var getDateToByDateFrom = (dateFrom) => {
   var [year, month, day] = dateFrom.split("-").map(Number);
@@ -33,4 +33,4 @@ var getDateToByDateFrom = (dateFrom) => {
   return trancatedDate;
 };
 
-module.exports = getDateToByDateFrom;
+export default getDateToByDateFrom;

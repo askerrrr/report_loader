@@ -12,4 +12,4 @@ var truncateNum = (n) => {
   return n;
 };
 
-module.exports = truncateNum;
+export default truncateNum;

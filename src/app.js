@@ -1,7 +1,9 @@
-var express = require("express");
-var { runDB } = require("./database/");
-var runReportPeriodsWriter = require("./dateUtils");
-var resumeInterruptedReportsLoad = require("./routes/index/utils/resumeInterruptedReportsLoad");
+import express from "express";
+import { runDB } from "./database/index.js";
+import router from "./routes/index/index.js";
+import errorHandler from "./middleware/errorHandler.js";
+import runReportPeriodsWriter from "./dateUtils/index.js";
+import resumeInterruptedReportsLoad from "./routes/index/utils/resumeInterruptedReportsLoad.js";
 
 var app = express();
 
@@ -9,7 +11,6 @@ var app = express();
   runReportPeriodsWriter();
 
   await runDB();
-  app.locals.db = require("./database/utils");
 
   app.listen(process.env.PORT, process.env.HOST, console.log("server run..."));
   await resumeInterruptedReportsLoad();
@@ -18,6 +19,6 @@ var app = express();
 app.use(express.urlencoded());
 app.use(express.json());
 
-app.use("/", require("./routes/index"));
+app.use("/", router);
 
-app.use(require("./middleware/errorHandler"));
+app.use(errorHandler);

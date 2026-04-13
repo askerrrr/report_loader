@@ -13,4 +13,4 @@ var getNextPeriod = (currentYear, currentMonth) => {
   return { nextPeriod };
 };
 
-module.exports = getNextPeriod;
+export default getNextPeriod;

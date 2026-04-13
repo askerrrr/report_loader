@@ -10,4 +10,4 @@ var getSKUNamesFromPaidStorageReport = async (paidStorageReport) => {
   return data;
 };
 
-module.exports = getSKUNamesFromPaidStorageReport;
+export default getSKUNamesFromPaidStorageReport;

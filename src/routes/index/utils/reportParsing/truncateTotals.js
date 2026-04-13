@@ -1,4 +1,4 @@
-var truncateNum = require("./truncateNum");
+import truncateNum from "./truncateNum.js";
 
 var truncateTotals = (totals) => {
   var truncatedTotals = {};
@@ -10,4 +10,4 @@ var truncateTotals = (totals) => {
   return truncatedTotals;
 };
 
-module.exports = truncateTotals;
+export default truncateTotals;

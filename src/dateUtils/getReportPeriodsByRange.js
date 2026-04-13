@@ -1,6 +1,6 @@
-var getYearMondays = require("./getYearMondays");
-var getFullPeriods = require("./getFullPeriods");
-var getLastMondayByDateTo = require("./getLastMondayByDateTo");
+import getYearMondays from "./getYearMondays.js";
+import getFullPeriods from "./getFullPeriods.js";
+import getLastMondayByDateTo from "./getLastMondayByDateTo.js";
 
 var getReportPeriodsByRange = async (dateFrom, dateTo) => {
   if (!dateFrom) {
@@ -36,4 +36,4 @@ var getReportPeriodsByRange = async (dateFrom, dateTo) => {
   return { fullPeriods };
 };
 
-module.exports = getReportPeriodsByRange;
+export default getReportPeriodsByRange;

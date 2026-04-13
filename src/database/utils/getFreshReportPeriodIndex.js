@@ -1,4 +1,4 @@
-var { DatabaseError } = require("../../customError");
+import { DatabaseError } from "../../customError/index.js";
 
 var getFreshReportPeriodIndex = async (collection, userId, session) => {
   try {
@@ -12,4 +12,4 @@ var getFreshReportPeriodIndex = async (collection, userId, session) => {
   }
 };
 
-module.exports = getFreshReportPeriodIndex;
+export default getFreshReportPeriodIndex;

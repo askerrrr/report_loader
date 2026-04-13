@@ -3,4 +3,4 @@ var errorHandler = async (e, req, res, next) => {
   res.sendStatus(500);
 };
 
-module.exports = errorHandler;
+export default errorHandler;

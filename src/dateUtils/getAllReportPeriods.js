@@ -1,5 +1,5 @@
-var getYearMondays = require("./getYearMondays");
-var getFullPeriods = require("./getFullPeriods");
+import getYearMondays from "./getYearMondays.js";
+import getFullPeriods from "./getFullPeriods.js";
 
 var getAllReportPeriods = () => {
   var mondays = [];
@@ -19,4 +19,4 @@ var getAllReportPeriods = () => {
   return { allPeriods: fullPeriods };
 };
 
-module.exports = getAllReportPeriods;
+export default getAllReportPeriods;

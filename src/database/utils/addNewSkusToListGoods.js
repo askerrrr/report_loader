@@ -3,4 +3,4 @@ var addNewSkusToListGoods = async (collection, userId, newSkus, session) => {
   return result;
 };
 
-module.exports = addNewSkusToListGoods;
+export default addNewSkusToListGoods;

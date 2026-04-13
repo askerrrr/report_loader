@@ -1,14 +1,18 @@
-var sum = require("./sum");
-var calcProfitMargin = require("./profitMargin");
-var calcProductCosts = require("./totalProductCosts");
+import sum from "./sum.js";
+import calcProfitMargin from "./profitMargin.js";
+import calcProductCosts from "./totalProductCosts.js";
 
 var calcRestReportTotalParams = (totals, skus, isCrossYearReport) => {
   totals.totalPreTaxProfit = sum(skus, "preTaxProfit", "truncate-on");
   totals.totalFinalProfit = sum(skus, "finalProfit", "truncate-on");
   totals.totalProductCosts = calcProductCosts(skus);
   totals.totalInsuranceFee = sum(skus, "insuranceFee");
+  totals.totalOtherExpenses = sum(skus, "otherExpenses", "truncate-on");
 
   if (isCrossYearReport) {
+    totals.totalOtherExpensesInCurrentYear = sum(skus, "totalOtherExpensesInCurrentYear", "truncate-on");
+    totals.totalOtherExpensesInNextYear = sum(skus, "totalOtherExpensesInNextYear", "truncate-on");
+
     totals.totalPreTaxProfitInCurrentYear = sum(skus, "preTaxProfitInCurrentYear", "truncate-on");
     totals.totalPreTaxProfitInNextYear = sum(skus, "preTaxProfitInNextYear", "truncate-on");
 
@@ -30,4 +34,4 @@ var calcRestReportTotalParams = (totals, skus, isCrossYearReport) => {
   return { ...totals, skus };
 };
 
-module.exports = calcRestReportTotalParams;
+export default calcRestReportTotalParams;

@@ -1,5 +1,5 @@
-var truncateNum = require("./truncateNum");
-var calcInsuranceFee = require("../calcServices/utils/insuranceFee");
+import truncateNum from "./truncateNum.js";
+import calcInsuranceFee from "../calcServices/utils/insuranceFee.js";
 
 var recalculateSkuAndTaxParams = (sku, taxParams, skuPropPostfix = "") => {
   var { sku, taxParams } = recalculateRetailAmount(sku, taxParams, skuPropPostfix);
@@ -14,7 +14,7 @@ var recalculateSkuAndTaxParams = (sku, taxParams, skuPropPostfix = "") => {
   return { updatedSku: sku, recalculatedTaxParams: taxParams };
 };
 
-module.exports = recalculateSkuAndTaxParams;
+export default recalculateSkuAndTaxParams;
 
 var recalculateRetailAmount = function (sku, taxParams, skuPropPostfix) {
   var oldRetailAmount = taxParams.retailAmount;
