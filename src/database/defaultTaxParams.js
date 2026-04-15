@@ -60,7 +60,7 @@ var defaultTaxParams = [
     taxRate: 6,
     mandatoryInsuranceFee: 57390,
     paidTaxAmount: -57390,
-    maxInsuranceFee: 0,
+    maxInsuranceFee: 321818,
     retailAmount: 0,
     taxableAmount: 0,
     finalProfit: 0,
@@ -72,6 +72,7 @@ var defaultTaxParams = [
     excessInsuranceRate: 1,
     requiresAdditionalInsuranceFee: false,
     additionalInsuranceFee: 0,
+    excessIncomeForAdditionalInsuranceFee: 300000,
   },
   {
     year: 2027,
