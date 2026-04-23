@@ -5,6 +5,15 @@ var parseSku = async (name, skuQty, skuFilteredReport, storageData, taxRate, tot
     var { totalSold, totalStorageCost, totalAdvertisingCosts } = totals;
 
     var sku = {};
+
+    sku["finalProfit" + propPostfix] = 0;
+    sku["insuranceFee" + propPostfix] = 0;
+    sku["productCosts" + propPostfix] = 0;
+    sku["preTaxProfit" + propPostfix] = 0;
+    sku["profitMargin" + propPostfix] = 0;
+    sku["otherExpenses" + propPostfix] = 0;
+    sku["additionalInsuranceFee" + propPostfix] = 0;
+
     sku["qty" + propPostfix] = await calc.quantity(skuFilteredReport);
     sku["fines" + propPostfix] = calc.sum(skuFilteredReport, "penalty", "truncate-on");
     sku["acceptance" + propPostfix] = calc.sum(skuFilteredReport, "acceptance", "truncate-on");
@@ -22,14 +31,6 @@ var parseSku = async (name, skuQty, skuFilteredReport, storageData, taxRate, tot
     sku["averageAdvertisingCost" + propPostfix] = calc.averageAdvertisingCost(skuQty, totalAdvertisingCosts);
     sku["profit" + propPostfix] = calc.profit(sku, propPostfix);
     sku["averageProfit" + propPostfix] = calc.averageProfit(sku, propPostfix);
-
-    sku["revenue" + propPostfix] = 0;
-    sku["finalProfit" + propPostfix] = 0;
-    sku["insuranceFee" + propPostfix] = 0;
-    sku["preTaxProfit" + propPostfix] = 0;
-    sku["profitMargin" + propPostfix] = 0;
-    sku["otherExpenses" + propPostfix] = 0;
-    sku["additionalInsuranceFee" + propPostfix] = 0;
 
     return sku;
   } catch (e) {
