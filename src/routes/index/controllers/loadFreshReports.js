@@ -33,7 +33,7 @@ var loadFreshReports = async (req, res, next) => {
   res.sendStatus(202);
 
   for (var { userId } of users) {
-    var session = await connection.startSession();
+    var session = await dbClient.startSession();
 
     try {
       await session.withTransaction(async () => {
