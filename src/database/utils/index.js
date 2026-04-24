@@ -57,7 +57,7 @@ var db = {
   addReportToAbandonedReports: (userId, reportPeriod, session) =>
     addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
 
-  changeTaxParamsToDb: (userId, session, newTaxParams) => changeTaxParamsToDb(tax_params_collection, userId, session, newTaxParams),
+  changeTaxParamsToDb: (userId, session, ...updatedTaxParams) => changeTaxParamsToDb(tax_params_collection, userId, session, ...updatedTaxParams),
 
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   saveListGoodsToDb: (userId, listGoods, session) => saveListGoodsToDb(goods_collection, userId, listGoods, session),
