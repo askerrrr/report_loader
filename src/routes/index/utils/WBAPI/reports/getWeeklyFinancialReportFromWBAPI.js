@@ -15,6 +15,8 @@ var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) 
     return [];
   }
 
+  var errMsg;
+
   switch (res.status) {
     case 400:
       errMsg = "Неправильный запрос";

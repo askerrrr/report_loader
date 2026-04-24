@@ -14,12 +14,15 @@ var createPaidStorageReportTask = async (dateFrom, dateTo, token, userId) => {
     return { taskId: data.taskId };
   }
 
+  var errMsg;
+
   switch (res.status) {
     case 400:
       errMsg = "Неправильный запрос";
       break;
     case 401:
-      errMsg = "Не удалось авторизоваться для создания отчета о платном хранении с помощью сохраненного токена";
+      errMsg =
+        "Не удалось авторизоваться для создания отчета о платном хранении с помощью сохраненного токена";
       break;
     case 429:
       errMsg = "Подождите минуту перед получением нового отчёта";
