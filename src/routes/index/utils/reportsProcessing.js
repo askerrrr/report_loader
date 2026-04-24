@@ -25,13 +25,12 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
 
     var { report, skuNamesAndIds, recalculatedTaxParams } = await parseReports(reports, taxParams, isCrossYearReport);
 
-    await dbUtils.changeTaxParamsToDb(userId, startYear, session, recalculatedTaxParams.startYearTaxParams);
-    await dbUtils.changeTaxParamsToDb(userId, endYear, session, recalculatedTaxParams.endYearTaxParams);
+    await dbUtils.changeTaxParamsToDb(userId,  session, recalculatedTaxParams.startYearTaxParams, recalculatedTaxParams.endYearTaxParams);
   } else {
     var taxParams = await dbUtils.addNewTaxYearToDb(userId, year, session);
     var { report, skuNamesAndIds, recalculatedTaxParams } = await parseReports(reports, taxParams);
 
-    await dbUtils.changeTaxParamsToDb(userId, year, session, recalculatedTaxParams);
+    await dbUtils.changeTaxParamsToDb(userId, session, recalculatedTaxParams);
   }
 
   report.dateTo = dateTo;
