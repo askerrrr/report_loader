@@ -17,6 +17,8 @@ var getPaidStorageReportByTaskIdFromWBAPI = async (taskId, token, userId) => {
     return paidStorageReport;
   }
 
+  var errMsg;
+
   if (res.status === 429) {
   } else if (res.status === 401) {
     errMsg =
