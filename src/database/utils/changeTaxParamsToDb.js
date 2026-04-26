@@ -1,19 +1,23 @@
-import { DatabaseError } from "../../customError/index.js";
+var changeTaxParamsToDb = async (collection, userId, session, ...updatedTaxParams) => {
+  var count = 0;
+  var query = {};
+  var arrayFilters = [];
 
-var changeTaxParamsToDb = async (collection, userId, year, session, newTaxParams) => {
-  try {
-    var query = {};
+  for (var taxParams of updatedTaxParams) {
+    var arrayFiltersKey = `elem${count}.year`;
+    var arrayFiltersValue = taxParams.year;
+    arrayFilters.push({ [arrayFiltersKey]: arrayFiltersValue });
 
-    for (var key of Object.keys(newTaxParams)) {
-      query[`years.$.${key}`] = newTaxParams[key];
+    for (var key of Object.keys(taxParams)) {
+      query[`years.$[elem${count}].${key}`] = taxParams[key];
     }
 
-    var result = await collection.updateOne({ userId, "years.year": year }, { $set: query }, { session: session });
-
-    return result.acknowledged;
-  } catch (e) {
-    throw new DatabaseError(userId, e);
+    count++;
   }
+
+  var result = await collection.updateOne({ userId }, { $set: query }, { arrayFilters });
+
+  return result.acknowledged;
 };
 
 export default changeTaxParamsToDb;

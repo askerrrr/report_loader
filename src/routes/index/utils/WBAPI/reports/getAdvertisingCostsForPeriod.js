@@ -14,6 +14,8 @@ var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
     return advertisingReport;
   }
 
+  var errMsg;
+
   switch (res.status) {
     case 400:
       errMsg = "Неправильный запрос";
