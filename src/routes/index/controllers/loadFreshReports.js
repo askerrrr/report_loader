@@ -32,40 +32,42 @@ var loadFreshReports = async (req, res, next) => {
 
   res.sendStatus(202);
 
-  for (var { userId } of users) {
-    var session = await dbClient.startSession();
+  for (var user of users) {
+    var { userId } = user;
+    var session = dbClient.startSession();
 
     try {
       await session.withTransaction(async () => {
-        var userLoadingStates = await dbUtils.getUser(userId, session);
         var { reportTree } = await dbUtils.getReportsTree(userId, session);
-        var { freshReportPeriodIndex, freshReportPeriodIndexIsExist } = await dbUtils.getFreshReportPeriodIndex(userId, session);
+        var freshReportPeriodIndex = user.freshReportPeriodIndex;
 
-        if (!freshReportPeriodIndexIsExist || freshReportPeriodIndex < 0) {
+        if (typeof freshReportPeriodIndex === "undefined") {
           var { lastMonday } = getLastMondayFromCurrentMonth();
           freshReportPeriodIndex = reportPeriods.findIndex((item) => item.dateFrom === lastMonday);
         }
 
         var reportPeriodToLoad = reportPeriods[freshReportPeriodIndex];
         var nextReportPeriodIndex = freshReportPeriodIndex + 1;
-        var { filteredRequiredReportPeriods } = filteringOfRequiredReportPeriods(userLoadingStates, [reportPeriodToLoad], reportTree);
-        var { dateFrom, dateTo } = reportPeriodToLoad;
+        var { filteredRequiredReportPeriods } = filteringOfRequiredReportPeriods(user, [reportPeriodToLoad], reportTree);
 
         if (!filteredRequiredReportPeriods.length) {
           await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
           throw new Error("EMPTY_QUEUE");
         }
 
-        var { loadingInProgress } = await dbUtils.getLoadingProgressStatus(userId, session);
-
-        if (loadingInProgress) {
+        if (user.loadingInProgress || user.isReportLoadingDelayed) {
           await dbUtils.pushToReportsQueue(userId, [reportPeriods[freshReportPeriodIndex]], session);
           throw new Error("LOADING_IN_PROGRESS");
         }
 
         var { token } = await dbUtils.getToken(userId, session);
 
+        if (!token) {
+          throw new Error("WBTOKEN is empty");
+        }
+
         try {
+          var { dateFrom, dateTo } = reportPeriodToLoad;
           await reportsProcessing(userId, dateFrom, dateTo, token, session);
           await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
         } catch (processingError) {
@@ -79,7 +81,7 @@ var loadFreshReports = async (req, res, next) => {
     } catch (err) {
       console.error({ err });
 
-      if (err.message === "EMPTY_QUEUE" || err.message === "LOADING_IN_PROGRESS") {
+      if (err.message === "EMPTY_QUEUE" || err.message === "LOADING_IN_PROGRESS" || err.message === "WBTOKEN is empty") {
         continue;
       }
     } finally {
