@@ -50,12 +50,10 @@ var loader = async (userId, token, isServerStartupLoad) => {
         }
       });
     } catch (err) {
-      console.log({ err });
+      console.error({ loadingError: err });
       if (err.message === "QUEUE_EMPTY") {
         break;
       }
-
-      console.error({ loadingError: err });
     } finally {
       if (session?.inTransaction()) {
         await session.endSession();
