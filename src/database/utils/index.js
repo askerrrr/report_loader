@@ -22,7 +22,7 @@ import updateReportsQueue from "./updateReportsQueue.js";
 import changeTaxParamsToDb from "./changeTaxParamsToDb.js";
 import resetAbandonedReports from "./resetAbandonedReports.js";
 import getReportLoadingState from "./getReportLoadingState.js";
-import addNewSkusToListGoods from "./addNewSkusToListGoods.js";
+import saveNewSkusToDb from "./saveNewSkusToDb.js";
 import setAllUsersLoadingFlag from "./setAllUsersLoadingFlag.js";
 import setLoadingProgressStatus from "./setLoadingProgressStatus.js";
 import getLoadingProgressStatus from "./getLoadingProgressStatus.js";
@@ -64,7 +64,7 @@ var db = {
   setAllUsersLoadingFlag: () => setAllUsersLoadingFlag(report_loading_states_collection),
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
-  addNewSkusToListGoods: (userId, newSkus, session) => addNewSkusToListGoods(goods_collection, userId, newSkus, session),
+  saveNewSkusToDb: (userId, newSkus, session) => saveNewSkusToDb(goods_collection, userId, newSkus, session),
   resetAbandonedReports: (userId) => resetAbandonedReports(report_loading_states_collection, userId),
   pushToReportsQueue: (userId, reportPeriod, session) => pushToReportsQueue(report_loading_states_collection, userId, reportPeriod, session),
   createReportsQueue: (userId, reportQueue, session) => createReportsQueue(report_loading_states_collection, userId, reportQueue, session),
