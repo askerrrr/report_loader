@@ -57,7 +57,7 @@ var loader = async (userId, token, isServerStartupLoad) => {
 
       console.error({ loadingError: err });
     } finally {
-      if (session) {
+      if (session?.inTransaction()) {
         await session.endSession();
       }
     }
