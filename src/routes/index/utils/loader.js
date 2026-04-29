@@ -7,6 +7,8 @@ var NEXT_REPORT_DELAY_MS = 65000;
 var noDataForPeriodMessage = "there is no data available for the selected reporting period";
 var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTimeout(res, delayMs) : setTimeout(res, NEXT_REPORT_DELAY_MS)));
 
+var sessionOptions = {};
+
 var loader = async (userId, token, isServerStartupLoad) => {
   await dbUtils.setLoadingProgressStatus(userId, "loading").then(() => console.log("the download has started for the user: " + userId));
 
