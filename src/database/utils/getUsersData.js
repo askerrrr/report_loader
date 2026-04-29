@@ -1,14 +1,18 @@
 import { DatabaseError } from "../../customError/index.js";
 
+var projection = {
+  _id: 0,
+  userId: 1,
+  loadingInProgress: 1,
+  reportsQueue: 1,
+  abandonedReports: 1,
+  isReportLoadingDelayed: 1,
+  freshReportPeriodIndex: 1,
+};
+
 var getUsersData = async (collection) => {
-  try {
-    var data = await collection.find({}).toArray();
-    return data.map((user) => {
-      return { userId: user.userId, loadingInProgress: user.loadingInProgress, reportsQueue: user.reportsQueue };
-    });
-  } catch (e) {
-    throw new DatabaseError(userId, e);
-  }
+  var data = await collection.find({}, { projection }).toArray();
+  return data;
 };
 
 export default getUsersData;
