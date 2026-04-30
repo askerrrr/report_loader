@@ -13,7 +13,7 @@ var loader = async (userId, isServerStartupLoad) => {
   await dbUtils.setLoadingProgressStatus(userId, "loading").then(() => console.log("the download has started for the user: " + userId));
 
   if (isServerStartupLoad) {
-    // await nextReportDelay();
+    await nextReportDelay();
   }
 
   while (true) {
