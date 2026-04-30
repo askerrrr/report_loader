@@ -68,7 +68,7 @@ var loadFreshReports = async (req, res, next) => {
 
         try {
           var { dateFrom, dateTo } = reportPeriodToLoad;
-          await reportsProcessing(userId, dateFrom, dateTo, token, session);
+          await reportsProcessing(userId, dateFrom, dateTo, session);
           await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
         } catch (processingError) {
           if (processingError.message === noDataForPeriodMessage) {

@@ -9,11 +9,11 @@ var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTime
 
 var sessionOptions = { willRetryWrite: false };
 
-var loader = async (userId, token, isServerStartupLoad) => {
+var loader = async (userId, isServerStartupLoad) => {
   await dbUtils.setLoadingProgressStatus(userId, "loading").then(() => console.log("the download has started for the user: " + userId));
 
   if (isServerStartupLoad) {
-    await nextReportDelay();
+    // await nextReportDelay();
   }
 
   while (true) {
@@ -34,7 +34,7 @@ var loader = async (userId, token, isServerStartupLoad) => {
         var { dateFrom, dateTo } = report;
 
         try {
-          await reportsProcessing(userId, dateFrom, dateTo, token, session);
+          await reportsProcessing(userId, dateFrom, dateTo, session);
         } catch (processingError) {
           console.log({ processingError });
           if (processingError.message === noDataForPeriodMessage) {

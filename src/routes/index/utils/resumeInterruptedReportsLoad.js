@@ -15,8 +15,7 @@ var resumeInterruptedReportsLoad = async () => {
       continue;
     }
 
-    var { token } = await dbUtils.getToken(userId);
-    loader(userId, token, isServerStartupLoad);
+    loader(userId, isServerStartupLoad);
   }
 };
 
