@@ -1,19 +1,9 @@
-import { DatabaseError } from "../../customError/index.js";
-
 var updateFreshReportPeriodIndex = async (collection, userId, nextReportPeriodIndex, session) => {
-  try {
-    var result;
+  var sessionOpt = session ? { session } : {};
 
-    if (session) {
-      result = await collection.updateOne({ userId }, { $set: { freshReportPeriodIndex: nextReportPeriodIndex } }, { session: session });
-    } else {
-      result = await collection.updateOne({ userId }, { $set: { freshReportPeriodIndex: nextReportPeriodIndex } });
-    }
+  var result = await collection.updateOne({ userId }, { $set: { freshReportPeriodIndex: nextReportPeriodIndex } }, { ...sessionOpt });
 
-    return result;
-  } catch (e) {
-    throw new DatabaseError(userId, e);
-  }
+  return result;
 };
 
 export default updateFreshReportPeriodIndex;

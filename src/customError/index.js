@@ -1,15 +1,3 @@
-class DatabaseError extends Error {
-  constructor(userId, e, message) {
-    super(message);
-    this.status = 500;
-    this.userId = userId;
-    this.cause = e?.cause ?? "";
-    this.stack = e?.stack ?? "";
-    this.message = e?.message || message;
-    this.name = this.constructor.name;
-  }
-}
-
 class DatabaseConnectionError extends Error {
   constructor(message) {
     super(message);
@@ -39,4 +27,4 @@ class ReportNotFoundError extends Error {
   }
 }
 
-export { WBAPIError, DatabaseError, ReportNotFoundError, DatabaseConnectionError };
+export { WBAPIError, ReportNotFoundError, DatabaseConnectionError };

@@ -1,5 +1,3 @@
-import { DatabaseError } from "../../customError/index.js";
-
 var projection = {
   _id: 0,
   userId: 1,
@@ -10,9 +8,6 @@ var projection = {
   freshReportPeriodIndex: 1,
 };
 
-var getUsersData = async (collection) => {
-  var data = await collection.find({}, { projection }).toArray();
-  return data;
-};
+var getUsersData = async (collection) => await collection.find({}, { projection }).toArray();
 
 export default getUsersData;
