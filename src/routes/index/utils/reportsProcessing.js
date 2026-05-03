@@ -6,11 +6,12 @@ import addNewSkusToListGoods from "./addNewSkusToListGoods.js";
 import updateListGoodsMetrics from "./updateListGoodsMetrics.js";
 import insertReportToReportTree from "./reportTreeBuilder/index.js";
 
-var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
+var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
   var startYear = +dateFrom.split("-")[0];
   var endYear = +dateTo.split("-")[0];
   var isCrossYearReport = startYear !== endYear;
 
+  var { token } = await dbUtils.getToken(userId, session);
   var { reportTree } = await dbUtils.getReportsTree(userId, session);
   var reports = await wbapi.getReports(userId, dateFrom, dateTo, token);
   var reportId = reports.weeklyFinancialReport[0].realizationreport_id;
@@ -25,7 +26,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
 
     var { report, skuNamesAndIds, recalculatedTaxParams } = await parseReports(reports, taxParams, isCrossYearReport);
 
-    await dbUtils.changeTaxParamsToDb(userId,  session, recalculatedTaxParams.startYearTaxParams, recalculatedTaxParams.endYearTaxParams);
+    await dbUtils.changeTaxParamsToDb(userId, session, recalculatedTaxParams.startYearTaxParams, recalculatedTaxParams.endYearTaxParams);
   } else {
     var taxParams = await dbUtils.addNewTaxYearToDb(userId, year, session);
     var { report, skuNamesAndIds, recalculatedTaxParams } = await parseReports(reports, taxParams);

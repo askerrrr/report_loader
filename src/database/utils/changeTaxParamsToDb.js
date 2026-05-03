@@ -15,7 +15,7 @@ var changeTaxParamsToDb = async (collection, userId, session, ...updatedTaxParam
     count++;
   }
 
-  var result = await collection.updateOne({ userId }, { $set: query }, { arrayFilters });
+  var result = await collection.updateOne({ userId }, { $set: query }, { arrayFilters, session: session });
 
   return result.acknowledged;
 };

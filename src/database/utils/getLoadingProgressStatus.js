@@ -1,13 +1,7 @@
-import { DatabaseError } from "../../customError/index.js";
-
 var getLoadingProgressStatus = async (collection, userId, session) => {
-  try {
-    var { loadingInProgress } = await collection.findOne({ userId }, { session });
+  var { loadingInProgress } = await collection.findOne({ userId }, { session });
 
-    return { loadingInProgress };
-  } catch (e) {
-    throw new DatabaseError(userId, e);
-  }
+  return { loadingInProgress };
 };
 
 export default getLoadingProgressStatus;
