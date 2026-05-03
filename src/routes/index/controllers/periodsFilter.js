@@ -19,6 +19,9 @@ var periodsFilter = async (req, res, next) => {
     if (dateToIndex < 0) {
       var { lastMonday } = getLastMondayFromCurrentMonth();
       var dateToIndex = reportPeriods.findIndex((date) => date.dateFrom === lastMonday);
+      if (lastMonday > dateTo) {
+        dateToIndex -= 1;
+      }
     }
 
     requiredReportPeriods = reportPeriods.slice(dateFromIndex, dateToIndex + 1);
