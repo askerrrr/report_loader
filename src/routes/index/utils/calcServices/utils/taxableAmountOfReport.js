@@ -8,11 +8,11 @@ var taxableAmountOfReport = (report) => {
   if (buybackReportIsExist) {
     var buybackReport = report.filter((item) => item.reportType !== 1);
 
-    var deliveryCost = buybackReport.reduce((acc, item) => acc + item.deliveryService, 0);
+    var deliveryCost = buybackReport.reduce((acc, item) => acc + +item.deliveryService, 0);
 
     var sellerPayoutExcludingReturns = buybackReport
       .filter((item) => item.docTypeName === "Продажа")
-      .reduce((acc, item) => acc + (item.forPay ?? item.retailAmount), 0);
+      .reduce((acc, item) => acc + (item.forPay ?? +item.retailAmount), 0);
 
     taxableAmountOfBuybackReport = sellerPayoutExcludingReturns - deliveryCost;
   }
@@ -20,8 +20,8 @@ var taxableAmountOfReport = (report) => {
   var mainReport = report.filter((item) => item.reportType === 1);
 
   var taxableAmountOfMainReport =
-    mainReport.filter((item) => item.docTypeName === "Продажа").reduce((acc, item) => acc + item.retailAmount, 0) -
-    mainReport.filter((item) => item.docTypeName === "Возврат").reduce((acc, item) => acc + item.retailAmount, 0);
+    mainReport.filter((item) => item.docTypeName === "Продажа").reduce((acc, item) => acc + +item.retailAmount, 0) -
+    mainReport.filter((item) => item.docTypeName === "Возврат").reduce((acc, item) => acc + +item.retailAmount, 0);
 
   var taxableAmount = taxableAmountOfMainReport + taxableAmountOfBuybackReport;
 
