@@ -52,7 +52,7 @@ var processCrossReportSkus = async (reports, taxParams) => {
   var skuNamesAndIdsInNextYear = getSkuNamesAndIds(endYearWeeklyFinancialReport);
 
   for (var { id, name } of skuNamesAndIds) {
-    var skuFilteredReport = weeklyFinancialReport.filter((sku) => sku.sa_name === name);
+    var skuFilteredReport = weeklyFinancialReport.filter((sku) => sku.vendorCode === name);
     var { startYearSku, endYearSku } = splitSkuByYear(skuFilteredReport, startYearTaxParams.year);
 
     var currentYearPropPostfix = "InCurrentYear";
