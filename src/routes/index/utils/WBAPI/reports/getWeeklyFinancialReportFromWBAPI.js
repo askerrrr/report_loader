@@ -4,6 +4,7 @@ var requriedFields = [
   "nmId",
   "forPay",
   "dateTo",
+  "saleDt",
   "quantity",
   "reportId",
   "penalty",
