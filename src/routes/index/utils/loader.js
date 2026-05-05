@@ -1,6 +1,7 @@
 import { dbClient } from "../../../database/index.js";
 import dbUtils from "../../../database/utils/index.js";
 import reportsProcessing from "./reportsProcessing.js";
+import { WBAPIError } from "../../../customError/index.js";
 
 var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65000;
@@ -39,6 +40,8 @@ var loader = async (userId, isServerStartupLoad) => {
           console.log({ processingError });
           if (processingError.message === noDataForPeriodMessage) {
             return;
+          } else if (processingError instanceof WBAPIError) {
+            await dbUtils.updateReportsQueue(userId, { ...report }, session);
           } else {
             if (report.failedCount >= MAX_FAILED_ATTEMPTS) {
               await dbUtils.addReportToAbandonedReports(userId, report, session);
