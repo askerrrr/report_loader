@@ -58,7 +58,11 @@ var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) 
 
     throw new WBAPIError(userId, res.status, errMsg);
   } catch (e) {
-    throw new WBAPIError(userId, 500, "Не удалось подключиться к WBAPI" + "\n" + e.message);
+    if (e instanceof WBAPIError) {
+      throw e;
+    } else {
+      throw new WBAPIError(userId, 500, "Не удалось подключиться к WBAPI" + "\n" + e.message);
+    }
   }
 };
 
