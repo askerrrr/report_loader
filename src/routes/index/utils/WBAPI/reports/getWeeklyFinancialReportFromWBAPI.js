@@ -26,8 +26,8 @@ var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) 
 
     var res = await fetch(url, {
       method: "POST",
-      body: { dateFrom, dateTo, fields: requriedFields },
-      headers: { Authorization: "Bearer " + token },
+      body: JSON.stringify({ dateFrom, dateTo, fields: requriedFields }),
+      headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
     });
 
     if (res.status === 200) {
