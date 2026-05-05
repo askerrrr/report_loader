@@ -12,7 +12,7 @@ var taxableAmountOfReport = (report) => {
 
     var sellerPayoutExcludingReturns = buybackReport
       .filter((item) => item.docTypeName === "Продажа")
-      .reduce((acc, item) => acc + (item.forPay ?? +item.retailAmount), 0);
+      .reduce((acc, item) => acc + (+item.forPay ?? +item.retailAmount), 0);
 
     taxableAmountOfBuybackReport = sellerPayoutExcludingReturns - deliveryCost;
   }
