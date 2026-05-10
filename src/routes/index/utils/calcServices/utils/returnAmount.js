@@ -1,5 +1,5 @@
 var calcReturnAmount = (report) => {
-  var returnAmount = report.filter((item) => item.doc_type_name === "Возврат").length;
+  var returnAmount = report.filter((item) => item.docTypeName === "Возврат").length;
 
   return returnAmount;
 };
