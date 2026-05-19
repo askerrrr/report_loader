@@ -3,7 +3,6 @@ var initSku = function (postfix) {
 
   if (!postfix) {
     sku.costPrice = 0;
-    sku.schemaVersion = skuSchemaVersion;
   }
 
   sku["qty" + postfix] = 0;
