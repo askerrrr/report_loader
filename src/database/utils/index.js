@@ -12,6 +12,7 @@ import getToken from "./getToken.js";
 import getUsersData from "./getUsersData.js";
 import getReportsTree from "./getReportsTree.js";
 import saveReportToDb from "./saveReportToDb.js";
+import saveNewSkusToDb from "./saveNewSkusToDb.js";
 import addNewTaxYearToDb from "./addNewTaxYear.js";
 import getReportsQueue from "./getReportsQueue.js";
 import updateReportTree from "./updateReportTree.js";
@@ -22,8 +23,6 @@ import updateReportsQueue from "./updateReportsQueue.js";
 import changeTaxParamsToDb from "./changeTaxParamsToDb.js";
 import resetAbandonedReports from "./resetAbandonedReports.js";
 import getReportLoadingState from "./getReportLoadingState.js";
-import saveNewSkusToDb from "./saveNewSkusToDb.js";
-import setAllUsersLoadingFlag from "./setAllUsersLoadingFlag.js";
 import setLoadingProgressStatus from "./setLoadingProgressStatus.js";
 import getLoadingProgressStatus from "./getLoadingProgressStatus.js";
 import getFreshReportPeriodIndex from "./getFreshReportPeriodIndex.js";
@@ -61,7 +60,6 @@ var db = {
 
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   saveListGoodsToDb: (userId, listGoods, session) => saveListGoodsToDb(goods_collection, userId, listGoods, session),
-  setAllUsersLoadingFlag: () => setAllUsersLoadingFlag(report_loading_states_collection),
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
   saveNewSkusToDb: (userId, newSkus, session) => saveNewSkusToDb(goods_collection, userId, newSkus, session),
