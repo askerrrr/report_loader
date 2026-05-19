@@ -2,6 +2,7 @@ import { WBAPIError } from "../../../../../customError/index.js";
 
 var requriedFields = [
   "nmId",
+  "rrdId",
   "forPay",
   "dateTo",
   "saleDt",
