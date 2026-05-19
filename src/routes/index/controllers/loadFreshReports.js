@@ -2,6 +2,7 @@ import dbUtils from "../../../database/utils/index.js";
 import { dbClient } from "../../../database/index.js";
 import reportsProcessing from "../utils/reportsProcessing.js";
 import reportPeriods from "../../../dateUtils/reportPeriods.js";
+import freshReportPeriodIndexIsInvalid from "../utils/freshReportPeriodIndexIsInvalid.js";
 import filteringOfRequiredReportPeriods from "../utils/filteringOfRequiredReportPeriods.js";
 import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayFromCurrentMonth.js";
 
@@ -41,7 +42,7 @@ var loadFreshReports = async (req, res, next) => {
         var { reportTree } = await dbUtils.getReportsTree(userId, session);
         var freshReportPeriodIndex = user.freshReportPeriodIndex;
 
-        if (typeof freshReportPeriodIndex === "undefined") {
+        if (freshReportPeriodIndexIsInvalid(freshReportPeriodIndex)) {
           var { lastMonday } = getLastMondayFromCurrentMonth();
           freshReportPeriodIndex = reportPeriods.findIndex((item) => item.dateFrom === lastMonday);
         }
