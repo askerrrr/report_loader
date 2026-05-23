@@ -1,13 +1,13 @@
 import initSku from "./initSku.js";
 import calc from "../calcServices/index.js";
 
-var parseSku = async (name, skuQty, skuFilteredReport, storageData, taxRate, totals, postfix = "") => {
+var parseSku = (name, skuQty, skuFilteredReport, storageData, taxRate, totals, postfix = "") => {
   try {
     var { totalSold, totalStorageCost, totalAdvertisingCosts } = totals;
 
     var sku = initSku(postfix);
 
-    sku["qty" + postfix] = await calc.quantity(skuFilteredReport);
+    sku["qty" + postfix] = calc.quantity(skuFilteredReport);
     sku["fines" + postfix] = calc.sum(skuFilteredReport, "penalty", "truncate-on");
     sku["acceptance" + postfix] = calc.sum(skuFilteredReport, "paidAcceptance", "truncate-on");
     sku["taxableAmount" + postfix] = calc.taxableAmount(skuFilteredReport);

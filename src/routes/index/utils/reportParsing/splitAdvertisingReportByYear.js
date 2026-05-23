@@ -1,4 +1,4 @@
-var splitAdvertisingReportByYear = async (advertisingReport, startYear) => {
+var splitAdvertisingReportByYear = (advertisingReport, startYear) => {
   if (!advertisingReport.length) {
     return { startYearAd: [], endYearAd: [] };
   }

@@ -1,4 +1,4 @@
-var splitWeeklyFinancialReportByYear = async (report) => {
+var splitWeeklyFinancialReportByYear = (report) => {
   var startYearWeeklyFinancialReport = [];
   var endYearWeeklyFinancialReport = [];
 

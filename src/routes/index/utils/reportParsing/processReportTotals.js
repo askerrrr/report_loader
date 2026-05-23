@@ -1,7 +1,7 @@
 import calc from "../calcServices/index.js";
 import truncateTotals from "./truncateTotals.js";
 
-var processReportTotals = async (skus, propPostfix = "") => {
+var processReportTotals = (skus, propPostfix = "") => {
   var report = {};
 
   report["totalFinalProfit" + propPostfix] = 0;
