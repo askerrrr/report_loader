@@ -17,9 +17,9 @@ var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
 
   var { token } = await dbUtils.getToken(userId, session);
 
-  var { exp } = parseJwt(token);
+  var parsedToken = parseJwt(token);
 
-  if (exp >= currentTimestamp) {
+  if (!parsedToken?.exp || parsedToken.exp >= currentTimestamp) {
     throw new Error(invalidTokenErrorMsg);
   }
 
