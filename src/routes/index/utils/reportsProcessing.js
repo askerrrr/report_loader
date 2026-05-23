@@ -27,7 +27,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
   var reports = await wbapi.getReports(userId, dateFrom, dateTo, token);
   var { reportId } = reports.weeklyFinancialReport[0];
 
-  var { years, year, month } = await insertReportToReportTree(dateFrom, dateTo, reportId, reportTree);
+  var { years, year, month } = insertReportToReportTree(dateFrom, dateTo, reportId, reportTree);
   var sortedYears = sortYearsTree(years);
 
   if (isCrossYearReport) {

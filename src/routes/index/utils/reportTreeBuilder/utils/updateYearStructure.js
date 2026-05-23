@@ -5,7 +5,7 @@ import insertReportIdAndFullPeriodToReportIds from "./insertReportIdAndFullPerio
  * @param {'overlap - yes' | 'overlap - no'} overlapStatus
  */
 
-var updateYearStructure = async (months, year, monthNum, reportDate, reportId, fullPeriod, overlapStatus) => {
+var updateYearStructure = (months, year, monthNum, reportDate, reportId, fullPeriod, overlapStatus) => {
   var { monthName, monthIndex } = getMonthNameAndIndex(monthNum);
 
   var reportIds = months[monthIndex]?.reportIds ?? new Array(5).fill(null);
