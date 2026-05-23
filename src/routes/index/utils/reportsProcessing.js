@@ -50,7 +50,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
   report.dateFrom = dateFrom;
   report.reportId = reportId;
   report.crossesTaxYears = isCrossYearReport;
-  report.recordTo = { year, month };
+  report.recordedTo = { year, month };
   report.isFinancesAccounted = false;
 
   var { listGoods } = await dbUtils.getListGoodsFromDb(userId, session);

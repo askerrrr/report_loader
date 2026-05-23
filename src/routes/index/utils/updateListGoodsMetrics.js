@@ -30,7 +30,7 @@ var updateListGoodsMetrics = async (report, listGoods) => {
     var endYear = +report.dateTo.split("-")[0];
   }
 
-  var { year } = report.recordTo;
+  var { year } = report.recordedTo;
 
   for (var sku of report.skus) {
     if (report.crossesTaxYears) {
