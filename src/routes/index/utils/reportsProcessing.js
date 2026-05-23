@@ -19,7 +19,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
 
   var parsedToken = parseJwt(token);
 
-  if (!parsedToken?.exp || parsedToken.exp >= currentTimestamp) {
+  if (!parsedToken?.exp || parsedToken.exp * 1000 <= currentTimestamp) {
     throw new Error(invalidTokenErrorMsg);
   }
 
