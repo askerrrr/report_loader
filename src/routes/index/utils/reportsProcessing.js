@@ -13,7 +13,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
   var startYear = +dateFrom.split("-")[0];
   var endYear = +dateTo.split("-")[0];
   var isCrossYearReport = startYear !== endYear;
-  var currentTimestamp = new Date(Date.now() + 3 * 60 * 60 * 1000).getTime();
+  var currentTimestamp = new Date(Date.now() + 3 * 60 * 60).getTime();
 
   var { token } = await dbUtils.getToken(userId, session);
 
