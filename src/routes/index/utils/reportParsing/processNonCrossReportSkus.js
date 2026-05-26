@@ -5,24 +5,24 @@ import getSkuNamesAndIds from "./getSkuNamesAndIds.js";
 import parsePaidStorageReport from "./parsePaidStorageReport.js";
 import recalculateSkuAndTaxParams from "./recalculateSkuAndTaxParams.js";
 
-var processNonCrossReportSkus = async (reports, taxParams) => {
+var processNonCrossReportSkus = (reports, taxParams) => {
   var skus = [];
   var recalculatedTaxParams = Object.assign({}, taxParams);
   var { weeklyFinancialReport, paidStorageReport, advertisingReport } = reports;
 
-  var totalSold = await calc.total.sold(weeklyFinancialReport);
-  var totalStorageCost = await calc.total.storageCost(weeklyFinancialReport);
-  var totalAdvertisingCosts = await calculateTotalAdvertisingCosts(advertisingReport);
+  var totalSold = calc.total.sold(weeklyFinancialReport);
+  var totalStorageCost = calc.total.storageCost(weeklyFinancialReport);
+  var totalAdvertisingCosts = calculateTotalAdvertisingCosts(advertisingReport);
   var totals = { totalSold, totalStorageCost, totalAdvertisingCosts };
 
   var skuNamesAndIds = getSkuNamesAndIds(weeklyFinancialReport);
 
-  var storageDataFromPaidStorageReport = await parsePaidStorageReport(paidStorageReport);
+  var storageDataFromPaidStorageReport = parsePaidStorageReport(paidStorageReport);
 
   for (var { id, name } of skuNamesAndIds) {
     var skuFilteredReport = weeklyFinancialReport.filter((sku) => sku.vendorCode === name);
 
-    var sku = await parseSku(name, skuNamesAndIds.length, skuFilteredReport, storageDataFromPaidStorageReport, taxParams.taxRate, totals);
+    var sku = parseSku(name, skuNamesAndIds.length, skuFilteredReport, storageDataFromPaidStorageReport, taxParams.taxRate, totals);
 
     sku.id = id;
     sku.skuName = name;
@@ -33,7 +33,7 @@ var processNonCrossReportSkus = async (reports, taxParams) => {
     skus.push(result.updatedSku);
   }
 
-  skus = await truncateSkuNums(skus);
+  skus = truncateSkuNums(skus);
 
   return { skus, recalculatedTaxParams, skuNamesAndIds, ...totals };
 };

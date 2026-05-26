@@ -1,6 +1,6 @@
 import utils from "./utils/index.js";
 
-var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
+var insertReportToReportTree = (dateFrom, dateTo, reportId, years) => {
   var [startYear, startMonth] = dateFrom.split("-").map(Number);
   var [endYear, endMonth] = dateTo.split("-").map(Number);
 
@@ -40,21 +40,21 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
         }
       }
 
-      var months = await utils.insertMonthDataToMonths(reportId, dateFrom);
+      var months = utils.insertMonthDataToMonths(reportId, dateFrom);
       years.push({ year: startYear, months });
 
       return { years, year: startYear, month: startMonthName };
     }
 
     if (utils.isNextMonthReportNeeded(dateFrom, dateTo)) {
-      var months = await utils.insertMonthDataToMonths(reportId, fullPeriod, dateTo, "carry");
+      var months = utils.insertMonthDataToMonths(reportId, fullPeriod, dateTo, "carry");
 
       years.push({ year: startYear, months });
 
       return { years, year: startYear, month: endMonthName };
     }
 
-    var months = await utils.insertMonthDataToMonths(reportId, fullPeriod, dateFrom);
+    var months = utils.insertMonthDataToMonths(reportId, fullPeriod, dateFrom);
 
     years.push({ year: startYear, months });
 
@@ -77,7 +77,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
         var yearIndex = utils.getYearIndex(years, endYear);
         var { months } = years[yearIndex];
 
-        years[yearIndex] = await utils.updateYearStructure(months, endYear, endMonth, dateTo, reportId, fullPeriod, "overlap - yes");
+        years[yearIndex] = utils.updateYearStructure(months, endYear, endMonth, dateTo, reportId, fullPeriod, "overlap - yes");
 
         return { years, year: endYear, month: endMonthName };
       }
@@ -86,7 +86,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
     var yearIndex = utils.getYearIndex(years, startYear);
     var { months } = years[yearIndex];
 
-    years[yearIndex] = await utils.updateYearStructure(months, startYear, startMonth, dateFrom, reportId, fullPeriod, "overlap - no");
+    years[yearIndex] = utils.updateYearStructure(months, startYear, startMonth, dateFrom, reportId, fullPeriod, "overlap - no");
 
     return { years, year: startYear, month: startMonthName };
   }
@@ -95,7 +95,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
     var yearIndex = utils.getYearIndex(years, startYear);
     var { months } = years[yearIndex];
 
-    years[yearIndex] = await utils.updateYearStructure(months, startYear, endMonth, dateTo, reportId, fullPeriod, "overlap - yes");
+    years[yearIndex] = utils.updateYearStructure(months, startYear, endMonth, dateTo, reportId, fullPeriod, "overlap - yes");
 
     return { years, year: startYear, month: endMonthName };
   }
@@ -103,7 +103,7 @@ var insertReportToReportTree = async (dateFrom, dateTo, reportId, years) => {
   var yearIndex = utils.getYearIndex(years, startYear);
   var { months } = years[yearIndex];
 
-  years[yearIndex] = await utils.updateYearStructure(months, startYear, startMonth, dateFrom, reportId, fullPeriod, "overlap - no");
+  years[yearIndex] = utils.updateYearStructure(months, startYear, startMonth, dateFrom, reportId, fullPeriod, "overlap - no");
 
   return { years, year: startYear, month: startMonthName };
 };
