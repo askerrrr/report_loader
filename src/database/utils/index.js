@@ -31,6 +31,7 @@ import updateFreshReportPeriodIndex from "./updateFreshReportPeriodIndex.js";
 import getLastReportRequestTimestamp from "./getLastReportRequestTimestamp.js";
 import updateReportLoadingDelayStatus from "./updateReportLoadingDelayStatus.js";
 import updateLastReportRequestTimestamp from "./updateLastReportRequestTimestamp.js";
+import updateReportLoadingStoppedStatus from "./updateReportLoadingStoppedStatus.js";
 
 var db = {
   getToken: (userId, session) => getToken(tokens_collection, userId, session),
@@ -45,14 +46,22 @@ var db = {
   getLastReportRequestTimestamp: (userId, session) => getLastReportRequestTimestamp(report_loading_states_collection, userId, session),
 
   updateReportTree: (userId, years, session) => updateReportTree(reports_tree_collection, userId, years, session),
+
   updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
+
   updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) =>
     updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
+
   updateLastReportRequestTimestamp: (userId, session) => updateLastReportRequestTimestamp(report_loading_states_collection, userId, session),
+
   updateReportLoadingDelayStatus: (userId, isReportLoadingDelayed) =>
     updateReportLoadingDelayStatus(report_loading_states_collection, userId, isReportLoadingDelayed),
 
+  updateReportLoadingStoppedStatus: (report_loading_states_collection, userId, newStatus, session) =>
+    updateReportLoadingStoppedStatus(userId, newStatus, session),
+
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
+
   addReportToAbandonedReports: (userId, reportPeriod, session) =>
     addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
 
