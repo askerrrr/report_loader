@@ -8,7 +8,7 @@ var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65000;
 var queueIsEmptyErrMsg = "QUEUE_EMPTY";
 var tokenIsExpiredErrMsg = "Token is expired";
-var noDataForPeriodMessage = "there is no data available for the selected reporting period";
+var noDataForPeriodErrMsg = "there is no data available for the selected reporting period";
 var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTimeout(res, delayMs) : setTimeout(res, NEXT_REPORT_DELAY_MS)));
 
 var sessionOptions = { willRetryWrite: false };
@@ -47,7 +47,7 @@ var loader = async (userId, isServerStartupLoad) => {
           await reportsProcessing(userId, dateFrom, dateTo, session);
         } catch (processingError) {
           console.log({ processingError });
-          if (processingError.message === noDataForPeriodMessage) {
+          if (processingError.message === noDataForPeriodErrMsg) {
             return;
           } else if (processingError instanceof WBAPIError) {
             await dbUtils.updateReportsQueue(userId, { ...report }, session);
