@@ -6,6 +6,7 @@ import { WBAPIError } from "../../../customError/index.js";
 
 var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65000;
+var statusOfReportLoadingStop = true;
 var queueIsEmptyErrMsg = "QUEUE_EMPTY";
 var tokenIsExpiredErrMsg = "Token is expired";
 var noDataForPeriodErrMsg = "there is no data available for the selected reporting period";
@@ -28,6 +29,7 @@ var loader = async (userId, isServerStartupLoad) => {
         var { token } = await dbUtils.getToken(userId, session);
 
         if (tokenIsExpired(token)) {
+          await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, session);
           throw new Error(tokenIsExpiredErrMsg);
         }
 
