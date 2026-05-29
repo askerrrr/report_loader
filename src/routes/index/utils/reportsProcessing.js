@@ -9,19 +9,10 @@ import insertReportToReportTree from "./reportTreeBuilder/index.js";
 
 var invalidTokenErrorMsg = "Invalid Token";
 
-var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
+var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   var startYear = +dateFrom.split("-")[0];
   var endYear = +dateTo.split("-")[0];
   var isCrossYearReport = startYear !== endYear;
-  var currentTimestamp = new Date(Date.now() + 3 * 60 * 60).getTime();
-
-  var { token } = await dbUtils.getToken(userId, session);
-
-  var parsedToken = parseJwt(token);
-
-  if (!parsedToken?.exp || parsedToken.exp * 1000 <= currentTimestamp) {
-    throw new Error(invalidTokenErrorMsg);
-  }
 
   var { reportTree } = await dbUtils.getReportsTree(userId, session);
   var reports = await wbapi.getReports(userId, dateFrom, dateTo, token);
