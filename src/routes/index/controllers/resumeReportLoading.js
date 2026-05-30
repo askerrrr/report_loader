@@ -23,10 +23,14 @@ var resumeReportLoading = async (req, res) => {
     return res.sendStatus(400);
   }
 
-  var user = await dbUtils.getUser(userId);
+  var user = await dbUtils.getReportLoadingState(userId);
 
   if (!user) {
     return res.sendStatus(404);
+  }
+
+  if (!user.isReportLoadingisStopped) {
+    return res.sendStatus(202);
   }
 
   res.sendStatus(202);
