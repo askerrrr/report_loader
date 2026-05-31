@@ -1,6 +1,6 @@
 import { WBAPIError } from "../../../../../customError/index.js";
 
-var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
+var getAdvertisingCostsReportFromWBAPI = async (dateFrom, dateTo, token, userId) => {
   var url = `https://advert-api.wildberries.ru/adv/v1/upd?from=${dateFrom}&to=${dateTo}`;
 
   var res = await fetch(url, {
@@ -31,4 +31,4 @@ var getAdvertisingCostsForPeriod = async (dateFrom, dateTo, token, userId) => {
   throw new WBAPIError(userId, res.status, errMsg);
 };
 
-export default getAdvertisingCostsForPeriod;
+export default getAdvertisingCostsReportFromWBAPI;
