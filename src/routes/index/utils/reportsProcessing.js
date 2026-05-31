@@ -16,6 +16,9 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
 
   var { reportTree } = await dbUtils.getReportsTree(userId, session);
   var reports = await wbapi.getReports(userId, dateFrom, dateTo, token);
+
+  await dbUtils.updateLastUsedTokenTimestamp(userId, session);
+
   var { reportId } = reports.weeklyFinancialReport[0];
 
   var { years, year, month } = insertReportToReportTree(dateFrom, dateTo, reportId, reportTree);

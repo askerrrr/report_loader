@@ -27,6 +27,7 @@ import setLoadingProgressStatus from "./setLoadingProgressStatus.js";
 import getLoadingProgressStatus from "./getLoadingProgressStatus.js";
 import getFreshReportPeriodIndex from "./getFreshReportPeriodIndex.js";
 import addReportToAbandonedReports from "./addReportToAbandonedReports.js";
+import updateLastUsedTokenTimestamp from "./updateLastUsedTokenTimestamp.js";
 import updateFreshReportPeriodIndex from "./updateFreshReportPeriodIndex.js";
 import getLastReportRequestTimestamp from "./getLastReportRequestTimestamp.js";
 import updateReportLoadingDelayStatus from "./updateReportLoadingDelayStatus.js";
@@ -51,6 +52,8 @@ var db = {
 
   updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) =>
     updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
+
+  updateLastUsedTokenTimestamp: (userId, session) => updateLastUsedTokenTimestamp(tokens_collection, userId, session),
 
   updateLastReportRequestTimestamp: (userId, session) => updateLastReportRequestTimestamp(report_loading_states_collection, userId, session),
 
