@@ -35,75 +35,67 @@ var doRequest = async (token, dateFrom, dateTo, period, rrdId, limit) =>
   });
 
 var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) => {
-  try {
-    var defaultRowNumber = 0;
+  var defaultRowNumber = 0;
 
-    var res = await doRequest(token, dateFrom, dateTo, period, defaultRowNumber, MAX_NUMBERS_OF_ROWS);
+  var res = await doRequest(token, dateFrom, dateTo, period, defaultRowNumber, MAX_NUMBERS_OF_ROWS);
 
-    if (res.status === 200) {
-      var report = await res.json();
+  if (res.status === 200) {
+    var report = await res.json();
 
-      var reportRowCount = report.length;
+    var reportRowCount = report.length;
 
-      if (reportRowCount > MAX_NUMBERS_OF_ROWS) {
-        var needRetryRequest = true;
+    if (reportRowCount > MAX_NUMBERS_OF_ROWS) {
+      var needRetryRequest = true;
 
-        var lastRowId = report[report.length - 1].rrdId;
-        defaultRowNumber = lastRowId;
+      var lastRowId = report[report.length - 1].rrdId;
+      defaultRowNumber = lastRowId;
 
-        var remainingReportPart = [];
+      var remainingReportPart = [];
 
-        while (needRetryRequest) {
-          await nextRequestDelay();
+      while (needRetryRequest) {
+        await nextRequestDelay();
 
-          var res = await doRequest(token, dateFrom, dateTo, period, defaultRowNumber, MAX_NUMBERS_OF_ROWS);
+        var res = await doRequest(token, dateFrom, dateTo, period, defaultRowNumber, MAX_NUMBERS_OF_ROWS);
 
-          if (res.status === 200) {
-            remainingReportPart = await res.json();
+        if (res.status === 200) {
+          remainingReportPart = await res.json();
 
-            lastRowId = remainingReportPart[remainingReportPart.length - 1].rrdId;
-            defaultRowNumber = lastRowId;
+          lastRowId = remainingReportPart[remainingReportPart.length - 1].rrdId;
+          defaultRowNumber = lastRowId;
 
-            report.push(...remainingReportPart);
-          } else if (res.status === 204) {
-            needRetryRequest = false;
-            break;
-          }
+          report.push(...remainingReportPart);
+        } else if (res.status === 204) {
+          needRetryRequest = false;
+          break;
         }
       }
-
-      return report;
-    } else if (res.status === 204) {
-      return [];
     }
 
-    var errMsg;
-
-    switch (res.status) {
-      case 400:
-        errMsg = "Неправильный запрос";
-        break;
-      case 401:
-        errMsg = "Не удалось авторизоваться с помощью сохраненного токена";
-        break;
-      case 429:
-        errMsg = "Подождите минуту перед получением нового отчёта";
-        break;
-      case 402:
-        errMsg = "Требуется платеж";
-        break;
-      default:
-        errMsg = "Возникла ошибка при получении финансового отчета, попробуйте позже";
-    }
-
-    throw new WBAPIError(userId, res.status, errMsg);
-  } catch (e) {
-    if (e instanceof WBAPIError) {
-      throw e;
-    } else {
-      throw new WBAPIError(userId, 500, "Не удалось подключиться к WBAPI" + "\n" + e.message);
-    }
+    return report;
+  } else if (res.status === 204) {
+    return [];
   }
+
+  var errMsg;
+
+  switch (res.status) {
+    case 400:
+      errMsg = "Неправильный запрос";
+      break;
+    case 401:
+      errMsg = "Не удалось авторизоваться с помощью сохраненного токена";
+      break;
+    case 429:
+      errMsg = "Подождите минуту перед получением нового отчёта";
+      break;
+    case 402:
+      errMsg = "Требуется платеж";
+      break;
+    default:
+      errMsg = "Возникла ошибка при получении финансового отчета, попробуйте позже";
+  }
+
+  throw new WBAPIError(userId, res.status, errMsg);
 };
 
 export default getWeeklyFinancialReportFromWBAPI;
