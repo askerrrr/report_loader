@@ -4,6 +4,7 @@ import dbUtils from "../../../database/utils/index.js";
 import reportsProcessing from "./reportsProcessing.js";
 import { WBAPIError } from "../../../customError/index.js";
 
+var fiveMinInMs = 300_000;
 var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65000;
 var statusOfReportLoadingStop = true;
@@ -12,7 +13,7 @@ var tokenIsExpiredErrMsg = "Token is expired";
 var noDataForPeriodErrMsg = "there is no data available for the selected reporting period";
 var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTimeout(res, delayMs) : setTimeout(res, NEXT_REPORT_DELAY_MS)));
 
-var sessionOptions = { willRetryWrite: false };
+var sessionOptions = { willRetryWrite: false, maxTimeMs: fiveMinInMs };
 
 var loader = async (userId, isServerStartupLoad) => {
   await dbUtils.setLoadingProgressStatus(userId, "loading").then(() => console.log("the download has started for the user: " + userId));
@@ -23,7 +24,7 @@ var loader = async (userId, isServerStartupLoad) => {
 
   while (true) {
     var queueIsEmpty = false;
-    var session = await dbClient.startSession();
+    var session = await dbClient.startSession(sessionOptions);
     try {
       await session.withTransaction(async () => {
         var { token } = await dbUtils.getToken(userId, session);
