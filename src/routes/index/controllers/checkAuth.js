@@ -1,15 +1,4 @@
-import Joi from "joi";
 import dbUtils from "../../../database/utils/index.js";
-
-var schema = Joi.object({
-  userId: Joi.string().required(),
-  dateFrom: Joi.string().allow("").required(),
-  dateTo: Joi.string().allow("").required(),
-  nextRequestDelayMs: Joi.number(),
-  isPeriodWithinSameWeek: Joi.boolean(),
-  needsReportLoadingDelay: Joi.boolean(),
-  uploadAllReports: Joi.boolean().required(),
-});
 
 var checkAuth = async (req, res, next) => {
   var authHeader = req.headers?.authorization;

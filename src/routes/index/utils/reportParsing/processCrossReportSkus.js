@@ -10,9 +10,9 @@ import splitPaidStorageReportByYear from "./splitPaidStorageReportByYear.js";
 import splitAdvertisingReportByYear from "./splitAdvertisingReportByYear.js";
 import splitWeeklyFinancialReportByYear from "./splitWeeklyFinancialReportByYear.js";
 
-var calculateTotalAdvertisingCosts = async (data) => data.reduce((acc, i) => acc + i.updSum, 0);
+var calculateTotalAdvertisingCosts = (data) => data.reduce((acc, i) => acc + i.updSum, 0);
 
-var processCrossReportSkus = async (reports, taxParams) => {
+var processCrossReportSkus = (reports, taxParams) => {
   var recalculatedTaxParams = {};
   recalculatedTaxParams.startYearTaxParams = Object.assign({}, taxParams.startYearTaxParams);
   recalculatedTaxParams.endYearTaxParams = Object.assign({}, taxParams.endYearTaxParams);
@@ -21,26 +21,26 @@ var processCrossReportSkus = async (reports, taxParams) => {
 
   var { weeklyFinancialReport, paidStorageReport, advertisingReport } = reports;
 
-  var { startYearAd, endYearAd } = await splitAdvertisingReportByYear(advertisingReport, startYearTaxParams.year);
-  var { startYearStorageData, endYearStorageData } = await splitPaidStorageReportByYear(paidStorageReport, startYearTaxParams.year);
-  startYearStorageData = await parsePaidStorageReport(startYearStorageData);
-  endYearStorageData = await parsePaidStorageReport(endYearStorageData);
-  paidStorageReport = await parsePaidStorageReport(paidStorageReport);
+  var { startYearAd, endYearAd } = splitAdvertisingReportByYear(advertisingReport, startYearTaxParams.year);
+  var { startYearStorageData, endYearStorageData } = splitPaidStorageReportByYear(paidStorageReport, startYearTaxParams.year);
+  startYearStorageData = parsePaidStorageReport(startYearStorageData);
+  endYearStorageData = parsePaidStorageReport(endYearStorageData);
+  paidStorageReport = parsePaidStorageReport(paidStorageReport);
 
-  var { startYearWeeklyFinancialReport, endYearWeeklyFinancialReport } = await splitWeeklyFinancialReportByYear(
+  var { startYearWeeklyFinancialReport, endYearWeeklyFinancialReport } = splitWeeklyFinancialReportByYear(
     weeklyFinancialReport,
     startYearTaxParams.year,
   );
 
   var startYearTotals = {};
-  startYearTotals.totalSold = await calc.total.sold(startYearWeeklyFinancialReport);
-  startYearTotals.totalStorageCost = await calc.total.storageCost(startYearWeeklyFinancialReport);
-  startYearTotals.totalAdvertisingCosts = await calculateTotalAdvertisingCosts(startYearAd);
+  startYearTotals.totalSold = calc.total.sold(startYearWeeklyFinancialReport);
+  startYearTotals.totalStorageCost = calc.total.storageCost(startYearWeeklyFinancialReport);
+  startYearTotals.totalAdvertisingCosts = calculateTotalAdvertisingCosts(startYearAd);
 
   var endYearTotals = {};
-  endYearTotals.totalSold = await calc.total.sold(endYearWeeklyFinancialReport);
-  endYearTotals.totalStorageCost = await calc.total.storageCost(endYearWeeklyFinancialReport);
-  endYearTotals.totalAdvertisingCosts = await calculateTotalAdvertisingCosts(endYearAd);
+  endYearTotals.totalSold = calc.total.sold(endYearWeeklyFinancialReport);
+  endYearTotals.totalStorageCost = calc.total.storageCost(endYearWeeklyFinancialReport);
+  endYearTotals.totalAdvertisingCosts = calculateTotalAdvertisingCosts(endYearAd);
 
   var totalSold = startYearTotals.totalSold + endYearTotals.totalSold;
   var totalStorageCost = truncateNum(startYearTotals.totalStorageCost + endYearTotals.totalStorageCost);
@@ -58,7 +58,7 @@ var processCrossReportSkus = async (reports, taxParams) => {
     var currentYearPropPostfix = "InCurrentYear";
     var nextYearPropPostfix = "InNextYear";
 
-    var currentYearSkuData = await parseSku(
+    var currentYearSkuData = parseSku(
       name,
       skuNamesAndIdsInCurrentYear.length,
       startYearSku,
@@ -74,7 +74,7 @@ var processCrossReportSkus = async (reports, taxParams) => {
       currentYearPropPostfix,
     );
 
-    var nextYearSkuData = await parseSku(
+    var nextYearSkuData = parseSku(
       name,
       skuNamesAndIdsInNextYear.length,
       endYearSku,
@@ -88,7 +88,7 @@ var processCrossReportSkus = async (reports, taxParams) => {
 
     var middleTaxRate = (startYearTaxParams.taxRate + endYearTaxParams.taxRate) / 2;
 
-    var totalSkuData = await parseSku(name, totalSold, skuFilteredReport, paidStorageReport, middleTaxRate, {
+    var totalSkuData = parseSku(name, totalSold, skuFilteredReport, paidStorageReport, middleTaxRate, {
       totalSold,
       totalStorageCost,
       totalAdvertisingCosts,
@@ -104,7 +104,7 @@ var processCrossReportSkus = async (reports, taxParams) => {
     skus.push(sku);
   }
 
-  skus = await truncateSkuNums(skus);
+  skus = truncateSkuNums(skus);
 
   return { skus, skuNamesAndIds, totalSold, totalStorageCost, totalAdvertisingCosts, recalculatedTaxParams };
 };

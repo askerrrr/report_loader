@@ -1,36 +1,29 @@
+import initSku from "./initSku.js";
 import calc from "../calcServices/index.js";
 
-var parseSku = async (name, skuQty, skuFilteredReport, storageData, taxRate, totals, propPostfix = "") => {
+var parseSku = (name, skuQty, skuFilteredReport, storageData, taxRate, totals, postfix = "") => {
   try {
     var { totalSold, totalStorageCost, totalAdvertisingCosts } = totals;
 
-    var sku = {};
+    var sku = initSku(postfix);
 
-    sku["finalProfit" + propPostfix] = 0;
-    sku["insuranceFee" + propPostfix] = 0;
-    sku["productCosts" + propPostfix] = 0;
-    sku["preTaxProfit" + propPostfix] = 0;
-    sku["profitMargin" + propPostfix] = 0;
-    sku["otherExpenses" + propPostfix] = 0;
-    sku["additionalInsuranceFee" + propPostfix] = 0;
-
-    sku["qty" + propPostfix] = await calc.quantity(skuFilteredReport);
-    sku["fines" + propPostfix] = calc.sum(skuFilteredReport, "penalty", "truncate-on");
-    sku["acceptance" + propPostfix] = calc.sum(skuFilteredReport, "paidAcceptance", "truncate-on");
-    sku["taxableAmount" + propPostfix] = calc.taxableAmount(skuFilteredReport);
-    sku["retailAmount" + propPostfix] = calc.retailAmount(skuFilteredReport);
-    sku["tax" + propPostfix] = calc.taxAmount(sku["taxableAmount" + propPostfix], taxRate);
-    sku["returnAmount" + propPostfix] = calc.returnAmount(skuFilteredReport);
-    sku["deliveryCost" + propPostfix] = calc.sum(skuFilteredReport, "deliveryService", "truncate-on");
-    sku["deductionOrPayment" + propPostfix] = calc.sum(skuFilteredReport, "deduction", "truncate-on");
-    sku["additionalPayment" + propPostfix] = calc.sum(skuFilteredReport, "additionalPayment", "truncate-on");
-    sku["sellerPayoutAmount" + propPostfix] = calc.sellerPayoutAmount(skuFilteredReport);
-    sku["averageRetailPrice" + propPostfix] = calc.averageRetailPrice(sku["qty" + propPostfix], skuFilteredReport);
-    sku["storageCost" + propPostfix] = calc.storageCost(name, storageData);
-    sku["averageStorageCost" + propPostfix] = calc.averageStorageCost(totalStorageCost, totalSold, sku["qty" + propPostfix]);
-    sku["averageAdvertisingCost" + propPostfix] = calc.averageAdvertisingCost(skuQty, totalAdvertisingCosts);
-    sku["profit" + propPostfix] = calc.profit(sku, propPostfix);
-    sku["averageProfit" + propPostfix] = calc.averageProfit(sku, propPostfix);
+    sku["qty" + postfix] = calc.quantity(skuFilteredReport);
+    sku["fines" + postfix] = calc.sum(skuFilteredReport, "penalty", "truncate-on");
+    sku["acceptance" + postfix] = calc.sum(skuFilteredReport, "paidAcceptance", "truncate-on");
+    sku["taxableAmount" + postfix] = calc.taxableAmount(skuFilteredReport);
+    sku["retailAmount" + postfix] = calc.retailAmount(skuFilteredReport);
+    sku["tax" + postfix] = calc.taxAmount(sku["taxableAmount" + postfix], taxRate);
+    sku["returnAmount" + postfix] = calc.returnAmount(skuFilteredReport);
+    sku["deliveryCost" + postfix] = calc.sum(skuFilteredReport, "deliveryService", "truncate-on");
+    sku["deductionOrPayment" + postfix] = calc.sum(skuFilteredReport, "deduction", "truncate-on");
+    sku["additionalPayment" + postfix] = calc.sum(skuFilteredReport, "additionalPayment", "truncate-on");
+    sku["sellerPayoutAmount" + postfix] = calc.sellerPayoutAmount(skuFilteredReport);
+    sku["averageRetailPrice" + postfix] = calc.averageRetailPrice(sku["qty" + postfix], skuFilteredReport);
+    sku["storageCost" + postfix] = calc.storageCost(name, storageData);
+    sku["averageStorageCost" + postfix] = calc.averageStorageCost(totalStorageCost, totalSold, sku["qty" + postfix]);
+    sku["averageAdvertisingCost" + postfix] = calc.averageAdvertisingCost(skuQty, totalAdvertisingCosts);
+    sku["profit" + postfix] = calc.profit(sku, postfix);
+    sku["averageProfit" + postfix] = calc.averageProfit(sku, postfix);
 
     return sku;
   } catch (e) {

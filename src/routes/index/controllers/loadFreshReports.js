@@ -2,10 +2,11 @@ import dbUtils from "../../../database/utils/index.js";
 import { dbClient } from "../../../database/index.js";
 import reportsProcessing from "../utils/reportsProcessing.js";
 import reportPeriods from "../../../dateUtils/reportPeriods.js";
+import freshReportPeriodIndexIsInvalid from "../utils/freshReportPeriodIndexIsInvalid.js";
 import filteringOfRequiredReportPeriods from "../utils/filteringOfRequiredReportPeriods.js";
 import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayFromCurrentMonth.js";
 
-var noDataForPeriodMessage = "there is no data available for the selected reporting period";
+var noDataForPeriodErrMsg = "there is no data available for the selected reporting period";
 
 var loadFreshReports = async (req, res, next) => {
   var authHeader = req.headers?.authorization;
@@ -41,7 +42,7 @@ var loadFreshReports = async (req, res, next) => {
         var { reportTree } = await dbUtils.getReportsTree(userId, session);
         var freshReportPeriodIndex = user.freshReportPeriodIndex;
 
-        if (typeof freshReportPeriodIndex === "undefined") {
+        if (freshReportPeriodIndexIsInvalid(freshReportPeriodIndex)) {
           var { lastMonday } = getLastMondayFromCurrentMonth();
           freshReportPeriodIndex = reportPeriods.findIndex((item) => item.dateFrom === lastMonday);
         }
@@ -69,9 +70,10 @@ var loadFreshReports = async (req, res, next) => {
         try {
           var { dateFrom, dateTo } = reportPeriodToLoad;
           await reportsProcessing(userId, dateFrom, dateTo, session);
+          await dbUtils.updateLastReportRequestTimestamp(userId, session);
           await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
         } catch (processingError) {
-          if (processingError.message === noDataForPeriodMessage) {
+          if (processingError.message === noDataForPeriodErrMsg) {
             return;
           }
 

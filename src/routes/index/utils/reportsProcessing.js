@@ -1,4 +1,5 @@
 import wbapi from "./WBAPI/index.js";
+import parseJwt from "./parseJwt.js";
 import sortYearsTree from "./sortYearTree.js";
 import parseReports from "./reportParsing/index.js";
 import dbUtils from "../../../database/utils/index.js";
@@ -6,17 +7,21 @@ import addNewSkusToListGoods from "./addNewSkusToListGoods.js";
 import updateListGoodsMetrics from "./updateListGoodsMetrics.js";
 import insertReportToReportTree from "./reportTreeBuilder/index.js";
 
-var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
+var invalidTokenErrorMsg = "Invalid Token";
+
+var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   var startYear = +dateFrom.split("-")[0];
   var endYear = +dateTo.split("-")[0];
   var isCrossYearReport = startYear !== endYear;
 
-  var { token } = await dbUtils.getToken(userId, session);
   var { reportTree } = await dbUtils.getReportsTree(userId, session);
   var reports = await wbapi.getReports(userId, dateFrom, dateTo, token);
+
+  await dbUtils.updateLastUsedTokenTimestamp(userId, session);
+
   var { reportId } = reports.weeklyFinancialReport[0];
 
-  var { years, year, month } = await insertReportToReportTree(dateFrom, dateTo, reportId, reportTree);
+  var { years, year, month } = insertReportToReportTree(dateFrom, dateTo, reportId, reportTree);
   var sortedYears = sortYearsTree(years);
 
   if (isCrossYearReport) {
@@ -39,7 +44,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, session) => {
   report.dateFrom = dateFrom;
   report.reportId = reportId;
   report.crossesTaxYears = isCrossYearReport;
-  report.recordTo = { year, month };
+  report.recordedTo = { year, month };
   report.isFinancesAccounted = false;
 
   var { listGoods } = await dbUtils.getListGoodsFromDb(userId, session);

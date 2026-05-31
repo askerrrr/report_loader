@@ -12,6 +12,7 @@ import getToken from "./getToken.js";
 import getUsersData from "./getUsersData.js";
 import getReportsTree from "./getReportsTree.js";
 import saveReportToDb from "./saveReportToDb.js";
+import saveNewSkusToDb from "./saveNewSkusToDb.js";
 import addNewTaxYearToDb from "./addNewTaxYear.js";
 import getReportsQueue from "./getReportsQueue.js";
 import updateReportTree from "./updateReportTree.js";
@@ -22,16 +23,16 @@ import updateReportsQueue from "./updateReportsQueue.js";
 import changeTaxParamsToDb from "./changeTaxParamsToDb.js";
 import resetAbandonedReports from "./resetAbandonedReports.js";
 import getReportLoadingState from "./getReportLoadingState.js";
-import saveNewSkusToDb from "./saveNewSkusToDb.js";
-import setAllUsersLoadingFlag from "./setAllUsersLoadingFlag.js";
 import setLoadingProgressStatus from "./setLoadingProgressStatus.js";
 import getLoadingProgressStatus from "./getLoadingProgressStatus.js";
 import getFreshReportPeriodIndex from "./getFreshReportPeriodIndex.js";
 import addReportToAbandonedReports from "./addReportToAbandonedReports.js";
+import updateLastUsedTokenTimestamp from "./updateLastUsedTokenTimestamp.js";
 import updateFreshReportPeriodIndex from "./updateFreshReportPeriodIndex.js";
 import getLastReportRequestTimestamp from "./getLastReportRequestTimestamp.js";
 import updateReportLoadingDelayStatus from "./updateReportLoadingDelayStatus.js";
 import updateLastReportRequestTimestamp from "./updateLastReportRequestTimestamp.js";
+import updateReportLoadingStoppedStatus from "./updateReportLoadingStoppedStatus.js";
 
 var db = {
   getToken: (userId, session) => getToken(tokens_collection, userId, session),
@@ -46,14 +47,24 @@ var db = {
   getLastReportRequestTimestamp: (userId, session) => getLastReportRequestTimestamp(report_loading_states_collection, userId, session),
 
   updateReportTree: (userId, years, session) => updateReportTree(reports_tree_collection, userId, years, session),
+
   updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
+
   updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) =>
     updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
+
+  updateLastUsedTokenTimestamp: (userId, session) => updateLastUsedTokenTimestamp(tokens_collection, userId, session),
+
   updateLastReportRequestTimestamp: (userId, session) => updateLastReportRequestTimestamp(report_loading_states_collection, userId, session),
+
   updateReportLoadingDelayStatus: (userId, isReportLoadingDelayed) =>
     updateReportLoadingDelayStatus(report_loading_states_collection, userId, isReportLoadingDelayed),
 
+  updateReportLoadingStoppedStatus: (userId, newStatus, session) =>
+    updateReportLoadingStoppedStatus(report_loading_states_collection, userId, newStatus, session),
+
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
+
   addReportToAbandonedReports: (userId, reportPeriod, session) =>
     addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
 
@@ -61,7 +72,6 @@ var db = {
 
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   saveListGoodsToDb: (userId, listGoods, session) => saveListGoodsToDb(goods_collection, userId, listGoods, session),
-  setAllUsersLoadingFlag: () => setAllUsersLoadingFlag(report_loading_states_collection),
   setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
 
   saveNewSkusToDb: (userId, newSkus, session) => saveNewSkusToDb(goods_collection, userId, newSkus, session),
