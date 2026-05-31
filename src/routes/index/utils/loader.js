@@ -6,7 +6,7 @@ import { WBAPIError } from "../../../customError/index.js";
 
 var fiveMinInMs = 300_000;
 var MAX_FAILED_ATTEMPTS = 3;
-var NEXT_REPORT_DELAY_MS = 65000;
+var NEXT_REPORT_DELAY_MS = 65_000;
 var statusOfReportLoadingStop = true;
 var queueIsEmptyErrMsg = "QUEUE_EMPTY";
 var tokenIsExpiredErrMsg = "Token is expired";
