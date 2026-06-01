@@ -13,12 +13,6 @@ var checkAuth = async (req, res, next) => {
     return res.sendStatus(401);
   }
 
-  var { error } = schema.validate(req.body);
-
-  if (error) {
-    return res.status(400).json({ error: `Key ${error.details[0].message}` });
-  }
-
   var user = await dbUtils.getUser(req.body.userId);
 
   if (!user) {
