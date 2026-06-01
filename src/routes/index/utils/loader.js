@@ -8,8 +8,6 @@ var fiveMinInMs = 300_000;
 var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65_000;
 var statusOfReportLoadingStop = true;
-var queueIsEmptyErrMsg = "QUEUE_EMPTY";
-var checkTokenExpiryErrMsg = "Token is expired";
 var noDataForPeriodErrMsg = "there is no data available for the selected reporting period";
 var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTimeout(res, delayMs) : setTimeout(res, NEXT_REPORT_DELAY_MS)));
 
