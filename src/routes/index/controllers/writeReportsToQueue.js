@@ -4,7 +4,12 @@ var writeReportsToQueue = async (req, res, next) => {
   var { userId, filteredRequiredReportPeriods } = req.body;
   await dbUtils.pushToReportsQueue(userId, filteredRequiredReportPeriods);
 
-  var { loadingInProgress, isReportLoadingDelayed } = await dbUtils.getReportLoadingState(userId);
+  var { loadingInProgress, isReportLoadingDelayed, isReportLoadingisStopped } = await dbUtils.getReportLoadingState(userId);
+
+  if (isReportLoadingisStopped) {
+    return res.sendStatus(202);
+  }
+
   if (loadingInProgress) {
     return res.sendStatus(200);
   }
