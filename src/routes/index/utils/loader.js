@@ -1,4 +1,4 @@
-import tokenIsExpired from "./tokenIsExpired.js";
+import checkTokenExpiry from "./checkTokenExpiry.js";
 import { dbClient } from "../../../database/index.js";
 import dbUtils from "../../../database/utils/index.js";
 import reportsProcessing from "./reportsProcessing.js";
@@ -9,7 +9,7 @@ var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65_000;
 var statusOfReportLoadingStop = true;
 var queueIsEmptyErrMsg = "QUEUE_EMPTY";
-var tokenIsExpiredErrMsg = "Token is expired";
+var checkTokenExpiryErrMsg = "Token is expired";
 var noDataForPeriodErrMsg = "there is no data available for the selected reporting period";
 var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTimeout(res, delayMs) : setTimeout(res, NEXT_REPORT_DELAY_MS)));
 
@@ -29,9 +29,9 @@ var loader = async (userId, isServerStartupLoad) => {
       await session.withTransaction(async () => {
         var { token } = await dbUtils.getToken(userId, session);
 
-        if (tokenIsExpired(token)) {
+        if (checkTokenExpiry(token)) {
           await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, session);
-          throw new Error(tokenIsExpiredErrMsg);
+          throw new Error(checkTokenExpiryErrMsg);
         }
 
         var { report, queueLength } = await dbUtils.getReportsQueue(userId, session);
@@ -68,7 +68,7 @@ var loader = async (userId, isServerStartupLoad) => {
       console.error({ loadingError: err });
       if (err.message === queueIsEmptyErrMsg) {
         break;
-      } else if (err.message === tokenIsExpiredErrMsg) {
+      } else if (err.message === checkTokenExpiryErrMsg) {
         break;
       }
     } finally {
