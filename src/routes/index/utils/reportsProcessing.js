@@ -20,7 +20,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   await dbUtils.updateLastUsedTokenTimestamp(userId, session);
 
   var { reportId } = reports.weeklyFinancialReport[0];
-
+  console.log({ reportId });
   var { years, year, month } = insertReportToReportTree(dateFrom, dateTo, reportId, reportTree);
   var sortedYears = sortYearsTree(years);
 
