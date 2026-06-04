@@ -24,7 +24,10 @@ var resumeAbandonedReportsLoading = async (req, res) => {
   }
 
   res.sendStatus(202);
-  await loader(req.body.userId, isServerStartupLoad);
+
+  var { userId } = req.body;
+
+  await loader(userId, isServerStartupLoad);
 };
 
 export default resumeAbandonedReportsLoading;
