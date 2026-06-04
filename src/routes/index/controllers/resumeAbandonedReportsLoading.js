@@ -2,15 +2,7 @@ import Joi from "joi";
 import loader from "../utils/loader.js";
 
 var isServerStartupLoad = false;
-
-var abandonedReportPeriodsSchema = Joi.array().items({
-  index: Joi.number().required(),
-  dateTo: Joi.string().required(),
-  dateFrom: Joi.string().required(),
-  failedCount: Joi.number().required(),
-});
-
-var schema = Joi.object({ userId: Joi.string().required(), abandonedReportPeriods: abandonedReportPeriodsSchema });
+var schema = Joi.object({ userId: Joi.string().required() });
 
 var resumeAbandonedReportsLoading = async () => {
   var authHeader = req.headers?.authorization;
