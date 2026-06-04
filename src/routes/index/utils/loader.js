@@ -44,6 +44,10 @@ var loader = async (userId, isServerStartupLoad) => {
             if (!report || queueLength < 1) {
               queueIsEmpty = true;
             } else {
+              if (queueLength === 1) {
+                queueIsEmpty = true;
+              }
+
               var { dateFrom, dateTo } = report;
 
               try {
