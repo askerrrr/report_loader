@@ -4,7 +4,7 @@ import loader from "../utils/loader.js";
 var isServerStartupLoad = false;
 var schema = Joi.object({ userId: Joi.string().required() });
 
-var resumeAbandonedReportsLoading = async () => {
+var resumeAbandonedReportsLoading = async (req, res) => {
   var authHeader = req.headers?.authorization;
 
   if (!authHeader) {
