@@ -51,7 +51,8 @@ var db = {
 
   updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
 
-  updateLastLoaderReport: (userId, lastLoadedReport) => updateLastLoaderReport(report_loading_states_collection, userId, lastLoadedReport),
+  updateLastLoaderReport: (userId, lastLoadedReport, session) =>
+    updateLastLoaderReport(report_loading_states_collection, userId, lastLoadedReport, session),
 
   updateFreshReportPeriodIndex: (userId, nextReportPeriodIndex, session) =>
     updateFreshReportPeriodIndex(report_loading_states_collection, userId, nextReportPeriodIndex, session),
