@@ -55,8 +55,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   await dbUtils.updateReportTree(userId, sortedYears, session);
   await dbUtils.saveListGoodsToDb(userId, listGoodsWithUpdatedSkuMetrics, session);
 
-  var { totalTaxAmount, totalFinalProfit, totalProductCosts, isFinancesAccounted } = report;
-  return { reportId, totalTaxAmount, totalFinalProfit, totalProductCosts, isFinancesAccounted };
+  return { reportId, year, month, dateFrom, dateTo, totalTaxAmount: report.totalTaxAmount };
 };
 
 export default reportsProcessing;
