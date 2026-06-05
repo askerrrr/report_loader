@@ -57,14 +57,18 @@ var loader = async (userId, isServerStartupLoad) => {
                 await dbUtils.updateLastLoaderReport(userId, lastLoadedReport, session);
               } catch (processingError) {
                 console.log({ processingError });
+
                 if (processingError.message === noDataForPeriodErrMsg) {
                   return;
                 } else if (processingError instanceof WBAPIError) {
+                  queueIsEmpty = false;
+
                   await dbUtils.updateReportsQueue(userId, { ...report }, session);
                 } else {
                   if (report.failedCount >= MAX_FAILED_ATTEMPTS) {
                     await dbUtils.addReportToAbandonedReports(userId, report, session);
                   } else {
+                    queueIsEmpty = false;
                     var failedCount = report.failedCount + 1;
                     await dbUtils.updateReportsQueue(userId, { ...report, failedCount }, session);
                   }
@@ -75,6 +79,8 @@ var loader = async (userId, isServerStartupLoad) => {
         }
       }, sessionOptions);
     } catch (err) {
+      queueIsEmpty = false;
+
       console.error({ loadingError: err });
     } finally {
       if (session?.inTransaction()) {
