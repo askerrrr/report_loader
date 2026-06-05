@@ -48,10 +48,13 @@ var loader = async (userId, isServerStartupLoad) => {
                 queueIsEmpty = true;
               }
 
-              var { dateFrom, dateTo } = report;
+              var { dateFrom, dateTo, index } = report;
 
               try {
-                await reportsProcessing(userId, dateFrom, dateTo, token, session);
+                var lastLoadedReport = await reportsProcessing(userId, dateFrom, dateTo, token, session);
+                lastLoadedReport.periodIndex = index;
+
+                await dbUtils.updateLastLoaderReport(userId, lastLoadedReport, session);
               } catch (processingError) {
                 console.log({ processingError });
                 if (processingError.message === noDataForPeriodErrMsg) {
