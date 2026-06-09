@@ -1,7 +1,7 @@
 var getReportsQueue = async (collection, userId, session) => {
   var data = await collection.findOneAndUpdate(
     { userId, "reportsQueue.0": { $exists: true } },
-    { $pop: { reportsQueue: -1 } },
+    { $pop: { reportsQueue: -1 }, $inc: { queueLength: -1 } },
     { session: session, returnDocument: "before" },
   );
 
