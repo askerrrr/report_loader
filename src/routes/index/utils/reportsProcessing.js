@@ -7,8 +7,6 @@ import addNewSkusToListGoods from "./addNewSkusToListGoods.js";
 import updateListGoodsMetrics from "./updateListGoodsMetrics.js";
 import insertReportToReportTree from "./reportTreeBuilder/index.js";
 
-var invalidTokenErrorMsg = "Invalid Token";
-
 var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   var startYear = +dateFrom.split("-")[0];
   var endYear = +dateTo.split("-")[0];
