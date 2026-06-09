@@ -76,7 +76,7 @@ var db = {
 
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   saveListGoodsToDb: (userId, listGoods, session) => saveListGoodsToDb(goods_collection, userId, listGoods, session),
-  setLoadingProgressStatus: setLoadingProgressStatus.bind(report_loading_states_collection),
+  setLoadingProgressStatus: (userId, loadingStatus, session)=> setLoadingProgressStatus(report_loading_states_collection, userId, loadingStatus, session),
 
   saveNewSkusToDb: (userId, newSkus, session) => saveNewSkusToDb(goods_collection, userId, newSkus, session),
   resetAbandonedReports: (userId) => resetAbandonedReports(report_loading_states_collection, userId),
