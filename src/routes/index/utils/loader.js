@@ -19,7 +19,11 @@ var loader = async (userId, isServerStartupLoad) => {
   var isTokenMissing = false;
   var isFirstIterationOfLoop = true;
 
+  var loadingStatus = "loading";
+  await dbUtils.setLoadingProgressStatus(userId, loadingStatus, session).then(() => console.log("the download has started for the user: " + userId));
+
   if (isServerStartupLoad) {
+    console.log({ isServerStartupLoad });
     await nextReportDelay();
   }
 
@@ -28,12 +32,6 @@ var loader = async (userId, isServerStartupLoad) => {
 
     try {
       await session.withTransaction(async () => {
-        if (isFirstIterationOfLoop) {
-          var loadingStatus = 'loading'
-          await dbUtils.setLoadingProgressStatus(userId, loadingStatus, session).then(() => console.log("the download has started for the user: " + userId));
-          isFirstIterationOfLoop = false;
-        }
-
         var { token } = await dbUtils.getToken(userId, session);
 
         if (!token) {
@@ -94,9 +92,9 @@ var loader = async (userId, isServerStartupLoad) => {
     }
 
     if (queueIsEmpty) {
-      var loadingStatus = 'completed'
+      var loadingStatus = "completed";
       await dbUtils.setLoadingProgressStatus(userId, loadingStatus, session).then(() => console.log("LOADING COMPLETED"));
-      break
+      break;
     }
 
     if (isTokenMissing || tokenIsExpired || queueIsEmpty) {
