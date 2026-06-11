@@ -6,10 +6,10 @@ var getReportsQueue = async (collection, userId, session) => {
   );
 
   if (!data?.reportsQueue || !data?.queueLength) {
-    return { report: null, queueLength: 0 };
+    return { report: null, queueLength: 0, lastReportRequestTimestamp: 0 };
   }
 
-  return { report: data.reportsQueue[0], queueLength: data.queueLength };
+  return { report: data.reportsQueue[0], queueLength: data.queueLength, lastReportRequestTimestamp: data.lastReportRequestTimestamp };
 };
 
 export default getReportsQueue;

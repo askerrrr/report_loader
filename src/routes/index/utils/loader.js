@@ -46,7 +46,7 @@ var loader = async (userId, isServerStartupLoad) => {
             loadingStopReason = "tokenIsExpired";
             await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, loadingStopReason, session);
           } else {
-            var { report, queueLength } = await dbUtils.getReportsQueue(userId, session);
+            var { report, queueLength, lastReportRequestTimestamp } = await dbUtils.getReportsQueue(userId, session);
 
             if (!report || queueLength < 1) {
               queueIsEmpty = true;
