@@ -64,8 +64,8 @@ var db = {
   updateReportLoadingDelayStatus: (userId, isReportLoadingDelayed) =>
     updateReportLoadingDelayStatus(report_loading_states_collection, userId, isReportLoadingDelayed),
 
-  updateReportLoadingStoppedStatus: (userId, newStatus, session) =>
-    updateReportLoadingStoppedStatus(report_loading_states_collection, userId, newStatus, session),
+  updateReportLoadingStoppedStatus: (userId, newStatus, reason, session) =>
+    updateReportLoadingStoppedStatus(report_loading_states_collection, userId, newStatus, reason, session),
 
   addNewTaxYearToDb: (userId, year, session) => addNewTaxYearToDb(tax_params_collection, userId, year, session),
 
