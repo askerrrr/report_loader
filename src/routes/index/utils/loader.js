@@ -1,3 +1,4 @@
+import getVariableName from "./getVariableName.js";
 import checkTokenExpiry from "./checkTokenExpiry.js";
 import { dbClient } from "../../../database/index.js";
 import dbUtils from "../../../database/utils/index.js";
@@ -97,7 +98,9 @@ var loader = async (userId, isServerStartupLoad) => {
       break;
     }
 
-    if (isTokenMissing || tokenIsExpired || queueIsEmpty) {
+    if (isTokenMissing || tokenIsExpired) {
+      var reason = isTokenMissing ? getVariableName({ isTokenMissing }) : getVariableName({ tokenIsExpired });
+      console.log("LOADING IS STOPPED.\nREASON: " + reason);
       break;
     }
 

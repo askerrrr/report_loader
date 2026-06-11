@@ -29,7 +29,7 @@ var resumeReportLoading = async (req, res) => {
     return res.sendStatus(404);
   }
 
-  if (!user.isReportLoadingisStopped) {
+  if (!user.isReportLoadingIsStopped) {
     return res.sendStatus(202);
   }
 
