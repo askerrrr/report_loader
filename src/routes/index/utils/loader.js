@@ -47,6 +47,7 @@ var loader = async (userId, isServerStartupLoad) => {
             await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, loadingStopReason, session);
           } else {
             var { report, queueLength } = await dbUtils.getReportsQueue(userId, session);
+
             if (!report || queueLength < 1) {
               queueIsEmpty = true;
             } else {

@@ -5,11 +5,11 @@ var getReportsQueue = async (collection, userId, session) => {
     { session: session, returnDocument: "before" },
   );
 
-  if (!data?.reportsQueue || !data?.reportsQueue?.length) {
+  if (!data?.reportsQueue || !data?.queueLength) {
     return { report: null, queueLength: 0 };
   }
 
-  return { report: data.reportsQueue[0], queueLength: data.reportsQueue.length };
+  return { report: data.reportsQueue[0], queueLength: data.queueLength };
 };
 
 export default getReportsQueue;
