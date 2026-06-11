@@ -1,4 +1,3 @@
-import getVariableName from "./getVariableName.js";
 import checkTokenExpiry from "./checkTokenExpiry.js";
 import { dbClient } from "../../../database/index.js";
 import dbUtils from "../../../database/utils/index.js";
@@ -18,6 +17,7 @@ var loader = async (userId, isServerStartupLoad) => {
   var queueIsEmpty = false;
   var tokenIsExpired = false;
   var isTokenMissing = false;
+  var loadingStopReason = "";
   var isFirstIterationOfLoop = true;
 
   var loadingStatus = "loading";
@@ -37,12 +37,14 @@ var loader = async (userId, isServerStartupLoad) => {
 
         if (!token) {
           isTokenMissing = true;
-          await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, session);
+          loadingStopReason = "isTokenMissing";
+          await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, loadingStopReason, session);
         } else {
           tokenIsExpired = checkTokenExpiry(token);
 
           if (tokenIsExpired) {
-            await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, session);
+            loadingStopReason = "tokenIsExpired";
+            await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, loadingStopReason, session);
           } else {
             var { report, queueLength } = await dbUtils.getReportsQueue(userId, session);
             if (!report || queueLength < 1) {
@@ -99,8 +101,7 @@ var loader = async (userId, isServerStartupLoad) => {
     }
 
     if (isTokenMissing || tokenIsExpired) {
-      var reason = isTokenMissing ? getVariableName({ isTokenMissing }) : getVariableName({ tokenIsExpired });
-      console.log("LOADING IS STOPPED.\nREASON: " + reason);
+      console.log("LOADING IS STOPPED.\nREASON: " + loadingStopReason);
       break;
     }
 
