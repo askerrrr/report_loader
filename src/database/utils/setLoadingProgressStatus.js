@@ -1,7 +1,7 @@
 /**
  * @param {"loading" | "completed"} loadingStatus
  */
-var setLoadingProgressStatus = async function (collection, userId, loadingStatus, session) {
+var setLoadingProgressStatus = async (collection, userId, loadingStatus, session) => {
   var sessionOptions = session ? { session } : {};
 
   var query =
