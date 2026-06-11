@@ -3,6 +3,7 @@ import { dbClient } from "../../../database/index.js";
 import dbUtils from "../../../database/utils/index.js";
 import reportsProcessing from "./reportsProcessing.js";
 import { WBAPIError } from "../../../customError/index.js";
+import isLastRequestTooRecent from "./isLastRequestTooRecent.js";
 
 var fiveMinInMs = 300_000;
 var MAX_FAILED_ATTEMPTS = 3;
@@ -58,6 +59,12 @@ var loader = async (userId, isServerStartupLoad) => {
               var { dateFrom, dateTo, index } = report;
 
               try {
+                var { needToDalay, delayInMs } = isLastRequestTooRecent(lastReportRequestTimestamp, NEXT_REPORT_DELAY_MS);
+
+                if (needToDalay) {
+                  await nextReportDelay(delayInMs);
+                }
+
                 var lastLoadedReport = await reportsProcessing(userId, dateFrom, dateTo, token, session);
                 lastLoadedReport.periodIndex = index;
 
