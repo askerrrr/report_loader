@@ -7,7 +7,7 @@ var setLoadingProgressStatus = async function (collection, userId, loadingStatus
   var query =
     loadingStatus === "loading"
       ? { loadingInProgress: true }
-      : { loadingInProgress: false, queueCapacity: 0, lastReportRequestTimestamp: new Date().getTime() };
+      : { loadingInProgress: false, queueCapacity: 0, lastReportRequestTimestamp: new Date().getTime(), lastLoadedReport: {} };
 
   await collection.updateOne({ userId }, { $set: query }, { ...sessionOptions });
 };
