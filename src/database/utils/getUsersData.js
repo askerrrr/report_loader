@@ -7,6 +7,7 @@ var requredFields = {
   isReportLoadingDelayed: 1,
   freshReportPeriodIndex: 1,
   isReportLoadingIsStopped: 1,
+  lastReportRequestTimestamp: 1,
 };
 
 var getUsersData = async (collection) => await collection.find({}, { projection: requredFields }).toArray();
