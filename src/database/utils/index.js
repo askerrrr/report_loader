@@ -27,6 +27,7 @@ import updateLastLoaderReport from "./updateLastLoaderReport.js";
 import setLoadingProgressStatus from "./setLoadingProgressStatus.js";
 import getLoadingProgressStatus from "./getLoadingProgressStatus.js";
 import getFreshReportPeriodIndex from "./getFreshReportPeriodIndex.js";
+import updateReportLoadingFields from './updateReportLoadingFields.js';
 import addReportToAbandonedReports from "./addReportToAbandonedReports.js";
 import updateLastUsedTokenTimestamp from "./updateLastUsedTokenTimestamp.js";
 import updateFreshReportPeriodIndex from "./updateFreshReportPeriodIndex.js";
@@ -50,6 +51,8 @@ var db = {
   updateReportTree: (userId, years, session) => updateReportTree(reports_tree_collection, userId, years, session),
 
   updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
+
+  updateReportLoadingFields: (userId, updatedFields, session) => updateReportLoadingFields(report_loading_states_collection, userId, updatedFields, session),
 
   updateLastLoaderReport: (userId, lastLoadedReport, session) =>
     updateLastLoaderReport(report_loading_states_collection, userId, lastLoadedReport, session),
