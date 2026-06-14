@@ -9,7 +9,6 @@ var fiveMinInMs = 300_000;
 var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65_000;
 var statusOfReportLoadingStop = true;
-var noDataForPeriodErrMsg = "there is no data available for the selected reporting period";
 var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTimeout(res, delayMs) : setTimeout(res, NEXT_REPORT_DELAY_MS)));
 
 var sessionOptions = { willRetryWrite: false, maxTimeMs: fiveMinInMs };
@@ -65,16 +64,16 @@ var loader = async (userId, isServerStartupLoad) => {
                   await nextReportDelay(delayInMs);
                 }
 
-                var lastLoadedReport = await reportsProcessing(userId, dateFrom, dateTo, token, session);
-                lastLoadedReport.periodIndex = index;
+                var { lastLoadedReport, reportPeriodIsEmpty } = await reportsProcessing(userId, dateFrom, dateTo, token, session);
 
-                await dbUtils.updateLastLoaderReport(userId, lastLoadedReport, session);
+                if (!reportPeriodIsEmpty) {
+                  lastLoadedReport.periodIndex = index;
+                  await dbUtils.updateLastLoaderReport(userId, lastLoadedReport, session);
+                }
               } catch (processingError) {
                 console.log({ processingError });
 
-                if (processingError.message === noDataForPeriodErrMsg) {
-                  return;
-                } else if (processingError instanceof WBAPIError) {
+                if (processingError instanceof WBAPIError) {
                   queueIsEmpty = false;
 
                   await dbUtils.updateReportsQueue(userId, { ...report }, session);

@@ -5,9 +5,8 @@ import getWeeklyFinancialReportFromWBAPI from "./getWeeklyFinancialReportFromWBA
 import checkPaidStorageReportCreationStatus from "./checkPaidStorageReportCreationStatus.js";
 import getPaidStorageReportByTaskIdFromWBAPI from "./getPaidStorageReportByTaskIdFromWBAPI.js";
 
-var noDataForPeriodErrMsg = "there is no data available for the selected reporting period";
-
 var getReports = async (userId, dateFrom, dateTo, token) => {
+  var reportPeriodIsEmpty = false;
   var { taskId } = await createPaidStorageReportTask(dateFrom, dateTo, token, userId);
   var { statusIsDone } = await checkPaidStorageReportCreationStatus(taskId, token, userId);
 
@@ -22,10 +21,11 @@ var getReports = async (userId, dateFrom, dateTo, token) => {
   ]);
 
   if ([weeklyFinancialReport, paidStorageReport, advertisingReport].every((i) => !i.length)) {
-    throw new Error(noDataForPeriodErrMsg);
+    reportPeriodIsEmpty = true;
   }
 
-  return { weeklyFinancialReport, paidStorageReport, advertisingReport };
+  var reports = { weeklyFinancialReport, paidStorageReport, advertisingReport };
+  return { reports, reportPeriodIsEmpty };
 };
 
 export default getReports;
