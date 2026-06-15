@@ -1,7 +1,9 @@
+var mskTimeOffsetInMs = 3 * 60 * 60 * 1000;
+
 var isLastRequestTooRecent = (lastReportRequestTimestamp, NEXT_REPORT_DELAY_MS) => {
   var delayInMs = 0;
 
-  var currentTimestamp = new Date(Date.now() + 3 * 60 * 60 * 1000).getTime();
+  var currentTimestamp = Date.now() + mskTimeOffsetInMs;
 
   var difference = currentTimestamp - lastReportRequestTimestamp;
 

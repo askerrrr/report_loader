@@ -59,7 +59,7 @@ var loader = async (userId, isServerStartupLoad) => {
 
               try {
                 var { needToDalay, delayInMs } = isLastRequestTooRecent(lastReportRequestTimestamp, NEXT_REPORT_DELAY_MS);
-
+                console.log({ needToDalay, delayInMs });
                 if (needToDalay) {
                   await nextReportDelay(delayInMs);
                 }
