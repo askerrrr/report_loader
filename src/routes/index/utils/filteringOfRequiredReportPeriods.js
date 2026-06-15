@@ -45,6 +45,8 @@ var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods,
         resultOfTheThirdFiltering.push(elem);
       }
     }
+  } else {
+    resultOfTheThirdFiltering = resultOfTheSecondFiltering;
   }
 
   if (abandonedReports.length === 0) {
