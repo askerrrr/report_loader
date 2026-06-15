@@ -27,9 +27,10 @@ import updateLastLoaderReport from "./updateLastLoaderReport.js";
 import setLoadingProgressStatus from "./setLoadingProgressStatus.js";
 import getLoadingProgressStatus from "./getLoadingProgressStatus.js";
 import getFreshReportPeriodIndex from "./getFreshReportPeriodIndex.js";
-import updateReportLoadingFields from './updateReportLoadingFields.js';
+import updateReportLoadingFields from "./updateReportLoadingFields.js";
 import addReportToAbandonedReports from "./addReportToAbandonedReports.js";
 import updateLastUsedTokenTimestamp from "./updateLastUsedTokenTimestamp.js";
+import addIndexToEmptyReportPeriods from "./addIndexToEmptyReportPeriods.js";
 import updateFreshReportPeriodIndex from "./updateFreshReportPeriodIndex.js";
 import getLastReportRequestTimestamp from "./getLastReportRequestTimestamp.js";
 import updateReportLoadingDelayStatus from "./updateReportLoadingDelayStatus.js";
@@ -52,7 +53,8 @@ var db = {
 
   updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
 
-  updateReportLoadingFields: (userId, updatedFields, session) => updateReportLoadingFields(report_loading_states_collection, userId, updatedFields, session),
+  updateReportLoadingFields: (userId, updatedFields, session) =>
+    updateReportLoadingFields(report_loading_states_collection, userId, updatedFields, session),
 
   updateLastLoaderReport: (userId, lastLoadedReport, session) =>
     updateLastLoaderReport(report_loading_states_collection, userId, lastLoadedReport, session),
@@ -75,11 +77,14 @@ var db = {
   addReportToAbandonedReports: (userId, reportPeriod, session) =>
     addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
 
+  addIndexToEmptyReportPeriods: (userId, index, session) => addIndexToEmptyReportPeriods(report_loading_states_collection, userId, index, session),
+
   changeTaxParamsToDb: (userId, session, ...updatedTaxParams) => changeTaxParamsToDb(tax_params_collection, userId, session, ...updatedTaxParams),
 
   saveReportToDb: (userId, report, session) => saveReportToDb(reports_collection, userId, report, session),
   saveListGoodsToDb: (userId, listGoods, session) => saveListGoodsToDb(goods_collection, userId, listGoods, session),
-  setLoadingProgressStatus: (userId, loadingStatus, session)=> setLoadingProgressStatus(report_loading_states_collection, userId, loadingStatus, session),
+  setLoadingProgressStatus: (userId, loadingStatus, session) =>
+    setLoadingProgressStatus(report_loading_states_collection, userId, loadingStatus, session),
 
   saveNewSkusToDb: (userId, newSkus, session) => saveNewSkusToDb(goods_collection, userId, newSkus, session),
   resetAbandonedReports: (userId) => resetAbandonedReports(report_loading_states_collection, userId),
