@@ -1,18 +1,21 @@
-/**
- * @param {"loading" | "completed"} loadingStatus
- */
-
 var mskTimeOffsetInMs = 3 * 60 * 60 * 1000;
 
 var setLoadingProgressStatus = async (collection, userId, loadingStatus, session) => {
   var sessionOptions = session ? { session } : {};
 
-  var query =
-    loadingStatus === "loading"
-      ? { loadingInProgress: true }
-      : { loadingInProgress: false, queueCapacity: 0, lastReportRequestTimestamp: Date.now() + mskTimeOffsetInMs };
-
-  await collection.updateOne({ userId }, { $set: query }, { ...sessionOptions });
+  if (loadingStatus === "loading") {
+    await collection
+      .updateOne({ userId }, { $set: { loadingInProgress: true } }, { ...sessionOptions })
+      .then(() => console.log("LOADING STARTED FOR USER: " + userId));
+  } else {
+    await collection
+      .updateOne(
+        { userId },
+        { $set: { loadingInProgress: false, queueCapacity: 0, lastReportRequestTimestamp: Date.now() + mskTimeOffsetInMs } },
+        { ...sessionOptions },
+      )
+      .then(() => console.log("LOADING COMPLETED FOR USER: " + userId));
+  }
 };
 
 export default setLoadingProgressStatus;

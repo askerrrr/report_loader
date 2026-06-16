@@ -1,7 +1,6 @@
 import Joi from "joi";
 import loader from "../utils/loader.js";
 
-var isServerStartupLoad = false;
 var schema = Joi.object({ userId: Joi.string().required() });
 
 var resumeAbandonedReportsLoading = async (req, res) => {
@@ -27,7 +26,7 @@ var resumeAbandonedReportsLoading = async (req, res) => {
 
   var { userId } = req.body;
 
-  await loader(userId, isServerStartupLoad);
+  loader(userId);
 };
 
 export default resumeAbandonedReportsLoading;

@@ -13,22 +13,20 @@ var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTime
 
 var sessionOptions = { willRetryWrite: false, maxTimeMs: fiveMinInMs };
 
-var loader = async (userId, isServerStartupLoad) => {
+var loader = async (userId) => {
   var queueIsEmpty = false;
   var tokenIsExpired = false;
   var isTokenMissing = false;
   var loadingStopReason = "";
   var isFirstIterationOfLoop = true;
 
-  var loadingStatus = "loading";
-  await dbUtils.setLoadingProgressStatus(userId, loadingStatus, session).then(() => console.log("the download has started for the user: " + userId));
-
-  if (isServerStartupLoad) {
-    console.log({ isServerStartupLoad });
-    await nextReportDelay();
-  }
-
   while (true) {
+    if (isFirstIterationOfLoop) {
+      var loadingStatus = "loading";
+      isFirstIterationOfLoop = false;
+      await dbUtils.setLoadingProgressStatus(userId, loadingStatus, session);
+    }
+
     var session = await dbClient.startSession();
 
     try {
@@ -105,7 +103,7 @@ var loader = async (userId, isServerStartupLoad) => {
 
     if (queueIsEmpty) {
       var loadingStatus = "completed";
-      await dbUtils.setLoadingProgressStatus(userId, loadingStatus, session).then(() => console.log("LOADING COMPLETED"));
+      await dbUtils.setLoadingProgressStatus(userId, loadingStatus, session);
       break;
     }
 

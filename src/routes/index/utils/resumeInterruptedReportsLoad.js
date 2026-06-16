@@ -1,8 +1,6 @@
 import loader from "./loader.js";
 import dbUtils from "../../../database/utils/index.js";
 
-var isServerStartupLoad = true;
-
 var resumeInterruptedReportsLoad = async () => {
   var users = await dbUtils.getUsersData();
 
@@ -15,7 +13,7 @@ var resumeInterruptedReportsLoad = async () => {
       continue;
     }
 
-    loader(userId, isServerStartupLoad);
+    loader(userId);
   }
 };
 
