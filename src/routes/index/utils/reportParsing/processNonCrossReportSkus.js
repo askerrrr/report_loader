@@ -12,7 +12,7 @@ var processNonCrossReportSkus = (reports, taxParams) => {
 
   var totalSold = calc.total.sold(weeklyFinancialReport);
   var totalStorageCost = calc.total.storageCost(weeklyFinancialReport);
-  var totalAdvertisingCosts = calculateTotalAdvertisingCosts(advertisingReport);
+  var totalAdvertisingCosts = calc.totalAdvertisingCosts(advertisingReport);
   var totals = { totalSold, totalStorageCost, totalAdvertisingCosts };
 
   var skuNamesAndIds = getSkuNamesAndIds(weeklyFinancialReport);
@@ -39,7 +39,3 @@ var processNonCrossReportSkus = (reports, taxParams) => {
 };
 
 export default processNonCrossReportSkus;
-
-var calculateTotalAdvertisingCosts = async function (data) {
-  return data.reduce((acc, i) => acc + i.updSum, 0);
-};

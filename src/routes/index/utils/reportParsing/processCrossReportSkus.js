@@ -35,12 +35,12 @@ var processCrossReportSkus = (reports, taxParams) => {
   var startYearTotals = {};
   startYearTotals.totalSold = calc.total.sold(startYearWeeklyFinancialReport);
   startYearTotals.totalStorageCost = calc.total.storageCost(startYearWeeklyFinancialReport);
-  startYearTotals.totalAdvertisingCosts = calculateTotalAdvertisingCosts(startYearAd);
+  startYearTotals.totalAdvertisingCosts = calc.totalAdvertisingCosts(startYearAd);
 
   var endYearTotals = {};
   endYearTotals.totalSold = calc.total.sold(endYearWeeklyFinancialReport);
   endYearTotals.totalStorageCost = calc.total.storageCost(endYearWeeklyFinancialReport);
-  endYearTotals.totalAdvertisingCosts = calculateTotalAdvertisingCosts(endYearAd);
+  endYearTotals.totalAdvertisingCosts = calc.totalAdvertisingCosts(endYearAd);
 
   var totalSold = startYearTotals.totalSold + endYearTotals.totalSold;
   var totalStorageCost = truncateNum(startYearTotals.totalStorageCost + endYearTotals.totalStorageCost);
