@@ -7,20 +7,23 @@ import addNewSkusToListGoods from "./addNewSkusToListGoods.js";
 import updateListGoodsMetrics from "./updateListGoodsMetrics.js";
 import insertReportToReportTree from "./reportTreeBuilder/index.js";
 
-var invalidTokenErrorMsg = "Invalid Token";
-
 var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
+  var lastLoadedReport = {};
   var startYear = +dateFrom.split("-")[0];
   var endYear = +dateTo.split("-")[0];
   var isCrossYearReport = startYear !== endYear;
 
   var { reportTree } = await dbUtils.getReportsTree(userId, session);
-  var reports = await wbapi.getReports(userId, dateFrom, dateTo, token);
+  var { reports, reportPeriodIsEmpty } = await wbapi.getReports(userId, dateFrom, dateTo, token);
+
+  if (reportPeriodIsEmpty) {
+    return { lastLoadedReport, reportPeriodIsEmpty };
+  }
 
   await dbUtils.updateLastUsedTokenTimestamp(userId, session);
 
   var { reportId } = reports.weeklyFinancialReport[0];
-
+  console.log({ reportId });
   var { years, year, month } = insertReportToReportTree(dateFrom, dateTo, reportId, reportTree);
   var sortedYears = sortYearsTree(years);
 
@@ -55,7 +58,8 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   await dbUtils.updateReportTree(userId, sortedYears, session);
   await dbUtils.saveListGoodsToDb(userId, listGoodsWithUpdatedSkuMetrics, session);
 
-  return { reportId, year, month, dateFrom, dateTo, totalTaxAmount: report.totalTaxAmount };
+  lastLoadedReport = { reportId, year, month, dateFrom, dateTo, totalTaxAmount: report.totalTaxAmount };
+  return { lastLoadedReport, reportPeriodIsEmpty };
 };
 
 export default reportsProcessing;

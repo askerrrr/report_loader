@@ -1,8 +1,9 @@
 import checkReportExistsInTree from "./checkReportExistsInTree.js";
 
-var filteringOfRequiredReportPeriods = ({ reportsQueue, abandonedReports }, requiredReportPeriods, reportTree) => {
+var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods, reportTree) => {
   var resultOfTheFirstFiltering = [];
   var abandonedReportsAddedToQueue = false;
+  var { reportsQueue, abandonedReports, emptyReportPeriodsIndexes } = userLoadingState;
 
   while (requiredReportPeriods.length) {
     var period = requiredReportPeriods.shift();
@@ -32,11 +33,31 @@ var filteringOfRequiredReportPeriods = ({ reportsQueue, abandonedReports }, requ
     return { filteredRequiredReportPeriods: [], abandonedReportsAddedToQueue };
   }
 
-  if (abandonedReports.length === 0) {
-    return { filteredRequiredReportPeriods: resultOfTheSecondFiltering, abandonedReportsAddedToQueue };
+  var resultOfTheThirdFiltering = [];
+
+  if (emptyReportPeriodsIndexes.length) {
+    while (resultOfTheSecondFiltering.length) {
+      var elem = resultOfTheSecondFiltering.shift();
+
+      var emptyReportPeriodIndexIsExist = emptyReportPeriodsIndexes.find((index) => index === elem.index);
+
+      if (!emptyReportPeriodIndexIsExist) {
+        resultOfTheThirdFiltering.push(elem);
+      }
+    }
+  } else {
+    resultOfTheThirdFiltering = resultOfTheSecondFiltering;
   }
 
-  var mergedArray = [...abandonedReports, ...resultOfTheSecondFiltering];
+  if (abandonedReports.length === 0) {
+    return { filteredRequiredReportPeriods: resultOfTheThirdFiltering, abandonedReportsAddedToQueue };
+  }
+
+  if (resultOfTheThirdFiltering.length === 0) {
+    return { filteredRequiredReportPeriods: [], abandonedReportsAddedToQueue };
+  }
+
+  var mergedArray = [...abandonedReports, ...resultOfTheThirdFiltering];
   var mergedArrayWithoutRepeat = [...new Set([...mergedArray])];
 
   return { filteredRequiredReportPeriods: mergedArrayWithoutRepeat, abandonedReportsAddedToQueue: true };

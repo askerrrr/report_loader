@@ -6,7 +6,7 @@ var schema = Joi.object({
   isPeriodWithinSameWeek: Joi.boolean(),
   needsReportLoadingDelay: Joi.boolean(),
   dateTo: Joi.string().allow("").required(),
-  uploadAllReports: Joi.boolean().required(),
+  needToLoadAllReports: Joi.boolean().required(),
   dateFrom: Joi.string().allow("").required(),
 });
 

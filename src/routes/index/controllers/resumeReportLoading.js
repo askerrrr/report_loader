@@ -1,7 +1,7 @@
 import loader from "../utils/loader.js";
 import dbUtils from "../../../database/utils/index.js";
 
-var isServerStartupLoad = false;
+var loadingStopReason = "";
 var statusOfReportLoadingStop = false;
 
 var resumeReportLoading = async (req, res) => {
@@ -29,14 +29,14 @@ var resumeReportLoading = async (req, res) => {
     return res.sendStatus(404);
   }
 
-  if (!user.isReportLoadingisStopped) {
+  if (!user.isReportLoadingIsStopped) {
     return res.sendStatus(202);
   }
 
   res.sendStatus(202);
-  await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop);
+  await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, loadingStopReason);
 
-  await loader(userId, isServerStartupLoad);
+  loader(userId);
 };
 
 export default resumeReportLoading;
