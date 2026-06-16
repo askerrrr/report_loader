@@ -51,7 +51,8 @@ var db = {
 
   updateReportTree: (userId, years, session) => updateReportTree(reports_tree_collection, userId, years, session),
 
-  updateReportsQueue: (userId, report, session) => updateReportsQueue(report_loading_states_collection, userId, report, session),
+  updateReportsQueue: (userId, report, queueLengthNeedsIncrement, session) =>
+    updateReportsQueue(report_loading_states_collection, userId, report, queueLengthNeedsIncrement, session),
 
   updateReportLoadingFields: (userId, updatedFields, session) =>
     updateReportLoadingFields(report_loading_states_collection, userId, updatedFields, session),
