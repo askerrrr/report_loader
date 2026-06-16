@@ -13,12 +13,17 @@ var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTime
 
 var sessionOptions = { willRetryWrite: false, maxTimeMs: fiveMinInMs };
 
-var loader = async (userId) => {
+var loader = async (userId, isServerStartupLoad = false) => {
   var queueIsEmpty = false;
   var tokenIsExpired = false;
   var isTokenMissing = false;
   var loadingStopReason = "";
   var isFirstIterationOfLoop = true;
+
+  if (isServerStartupLoad) {
+    console.log("\n--- SERVER STARTUP DELAY ---\n");
+    await nextReportDelay();
+  }
 
   while (true) {
     if (isFirstIterationOfLoop) {
