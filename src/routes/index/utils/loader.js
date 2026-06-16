@@ -26,13 +26,13 @@ var loader = async (userId, isServerStartupLoad = false) => {
   }
 
   while (true) {
+    var session = await dbClient.startSession();
+
     if (isFirstIterationOfLoop) {
       var loadingStatus = "loading";
       isFirstIterationOfLoop = false;
       await dbUtils.setLoadingProgressStatus(userId, loadingStatus, session);
     }
-
-    var session = await dbClient.startSession();
 
     try {
       await session.withTransaction(async () => {
