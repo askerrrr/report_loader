@@ -95,6 +95,11 @@ var loader = async (userId, isServerStartupLoad = false) => {
             }
           }
         }
+
+        if (queueIsEmpty) {
+          var loadingStatus = "completed";
+          await dbUtils.setLoadingProgressStatus(userId, loadingStatus, session);
+        }
       }, sessionOptions);
     } catch (err) {
       queueIsEmpty = false;
@@ -107,8 +112,6 @@ var loader = async (userId, isServerStartupLoad = false) => {
     }
 
     if (queueIsEmpty) {
-      var loadingStatus = "completed";
-      await dbUtils.setLoadingProgressStatus(userId, loadingStatus, session);
       break;
     }
 
