@@ -7,12 +7,10 @@ var resumeInterruptedReportsLoad = async () => {
   var users = await dbUtils.getUsersData();
 
   if (users.length) {
-    for (var { userId, reportsQueue } of users) {
-      if (!reportsQueue.length) {
-        continue;
+    for (var { userId, reportsQueue, isReportLoadingIsStopped } of users) {
+      if (reportsQueue.length && !isReportLoadingIsStopped) {
+        loader(userId, isServerStartupLoad);
       }
-
-      loader(userId, isServerStartupLoad);
     }
   }
 };
