@@ -2,7 +2,7 @@ var splitWeeklyFinancialReportByYear = (report) => {
   var startYearWeeklyFinancialReport = [];
   var endYearWeeklyFinancialReport = [];
 
-  var startYear = report[0].date_from.split("-")[0];
+  var startYear = report[0].dateFrom.split("-")[0];
 
   for (var item of report) {
     var saleYear = item.saleDt.split("-")[0];

@@ -9,6 +9,7 @@ var fiveMinInMs = 300_000;
 var MAX_FAILED_ATTEMPTS = 3;
 var NEXT_REPORT_DELAY_MS = 65_000;
 var statusOfReportLoadingStop = true;
+var queueLengthNeedsIncrement = true;
 var nextReportDelay = async (delayMs) => new Promise((res) => (delayMs ? setTimeout(res, delayMs) : setTimeout(res, NEXT_REPORT_DELAY_MS)));
 
 var sessionOptions = { willRetryWrite: false, maxTimeMs: fiveMinInMs };
@@ -22,7 +23,7 @@ var loader = async (userId, isServerStartupLoad = false) => {
 
   if (isServerStartupLoad) {
     console.log("\n--- SERVER STARTUP DELAY ---\n");
-    await nextReportDelay();
+    // await nextReportDelay();
   }
 
   while (true) {
@@ -81,14 +82,14 @@ var loader = async (userId, isServerStartupLoad = false) => {
                 if (processingError instanceof WBAPIError) {
                   queueIsEmpty = false;
 
-                  await dbUtils.updateReportsQueue(userId, { ...report }, session);
+                  await dbUtils.updateReportsQueue(userId, { ...report }, queueLengthNeedsIncrement, session);
                 } else {
                   if (report.failedCount >= MAX_FAILED_ATTEMPTS) {
                     await dbUtils.addReportToAbandonedReports(userId, report, session);
                   } else {
                     queueIsEmpty = false;
                     var failedCount = report.failedCount + 1;
-                    await dbUtils.updateReportsQueue(userId, { ...report, failedCount }, session);
+                    await dbUtils.updateReportsQueue(userId, { ...report, failedCount }, queueLengthNeedsIncrement, session);
                   }
                 }
               }
