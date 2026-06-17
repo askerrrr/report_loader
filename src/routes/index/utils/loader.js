@@ -23,7 +23,7 @@ var loader = async (userId, isServerStartupLoad = false) => {
 
   if (isServerStartupLoad) {
     console.log("\n--- SERVER STARTUP DELAY ---\n");
-    // await nextReportDelay();
+    await nextReportDelay();
   }
 
   while (true) {
