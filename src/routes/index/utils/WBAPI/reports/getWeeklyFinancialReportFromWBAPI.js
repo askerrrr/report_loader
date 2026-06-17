@@ -30,7 +30,7 @@ var nextRequestDelay = async () => new Promise((res) => setTimeout(res, NEXT_REQ
 var doRequest = async (token, dateFrom, dateTo, period, rrdId, limit) =>
   await fetch(url, {
     method: "POST",
-    body: JSON.stringify({ dateFrom, dateTo, period, rrdId, limit }),
+    body: JSON.stringify({ dateFrom, dateTo, period, rrdId, limit, fields: requriedFields }),
     headers: { Authorization: "Bearer " + token, "Content-Type": "application/json" },
   });
 
