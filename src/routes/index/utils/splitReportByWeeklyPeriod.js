@@ -6,7 +6,7 @@ export default splitReportByWeeklyPeriod = (report, weeklyPeriods) => {
   }
 
   for (var weeklyPeriod of weeklyPeriods) {
-    var filteredReport = report.filter((item) => item.date_from <= weeklyPeriod.dateFrom && item.date_to >= weeklyPeriod.dateTo);
+    var filteredReport = report.filter((item) => item.dateFrom <= weeklyPeriod.dateFrom && item.dateTo >= weeklyPeriod.dateTo);
 
     reports.push(filteredReport);
   }
