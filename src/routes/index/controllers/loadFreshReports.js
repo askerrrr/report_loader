@@ -35,6 +35,8 @@ var loadFreshReports = async (req, res, next) => {
     return res.sendStatus(200);
   }
 
+  console.log("FRESH_REPORTS_LOADING_STARTED", "\nTIME: " + new Date());
+
   var queueIsEmpty = false;
 
   users.forEach((user) => (user.failedCount = 0));
@@ -120,7 +122,7 @@ var loadFreshReports = async (req, res, next) => {
     }
 
     if (!users.length) {
-      console.log("FRESH_REPORTS_LOADING_COMPLETED");
+      console.log("FRESH_REPORTS_LOADING_COMPLETED", "\nTIME: " + new Date());
       break;
     }
   }
