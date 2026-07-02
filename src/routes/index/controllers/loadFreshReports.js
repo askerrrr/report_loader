@@ -9,6 +9,7 @@ import freshReportPeriodIndexIsInvalid from "../utils/freshReportPeriodIndexIsIn
 import filteringOfRequiredReportPeriods from "../utils/filteringOfRequiredReportPeriods.js";
 import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayFromCurrentMonth.js";
 
+var MAX_FAILED_ATTEMPTS = 5;
 var statusOfReportLoadingStop = true;
 
 var loadFreshReports = async (req, res, next) => {
@@ -34,9 +35,14 @@ var loadFreshReports = async (req, res, next) => {
     return res.sendStatus(200);
   }
 
+  var queueIsEmpty = false;
+
+  users.forEach((user) => (user.failedCount = 0));
+
   res.sendStatus(202);
 
-  for (var user of users) {
+  while (true) {
+    var user = users.shift();
     var { userId } = user;
 
     var session = dbClient.startSession();
@@ -88,10 +94,13 @@ var loadFreshReports = async (req, res, next) => {
                 } catch (processingError) {
                   console.log({ processingError });
                   if (processingError instanceof WBAPIError) {
-                    return;
+                    if (user.failedCount !== MAX_FAILED_ATTEMPTS) {
+                      user.failedCount += 1;
+                      users.push(user);
+                    }
+                  } else {
+                    throw processingError;
                   }
-
-                  throw processingError;
                 }
               } else {
                 await dbUtils.pushToReportsQueue(userId, [reportPeriods[freshReportPeriodIndex]], session);
@@ -108,6 +117,11 @@ var loadFreshReports = async (req, res, next) => {
       if (session) {
         await session.endSession();
       }
+    }
+
+    if (!users.length) {
+      console.log("FRESH_REPORTS_LOADING_COMPLETED");
+      break;
     }
   }
 };
