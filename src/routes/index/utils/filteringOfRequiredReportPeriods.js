@@ -35,7 +35,7 @@ var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods,
 
   var resultOfTheThirdFiltering = [];
 
-  if (emptyReportPeriodsIndexes.length) {
+  if (emptyReportPeriodsIndexes?.length) {
     while (resultOfTheSecondFiltering.length) {
       var elem = resultOfTheSecondFiltering.shift();
 
