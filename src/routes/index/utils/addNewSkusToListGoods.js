@@ -11,6 +11,7 @@ var defaultSkuMetricsField = {
   acceptance: 0,
   taxableAmount: 0,
   otherExpenses: 0,
+  insuranceFee: 0,
   sellerPayoutAmount: 0,
   deductionOrPayment: 0,
   additionalInsuranceFee: 0,

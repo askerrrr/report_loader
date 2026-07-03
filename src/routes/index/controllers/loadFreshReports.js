@@ -1,12 +1,16 @@
-import dbUtils from "../../../database/utils/index.js";
+import isFutureDate from "../utils/isFutureDate.js";
 import { dbClient } from "../../../database/index.js";
+import dbUtils from "../../../database/utils/index.js";
+import { WBAPIError } from "../../../customError/index.js";
+import checkTokenExpiry from "../utils/checkTokenExpiry.js";
 import reportsProcessing from "../utils/reportsProcessing.js";
 import reportPeriods from "../../../dateUtils/reportPeriods.js";
 import freshReportPeriodIndexIsInvalid from "../utils/freshReportPeriodIndexIsInvalid.js";
 import filteringOfRequiredReportPeriods from "../utils/filteringOfRequiredReportPeriods.js";
 import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayFromCurrentMonth.js";
 
-var noDataForPeriodErrMsg = "there is no data available for the selected reporting period";
+var MAX_FAILED_ATTEMPTS = 5;
+var statusOfReportLoadingStop = true;
 
 var loadFreshReports = async (req, res, next) => {
   var authHeader = req.headers?.authorization;
@@ -31,65 +35,95 @@ var loadFreshReports = async (req, res, next) => {
     return res.sendStatus(200);
   }
 
+  console.log("FRESH_REPORTS_LOADING_STARTED", "\nTIME: " + new Date());
+
+  var queueIsEmpty = false;
+
+  users.forEach((user) => (user.failedCount = 0));
+
   res.sendStatus(202);
 
-  for (var user of users) {
+  while (true) {
+    var user = users.shift();
     var { userId } = user;
+
     var session = dbClient.startSession();
 
     try {
       await session.withTransaction(async () => {
-        var { reportTree } = await dbUtils.getReportsTree(userId, session);
-        var freshReportPeriodIndex = user.freshReportPeriodIndex;
-
-        if (freshReportPeriodIndexIsInvalid(freshReportPeriodIndex)) {
-          var { lastMonday } = getLastMondayFromCurrentMonth();
-          freshReportPeriodIndex = reportPeriods.findIndex((item) => item.dateFrom === lastMonday);
-        }
-
-        var reportPeriodToLoad = reportPeriods[freshReportPeriodIndex];
-        var nextReportPeriodIndex = freshReportPeriodIndex + 1;
-        var { filteredRequiredReportPeriods } = filteringOfRequiredReportPeriods(user, [reportPeriodToLoad], reportTree);
-
-        if (!filteredRequiredReportPeriods.length) {
-          await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
-          throw new Error("EMPTY_QUEUE");
-        }
-
-        if (user.loadingInProgress || user.isReportLoadingDelayed) {
-          await dbUtils.pushToReportsQueue(userId, [reportPeriods[freshReportPeriodIndex]], session);
-          throw new Error("LOADING_IN_PROGRESS");
-        }
-
         var { token } = await dbUtils.getToken(userId, session);
 
         if (!token) {
-          throw new Error("WBTOKEN is empty");
-        }
+          var loadingStopReason = "isTokenMissing";
+          await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, loadingStopReason, session);
+        } else {
+          var tokenIsExpired = checkTokenExpiry(token);
 
-        try {
-          var { dateFrom, dateTo } = reportPeriodToLoad;
-          await reportsProcessing(userId, dateFrom, dateTo, session);
-          await dbUtils.updateLastReportRequestTimestamp(userId, session);
-          await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
-        } catch (processingError) {
-          if (processingError.message === noDataForPeriodErrMsg) {
-            return;
+          if (tokenIsExpired) {
+            var loadingStopReason = "tokenIsExpired";
+            await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, loadingStopReason, session);
+          } else {
+            var { reportTree } = await dbUtils.getReportsTree(userId, session);
+            var freshReportPeriodIndex = user?.freshReportPeriodIndex;
+
+            if (freshReportPeriodIndexIsInvalid(freshReportPeriodIndex)) {
+              var { lastMonday } = getLastMondayFromCurrentMonth();
+              freshReportPeriodIndex = reportPeriods.findIndex((item) => item.dateFrom === lastMonday);
+            }
+
+            var reportPeriodToLoad = reportPeriods[freshReportPeriodIndex];
+            var nextReportPeriodIndex = freshReportPeriodIndex + 1;
+
+            if (isFutureDate(reportPeriodToLoad.dateTo)) {
+              var prevReportPeriodIndex = freshReportPeriodIndex - 1;
+              reportPeriodToLoad = reportPeriods[prevReportPeriodIndex];
+              nextReportPeriodIndex = freshReportPeriodIndex;
+            }
+
+            var { filteredRequiredReportPeriods } = filteringOfRequiredReportPeriods(user, [reportPeriodToLoad], reportTree);
+
+            if (filteredRequiredReportPeriods.length) {
+              if (!user.loadingInProgress || !user.isReportLoadingDelayed) {
+                try {
+                  var { dateFrom, dateTo } = reportPeriodToLoad;
+                  var { reportPeriodIsEmpty } = await reportsProcessing(userId, dateFrom, dateTo, token, session);
+                  if (!reportPeriodIsEmpty) {
+                    await dbUtils.updateLastReportRequestTimestamp(userId, session);
+                    await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
+                  } else {
+                    await dbUtils.addIndexToEmptyReportPeriods(userId, freshReportPeriodIndex, session);
+                  }
+                } catch (processingError) {
+                  console.log({ processingError });
+                  if (processingError instanceof WBAPIError) {
+                    if (user.failedCount !== MAX_FAILED_ATTEMPTS) {
+                      user.failedCount += 1;
+                      users.push(user);
+                    }
+                  } else {
+                    throw processingError;
+                  }
+                }
+              } else {
+                await dbUtils.pushToReportsQueue(userId, [reportPeriods[freshReportPeriodIndex]], session);
+              }
+            } else {
+              await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
+            }
           }
-
-          throw processingError;
         }
       });
     } catch (err) {
       console.error({ err });
-
-      if (err.message === "EMPTY_QUEUE" || err.message === "LOADING_IN_PROGRESS" || err.message === "WBTOKEN is empty") {
-        continue;
-      }
     } finally {
       if (session) {
         await session.endSession();
       }
+    }
+
+    if (!users.length) {
+      console.log("FRESH_REPORTS_LOADING_COMPLETED", "\nTIME: " + new Date());
+      break;
     }
   }
 };

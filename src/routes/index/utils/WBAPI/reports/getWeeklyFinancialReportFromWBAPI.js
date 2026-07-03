@@ -37,6 +37,10 @@ var doRequest = async (token, dateFrom, dateTo, period, rrdId, limit) =>
 var getWeeklyFinancialReportFromWBAPI = async (dateFrom, dateTo, token, userId) => {
   var defaultRowNumber = 0;
 
+  if (dateFrom === dateTo) {
+    period = "daily";
+  }
+
   var res = await doRequest(token, dateFrom, dateTo, period, defaultRowNumber, MAX_NUMBERS_OF_ROWS);
 
   if (res.status === 200) {

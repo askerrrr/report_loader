@@ -7,6 +7,7 @@ var requredFields = {
   isReportLoadingDelayed: 1,
   freshReportPeriodIndex: 1,
   isReportLoadingIsStopped: 1,
+  emptyReportPeriodsIndexes: 1,
   lastReportRequestTimestamp: 1,
 };
 
