@@ -10,6 +10,7 @@ import filteringOfRequiredReportPeriods from "../utils/filteringOfRequiredReport
 import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayFromCurrentMonth.js";
 
 var MAX_FAILED_ATTEMPTS = 5;
+var mskTimeOffsetInMs = 10_800_000;
 var statusOfReportLoadingStop = true;
 
 var loadFreshReports = async (req, res, next) => {
@@ -35,7 +36,7 @@ var loadFreshReports = async (req, res, next) => {
     return res.sendStatus(200);
   }
 
-  console.log("FRESH_REPORTS_LOADING_STARTED", "\nTIME: " + new Date());
+  console.log("FRESH_REPORTS_LOADING_STARTED", "\nTIME: " + new Date(Date.now() + mskTimeOffsetInMs));
 
   var queueIsEmpty = false;
 
@@ -122,7 +123,7 @@ var loadFreshReports = async (req, res, next) => {
     }
 
     if (!users.length) {
-      console.log("FRESH_REPORTS_LOADING_COMPLETED", "\nTIME: " + new Date());
+      console.log("FRESH_REPORTS_LOADING_COMPLETED", "\nTIME: " + new Date(Date.now() + mskTimeOffsetInMs));
       break;
     }
   }
