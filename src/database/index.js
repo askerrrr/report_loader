@@ -1,4 +1,3 @@
-import { dataKeyId } from "./keyManadger.js";
 import { MongoClient, ClientEncryption } from "mongodb";
 import { schemaMap } from "./encryptedFieldsSchemaMap.js";
 
