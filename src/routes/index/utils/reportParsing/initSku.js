@@ -1,14 +1,11 @@
 var initSku = function (postfix) {
   var sku = {};
 
-  if (!postfix) {
-    sku.costPrice = 0;
-  }
-
   sku["qty" + postfix] = 0;
   sku["tax" + postfix] = 0;
   sku["fines" + postfix] = 0;
   sku["profit" + postfix] = 0;
+  sku["costPrice" + postfix] = 0;
   sku["acceptance" + postfix] = 0;
   sku["storageCost" + postfix] = 0;
   sku["finalProfit" + postfix] = 0;

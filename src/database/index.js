@@ -1,12 +1,23 @@
-import { MongoClient } from "mongodb";
-
-var dbClient = new MongoClient(process.env.MONGO_URI);
+import { MongoClient, ClientEncryption } from "mongodb";
+import { schemaMap } from "./encryptedFieldsSchemaMap.js";
 
 var timerId = null;
 var connectionAttempts = 0;
 var eventsConfigured = false;
 var mongodbReconnected = false;
 var MAX_CONNECTION_ATTEMPTS = 5;
+var keyVaultNamespace = process.env.KEY_VAULT_NAME_SPACE;
+var kmsProviders = { local: { key: process.env.MONGO_LOCAL_MASTER_KEY } };
+var extraOptions = { cryptSharedLibPath: process.env.MONGO_CRYPT_SHARED_PATH, cryptSharedLibRequired: true };
+
+var dbClient = new MongoClient(process.env.MONGO_URI, {
+  autoEncryption: {
+    schemaMap,
+    kmsProviders,
+    extraOptions,
+    keyVaultNamespace,
+  },
+});
 
 var mongodbConnection = async () => await dbClient.connect();
 
