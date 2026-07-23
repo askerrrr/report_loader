@@ -1,25 +1,19 @@
 import { MongoClient, ClientEncryption } from "mongodb";
-import { schemaMap } from "./encryptedFieldsSchemaMap.js";
 
 var timerId = null;
 var connectionAttempts = 0;
 var eventsConfigured = false;
 var mongodbReconnected = false;
 var MAX_CONNECTION_ATTEMPTS = 5;
+
 var keyVaultNamespace = process.env.KEY_VAULT_NAME_SPACE;
 var kmsProviders = { local: { key: process.env.MONGO_LOCAL_MASTER_KEY } };
 var extraOptions = { cryptSharedLibPath: process.env.MONGO_CRYPT_SHARED_PATH, cryptSharedLibRequired: true };
 
-var dbClient = new MongoClient(process.env.MONGO_URI, {
-  autoEncryption: {
-    schemaMap,
-    kmsProviders,
-    extraOptions,
-    keyVaultNamespace,
-  },
-});
+var autoEncryption = { kmsProviders, extraOptions, keyVaultNamespace, bypassAutoEncryption: true };
+var options = { autoEncryption };
 
-var mongodbConnection = async () => await dbClient.connect();
+var dbClient = new MongoClient(process.env.MONGO_URI, options);
 
 var setupMongoDBEvents = () => {
   if (eventsConfigured) {
@@ -43,7 +37,9 @@ var setupMongoDBEvents = () => {
       timerId = null;
     }
 
-    timerId = setTimeout(mongodbConnection, 1000);
+    timerId = setTimeout(async () => {
+      await dbClient.connect();
+    }, 1000);
 
     if (connectionAttempts === MAX_CONNECTION_ATTEMPTS) {
       clearTimeout(timerId);
@@ -58,6 +54,7 @@ var setupMongoDBEvents = () => {
   });
 
   dbClient.on("serverOpening", () => {
+    console.log("mongodb connected\n");
     if (timerId) {
       console.clear();
       console.log("mongodb reconnected\n");
@@ -86,7 +83,8 @@ var killAllSessions = async () =>
 
 var runDB = async () => {
   setupMongoDBEvents();
-  await mongodbConnection();
+  await dbClient.connect();
+
   await killAllSessions();
 };
 
