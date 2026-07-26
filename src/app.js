@@ -3,22 +3,39 @@ import { runDB } from "./database/index.js";
 import router from "./routes/index/index.js";
 import errorHandler from "./middleware/errorHandler.js";
 import runReportPeriodsWriter from "./dateUtils/index.js";
+import { databaseEmitter, serverEmitter } from "./customEvent/index.js";
 import resumeInterruptedReportsLoad from "./routes/index/utils/resumeInterruptedReportsLoad.js";
 
-var app = express();
+var server;
 
 (async () => {
   runReportPeriodsWriter();
 
   await runDB();
-
-  app.listen(process.env.PORT, process.env.HOST, console.log("server run..."));
-  await resumeInterruptedReportsLoad();
 })();
 
-app.use(express.urlencoded());
-app.use(express.json());
+serverEmitter.on("start", async () => {
+  if (!server) {
+    server = express();
 
-app.use("/", router);
+    server.use(express.urlencoded());
+    server.use(express.json());
 
-app.use(errorHandler);
+    server.use("/", router);
+
+    server.use(errorHandler);
+
+    server = server.listen(process.env.PORT, process.env.HOST, console.log("---------- SERVER RUN ----------"));
+
+    resumeInterruptedReportsLoad();
+  }
+});
+
+serverEmitter.on("close", () => {
+  if (server && server?.close) {
+    server.close(() => {
+      server.removeAllListeners();
+      server = null;
+    });
+  }
+});
