@@ -4,7 +4,7 @@ import { databaseEmitter, serverEmitter } from "../customEvent/index.js";
 var timerId = null;
 var eventsConfigured = false;
 var dbReconnectionAttempts = 1;
-var NEXT_CONNECTION_MS = 1_000;
+var NEXT_CONNECTION_MS = 30_000;
 var dbConnectionRestored = false;
 var isFailedAfterFirstSuccessConnection = true;
 
