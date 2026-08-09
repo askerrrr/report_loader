@@ -63,7 +63,7 @@ var recalculateInsuranceFee = function (sku, taxParams, skuPropPostfix) {
   }
 
   if (paidInsuranceFee >= taxParams.maxInsuranceFee) {
-    taxParams.isInsuranceFeeIsPaid = true;
+    taxParams.isInsuranceFeePaid = true;
     taxParams.mandatoryInsuranceFeeIsPaid = true;
     taxParams.additionalInsuranceFeeIsPaid = true;
     taxParams.requiresAdditionalInsuranceFee = false;

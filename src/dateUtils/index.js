@@ -8,11 +8,10 @@ import getAllReportPeriods from "./getAllReportPeriods.js";
 import writeReportPeriodsToFile from "./writeReportPeriodsToFile.js";
 
 var runReportPeriodsWriter = () => {
-  if (reportPeriods.length) {
-    return;
+  if (!reportPeriods.length) {
+    var { allPeriods } = getAllReportPeriods();
+    writeReportPeriodsToFile(allPeriods);
   }
-  var { allPeriods } = getAllReportPeriods();
-  writeReportPeriodsToFile(allPeriods);
 };
 
 export default runReportPeriodsWriter;
