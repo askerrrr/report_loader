@@ -6,6 +6,7 @@ COPY package*.json  /report_loader/
 
 RUN apt-get update \
     && apt-get install -y \
+        vim \
         curl \
         python3 \
         make \
