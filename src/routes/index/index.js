@@ -18,6 +18,6 @@ router.post("/resume-loading/", checkAuth, joiSchemaValidator(joiSchemas.resumeR
 
 router.post("/resume-loading/abandoned/", checkAuth, joiSchemaValidator(joiSchemas.resumeAbandonedReportsLoadingSchema), resumeAbandonedReportsLoading);
 
-router.post("/background-tasks/load-fresh-reports", joiSchemaValidator(joiSchemas.loadFreshReportsSchema), loadFreshReports);
+router.post("/background-tasks/load-fresh-reports", checkAuth, joiSchemaValidator(joiSchemas.loadFreshReportsSchema), loadFreshReports);
 
 export default router;
