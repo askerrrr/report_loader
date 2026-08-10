@@ -12,7 +12,7 @@ import resumeAbandonedReportsLoading from "./controllers/resumeAbandonedReportsL
 
 var router = Router({ caseSensitive: true });
 
-router.post("/", joiSchemaValidator(joiSchemas.reportLoaderSchema), checkAuth, checkUserExist, periodsFilter, writeReportsToQueue, reportLoading);
+router.post("/", checkAuth, joiSchemaValidator(joiSchemas.reportLoaderSchema), checkUserExist, periodsFilter, writeReportsToQueue, reportLoading);
 
 router.post("/resume-loading/", joiSchemaValidator(joiSchemas.resumeReportLoadingSchema), resumeReportLoading);
 
