@@ -30,7 +30,7 @@ import getFreshReportPeriodIndex from "./getFreshReportPeriodIndex.js";
 import updateReportLoadingFields from "./updateReportLoadingFields.js";
 import addReportToAbandonedReports from "./addReportToAbandonedReports.js";
 import updateLastUsedTokenTimestamp from "./updateLastUsedTokenTimestamp.js";
-import addIndexToEmptyReportPeriods from "./addIndexToEmptyReportPeriods.js";
+import addReportToEmptyReportPeriods from "./addReportToEmptyReportPeriods.js";
 import updateFreshReportPeriodIndex from "./updateFreshReportPeriodIndex.js";
 import getLastReportRequestTimestamp from "./getLastReportRequestTimestamp.js";
 import updateReportLoadingDelayStatus from "./updateReportLoadingDelayStatus.js";
@@ -78,7 +78,8 @@ var db = {
   addReportToAbandonedReports: (userId, reportPeriod, session) =>
     addReportToAbandonedReports(report_loading_states_collection, userId, reportPeriod, session),
 
-  addIndexToEmptyReportPeriods: (userId, index, session) => addIndexToEmptyReportPeriods(report_loading_states_collection, userId, index, session),
+  addReportToEmptyReportPeriods: (userId, index, dateFrom, dateTo, session) =>
+    addReportToEmptyReportPeriods(report_loading_states_collection, userId, index, dateFrom, dateTo, session),
 
   changeTaxParamsToDb: (userId, session, ...updatedTaxParams) => changeTaxParamsToDb(tax_params_collection, userId, session, ...updatedTaxParams),
 

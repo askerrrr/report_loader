@@ -3,7 +3,7 @@ import checkReportExistsInTree from "./checkReportExistsInTree.js";
 var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods, reportTree) => {
   var resultOfTheFirstFiltering = [];
   var abandonedReportsAddedToQueue = false;
-  var { reportsQueue, abandonedReports, emptyReportPeriodsIndexes } = userLoadingState;
+  var { reportsQueue, abandonedReports, emptyReportPeriods } = userLoadingState;
 
   while (requiredReportPeriods.length) {
     var period = requiredReportPeriods.shift();
@@ -35,13 +35,13 @@ var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods,
 
   var resultOfTheThirdFiltering = [];
 
-  if (emptyReportPeriodsIndexes?.length) {
+  if (emptyReportPeriods?.length) {
     while (resultOfTheSecondFiltering.length) {
       var elem = resultOfTheSecondFiltering.shift();
 
-      var emptyReportPeriodIndexIsExist = emptyReportPeriodsIndexes.find((index) => index === elem.index);
+      var reportPeriodInEmptyReportPeriods = emptyReportPeriods.find(cb);
 
-      if (!emptyReportPeriodIndexIsExist) {
+      if (!reportPeriodInEmptyReportPeriods) {
         resultOfTheThirdFiltering.push(elem);
       }
     }
