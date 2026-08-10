@@ -16,7 +16,7 @@ router.post("/", joiSchemaValidator(joiSchemas.reportLoaderSchema), checkAuth, c
 
 router.post("/resume-loading/", joiSchemaValidator(joiSchemas.resumeReportLoadingSchema), resumeReportLoading);
 
-router.post("/resume-loading/abandoned/", joiSchemaValidator(joiSchemas.resumeAbandonedReportsLoadingSchema), resumeAbandonedReportsLoading);
+router.post("/resume-loading/abandoned/", checkAuth, joiSchemaValidator(joiSchemas.resumeAbandonedReportsLoadingSchema), resumeAbandonedReportsLoading);
 
 router.post("/background-tasks/load-fresh-reports", joiSchemaValidator(joiSchemas.loadFreshReportsSchema), loadFreshReports);
 
