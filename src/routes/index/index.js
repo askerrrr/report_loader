@@ -3,6 +3,7 @@ import checkAuth from "./controllers/checkAuth.js";
 import * as joiSchemas from "./joiSchemas/index.schema.js";
 import periodsFilter from "./controllers/periodsFilter.js";
 import reportLoading from "./controllers/reportLoading.js";
+import checkUserExist from "./controllers/checkUserExist.js";
 import loadFreshReports from "./controllers/loadFreshReports.js";
 import resumeReportLoading from "./controllers/resumeReportLoading.js";
 import writeReportsToQueue from "./controllers/writeReportsToQueue.js";
@@ -11,7 +12,7 @@ import resumeAbandonedReportsLoading from "./controllers/resumeAbandonedReportsL
 
 var router = Router({ caseSensitive: true });
 
-router.post("/", joiSchemaValidator(joiSchemas.reportLoaderSchema), checkAuth, periodsFilter, writeReportsToQueue, reportLoading);
+router.post("/", joiSchemaValidator(joiSchemas.reportLoaderSchema), checkAuth, checkUserExist, periodsFilter, writeReportsToQueue, reportLoading);
 
 router.post("/resume-loading/", joiSchemaValidator(joiSchemas.resumeReportLoadingSchema), resumeReportLoading);
 
