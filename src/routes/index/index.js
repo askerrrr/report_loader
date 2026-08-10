@@ -14,7 +14,7 @@ var router = Router({ caseSensitive: true });
 
 router.post("/", checkAuth, joiSchemaValidator(joiSchemas.reportLoaderSchema), checkUserExist, periodsFilter, writeReportsToQueue, reportLoading);
 
-router.post("/resume-loading/", joiSchemaValidator(joiSchemas.resumeReportLoadingSchema), resumeReportLoading);
+router.post("/resume-loading/", checkAuth, joiSchemaValidator(joiSchemas.resumeReportLoadingSchema), resumeReportLoading);
 
 router.post("/resume-loading/abandoned/", checkAuth, joiSchemaValidator(joiSchemas.resumeAbandonedReportsLoadingSchema), resumeAbandonedReportsLoading);
 
