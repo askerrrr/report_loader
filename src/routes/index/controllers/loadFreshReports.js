@@ -29,10 +29,6 @@ var loadFreshReports = async (req, res, next) => {
     return res.sendStatus(401);
   }
 
-  if (!req.body?.isWeeklyLoadingOfFreshReport) {
-    return;
-  }
-
   var users = await dbUtils.getUsersData();
 
   if (!users.length) {
