@@ -103,7 +103,7 @@ var loadFreshReports = async (req, res, next) => {
                     await dbUtils.updateLastReportRequestTimestamp(userId, session);
                     await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
                   } else {
-                    await dbUtils.addIndexToEmptyReportPeriods(userId, freshReportPeriodIndex, session);
+                    await dbUtils.addReportToEmptyReportPeriods(userId, freshReportPeriodIndex, dateFrom, dateTo, session);
                   }
                 } catch (processingError) {
                   console.log({ processingError });

@@ -74,7 +74,7 @@ var loader = async (userId, isServerStartupLoad = false) => {
                   lastLoadedReport.periodIndex = index;
                   await dbUtils.updateLastLoaderReport(userId, lastLoadedReport, session);
                 } else {
-                  await dbUtils.addIndexToEmptyReportPeriods(userId, index, session);
+                  await dbUtils.addReportToEmptyReportPeriods(userId, index, dateFrom, dateTo, session);
                 }
               } catch (processingError) {
                 console.log({ processingError });
