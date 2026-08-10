@@ -5,6 +5,7 @@ import { WBAPIError } from "../../../customError/index.js";
 import checkTokenExpiry from "../utils/checkTokenExpiry.js";
 import reportsProcessing from "../utils/reportsProcessing.js";
 import reportPeriods from "../../../dateUtils/reportPeriods.js";
+import isLastRequestTooRecent from "../utils/isLastRequestTooRecent.js";
 import freshReportPeriodIndexIsInvalid from "../utils/freshReportPeriodIndexIsInvalid.js";
 import filteringOfRequiredReportPeriods from "../utils/filteringOfRequiredReportPeriods.js";
 import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayFromCurrentMonth.js";
@@ -12,6 +13,8 @@ import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayF
 var MAX_FAILED_ATTEMPTS = 5;
 var mskTimeOffsetInMs = 10_800_000;
 var statusOfReportLoadingStop = true;
+var WB_API_REQUEST_INTERVAL_MS = 65_000;
+var nextReportDelay = async (delayMs) => new Promise((res) => setTimeout(res, delayMs));
 
 var loadFreshReports = async (req, res, next) => {
   var authHeader = req.headers?.authorization;
@@ -87,7 +90,15 @@ var loadFreshReports = async (req, res, next) => {
               if (!user.loadingInProgress || !user.isReportLoadingDelayed) {
                 try {
                   var { dateFrom, dateTo } = reportPeriodToLoad;
+
+                  var { needToDalay, delayInMs } = isLastRequestTooRecent(user.lastReportRequestTimestamp, WB_API_REQUEST_INTERVAL_MS);
+
+                  if (needToDalay) {
+                    await nextReportDelay(delayInMs);
+                  }
+
                   var { reportPeriodIsEmpty } = await reportsProcessing(userId, dateFrom, dateTo, token, session);
+
                   if (!reportPeriodIsEmpty) {
                     await dbUtils.updateLastReportRequestTimestamp(userId, session);
                     await dbUtils.updateFreshReportPeriodIndex(userId, nextReportPeriodIndex, session);
