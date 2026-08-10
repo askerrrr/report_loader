@@ -1,7 +1,4 @@
-import Joi from "joi";
 import loader from "../utils/loader.js";
-
-var schema = Joi.object({ userId: Joi.string().required() });
 
 var resumeAbandonedReportsLoading = async (req, res) => {
   var authHeader = req.headers?.authorization;
@@ -14,12 +11,6 @@ var resumeAbandonedReportsLoading = async (req, res) => {
 
   if (type !== "Bearer" || secretKey !== process.env.SECRET_KEY) {
     return res.sendStatus(401);
-  }
-
-  var { error } = schema.validate(req.body);
-
-  if (error) {
-    return res.sendStatus(400);
   }
 
   res.sendStatus(202);
