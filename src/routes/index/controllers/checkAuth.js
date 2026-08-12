@@ -13,12 +13,6 @@ var checkAuth = async (req, res, next) => {
     return res.sendStatus(401);
   }
 
-  var user = await dbUtils.getUser(req.body.userId);
-
-  if (!user) {
-    return res.status(404).json({ msg: "user not found" });
-  }
-
   next();
 };
 

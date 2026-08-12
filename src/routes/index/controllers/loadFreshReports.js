@@ -17,22 +17,6 @@ var WB_API_REQUEST_INTERVAL_MS = 65_000;
 var nextReportDelay = async (delayMs) => new Promise((res) => setTimeout(res, delayMs));
 
 var loadFreshReports = async (req, res, next) => {
-  var authHeader = req.headers?.authorization;
-
-  if (!authHeader) {
-    return res.sendStatus(401);
-  }
-
-  var [type, secretKey] = authHeader.split(" ");
-
-  if (type !== "Bearer" || secretKey !== process.env.SECRET_KEY) {
-    return res.sendStatus(401);
-  }
-
-  if (!req.body?.isWeeklyLoadingOfFreshReport) {
-    return;
-  }
-
   var users = await dbUtils.getUsersData();
 
   if (!users.length) {

@@ -1,8 +1,9 @@
 import { Router } from "express";
 import checkAuth from "./controllers/checkAuth.js";
-import requestBodySchema from "./requestBodySchema.js";
+import * as joiSchemas from "./joiSchemas/index.schema.js";
 import periodsFilter from "./controllers/periodsFilter.js";
 import reportLoading from "./controllers/reportLoading.js";
+import checkUserExist from "./controllers/checkUserExist.js";
 import loadFreshReports from "./controllers/loadFreshReports.js";
 import resumeReportLoading from "./controllers/resumeReportLoading.js";
 import writeReportsToQueue from "./controllers/writeReportsToQueue.js";
@@ -11,12 +12,12 @@ import resumeAbandonedReportsLoading from "./controllers/resumeAbandonedReportsL
 
 var router = Router({ caseSensitive: true });
 
-router.post("/", joiSchemaValidator(requestBodySchema), checkAuth, periodsFilter, writeReportsToQueue, reportLoading);
+router.post("/", checkAuth, joiSchemaValidator(joiSchemas.reportLoaderSchema), checkUserExist, periodsFilter, writeReportsToQueue, reportLoading);
 
-router.post("/resume-loading/", resumeReportLoading);
+router.post("/resume-loading/", checkAuth, checkUserExist, joiSchemaValidator(joiSchemas.resumeReportLoadingSchema), resumeReportLoading);
 
-router.post("/resume-loading/abandoned/", resumeAbandonedReportsLoading);
+router.post("/resume-loading/abandoned/", checkAuth, joiSchemaValidator(joiSchemas.resumeAbandonedReportsLoadingSchema), resumeAbandonedReportsLoading);
 
-router.post("/background-tasks/load-fresh-reports", loadFreshReports);
+router.post("/background-tasks/load-fresh-reports", checkAuth, joiSchemaValidator(joiSchemas.loadFreshReportsSchema), loadFreshReports);
 
 export default router;
