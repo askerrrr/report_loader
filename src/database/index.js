@@ -6,7 +6,7 @@ var kmsProviders = { local: { key: process.env.MONGO_LOCAL_MASTER_KEY } };
 var extraOptions = { cryptSharedLibPath: process.env.MONGO_CRYPT_SHARED_PATH, cryptSharedLibRequired: true };
 
 var autoEncryption = { kmsProviders, extraOptions, keyVaultNamespace: process.env.KEY_VAULT_NAME_SPACE, bypassAutoEncryption: true };
-var options = { autoEncryption, connectTimeoutMS: 5000 };
+var options = { autoEncryption, connectTimeoutMS: 5000, ...JSON.parse(process.env.MONGO_AUTH_OPTIONS) };
 
 var dbClient = new MongoClient(process.env.MONGO_URI, options);
 setupDbEvents(dbClient);
