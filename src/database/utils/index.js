@@ -11,7 +11,7 @@ import pushToReportsQueue from "./pushToReportsQueue.js";
 import updateReportsQueue from "./updateReportsQueue.js";
 import updateTaxParamsToDb from "./updateTaxParamsToDb.js";
 import resetAbandonedReports from "./resetAbandonedReports.js";
-import getReportLoadingState from "./getReportLoadingState.js";
+import getUserReportLoadingState from "./getUserReportLoadingState.js";
 import updateLastLoadedReport from "./updateLastLoadedReport.js";
 import addReportToReportPeriods from "./addReportToReportPeriods.js";
 import getLoadingProgressStatus from "./getLoadingProgressStatus.js";
@@ -42,7 +42,7 @@ export default {
   updateReportsQueue,
   updateTaxParamsToDb,
   resetAbandonedReports,
-  getReportLoadingState,
+  getUserReportLoadingState,
   updateLastLoadedReport,
   setLoadingProgressStatus,
   addReportToReportPeriods,

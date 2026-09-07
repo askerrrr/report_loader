@@ -7,7 +7,7 @@ var statusOfReportLoadingStop = false;
 var resumeReportLoading = async (req, res) => {
   var { userId } = req.body;
 
-  var user = await dbUtils.getReportLoadingState(userId);
+  var user = await dbUtils.getUserReportLoadingState(userId);
 
   res.sendStatus(202);
 
@@ -15,7 +15,11 @@ var resumeReportLoading = async (req, res) => {
     return;
   }
 
-  await dbUtils.updateReportLoadingStoppedStatus(userId, statusOfReportLoadingStop, loadingStopReason);
+  await dbUtils.updateReportLoadingStoppedStatus(
+    userId,
+    statusOfReportLoadingStop,
+    loadingStopReason,
+  );
 
   await loader(userId);
 };

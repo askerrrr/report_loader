@@ -4,16 +4,25 @@ import filteringOfRequiredReportPeriods from "../../../routes/index/utils/filter
 
 var handleLongRangeReportLoading = async (data, session) => {
   var { userId, dateFrom, dateTo, needToLoadAllReports } = data;
-  var { requiredReportPeriods } = getRequiredReportPeriods(dateFrom, dateTo, needToLoadAllReports);
-
-  var userReportLoadingState = await dbUtils.getReportLoadingState(userId, session);
-  var savedReportPeriods = (await dbUtils.getReportPeriods(userId, session)).reportPeriods;
-
-  var { filteredRequiredReportPeriods, abandonedReportsAddedToQueue } = filteringOfRequiredReportPeriods(
-    userReportLoadingState,
-    requiredReportPeriods,
-    savedReportPeriods,
+  var { requiredReportPeriods } = getRequiredReportPeriods(
+    dateFrom,
+    dateTo,
+    needToLoadAllReports,
   );
+
+  var userReportLoadingState = await dbUtils.getUserReportLoadingState(
+    userId,
+    session,
+  );
+  var savedReportPeriods = (await dbUtils.getReportPeriods(userId, session))
+    .reportPeriods;
+
+  var { filteredRequiredReportPeriods, abandonedReportsAddedToQueue } =
+    filteringOfRequiredReportPeriods(
+      userReportLoadingState,
+      requiredReportPeriods,
+      savedReportPeriods,
+    );
 
   if (!filteredRequiredReportPeriods.length) {
     return;
@@ -23,7 +32,11 @@ var handleLongRangeReportLoading = async (data, session) => {
     await dbUtils.resetAbandonedReports(userId, session);
   }
 
-  await dbUtils.pushToReportsQueue(userId, filteredRequiredReportPeriods, session);
+  await dbUtils.pushToReportsQueue(
+    userId,
+    filteredRequiredReportPeriods,
+    session,
+  );
 
   var { loadingInProgress, isReportLoadingIsStopped } = userReportLoadingState;
 
