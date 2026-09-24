@@ -1,6 +1,5 @@
 import calc from "../calcServices/index.js";
-
-import getSkuNamesFromPaidStorageReport from "./getSkuNamesFromPaidStorageReport.js";
+import getSkuNamesFromPaidStorageReport from "./getSKUNamesFromPaidStorageReport.js";
 
 var parsePaidStorageReport = (paidStorageReport) => {
   var parsedPaidStorageReport = [];
