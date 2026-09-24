@@ -1,15 +1,7 @@
-var saveReportToDb = async (collection, userId, report, session) => {
-  var result = await collection.updateOne(
-    { userId },
-    {
-      $push: {
-        reports: { $each: [report], $position: 0 },
-      },
-    },
-    { session: session },
-  );
+import { reportModel } from "../models/index.js";
 
-  return result.acknowledged;
+var saveReportToDb = async (report, session) => {
+  return await reportModel.create([{ ...report }], { session: session });
 };
 
 export default saveReportToDb;

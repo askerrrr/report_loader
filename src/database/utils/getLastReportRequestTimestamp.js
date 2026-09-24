@@ -1,5 +1,7 @@
-var getLastReportRequestTimestamp = async (collection, userId, session) => {
-  var { lastReportRequestTimestamp } = await collection.findOne({ userId }, { session: session });
+import { reportLoadingStateModel } from "../models/index.js";
+
+var getLastReportRequestTimestamp = async (userId, session) => {
+  var { lastReportRequestTimestamp } = await reportLoadingStateModel.findOne({ userId }, { session: session });
   return { lastReportRequestTimestamp };
 };
 

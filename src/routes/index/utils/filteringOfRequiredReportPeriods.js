@@ -1,6 +1,4 @@
-import checkReportExistsInTree from "./checkReportExistsInTree.js";
-
-var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods, reportTree) => {
+var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods, savedReportPeriodsFromDb) => {
   var resultOfTheFirstFiltering = [];
   var abandonedReportsAddedToQueue = false;
   var { reportsQueue, abandonedReports, emptyReportPeriods } = userLoadingState;
@@ -8,9 +6,9 @@ var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods,
   while (requiredReportPeriods.length) {
     var period = requiredReportPeriods.shift();
 
-    var { reportIsExist } = checkReportExistsInTree(period.dateFrom, reportTree);
+    var report = savedReportPeriodsFromDb.find((item) => item.dateFrom === period.dateFrom);
 
-    if (!reportIsExist) {
+    if (!report) {
       resultOfTheFirstFiltering.push(period);
     }
   }

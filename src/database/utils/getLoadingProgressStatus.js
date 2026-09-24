@@ -1,5 +1,7 @@
-var getLoadingProgressStatus = async (collection, userId, session) => {
-  var { loadingInProgress } = await collection.findOne({ userId }, { session });
+import { reportLoadingStateModel } from "../models/index.js";
+
+var getLoadingProgressStatus = async (userId, session) => {
+  var { loadingInProgress } = await reportLoadingStateModel.findOne({ userId }, { session });
 
   return { loadingInProgress };
 };

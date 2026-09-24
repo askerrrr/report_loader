@@ -4,7 +4,7 @@ import dbUtils from "../../../database/utils/index.js";
 var isServerStartupLoad = true;
 
 var resumeInterruptedReportsLoad = async () => {
-  var users = await dbUtils.getUsersData();
+  var users = await dbUtils.getUsersReportLoadingState();
 
   if (users.length) {
     for (var { userId, reportsQueue, isReportLoadingIsStopped } of users) {

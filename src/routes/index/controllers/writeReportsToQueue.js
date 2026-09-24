@@ -4,7 +4,8 @@ var writeReportsToQueue = async (req, res, next) => {
   var { userId, filteredRequiredReportPeriods } = req.body;
   await dbUtils.pushToReportsQueue(userId, filteredRequiredReportPeriods);
 
-  var { loadingInProgress, isReportLoadingDelayed, isReportLoadingIsStopped } = await dbUtils.getReportLoadingState(userId);
+  var { loadingInProgress, isReportLoadingIsStopped } =
+    await dbUtils.getUserReportLoadingState(userId);
 
   if (isReportLoadingIsStopped) {
     return res.sendStatus(202);
@@ -14,23 +15,9 @@ var writeReportsToQueue = async (req, res, next) => {
     return res.sendStatus(200);
   }
 
-  if (isReportLoadingDelayed) {
-    return res.sendStatus(202);
-  }
-
   res.sendStatus(202);
-
-  if (req.body.needsReportLoadingDelay) {
-    await dbUtils.updateReportLoadingDelayStatus(userId, true);
-    await delay(req.body.nextRequestDelayMs);
-    await dbUtils.updateReportLoadingDelayStatus(userId, false);
-  }
 
   next();
 };
 
 export default writeReportsToQueue;
-
-var delay = async function (ms) {
-  return new Promise((res) => setTimeout(res, ms));
-};

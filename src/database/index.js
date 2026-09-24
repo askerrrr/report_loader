@@ -1,21 +1,17 @@
+import mongoose from "mongoose";
 import setupDbEvents from "./setupDbEvents.js";
-import { MongoClient, ClientEncryption } from "mongodb";
+import getClientOptions from "./getClientOptions.js";
 import { serverEmitter, databaseEmitter } from "../customEvent/index.js";
 
-var kmsProviders = { local: { key: process.env.MONGO_LOCAL_MASTER_KEY } };
-var extraOptions = { cryptSharedLibPath: process.env.MONGO_CRYPT_SHARED_PATH, cryptSharedLibRequired: true };
+var dbClient = mongoose.connection;
 
-var autoEncryption = { kmsProviders, extraOptions, keyVaultNamespace: process.env.KEY_VAULT_NAME_SPACE, bypassAutoEncryption: true };
-var options = { autoEncryption, connectTimeoutMS: 5000, ...JSON.parse(process.env.MONGO_AUTH_OPTIONS) };
-
-var dbClient = new MongoClient(process.env.MONGO_URI, options);
-setupDbEvents(dbClient);
-
-var killAllSessions = async () => dbClient.db("admin").command({ killAllSessions: [] });
+var killAllSessions = async () => await dbClient.db.command({ killAllSessions: [] }).then(() => console.log("old sessions killed"));
 
 var runDB = async () => {
   try {
-    await dbClient.connect();
+    setupDbEvents(mongoose);
+
+    await mongoose.connect(process.env.MONGO_URI, getClientOptions());
 
     await killAllSessions();
     console.info("---------- DB CONNECTED ----------\n");
@@ -24,10 +20,7 @@ var runDB = async () => {
   } catch (e) {
     console.log(e.message.toUpperCase());
 
-    if (e.message.startsWith("connect ECONNREFUSED")) {
-      serverEmitter.emit("close");
-      databaseEmitter.emit("connection_error");
-    }
+    databaseEmitter.emit("connection_error");
   }
 };
 

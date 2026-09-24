@@ -1,5 +1,7 @@
-var getReportsQueue = async (collection, userId, session) => {
-  var data = await collection.findOneAndUpdate(
+import { reportLoadingStateModel } from "../models/index.js";
+
+var getReportsQueue = async (userId, session) => {
+  var data = await reportLoadingStateModel.findOneAndUpdate(
     { userId, "reportsQueue.0": { $exists: true } },
     { $pop: { reportsQueue: -1 }, $inc: { queueLength: -1 } },
     { session: session, returnDocument: "before" },

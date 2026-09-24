@@ -1,9 +1,9 @@
 import express from "express";
 import { runDB } from "./database/index.js";
 import router from "./routes/index/index.js";
+import { serverEmitter } from "./customEvent/index.js";
 import errorHandler from "./middleware/errorHandler.js";
 import runReportPeriodsWriter from "./dateUtils/index.js";
-import { databaseEmitter, serverEmitter } from "./customEvent/index.js";
 import resumeInterruptedReportsLoad from "./routes/index/utils/resumeInterruptedReportsLoad.js";
 
 var server;

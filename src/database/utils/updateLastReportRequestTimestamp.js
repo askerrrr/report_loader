@@ -1,9 +1,11 @@
-var mskTimeOffsetInMs = 3 * 60 * 60 * 1000;
+import { reportLoadingStateModel } from "../models/index.js";
 
-var updateLastReportRequestTimestamp = async (collection, userId, session) => {
-  var { lastReportRequestTimestamp } = await collection.updateOne(
+var updateLastReportRequestTimestamp = async (userId, session) => {
+  var lastReportRequestTimestamp = Date.now();
+
+  var { lastReportRequestTimestamp } = await reportLoadingStateModel.updateOne(
     { userId },
-    { $set: { lastReportRequestTimestamp: Date.now() + mskTimeOffsetInMs } },
+    { $set: { lastReportRequestTimestamp } },
     { session: session },
   );
   return { lastReportRequestTimestamp };

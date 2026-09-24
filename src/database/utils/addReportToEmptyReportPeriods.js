@@ -1,7 +1,9 @@
-var addReportToEmptyReportPeriods = async (collection, userId, index, dateFrom, dateTo, session) => {
+import { reportLoadingStateModel } from "../models/index.js";
+
+var addReportToEmptyReportPeriods = async (userId, dateFrom, dateTo, session) => {
   var sessionOptions = session ? { session } : {};
 
-  await collection.updateOne({ userId }, { $push: { emptyReportPeriods: { index, dateFrom, dateTo } } });
+  await reportLoadingStateModel.updateOne({ userId }, { $push: { emptyReportPeriods: { dateFrom, dateTo } } }, { ...sessionOptions });
 };
 
 export default addReportToEmptyReportPeriods;

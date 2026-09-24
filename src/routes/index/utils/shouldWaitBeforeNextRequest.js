@@ -1,5 +1,3 @@
-import getCurrentTimeStamp from "./getCurrentTimeStamp.js";
-
 var oneMinuteMs = 60 * 1000;
 
 var shouldWaitBeforeNextRequest = (lastReportRequestTimestamp) => {
@@ -9,7 +7,7 @@ var shouldWaitBeforeNextRequest = (lastReportRequestTimestamp) => {
     return { nextRequestDelayMs };
   }
 
-  var { currentTimeMs } = getCurrentTimeStamp();
+  var currentTimeMs = Date.now();
   var difference = currentTimeMs - lastReportRequestTimestamp > oneMinuteMs;
   var hasMinutePassed = difference > oneMinuteMs;
 

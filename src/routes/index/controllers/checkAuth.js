@@ -1,5 +1,3 @@
-import dbUtils from "../../../database/utils/index.js";
-
 var checkAuth = async (req, res, next) => {
   var authHeader = req.headers?.authorization;
 

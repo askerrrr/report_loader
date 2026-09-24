@@ -4,14 +4,12 @@ var sku = {};
 var total = {};
 
 import finalProfit from "./utils/finalProfit.js";
-import restSKUParams from "./utils/restSKUParams.js";
 import skuProfitMargin from "./utils/profitMargin.js";
 import insuranceFee from "./utils/insuranceFee.js";
 import calculateTotalAdvertisingCosts from "./utils/totalAdvertisingCosts.js";
 import storageCostFromPaidStorageReport from "./utils/SKUStorageCostFromPaidStorageReport.js";
 
 sku.finalProfit = finalProfit;
-sku.restParams = restSKUParams;
 sku.profitMargin = skuProfitMargin;
 sku.insuranceFee = insuranceFee;
 sku.storageCostFromPaidStorageReport = storageCostFromPaidStorageReport;
@@ -19,16 +17,14 @@ sku.storageCostFromPaidStorageReport = storageCostFromPaidStorageReport;
 import totalSold from "./utils/totalSold.js";
 import totalStorageCost from "./utils/totalStorageCost.js";
 import totalProfitMargin from "./utils/totalProfitMargin.js";
-import totalRestParams from "./utils/restReportTotalParams.js";
 
 total.sold = totalSold;
-total.restParams = totalRestParams;
 total.storageCost = totalStorageCost;
 total.profitMargin = totalProfitMargin;
+total.advertisingCosts = calculateTotalAdvertisingCosts;
 
 calc.sku = sku;
 calc.total = total;
-calc.totalAdvertisingCosts = calculateTotalAdvertisingCosts;
 
 import sum from "./utils/sum.js";
 import profit from "./utils/profit.js";
@@ -39,7 +35,6 @@ import profitMargin from "./utils/profitMargin.js";
 import preTaxProfit from "./utils/preTaxProfit.js";
 import averageProfit from "./utils/averageProfit.js";
 import sellerPayoutAmount from "./utils/sellerPayoutAmount.js";
-import averageRetailPrice from "./utils/averageRetailPrice.js";
 import averageStorageCost from "./utils/averageStorageCost.js";
 import averageAdvertisingCost from "./utils/averageAdvertisingCost.js";
 import retailAmount from "./utils/retailAmount.js";
@@ -56,7 +51,6 @@ calc.profitMargin = profitMargin;
 calc.preTaxProfit = preTaxProfit;
 calc.insuranceFee = insuranceFee;
 calc.averageProfit = averageProfit;
-calc.averageRetailPrice = averageRetailPrice;
 calc.averageStorageCost = averageStorageCost;
 calc.averageAdvertisingCost = averageAdvertisingCost;
 calc.sellerPayoutAmount = sellerPayoutAmount;

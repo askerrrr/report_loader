@@ -1,5 +1,8 @@
-var updateReportLoadingStoppedStatus = async (collection, userId, newStatus, loadingStopReason = "", session) => {
+import { reportLoadingStateModel } from "../models/index.js";
+
+var updateReportLoadingStoppedStatus = async (userId, newStatus, loadingStopReason = "", session) => {
   var sessionOptions = session ? { session } : {};
-  await collection.updateOne({ userId }, { $set: { isReportLoadingIsStopped: newStatus, loadingStopReason } }, { ...sessionOptions });
+  await reportLoadingStateModel.updateOne({ userId }, { $set: { isReportLoadingIsStopped: newStatus, loadingStopReason } }, { ...sessionOptions });
 };
+
 export default updateReportLoadingStoppedStatus;

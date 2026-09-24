@@ -1,10 +1,15 @@
-import parseJwt from "./parseJwt.js";
+var msInSec = 1000;
 
-var checkTokenExpiry = (token) => {
-  var payload = parseJwt(token);
-  var currentTimestamp = Date.now() + 3 * 60 * 60;
+var checkTokenExpiry = (tokenPayload) => {
+  if (!tokenPayload?.exp) {
+    throw new Error("Invalid WBTOKEN: payload is missing");
+  }
 
-  return !payload?.exp || payload.exp * 1000 <= currentTimestamp;
+  var currentTimestamp = Date.now();
+
+  var isExpired = tokenPayload.exp * msInSec <= currentTimestamp;
+
+  return { isExpired };
 };
 
 export default checkTokenExpiry;

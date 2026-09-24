@@ -1,7 +1,9 @@
-var updateFreshReportPeriodIndex = async (collection, userId, nextReportPeriodIndex, session) => {
+import { reportLoadingStateModel } from "../models/index.js";
+
+var updateFreshReportPeriodIndex = async (userId, nextReportPeriodIndex, session) => {
   var sessionOpt = session ? { session } : {};
 
-  var result = await collection.updateOne({ userId }, { $set: { freshReportPeriodIndex: nextReportPeriodIndex } }, { ...sessionOpt });
+  var result = await reportLoadingStateModel.updateOne({ userId }, { $set: { freshReportPeriodIndex: nextReportPeriodIndex } }, { ...sessionOpt });
 
   return result;
 };

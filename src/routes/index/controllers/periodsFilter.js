@@ -4,40 +4,57 @@ import filteringOfRequiredReportPeriods from "../utils/filteringOfRequiredReport
 import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayFromCurrentMonth.js";
 
 var periodsFilter = async (req, res, next) => {
-  var { userId, dateFrom, dateTo } = req.body;
+  var { userId, dateFrom, dateTo, needToLoadAllReports } = req.body;
 
-  var dateFromIndex = reportPeriods.findIndex((date) => date.dateFrom === dateFrom);
-  var dateToIndex = reportPeriods.findIndex((date) => date.dateTo === dateTo);
+  var dateFromIndex;
+  var dateToIndex;
 
-  var requiredReportPeriods;
+  if (needToLoadAllReports) {
+    dateFromIndex = 0;
 
-  if (![dateFromIndex, dateToIndex].every((index) => index >= 0)) {
+    var { lastMonday } = getLastMondayFromCurrentMonth();
+    dateToIndex = reportPeriods.findIndex(
+      (date) => date.dateFrom === lastMonday,
+    );
+  } else {
+    dateFromIndex = reportPeriods.findIndex(
+      (date) => date.dateFrom === dateFrom,
+    );
+
     if (dateFromIndex < 0) {
       dateFromIndex = 0;
     }
 
+    dateToIndex = reportPeriods.findIndex((date) => date.dateTo === dateTo);
+
     if (dateToIndex < 0) {
       var { lastMonday } = getLastMondayFromCurrentMonth();
-      var dateToIndex = reportPeriods.findIndex((date) => date.dateFrom === lastMonday);
+
+      dateToIndex = reportPeriods.findIndex(
+        (date) => date.dateFrom === lastMonday,
+      );
       if (lastMonday > dateTo) {
         dateToIndex -= 1;
       }
     }
-
-    requiredReportPeriods = reportPeriods.slice(dateFromIndex, dateToIndex + 1);
-  } else {
-    requiredReportPeriods = reportPeriods.slice(dateFromIndex, dateToIndex + 1);
   }
 
-  var userLoadingsStates = await dbUtils.getUser(userId);
-
-  var { reportTree } = await dbUtils.getReportsTree(userId);
-
-  var { filteredRequiredReportPeriods, abandonedReportsAddedToQueue } = filteringOfRequiredReportPeriods(
-    userLoadingsStates,
-    requiredReportPeriods,
-    reportTree,
+  var requiredReportPeriods = reportPeriods.slice(
+    dateFromIndex,
+    dateToIndex + 1,
   );
+
+  var userLoadingsState = await dbUtils.getUserReportLoadingState(userId);
+
+  var savedReportPeriodsFromDb = (await dbUtils.getReportPeriods(userId))
+    .reportPeriods;
+
+  var { filteredRequiredReportPeriods, abandonedReportsAddedToQueue } =
+    filteringOfRequiredReportPeriods(
+      userLoadingsState,
+      requiredReportPeriods,
+      savedReportPeriodsFromDb,
+    );
 
   if (!filteredRequiredReportPeriods.length) {
     return res.status(409).json({ msg: "Отчёты за выбранный период уже есть" });

@@ -1,6 +1,8 @@
-var getUser = async (collection, userId, session) => {
+import { userModel } from "../models/index.js";
+
+var getUser = async (userId, session) => {
   var sessionOpt = session ? { session } : {};
-  var user = await collection.findOne({ userId }, { ...sessionOpt });
+  var user = await userModel.findOne({ userId }, null, { ...sessionOpt });
   return user;
 };
 export default getUser;

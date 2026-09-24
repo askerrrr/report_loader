@@ -1,0 +1,46 @@
+import { Schema } from "mongoose";
+
+var lastLoadedReportSchema = new Schema(
+  {
+    year: { type: Number, required: true },
+    month: { type: String, required: true },
+    dateTo: { type: String, required: true },
+    dateFrom: { type: String, required: true },
+    reportId: { type: Number, required: true },
+  },
+  { _id: false },
+);
+
+var queueItemSchema = new Schema(
+  {
+    dateFrom: { type: String, required: true },
+    dateTo: { type: String, required: true },
+    failedCount: { type: Number, required: true, default: 0, min: 0, max: 3 },
+  },
+  { _id: false },
+);
+
+var emptyReportPeriodItemSchema = new Schema(
+  {
+    dateTo: { type: String, required: true },
+    dateFrom: { type: String, required: true },
+  },
+  { _id: false },
+);
+
+var reportLoadingStateSchema = new Schema({
+  userId: { type: String, required: true, unique: true },
+  queueLength: { type: Number, default: 0, min: 0 },
+  queueCapacity: { type: Number, default: 0, min: 0 },
+  reportsQueue: { type: [queueItemSchema], required: false },
+  abandonedReports: { type: [queueItemSchema], required: false },
+  loadingInProgress: { type: Boolean, default: false },
+  lastReportRequestTimestamp: { type: Number, default: 0 },
+  freshReportPeriodIndex: { type: Number, required: false },
+  lastLoadedReport: { type: lastLoadedReportSchema, required: false },
+  isReportLoadingIsStopped: { type: Boolean, required: true, default: false },
+  loadingStopReason: { type: String, default: "", required: false },
+  emptyReportPeriods: { type: [emptyReportPeriodItemSchema], required: false },
+});
+
+export default reportLoadingStateSchema;

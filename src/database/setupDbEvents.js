@@ -1,88 +1,82 @@
-import { MongoClient } from "mongodb";
-import { databaseEmitter, serverEmitter } from "../customEvent/index.js";
+import getClientOptions from "./getClientOptions.js";
+import { serverEmitter, databaseEmitter } from "../customEvent/index.js";
 
-var timerId = null;
+var MAX_DELAY_MS = 60_000;
+var INITIAL_DELAY_MS = 1_000;
+
 var eventsConfigured = false;
-var dbReconnectionAttempts = 1;
-var NEXT_CONNECTION_MS = 30_000;
-var dbConnectionRestored = false;
-var isFailedAfterFirstSuccessConnection = true;
+var isReconnecting = false;
+var reconnectAttempts = 0;
+var currentDelay = INITIAL_DELAY_MS;
+var reconnectTimer = null;
 
-var setupDbEvents = (dbClient) => {
-  if (eventsConfigured) {
-    return;
+var clearReconnectTimer = () => {
+  if (reconnectTimer) {
+    clearTimeout(reconnectTimer);
+    reconnectTimer = null;
   }
+};
 
+var resetReconnectState = () => {
+  isReconnecting = false;
+  reconnectAttempts = 0;
+  currentDelay = INITIAL_DELAY_MS;
+  clearReconnectTimer();
+};
+
+var scheduleReconnect = (dbInstance) => {
+  if (isReconnecting) return;
+
+  isReconnecting = true;
+  serverEmitter.emit("close");
+
+  var tryConnect = async () => {
+    if (!isReconnecting) return;
+
+    reconnectAttempts += 1;
+
+    console.clear();
+    console.log({ attempt: reconnectAttempts });
+
+    try {
+      await dbInstance.connect(process.env.MONGO_URI, getClientOptions());
+    } catch (err) {
+      console.error("Reconnect attempt failed:", err?.message || err);
+
+      currentDelay = Math.min(currentDelay * 2, MAX_DELAY_MS);
+      console.log({ nextDelayMs: currentDelay });
+      reconnectTimer = setTimeout(tryConnect, currentDelay);
+    }
+  };
+
+  reconnectTimer = setTimeout(tryConnect, 300);
+};
+
+var setupDbEvents = (dbInstance) => {
+  if (eventsConfigured) return;
   eventsConfigured = true;
 
-  console.log("connection to mongodb...\n");
-
-  dbClient.on("error", (e) => {
-    console.log("mongodb connection error: ", { name: e.name, msg: e.message });
+  dbInstance.connection.on("error", (err) => {
+    console.error("mongoose connection error:", err?.message || err);
   });
 
-  dbClient.on("serverHeartbeatFailed", async (e) => {
-    if (!timerId) {
-      databaseEmitter.emit("connection_error");
-    }
+  dbInstance.connection.on("disconnected", () => {
+    console.log("mongoose disconnected");
+    scheduleReconnect(dbInstance);
   });
 
-  dbClient.on("serverHeartbeatSucceeded", async () => {
-    isFailedAfterFirstSuccessConnection = false;
-    if (timerId) {
-      clearTimeout(timerId);
-      timerId = null;
-
-      dbConnectionRestored = true;
-      dbClient.db("admin").command({ killAllSessions: [] });
-
-      console.info("serverHeartbeatSucceeded\n", { dbReconnectionAttempts, dbConnectionRestored }, "\n");
-      dbReconnectionAttempts = 0;
-
-      console.info("---------- DB CONNECTED ----------\n");
-
-      serverEmitter.emit("start");
+  dbInstance.connection.on("connected", () => {
+    if (isReconnecting) {
+      console.log("mongoose reconnected");
+    } else {
+      console.log("mongoose connected");
     }
+    resetReconnectState();
   });
 
-  databaseEmitter.on("connection_error", async () => {
-    isFailedAfterFirstSuccessConnection = false;
-    if (!timerId) {
-      serverEmitter.emit("close");
-      dbConnectionRestored = false;
-
-      timerId = setInterval(async () => {
-        // console.clear();
-        console.info("into connection_error", { dbReconnectionAttempts });
-        dbReconnectionAttempts++;
-
-        try {
-          await dbClient.connect();
-        } catch (e) {
-          if (e.message.startsWith("connect ECONNREFUSED")) {
-            clearInterval(timerId);
-            timerId = null;
-            databaseEmitter.emit("connection_error");
-          }
-        }
-      }, NEXT_CONNECTION_MS);
-    }
-  });
-
-  dbClient.on("open", async () => {
-    if (timerId) {
-      clearTimeout(timerId);
-      timerId = null;
-
-      dbConnectionRestored = true;
-      dbClient.db("admin").command({ killAllSessions: [] });
-
-      console.info({ dbReconnectionAttempts, dbConnectionRestored }, "\n");
-      dbReconnectionAttempts = 0;
-
-      console.info("---------- DB CONNECTED ----------\n");
-      serverEmitter.emit("start");
-    }
+  databaseEmitter.on("connection_error", () => {
+    console.log("databaseEmitter: connection_error");
+    scheduleReconnect(dbInstance);
   });
 };
 

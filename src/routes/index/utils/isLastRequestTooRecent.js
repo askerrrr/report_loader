@@ -1,19 +1,20 @@
-var mskTimeOffsetInMs = 3 * 60 * 60 * 1000;
-
-var isLastRequestTooRecent = (lastReportRequestTimestamp, NEXT_REPORT_DELAY_MS) => {
+var isLastRequestTooRecent = (
+  lastReportRequestTimestamp,
+  NEXT_REPORT_DELAY_MS,
+) => {
   var delayInMs = 0;
 
-  var currentTimestamp = Date.now() + mskTimeOffsetInMs;
+  var currentTimestamp = Date.now();
 
   var difference = currentTimestamp - lastReportRequestTimestamp;
 
-  var needToDalay = difference < NEXT_REPORT_DELAY_MS;
+  var needToDelay = difference < NEXT_REPORT_DELAY_MS;
 
-  if (needToDalay) {
+  if (needToDelay) {
     delayInMs = NEXT_REPORT_DELAY_MS - difference;
   }
 
-  return { needToDalay, delayInMs };
+  return { needToDelay, delayInMs };
 };
 
 export default isLastRequestTooRecent;
