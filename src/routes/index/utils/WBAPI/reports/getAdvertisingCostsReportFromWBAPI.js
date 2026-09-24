@@ -1,6 +1,11 @@
 import { WBAPIError } from "../../../../../customError/index.js";
 
-var getAdvertisingCostsReportFromWBAPI = async (dateFrom, dateTo, token, userId) => {
+var getAdvertisingCostsReportFromWBAPI = async (
+  dateFrom,
+  dateTo,
+  token,
+  userId,
+) => {
   var url = `https://advert-api.wildberries.ru/adv/v1/upd?from=${dateFrom}&to=${dateTo}`;
 
   var res = await fetch(url, {
@@ -12,6 +17,8 @@ var getAdvertisingCostsReportFromWBAPI = async (dateFrom, dateTo, token, userId)
     var advertisingReport = await res.json();
     return advertisingReport;
   }
+
+  var errMsg;
 
   switch (res.status) {
     case 400:
@@ -25,7 +32,8 @@ var getAdvertisingCostsReportFromWBAPI = async (dateFrom, dateTo, token, userId)
       errMsg = "Подождите минуту перед получением нового отчёта";
       break;
     default:
-      errMsg = "Возникла ошибка при получении истории затрат на рекламу, попробуйте позже";
+      errMsg =
+        "Возникла ошибка при получении истории затрат на рекламу, попробуйте позже";
   }
 
   throw new WBAPIError(userId, res.status, errMsg);
