@@ -43,4 +43,6 @@ var reportLoadingStateSchema = new Schema({
   emptyReportPeriods: { type: [emptyReportPeriodItemSchema], required: false },
 });
 
+reportLoadingStateSchema.index({ userId: 1 }, { unique: true });
+
 export default reportLoadingStateSchema;
