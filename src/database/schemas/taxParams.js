@@ -31,4 +31,6 @@ var taxParamsSchema = new Schema({
   years: [{ type: taxYear, required: false }],
 });
 
+taxParamsSchema.index({ userId: 1 }, { unique: true });
+
 export default taxParamsSchema;
