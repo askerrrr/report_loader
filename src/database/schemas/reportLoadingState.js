@@ -28,20 +28,26 @@ var emptyReportPeriodItemSchema = new Schema(
   { _id: false },
 );
 
-var reportLoadingStateSchema = new Schema({
-  userId: { type: String, required: true, unique: true },
-  queueLength: { type: Number, default: 0, min: 0 },
-  queueCapacity: { type: Number, default: 0, min: 0 },
-  reportsQueue: { type: [queueItemSchema], required: false },
-  abandonedReports: { type: [queueItemSchema], required: false },
-  loadingInProgress: { type: Boolean, default: false },
-  lastReportRequestTimestamp: { type: Number, default: 0 },
-  freshReportPeriodIndex: { type: Number, required: false },
-  lastLoadedReport: { type: lastLoadedReportSchema, required: false },
-  isReportLoadingIsStopped: { type: Boolean, required: true, default: false },
-  loadingStopReason: { type: String, default: "", required: false },
-  emptyReportPeriods: { type: [emptyReportPeriodItemSchema], required: false },
-});
+var reportLoadingStateSchema = new Schema(
+  {
+    userId: { type: String, required: true, unique: true },
+    queueLength: { type: Number, default: 0, min: 0 },
+    queueCapacity: { type: Number, default: 0, min: 0 },
+    reportsQueue: { type: [queueItemSchema], required: false },
+    abandonedReports: { type: [queueItemSchema], required: false },
+    loadingInProgress: { type: Boolean, default: false },
+    lastReportRequestTimestamp: { type: Number, default: 0 },
+    freshReportPeriodIndex: { type: Number, required: false },
+    lastLoadedReport: { type: lastLoadedReportSchema, required: false },
+    isReportLoadingIsStopped: { type: Boolean, required: true, default: false },
+    loadingStopReason: { type: String, default: "", required: false },
+    emptyReportPeriods: {
+      type: [emptyReportPeriodItemSchema],
+      required: false,
+    },
+  },
+  { autoIndex: false },
+);
 
 reportLoadingStateSchema.index({ userId: 1 }, { unique: true });
 

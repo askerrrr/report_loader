@@ -26,10 +26,13 @@ var taxYear = new Schema(
   { _id: false },
 );
 
-var taxParamsSchema = new Schema({
-  userId: { type: String, required: true, unique: true },
-  years: [{ type: taxYear, required: false }],
-});
+var taxParamsSchema = new Schema(
+  {
+    userId: { type: String, required: true, unique: true },
+    years: [{ type: taxYear, required: false }],
+  },
+  { autoIndex: false },
+);
 
 taxParamsSchema.index({ userId: 1 }, { unique: true });
 
