@@ -24,4 +24,6 @@ var goodsSchema = new Schema({
   listGoods: [{ type: skuSchema, required: true }],
 });
 
+goodsSchema.index({ userId: 1 }, { unique: true });
+
 export default goodsSchema;
