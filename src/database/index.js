@@ -12,8 +12,8 @@ var runDB = async () => {
     setupDbEvents(mongoose);
 
     await mongoose.connect(process.env.MONGO_URI, getClientOptions());
+    await mongoose.syncIndexes()
 
-    await killAllSessions();
     console.info("---------- DB CONNECTED ----------\n");
 
     serverEmitter.emit("start");

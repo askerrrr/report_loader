@@ -19,9 +19,14 @@ var skuSchema = new Schema(
   { _id: false },
 );
 
-var goodsSchema = new Schema({
-  userId: { type: String, required: true, unique: true },
-  listGoods: [{ type: skuSchema, required: true }],
-});
+var goodsSchema = new Schema(
+  {
+    userId: { type: String, required: true, unique: true },
+    listGoods: [{ type: skuSchema, required: true }],
+  },
+  { autoIndex: false },
+);
+
+goodsSchema.index({ userId: 1 }, { unique: true });
 
 export default goodsSchema;
