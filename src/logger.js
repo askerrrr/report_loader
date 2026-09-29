@@ -11,7 +11,10 @@ var defaultOptions = {
   timestamp: () => `,"t":"${new Date().toISOString()}"`,
 };
 
-var logger = pino(defaultOptions, pino.destination({ dest: "app.log" }));
-var errorLogger = pino(defaultOptions, pino.destination({ dest: "err.log" }));
+var logger = pino(defaultOptions, pino.destination({ dest: "logs/app.log" }));
+var errorLogger = pino(
+  defaultOptions,
+  pino.destination({ dest: "logs/err.log" }),
+);
 
 export { logger, errorLogger };
