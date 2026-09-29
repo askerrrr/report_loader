@@ -170,12 +170,7 @@ var loader = async (userId, isServerStartupLoad = false) => {
       }
     }
 
-    if (queueIsEmpty) {
-      break;
-    }
-
-    if (isTokenMissing || tokenIsExpired) {
-      console.log("LOADING IS STOPPED.\nREASON: " + loadingStopReason);
+    if (queueIsEmpty || isTokenMissing || tokenIsExpired) {
       break;
     }
 
