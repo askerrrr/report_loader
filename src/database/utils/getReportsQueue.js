@@ -8,10 +8,20 @@ var getReportsQueue = async (userId, session) => {
   );
 
   if (!data?.reportsQueue || !data?.queueLength) {
-    return { report: null, queueLength: 0, lastReportRequestTimestamp: 0 };
+    return {
+      report: null,
+      queueLength: 0,
+      lastReportRequestTimestamp: 0,
+      loadingInProgress: data?.loadingInProgress,
+    };
   }
 
-  return { report: data.reportsQueue[0], queueLength: data.queueLength, lastReportRequestTimestamp: data.lastReportRequestTimestamp };
+  return {
+    report: data.reportsQueue[0],
+    queueLength: data.queueLength,
+    loadingInProgress: data.loadingInProgress,
+    lastReportRequestTimestamp: data.lastReportRequestTimestamp,
+  };
 };
 
 export default getReportsQueue;

@@ -1,4 +1,5 @@
 import express from "express";
+import { logger } from "./logger.js";
 import { runDB } from "./database/index.js";
 import router from "./routes/index/index.js";
 import { serverEmitter } from "./customEvent/index.js";
@@ -25,8 +26,12 @@ serverEmitter.on("start", async () => {
 
     server.use(errorHandler);
 
-    server = server.listen(process.env.PORT, process.env.HOST, console.log("---------- SERVER RUN ----------"));
+    server = server.listen(
+      process.env.PORT,
+      process.env.HOST,
+    );
 
+    logger.info("---------- SERVER RUN ----------");
     resumeInterruptedReportsLoad();
   }
 });
@@ -36,6 +41,7 @@ serverEmitter.on("close", () => {
     server.close(() => {
       server.removeAllListeners();
       server = null;
+      logger.info("---------- SERVER CLOSED ----------");
     });
   }
 });

@@ -2,3 +2,4 @@
 /logs
 httpd.conf
 compose.yaml
+*.log

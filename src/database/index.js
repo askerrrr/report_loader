@@ -1,24 +1,25 @@
 import mongoose from "mongoose";
 import setupDbEvents from "./setupDbEvents.js";
+import { logger, errorLogger } from "../logger.js";
 import getClientOptions from "./getClientOptions.js";
 import { serverEmitter, databaseEmitter } from "../customEvent/index.js";
 
 var dbClient = mongoose.connection;
 
-var killAllSessions = async () => await dbClient.db.command({ killAllSessions: [] }).then(() => console.log("old sessions killed"));
+var killAllSessions = async () =>
+  await dbClient.db.command({ killAllSessions: [] });
 
 var runDB = async () => {
   try {
     setupDbEvents(mongoose);
 
     await mongoose.connect(process.env.MONGO_URI, getClientOptions());
-    await mongoose.syncIndexes()
+    await mongoose.syncIndexes();
 
-    console.info("---------- DB CONNECTED ----------\n");
-
+    logger.info("---------- DB CONNECTED ----------");
     serverEmitter.emit("start");
-  } catch (e) {
-    console.log(e.message.toUpperCase());
+  } catch (err) {
+    errorLogger.info({ err });
 
     databaseEmitter.emit("connection_error");
   }

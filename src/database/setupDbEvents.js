@@ -1,3 +1,4 @@
+import { logger } from "../logger.js";
 import getClientOptions from "./getClientOptions.js";
 import { serverEmitter, databaseEmitter } from "../customEvent/index.js";
 
@@ -35,16 +36,14 @@ var scheduleReconnect = (dbInstance) => {
 
     reconnectAttempts += 1;
 
-    console.clear();
-    console.log({ attempt: reconnectAttempts });
+    logger.info({ reconnectAttempts });
 
     try {
       await dbInstance.connect(process.env.MONGO_URI, getClientOptions());
     } catch (err) {
-      console.error("Reconnect attempt failed:", err?.message || err);
+      logger.info("Reconnect attempt failed:", err?.message || err);
 
       currentDelay = Math.min(currentDelay * 2, MAX_DELAY_MS);
-      console.log({ nextDelayMs: currentDelay });
       reconnectTimer = setTimeout(tryConnect, currentDelay);
     }
   };
@@ -57,25 +56,25 @@ var setupDbEvents = (dbInstance) => {
   eventsConfigured = true;
 
   dbInstance.connection.on("error", (err) => {
-    console.error("mongoose connection error:", err?.message || err);
+    logger.info("mongoose connection error:", err?.message || err);
   });
 
   dbInstance.connection.on("disconnected", () => {
-    console.log("mongoose disconnected");
+    logger.info("mongoose disconnected");
     scheduleReconnect(dbInstance);
   });
 
   dbInstance.connection.on("connected", () => {
     if (isReconnecting) {
-      console.log("mongoose reconnected");
+      logger.info("mongoose reconnected");
     } else {
-      console.log("mongoose connected");
+      logger.info("mongoose connected");
     }
     resetReconnectState();
   });
 
   databaseEmitter.on("connection_error", () => {
-    console.log("databaseEmitter: connection_error");
+    logger.info("databaseEmitter: connection_error");
     scheduleReconnect(dbInstance);
   });
 };
