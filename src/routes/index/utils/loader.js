@@ -4,10 +4,11 @@ import { dbClient } from "../../../database/index.js";
 import dbUtils from "../../../database/utils/index.js";
 import reportsProcessing from "./reportsProcessing.js";
 import { WBAPIError } from "../../../customError/index.js";
+import { logger, errorLogger } from "../../../logger.js";
 import isLastRequestTooRecent from "./isLastRequestTooRecent.js";
 
-var fiveMinInMs = 300_000;
 var MAX_FAILED_ATTEMPTS = 3;
+var FIVE_MIN_IN_MS = 300_000;
 var NEXT_REPORT_DELAY_MS = 65_000;
 var statusOfReportLoadingStop = true;
 var queueLengthNeedsIncrement = true;
@@ -16,7 +17,7 @@ var nextReportDelay = async (delayMs) =>
     delayMs ? setTimeout(res, delayMs) : setTimeout(res, NEXT_REPORT_DELAY_MS),
   );
 
-var sessionOptions = { willRetryWrite: false, maxTimeMs: fiveMinInMs };
+var sessionOptions = { willRetryWrite: false, maxTimeMs: FIVE_MIN_IN_MS };
 
 var loader = async (userId, isServerStartupLoad = false) => {
   var queueIsEmpty = false;
@@ -26,18 +27,24 @@ var loader = async (userId, isServerStartupLoad = false) => {
   var isFirstIterationOfLoop = true;
 
   if (isServerStartupLoad) {
-    console.log("\n--- SERVER STARTUP DELAY ---\n");
     await nextReportDelay();
   }
 
   while (true) {
+    var dateFrom;
+    var dateTo;
+    var loadingStatus;
+
     var session = await dbClient.startSession();
 
     try {
       await session.withTransaction(async () => {
         if (isFirstIterationOfLoop) {
-          var loadingStatus = "loading";
           isFirstIterationOfLoop = false;
+
+          loadingStatus = "loading";
+          logger.info({ userId, loadingStatus });
+
           await dbUtils.setLoadingProgressStatus(
             userId,
             loadingStatus,
@@ -60,7 +67,7 @@ var loader = async (userId, isServerStartupLoad = false) => {
           var tokenPayload = parseJwt(token);
           tokenIsExpired = checkTokenExpiry(tokenPayload).isExpired;
 
-          if (isExpired) {
+          if (tokenIsExpired) {
             loadingStopReason = "tokenIsExpired";
             await dbUtils.updateReportLoadingStoppedStatus(
               userId,
@@ -69,10 +76,14 @@ var loader = async (userId, isServerStartupLoad = false) => {
               session,
             );
           } else {
-            var { report, queueLength, lastReportRequestTimestamp } =
-              await dbUtils.getReportsQueue(userId, session);
+            var {
+              report,
+              queueLength,
+              loadingInProgress,
+              lastReportRequestTimestamp,
+            } = await dbUtils.getReportsQueue(userId, session);
 
-            if (!report || queueLength < 1) {
+            if (!report || queueLength < 1 || !loadingInProgress) {
               queueIsEmpty = true;
             } else {
               if (queueLength === 1) {
@@ -89,8 +100,9 @@ var loader = async (userId, isServerStartupLoad = false) => {
                   await nextReportDelay(delayInMs);
                 }
 
-                console.log({ report });
-                var { dateFrom, dateTo } = report;
+                dateFrom = report.dateFrom;
+                dateTo = report.dateTo;
+
                 var { lastLoadedReport, reportPeriodIsEmpty } =
                   await reportsProcessing(
                     userId,
@@ -114,10 +126,10 @@ var loader = async (userId, isServerStartupLoad = false) => {
                     session,
                   );
                 }
-              } catch (processingError) {
-                console.log({ processingError });
+              } catch (err) {
+                errorLogger.info({ userId, dateFrom, dateTo, err });
 
-                if (processingError instanceof WBAPIError) {
+                if (err instanceof WBAPIError) {
                   queueIsEmpty = false;
 
                   await dbUtils.updateReportsQueue(
@@ -150,7 +162,8 @@ var loader = async (userId, isServerStartupLoad = false) => {
         }
 
         if (queueIsEmpty) {
-          var loadingStatus = "completed";
+          loadingStatus = "completed";
+
           await dbUtils.setLoadingProgressStatus(
             userId,
             loadingStatus,
@@ -159,18 +172,26 @@ var loader = async (userId, isServerStartupLoad = false) => {
         }
       }, sessionOptions);
     } catch (err) {
-      queueIsEmpty = false;
+      errorLogger.info({ userId, dateFrom, dateTo, err });
 
-      console.error({ loadingError: err });
+      queueIsEmpty = false;
     } finally {
       if (session) {
-        if (session.inTransaction()) {
+        if (session?.inTransaction()) {
           await session.endSession();
         }
       }
     }
 
     if (queueIsEmpty || isTokenMissing || tokenIsExpired) {
+      logger.info({
+        userId,
+        loadingStatus,
+        queueIsEmpty,
+        isTokenMissing,
+        tokenIsExpired,
+      });
+
       break;
     }
 

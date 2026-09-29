@@ -1,5 +1,7 @@
-var errorHandler = async (e, req, res, next) => {
-  console.error({ AppError: e });
+import { errorLogger } from "../logger.js";
+
+var errorHandler = async (err, req, res, next) => {
+  errorLogger.info({ err });
   res.sendStatus(500);
 };
 

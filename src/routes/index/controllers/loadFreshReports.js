@@ -2,6 +2,7 @@ import parseJwt from "../utils/parseJwt.js";
 import isFutureDate from "../utils/isFutureDate.js";
 import { dbClient } from "../../../database/index.js";
 import dbUtils from "../../../database/utils/index.js";
+import { logger, errorLogger } from "../../../logger.js";
 import { WBAPIError } from "../../../customError/index.js";
 import checkTokenExpiry from "../utils/checkTokenExpiry.js";
 import reportsProcessing from "../utils/reportsProcessing.js";
@@ -12,7 +13,6 @@ import filteringOfRequiredReportPeriods from "../utils/filteringOfRequiredReport
 import { getLastMondayFromCurrentMonth } from "../../../dateUtils/getLastMondayFromCurrentMonth.js";
 
 var MAX_FAILED_ATTEMPTS = 5;
-
 var statusOfReportLoadingStop = true;
 var WB_API_REQUEST_INTERVAL_MS = 65_000;
 var nextReportDelay = async (delayMs) =>
@@ -25,7 +25,7 @@ var loadFreshReports = async (req, res, next) => {
     return res.sendStatus(200);
   }
 
-  console.log("FRESH_REPORTS_LOADING_STARTED", "\nTIME: " + new Date());
+  logger.info({ msg: "FRESH_REPORTS_LOADING_STARTED" });
 
   usersReportLoadingState.forEach((user) => (user.failedCount = 0));
 
@@ -55,6 +55,7 @@ var loadFreshReports = async (req, res, next) => {
 
           if (isExpired) {
             var loadingStopReason = "tokenIsExpired";
+
             await dbUtils.updateReportLoadingStoppedStatus(
               userId,
               statusOfReportLoadingStop,
@@ -132,15 +133,16 @@ var loadFreshReports = async (req, res, next) => {
                       session,
                     );
                   }
-                } catch (processingError) {
-                  console.log({ processingError });
-                  if (processingError instanceof WBAPIError) {
+                } catch (err) {
+                  errorLogger({ userId, err });
+
+                  if (err instanceof WBAPIError) {
                     if (user.failedCount !== MAX_FAILED_ATTEMPTS) {
                       user.failedCount += 1;
                       usersReportLoadingState.push(user);
                     }
                   } else {
-                    throw processingError;
+                    throw err;
                   }
                 }
               } else {
@@ -161,7 +163,7 @@ var loadFreshReports = async (req, res, next) => {
         }
       });
     } catch (err) {
-      console.error({ err });
+      errorLogger.info({ userId, err });
     } finally {
       if (session) {
         await session.endSession();
@@ -169,7 +171,7 @@ var loadFreshReports = async (req, res, next) => {
     }
 
     if (!usersReportLoadingState.length) {
-      console.log("FRESH_REPORTS_LOADING_COMPLETED", "\nTIME: " + new Date());
+      logger.info({ msg: "FRESH_REPORTS_LOADING_COMPLETED" });
       break;
     }
   }
