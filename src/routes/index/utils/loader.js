@@ -58,7 +58,7 @@ var loader = async (userId, isServerStartupLoad = false) => {
           );
         } else {
           var tokenPayload = parseJwt(token);
-          var { isExpired } = checkTokenExpiry(tokenPayload);
+          tokenIsExpired = checkTokenExpiry(tokenPayload).isExpired;
 
           if (isExpired) {
             loadingStopReason = "tokenIsExpired";
