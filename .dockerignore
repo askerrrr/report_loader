@@ -3,4 +3,4 @@
 httpd.conf
 compose.yaml
 *.log
-logs/
+logs/*
