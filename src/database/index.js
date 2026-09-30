@@ -16,7 +16,6 @@ var runDB = async () => {
     await mongoose.connect(process.env.MONGO_URI, getClientOptions());
     await mongoose.syncIndexes();
 
-    logger.info("---------- DB CONNECTED ----------");
     serverEmitter.emit("start");
   } catch (err) {
     logger.fatal({ err });
