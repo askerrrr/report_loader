@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
+import { logger } from "../logger.js";
 import setupDbEvents from "./setupDbEvents.js";
-import { logger, errorLogger } from "../logger.js";
 import getClientOptions from "./getClientOptions.js";
 import { serverEmitter, databaseEmitter } from "../customEvent/index.js";
 
@@ -19,7 +19,7 @@ var runDB = async () => {
     logger.info("---------- DB CONNECTED ----------");
     serverEmitter.emit("start");
   } catch (err) {
-    errorLogger.info({ err });
+    logger.fatal({ err });
 
     databaseEmitter.emit("connection_error");
   }
