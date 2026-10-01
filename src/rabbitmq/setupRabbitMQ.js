@@ -1,3 +1,4 @@
+import { logger } from "../logger.js";
 import amqp from "amqp-connection-manager";
 import { exchanges } from "./exchanges.js";
 
@@ -11,7 +12,11 @@ export var channel = connection.createChannel({
 
   setup: async (channel) => {
     for (var exchange of exchanges) {
-      await channel.assertExchange(exchange.name, exchange.type, exchange.options);
+      await channel.assertExchange(
+        exchange.name,
+        exchange.type,
+        exchange.options,
+      );
 
       for (var queue of exchange.queues) {
         await channel.assertQueue(queue.name, queue.options);
@@ -22,4 +27,16 @@ export var channel = connection.createChannel({
       }
     }
   },
+});
+
+channel.on("connect", () => {
+  logger.info("---------- RABBIMQ CONNECTED ---------- ");
+});
+
+channel.on("close", () => {
+  logger.warn("---------- RABBIMQ CLOSED ---------- ");
+});
+
+channel.on("error", (err) => {
+  logger.fatal({ msg: "---------- RABBIMQ CLOSED ---------- ", err });
 });

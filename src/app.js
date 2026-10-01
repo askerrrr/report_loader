@@ -7,9 +7,12 @@ import errorHandler from "./middleware/errorHandler.js";
 import runReportPeriodsWriter from "./dateUtils/index.js";
 import resumeInterruptedReportsLoad from "./routes/index/utils/resumeInterruptedReportsLoad.js";
 
+import { initConsumers } from "./rabbitmq/consumers/index.js";
+
 var server;
 
 (async () => {
+  initConsumers()
   runReportPeriodsWriter();
 
   await runDB();
@@ -26,10 +29,7 @@ serverEmitter.on("start", async () => {
 
     server.use(errorHandler);
 
-    server = server.listen(
-      process.env.PORT,
-      process.env.HOST,
-    );
+    server = server.listen(process.env.PORT, process.env.HOST);
 
     logger.info("---------- SERVER RUN ----------");
     resumeInterruptedReportsLoad();
