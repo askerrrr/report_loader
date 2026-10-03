@@ -12,7 +12,7 @@ import { initConsumers } from "./rabbitmq/consumers/index.js";
 var server;
 
 (async () => {
-  initConsumers()
+  //initConsumers()
   runReportPeriodsWriter();
 
   await runDB();
