@@ -2,4 +2,4 @@
 .env
 compose.yaml
 *.log
-logs/*
+logs/*.log
