@@ -41,7 +41,7 @@ var scheduleReconnect = (dbInstance) => {
     try {
       await dbInstance.connect(process.env.MONGO_URI, getClientOptions());
     } catch (err) {
-      logger.info("Reconnect attempt failed:", err?.message || err);
+      logger.fatal(`Reconnect attempt failed: ${err?.message || err}`);
 
       currentDelay = Math.min(currentDelay * 2, MAX_DELAY_MS);
       reconnectTimer = setTimeout(tryConnect, currentDelay);
@@ -56,25 +56,25 @@ var setupDbEvents = (dbInstance) => {
   eventsConfigured = true;
 
   dbInstance.connection.on("error", (err) => {
-    logger.info("mongoose connection error:", err?.message || err);
+    logger.fatal(`mongoose connection error: ${err?.message || err}`);
   });
 
   dbInstance.connection.on("disconnected", () => {
-    logger.info("mongoose disconnected");
+    logger.warn("---------- DB DISCONNECTED ----------");
     scheduleReconnect(dbInstance);
   });
 
   dbInstance.connection.on("connected", () => {
     if (isReconnecting) {
-      logger.info("mongoose reconnected");
+      logger.info("---------- DB RECONNECTED ----------");
     } else {
-      logger.info("mongoose connected");
+      logger.info("---------- DB CONNECTED ----------");
     }
     resetReconnectState();
   });
 
   databaseEmitter.on("connection_error", () => {
-    logger.info("databaseEmitter: connection_error");
+    logger.fatal("---------- DB CONNECTION ERROR ----------");
     scheduleReconnect(dbInstance);
   });
 };
