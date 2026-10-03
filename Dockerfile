@@ -29,7 +29,6 @@ RUN apt-get update \
     && npm ci
 
 COPY . .
-
+USER node
 EXPOSE 8000
-
 CMD npm start
