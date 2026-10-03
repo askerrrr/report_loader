@@ -57,14 +57,13 @@ var periodsFilter = async (req, res, next) => {
     );
 
   if (!filteredRequiredReportPeriods.length) {
-    return res.status(409).json({ msg: "Отчёты за выбранный период уже есть" });
+    return;
   }
 
   if (abandonedReportsAddedToQueue) {
     await dbUtils.resetAbandonedReports(userId);
   }
 
-  req.body.userId = userId;
   req.body.filteredRequiredReportPeriods = filteredRequiredReportPeriods;
 
   next();

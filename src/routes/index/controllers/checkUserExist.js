@@ -1,13 +1,13 @@
 import dbUtils from "../../../database/utils/index.js";
 
 var checkUserExist = async (req, res, next) => {
-  var { userId } = req.body;
-
-  var user = await dbUtils.getUser(userId);
+  var user = await dbUtils.getUser(req.body.userId);
 
   if (!user) {
-    return res.status(404).json({ msg: "user not found" });
+    return res.status(404);
   }
+
+  res.sendStatus(202);
 
   next();
 };
