@@ -1,0 +1,688 @@
+{"l":"warn","t":"2026-10-03T17:43:59.599Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-03T17:43:59.602Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: connect ECONNREFUSED 127.0.0.1:27017"}
+{"l":"fatal","t":"2026-10-03T17:43:59.611Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: connect ECONNREFUSED 127.0.0.1:27017"}
+{"l":"info","t":"2026-10-03T17:44:15.612Z","h":"DESKTOP-OD76OO7","reconnectAttempts":5}
+{"l":"warn","t":"2026-10-03T17:44:20.615Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-03T17:44:20.615Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: connect ECONNREFUSED 127.0.0.1:27017"}
+{"l":"fatal","t":"2026-10-03T17:44:20.655Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: connect ECONNREFUSED 127.0.0.1:27017"}
+{"l":"info","t":"2026-10-03T17:44:52.655Z","h":"DESKTOP-OD76OO7","reconnectAttempts":6}
+{"l":"info","t":"2026-10-03T17:44:52.989Z","h":"DESKTOP-OD76OO7","msg":"---------- DB RECONNECTED ----------"}
+{"l":"info","t":"2026-10-03T17:46:21.661Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T17:46:21.712Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T17:46:29.036Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T17:46:29.079Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T17:46:30.884Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T17:46:30.933Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T17:46:43.919Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T17:46:43.960Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T17:46:52.480Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T17:46:52.520Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T17:46:56.206Z","h":"DESKTOP-OD76OO7","userId":"93e555f8-58bb-446e-aa4f-45ac0b99bec7","loadingStatus":"loading"}
+{"l":"info","t":"2026-10-03T17:46:57.276Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T17:46:57.313Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T17:48:02.323Z","h":"DESKTOP-OD76OO7","userId":"93e555f8-58bb-446e-aa4f-45ac0b99bec7","loadingStatus":"loading"}
+{"l":"info","t":"2026-10-03T17:48:05.782Z","h":"DESKTOP-OD76OO7","userId":"93e555f8-58bb-446e-aa4f-45ac0b99bec7","loadingStatus":"completed","queueIsEmpty":true,"isTokenMissing":false,"tokenIsExpired":false}
+{"l":"info","t":"2026-10-03T17:49:03.120Z","h":"DESKTOP-OD76OO7","userId":"93e555f8-58bb-446e-aa4f-45ac0b99bec7","loadingStatus":"loading"}
+{"l":"info","t":"2026-10-03T17:49:16.034Z","h":"DESKTOP-OD76OO7","userId":"93e555f8-58bb-446e-aa4f-45ac0b99bec7","loadingStatus":"completed","queueIsEmpty":true,"isTokenMissing":false,"tokenIsExpired":false}
+{"l":"info","t":"2026-10-03T18:24:23.339Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T18:24:23.376Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T18:24:27.108Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T18:24:27.142Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T18:27:26.535Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T18:27:26.580Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T18:27:29.499Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T18:27:29.549Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T18:27:31.368Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T18:27:31.405Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T18:27:33.875Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T18:27:33.919Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T18:27:40.499Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T18:27:40.535Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"info","t":"2026-10-03T18:27:41.504Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-03T18:27:41.546Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"warn","t":"2026-10-04T08:35:08.436Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"info","t":"2026-10-04T08:35:08.437Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER CLOSED ----------"}
+{"l":"info","t":"2026-10-04T08:35:08.437Z","h":"DESKTOP-OD76OO7","msg":"---------- DB RECONNECTED ----------"}
+{"l":"info","t":"2026-10-04T09:33:18.818Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-04T09:33:19.697Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTED ----------"}
+{"l":"info","t":"2026-10-04T09:33:19.731Z","h":"DESKTOP-OD76OO7","msg":"---------- SERVER RUN ----------"}
+{"l":"warn","t":"2026-10-04T15:03:54.946Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:03:54.949Z","h":"DESKTOP-OD76OO7","err":{"type":"MongoParseError","message":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader","stack":"MongoParseError: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader\n    at transform (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:499:23)\n    at setOption (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:467:36)\n    at parseOptions (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:293:13)\n    at new MongoClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\mongo_client.js:67:61)\n    at NativeConnection.createClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\connection.js:338:14)\n    at NativeConnection.openUri (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\connection.js:1081:34)\n    at Mongoose.connect (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\mongoose.js:475:15)\n    at runDB (file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/database/index.js:16:20)\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:18:9\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:19:3","errorLabelSet":{}},"msg":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:03:54.949Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTION ERROR ----------"}
+{"l":"fatal","t":"2026-10-04T15:03:54.950Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"warn","t":"2026-10-04T15:03:55.820Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:03:55.822Z","h":"DESKTOP-OD76OO7","err":{"type":"MongoParseError","message":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader","stack":"MongoParseError: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader\n    at transform (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:499:23)\n    at setOption (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:467:36)\n    at parseOptions (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:293:13)\n    at new MongoClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\mongo_client.js:67:61)\n    at NativeConnection.createClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\connection.js:338:14)\n    at NativeConnection.openUri (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\connection.js:1081:34)\n    at Mongoose.connect (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\mongoose.js:475:15)\n    at runDB (file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/database/index.js:16:20)\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:18:9\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:19:3","errorLabelSet":{}},"msg":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:03:55.823Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTION ERROR ----------"}
+{"l":"fatal","t":"2026-10-04T15:03:55.823Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:03:56.125Z","h":"DESKTOP-OD76OO7","reconnectAttempts":1}
+{"l":"warn","t":"2026-10-04T15:03:56.126Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:03:56.126Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:03:56.127Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:03:58.129Z","h":"DESKTOP-OD76OO7","reconnectAttempts":2}
+{"l":"warn","t":"2026-10-04T15:03:58.131Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:03:58.131Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:03:58.133Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:04:02.134Z","h":"DESKTOP-OD76OO7","reconnectAttempts":3}
+{"l":"warn","t":"2026-10-04T15:04:02.134Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:04:02.134Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:04:02.135Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:04:10.144Z","h":"DESKTOP-OD76OO7","reconnectAttempts":4}
+{"l":"warn","t":"2026-10-04T15:04:10.149Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:04:10.149Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:04:10.150Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:04:26.153Z","h":"DESKTOP-OD76OO7","reconnectAttempts":5}
+{"l":"warn","t":"2026-10-04T15:04:26.154Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:04:26.154Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:04:26.155Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:04:58.165Z","h":"DESKTOP-OD76OO7","reconnectAttempts":6}
+{"l":"warn","t":"2026-10-04T15:04:58.166Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:04:58.166Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:04:58.166Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:05:58.174Z","h":"DESKTOP-OD76OO7","reconnectAttempts":7}
+{"l":"warn","t":"2026-10-04T15:05:58.176Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:05:58.176Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:05:58.178Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:06:58.185Z","h":"DESKTOP-OD76OO7","reconnectAttempts":8}
+{"l":"warn","t":"2026-10-04T15:06:58.186Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:06:58.186Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:06:58.187Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:07:58.192Z","h":"DESKTOP-OD76OO7","reconnectAttempts":9}
+{"l":"warn","t":"2026-10-04T15:07:58.193Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:07:58.193Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:07:58.194Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:08:58.209Z","h":"DESKTOP-OD76OO7","reconnectAttempts":10}
+{"l":"warn","t":"2026-10-04T15:08:58.211Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:08:58.211Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:08:58.213Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:09:58.228Z","h":"DESKTOP-OD76OO7","reconnectAttempts":11}
+{"l":"warn","t":"2026-10-04T15:09:58.231Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:09:58.231Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:09:58.233Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:10:58.245Z","h":"DESKTOP-OD76OO7","reconnectAttempts":12}
+{"l":"warn","t":"2026-10-04T15:10:58.247Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:10:58.247Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:10:58.249Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:11:58.250Z","h":"DESKTOP-OD76OO7","reconnectAttempts":13}
+{"l":"warn","t":"2026-10-04T15:11:58.251Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:11:58.252Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:11:58.253Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:12:58.266Z","h":"DESKTOP-OD76OO7","reconnectAttempts":14}
+{"l":"warn","t":"2026-10-04T15:12:58.268Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:12:58.268Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:12:58.270Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:13:58.275Z","h":"DESKTOP-OD76OO7","reconnectAttempts":15}
+{"l":"warn","t":"2026-10-04T15:13:58.277Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:13:58.277Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:13:58.279Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:14:58.288Z","h":"DESKTOP-OD76OO7","reconnectAttempts":16}
+{"l":"warn","t":"2026-10-04T15:14:58.288Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:14:58.288Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:14:58.289Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:15:58.292Z","h":"DESKTOP-OD76OO7","reconnectAttempts":17}
+{"l":"warn","t":"2026-10-04T15:15:58.294Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:15:58.294Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:15:58.296Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:16:58.303Z","h":"DESKTOP-OD76OO7","reconnectAttempts":18}
+{"l":"warn","t":"2026-10-04T15:16:58.304Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:16:58.304Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:16:58.305Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:17:58.315Z","h":"DESKTOP-OD76OO7","reconnectAttempts":19}
+{"l":"warn","t":"2026-10-04T15:17:58.316Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:17:58.316Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:17:58.317Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:18:58.330Z","h":"DESKTOP-OD76OO7","reconnectAttempts":20}
+{"l":"warn","t":"2026-10-04T15:18:58.332Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:18:58.333Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:18:58.334Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:19:58.336Z","h":"DESKTOP-OD76OO7","reconnectAttempts":21}
+{"l":"warn","t":"2026-10-04T15:19:58.337Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:19:58.337Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:19:58.338Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:20:58.339Z","h":"DESKTOP-OD76OO7","reconnectAttempts":22}
+{"l":"warn","t":"2026-10-04T15:20:58.340Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:20:58.340Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:20:58.341Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:21:58.344Z","h":"DESKTOP-OD76OO7","reconnectAttempts":23}
+{"l":"warn","t":"2026-10-04T15:21:58.346Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:21:58.347Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:21:58.349Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:22:58.359Z","h":"DESKTOP-OD76OO7","reconnectAttempts":24}
+{"l":"warn","t":"2026-10-04T15:22:58.360Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:22:58.360Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:22:58.361Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:23:58.374Z","h":"DESKTOP-OD76OO7","reconnectAttempts":25}
+{"l":"warn","t":"2026-10-04T15:23:58.375Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:23:58.375Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:23:58.376Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:24:58.382Z","h":"DESKTOP-OD76OO7","reconnectAttempts":26}
+{"l":"warn","t":"2026-10-04T15:24:58.382Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:24:58.382Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:24:58.383Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:25:58.384Z","h":"DESKTOP-OD76OO7","reconnectAttempts":27}
+{"l":"warn","t":"2026-10-04T15:25:58.384Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:25:58.384Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:25:58.385Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:26:58.392Z","h":"DESKTOP-OD76OO7","reconnectAttempts":28}
+{"l":"warn","t":"2026-10-04T15:26:58.395Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:26:58.395Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:26:58.396Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:27:58.401Z","h":"DESKTOP-OD76OO7","reconnectAttempts":29}
+{"l":"warn","t":"2026-10-04T15:27:58.402Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:27:58.402Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:27:58.402Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:28:58.417Z","h":"DESKTOP-OD76OO7","reconnectAttempts":30}
+{"l":"warn","t":"2026-10-04T15:28:58.417Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:28:58.417Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:28:58.419Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:29:58.427Z","h":"DESKTOP-OD76OO7","reconnectAttempts":31}
+{"l":"warn","t":"2026-10-04T15:29:58.428Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:29:58.428Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:29:58.429Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:30:58.440Z","h":"DESKTOP-OD76OO7","reconnectAttempts":32}
+{"l":"warn","t":"2026-10-04T15:30:58.442Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:30:58.442Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:30:58.444Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:31:58.454Z","h":"DESKTOP-OD76OO7","reconnectAttempts":33}
+{"l":"warn","t":"2026-10-04T15:31:58.455Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:31:58.455Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:31:58.456Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:32:58.464Z","h":"DESKTOP-OD76OO7","reconnectAttempts":34}
+{"l":"warn","t":"2026-10-04T15:32:58.465Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:32:58.465Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:32:58.466Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:33:58.470Z","h":"DESKTOP-OD76OO7","reconnectAttempts":35}
+{"l":"warn","t":"2026-10-04T15:33:58.471Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:33:58.471Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:33:58.472Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:34:58.475Z","h":"DESKTOP-OD76OO7","reconnectAttempts":36}
+{"l":"warn","t":"2026-10-04T15:34:58.476Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:34:58.476Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:34:58.477Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:35:58.482Z","h":"DESKTOP-OD76OO7","reconnectAttempts":37}
+{"l":"warn","t":"2026-10-04T15:35:58.483Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:35:58.483Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:35:58.484Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:36:58.497Z","h":"DESKTOP-OD76OO7","reconnectAttempts":38}
+{"l":"warn","t":"2026-10-04T15:36:58.499Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:36:58.499Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:36:58.501Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:37:58.507Z","h":"DESKTOP-OD76OO7","reconnectAttempts":39}
+{"l":"warn","t":"2026-10-04T15:37:58.509Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:37:58.510Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:37:58.512Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:38:58.514Z","h":"DESKTOP-OD76OO7","reconnectAttempts":40}
+{"l":"warn","t":"2026-10-04T15:38:58.515Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:38:58.515Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:38:58.515Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:39:58.521Z","h":"DESKTOP-OD76OO7","reconnectAttempts":41}
+{"l":"warn","t":"2026-10-04T15:39:58.521Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:39:58.521Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:39:58.522Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:40:58.537Z","h":"DESKTOP-OD76OO7","reconnectAttempts":42}
+{"l":"warn","t":"2026-10-04T15:40:58.538Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:40:58.538Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:40:58.538Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:41:58.539Z","h":"DESKTOP-OD76OO7","reconnectAttempts":43}
+{"l":"warn","t":"2026-10-04T15:41:58.540Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:41:58.540Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:41:58.541Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:42:58.546Z","h":"DESKTOP-OD76OO7","reconnectAttempts":44}
+{"l":"warn","t":"2026-10-04T15:42:58.546Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:42:58.547Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:42:58.548Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:43:58.554Z","h":"DESKTOP-OD76OO7","reconnectAttempts":45}
+{"l":"warn","t":"2026-10-04T15:43:58.554Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:43:58.554Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:43:58.555Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:44:58.565Z","h":"DESKTOP-OD76OO7","reconnectAttempts":46}
+{"l":"warn","t":"2026-10-04T15:44:58.566Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:44:58.566Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:44:58.567Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:45:58.572Z","h":"DESKTOP-OD76OO7","reconnectAttempts":47}
+{"l":"warn","t":"2026-10-04T15:45:58.573Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:45:58.573Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:45:58.574Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:46:58.575Z","h":"DESKTOP-OD76OO7","reconnectAttempts":48}
+{"l":"warn","t":"2026-10-04T15:46:58.576Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:46:58.576Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:46:58.577Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:47:58.589Z","h":"DESKTOP-OD76OO7","reconnectAttempts":49}
+{"l":"warn","t":"2026-10-04T15:47:58.590Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:47:58.590Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:47:58.591Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:48:58.598Z","h":"DESKTOP-OD76OO7","reconnectAttempts":50}
+{"l":"warn","t":"2026-10-04T15:48:58.600Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:48:58.600Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:48:58.602Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:49:58.604Z","h":"DESKTOP-OD76OO7","reconnectAttempts":51}
+{"l":"warn","t":"2026-10-04T15:49:58.605Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:49:58.605Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:49:58.606Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:50:58.622Z","h":"DESKTOP-OD76OO7","reconnectAttempts":52}
+{"l":"warn","t":"2026-10-04T15:50:58.622Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:50:58.622Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:50:58.623Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:51:58.627Z","h":"DESKTOP-OD76OO7","reconnectAttempts":53}
+{"l":"warn","t":"2026-10-04T15:51:58.628Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:51:58.628Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:51:58.629Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:52:58.633Z","h":"DESKTOP-OD76OO7","reconnectAttempts":54}
+{"l":"warn","t":"2026-10-04T15:52:58.633Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:52:58.633Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:52:58.634Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:53:58.645Z","h":"DESKTOP-OD76OO7","reconnectAttempts":55}
+{"l":"warn","t":"2026-10-04T15:53:58.647Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:53:58.647Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:53:58.649Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:54:58.659Z","h":"DESKTOP-OD76OO7","reconnectAttempts":56}
+{"l":"warn","t":"2026-10-04T15:54:58.660Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:54:58.660Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:54:58.660Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:55:58.674Z","h":"DESKTOP-OD76OO7","reconnectAttempts":57}
+{"l":"warn","t":"2026-10-04T15:55:58.675Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:55:58.675Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:55:58.676Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:56:58.684Z","h":"DESKTOP-OD76OO7","reconnectAttempts":58}
+{"l":"warn","t":"2026-10-04T15:56:58.684Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:56:58.684Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:56:58.685Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:57:58.699Z","h":"DESKTOP-OD76OO7","reconnectAttempts":59}
+{"l":"warn","t":"2026-10-04T15:57:58.701Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:57:58.702Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:57:58.703Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:58:58.704Z","h":"DESKTOP-OD76OO7","reconnectAttempts":60}
+{"l":"warn","t":"2026-10-04T15:58:58.706Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:58:58.707Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:58:58.708Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T15:59:58.716Z","h":"DESKTOP-OD76OO7","reconnectAttempts":61}
+{"l":"warn","t":"2026-10-04T15:59:58.716Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T15:59:58.716Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T15:59:58.717Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:00:58.724Z","h":"DESKTOP-OD76OO7","reconnectAttempts":62}
+{"l":"warn","t":"2026-10-04T16:00:58.725Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:00:58.725Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:00:58.726Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:01:58.737Z","h":"DESKTOP-OD76OO7","reconnectAttempts":63}
+{"l":"warn","t":"2026-10-04T16:01:58.739Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:01:58.740Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:01:58.741Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:02:58.754Z","h":"DESKTOP-OD76OO7","reconnectAttempts":64}
+{"l":"warn","t":"2026-10-04T16:02:58.755Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:02:58.755Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:02:58.755Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:03:58.757Z","h":"DESKTOP-OD76OO7","reconnectAttempts":65}
+{"l":"warn","t":"2026-10-04T16:03:58.758Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:03:58.758Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:03:58.759Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:04:58.768Z","h":"DESKTOP-OD76OO7","reconnectAttempts":66}
+{"l":"warn","t":"2026-10-04T16:04:58.768Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:04:58.768Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:04:58.769Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:05:58.773Z","h":"DESKTOP-OD76OO7","reconnectAttempts":67}
+{"l":"warn","t":"2026-10-04T16:05:58.774Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:05:58.774Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:05:58.775Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:06:58.784Z","h":"DESKTOP-OD76OO7","reconnectAttempts":68}
+{"l":"warn","t":"2026-10-04T16:06:58.784Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:06:58.785Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:06:58.786Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:07:58.798Z","h":"DESKTOP-OD76OO7","reconnectAttempts":69}
+{"l":"warn","t":"2026-10-04T16:07:58.799Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:07:58.799Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:07:58.799Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:08:58.804Z","h":"DESKTOP-OD76OO7","reconnectAttempts":70}
+{"l":"warn","t":"2026-10-04T16:08:58.805Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:08:58.805Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:08:58.807Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:09:58.814Z","h":"DESKTOP-OD76OO7","reconnectAttempts":71}
+{"l":"warn","t":"2026-10-04T16:09:58.814Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:09:58.815Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:09:58.815Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:10:58.827Z","h":"DESKTOP-OD76OO7","reconnectAttempts":72}
+{"l":"warn","t":"2026-10-04T16:10:58.828Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:10:58.828Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:10:58.829Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:11:58.829Z","h":"DESKTOP-OD76OO7","reconnectAttempts":73}
+{"l":"warn","t":"2026-10-04T16:11:58.829Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:11:58.830Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:11:58.831Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:12:58.836Z","h":"DESKTOP-OD76OO7","reconnectAttempts":74}
+{"l":"warn","t":"2026-10-04T16:12:58.838Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:12:58.839Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:12:58.841Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:13:58.851Z","h":"DESKTOP-OD76OO7","reconnectAttempts":75}
+{"l":"warn","t":"2026-10-04T16:13:58.853Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:13:58.853Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:13:58.855Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:14:58.865Z","h":"DESKTOP-OD76OO7","reconnectAttempts":76}
+{"l":"warn","t":"2026-10-04T16:14:58.867Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:14:58.868Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:14:58.869Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:15:58.875Z","h":"DESKTOP-OD76OO7","reconnectAttempts":77}
+{"l":"warn","t":"2026-10-04T16:15:58.877Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:15:58.878Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:15:58.879Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:16:58.882Z","h":"DESKTOP-OD76OO7","reconnectAttempts":78}
+{"l":"warn","t":"2026-10-04T16:16:58.884Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:16:58.885Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:16:58.886Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:17:58.896Z","h":"DESKTOP-OD76OO7","reconnectAttempts":79}
+{"l":"warn","t":"2026-10-04T16:17:58.899Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:17:58.899Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:17:58.901Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:18:58.903Z","h":"DESKTOP-OD76OO7","reconnectAttempts":80}
+{"l":"warn","t":"2026-10-04T16:18:58.904Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:18:58.904Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:18:58.905Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:19:58.909Z","h":"DESKTOP-OD76OO7","reconnectAttempts":81}
+{"l":"warn","t":"2026-10-04T16:19:58.910Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:19:58.910Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:19:58.910Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:20:58.919Z","h":"DESKTOP-OD76OO7","reconnectAttempts":82}
+{"l":"warn","t":"2026-10-04T16:20:58.920Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:20:58.921Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:20:58.922Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:21:58.931Z","h":"DESKTOP-OD76OO7","reconnectAttempts":83}
+{"l":"warn","t":"2026-10-04T16:21:58.932Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:21:58.932Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:21:58.933Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:22:58.945Z","h":"DESKTOP-OD76OO7","reconnectAttempts":84}
+{"l":"warn","t":"2026-10-04T16:22:58.947Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:22:58.947Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:22:58.950Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:23:58.962Z","h":"DESKTOP-OD76OO7","reconnectAttempts":85}
+{"l":"warn","t":"2026-10-04T16:23:58.963Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:23:58.963Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:23:58.964Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:24:58.974Z","h":"DESKTOP-OD76OO7","reconnectAttempts":86}
+{"l":"warn","t":"2026-10-04T16:24:58.977Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:24:58.977Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:24:58.978Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:25:58.986Z","h":"DESKTOP-OD76OO7","reconnectAttempts":87}
+{"l":"warn","t":"2026-10-04T16:25:58.988Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:25:58.988Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:25:58.990Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:26:58.993Z","h":"DESKTOP-OD76OO7","reconnectAttempts":88}
+{"l":"warn","t":"2026-10-04T16:26:58.995Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:26:58.995Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:26:58.997Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:27:59.008Z","h":"DESKTOP-OD76OO7","reconnectAttempts":89}
+{"l":"warn","t":"2026-10-04T16:27:59.008Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:27:59.008Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:27:59.010Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:28:59.020Z","h":"DESKTOP-OD76OO7","reconnectAttempts":90}
+{"l":"warn","t":"2026-10-04T16:28:59.020Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:28:59.020Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:28:59.021Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:29:59.030Z","h":"DESKTOP-OD76OO7","reconnectAttempts":91}
+{"l":"warn","t":"2026-10-04T16:29:59.030Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:29:59.031Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:29:59.031Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:30:59.039Z","h":"DESKTOP-OD76OO7","reconnectAttempts":92}
+{"l":"warn","t":"2026-10-04T16:30:59.039Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:30:59.039Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:30:59.040Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:31:59.050Z","h":"DESKTOP-OD76OO7","reconnectAttempts":93}
+{"l":"warn","t":"2026-10-04T16:31:59.051Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:31:59.051Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:31:59.052Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:32:59.065Z","h":"DESKTOP-OD76OO7","reconnectAttempts":94}
+{"l":"warn","t":"2026-10-04T16:32:59.065Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:32:59.065Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:32:59.066Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:33:59.068Z","h":"DESKTOP-OD76OO7","reconnectAttempts":95}
+{"l":"warn","t":"2026-10-04T16:33:59.068Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:33:59.069Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:33:59.069Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:34:59.081Z","h":"DESKTOP-OD76OO7","reconnectAttempts":96}
+{"l":"warn","t":"2026-10-04T16:34:59.083Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:34:59.083Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:34:59.084Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:35:59.085Z","h":"DESKTOP-OD76OO7","reconnectAttempts":97}
+{"l":"warn","t":"2026-10-04T16:35:59.086Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:35:59.086Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:35:59.087Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:36:59.088Z","h":"DESKTOP-OD76OO7","reconnectAttempts":98}
+{"l":"warn","t":"2026-10-04T16:36:59.088Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:36:59.089Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:36:59.089Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:37:59.103Z","h":"DESKTOP-OD76OO7","reconnectAttempts":99}
+{"l":"warn","t":"2026-10-04T16:37:59.103Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:37:59.104Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:37:59.105Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:38:59.112Z","h":"DESKTOP-OD76OO7","reconnectAttempts":100}
+{"l":"warn","t":"2026-10-04T16:38:59.113Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:38:59.113Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:38:59.114Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:39:59.118Z","h":"DESKTOP-OD76OO7","reconnectAttempts":101}
+{"l":"warn","t":"2026-10-04T16:39:59.119Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:39:59.119Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:39:59.120Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:40:59.133Z","h":"DESKTOP-OD76OO7","reconnectAttempts":102}
+{"l":"warn","t":"2026-10-04T16:40:59.134Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:40:59.134Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:40:59.135Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:41:59.144Z","h":"DESKTOP-OD76OO7","reconnectAttempts":103}
+{"l":"warn","t":"2026-10-04T16:41:59.145Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:41:59.145Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:41:59.146Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:42:59.152Z","h":"DESKTOP-OD76OO7","reconnectAttempts":104}
+{"l":"warn","t":"2026-10-04T16:42:59.153Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:42:59.153Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:42:59.154Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:43:59.155Z","h":"DESKTOP-OD76OO7","reconnectAttempts":105}
+{"l":"warn","t":"2026-10-04T16:43:59.157Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:43:59.157Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:43:59.159Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:44:59.165Z","h":"DESKTOP-OD76OO7","reconnectAttempts":106}
+{"l":"warn","t":"2026-10-04T16:44:59.165Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:44:59.165Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:44:59.166Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:45:59.168Z","h":"DESKTOP-OD76OO7","reconnectAttempts":107}
+{"l":"warn","t":"2026-10-04T16:45:59.169Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:45:59.169Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:45:59.170Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:46:59.177Z","h":"DESKTOP-OD76OO7","reconnectAttempts":108}
+{"l":"warn","t":"2026-10-04T16:46:59.179Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:46:59.179Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:46:59.181Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:47:59.182Z","h":"DESKTOP-OD76OO7","reconnectAttempts":109}
+{"l":"warn","t":"2026-10-04T16:47:59.182Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:47:59.182Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:47:59.212Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:48:59.218Z","h":"DESKTOP-OD76OO7","reconnectAttempts":110}
+{"l":"warn","t":"2026-10-04T16:48:59.219Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:48:59.219Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:48:59.220Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:49:59.225Z","h":"DESKTOP-OD76OO7","reconnectAttempts":111}
+{"l":"warn","t":"2026-10-04T16:49:59.225Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:49:59.225Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:49:59.226Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:50:59.228Z","h":"DESKTOP-OD76OO7","reconnectAttempts":112}
+{"l":"warn","t":"2026-10-04T16:50:59.230Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:50:59.230Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:50:59.232Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:51:59.244Z","h":"DESKTOP-OD76OO7","reconnectAttempts":113}
+{"l":"warn","t":"2026-10-04T16:51:59.245Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:51:59.245Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:51:59.246Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:52:59.259Z","h":"DESKTOP-OD76OO7","reconnectAttempts":114}
+{"l":"warn","t":"2026-10-04T16:52:59.261Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:52:59.262Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:52:59.264Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:53:59.265Z","h":"DESKTOP-OD76OO7","reconnectAttempts":115}
+{"l":"warn","t":"2026-10-04T16:53:59.266Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:53:59.266Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:53:59.267Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:54:59.269Z","h":"DESKTOP-OD76OO7","reconnectAttempts":116}
+{"l":"warn","t":"2026-10-04T16:54:59.270Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:54:59.270Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:54:59.271Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:55:59.282Z","h":"DESKTOP-OD76OO7","reconnectAttempts":117}
+{"l":"warn","t":"2026-10-04T16:55:59.283Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:55:59.283Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:55:59.284Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:56:59.293Z","h":"DESKTOP-OD76OO7","reconnectAttempts":118}
+{"l":"warn","t":"2026-10-04T16:56:59.293Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:56:59.293Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:56:59.294Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:57:59.301Z","h":"DESKTOP-OD76OO7","reconnectAttempts":119}
+{"l":"warn","t":"2026-10-04T16:57:59.301Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:57:59.301Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:57:59.302Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:58:59.315Z","h":"DESKTOP-OD76OO7","reconnectAttempts":120}
+{"l":"warn","t":"2026-10-04T16:58:59.317Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:58:59.317Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:58:59.320Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T16:59:59.324Z","h":"DESKTOP-OD76OO7","reconnectAttempts":121}
+{"l":"warn","t":"2026-10-04T16:59:59.324Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T16:59:59.325Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T16:59:59.326Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:00:59.333Z","h":"DESKTOP-OD76OO7","reconnectAttempts":122}
+{"l":"warn","t":"2026-10-04T17:00:59.334Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:00:59.334Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:00:59.334Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:01:59.335Z","h":"DESKTOP-OD76OO7","reconnectAttempts":123}
+{"l":"warn","t":"2026-10-04T17:01:59.337Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:01:59.338Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:01:59.339Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:02:59.342Z","h":"DESKTOP-OD76OO7","reconnectAttempts":124}
+{"l":"warn","t":"2026-10-04T17:02:59.344Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:02:59.344Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:02:59.346Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:03:59.347Z","h":"DESKTOP-OD76OO7","reconnectAttempts":125}
+{"l":"warn","t":"2026-10-04T17:03:59.347Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:03:59.347Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:03:59.348Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:04:59.357Z","h":"DESKTOP-OD76OO7","reconnectAttempts":126}
+{"l":"warn","t":"2026-10-04T17:04:59.357Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:04:59.358Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:04:59.358Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"warn","t":"2026-10-04T17:05:02.164Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:02.166Z","h":"DESKTOP-OD76OO7","err":{"type":"MongoParseError","message":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader","stack":"MongoParseError: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader\n    at transform (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:499:23)\n    at setOption (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:467:36)\n    at parseOptions (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:293:13)\n    at new MongoClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\mongo_client.js:67:61)\n    at NativeConnection.createClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\connection.js:338:14)\n    at NativeConnection.openUri (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\connection.js:1081:34)\n    at Mongoose.connect (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\mongoose.js:475:15)\n    at runDB (file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/database/index.js:16:20)\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:18:9\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:19:3","errorLabelSet":{}},"msg":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:02.167Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTION ERROR ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:02.167Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"warn","t":"2026-10-04T17:05:03.023Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:03.025Z","h":"DESKTOP-OD76OO7","err":{"type":"MongoParseError","message":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader","stack":"MongoParseError: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader\n    at transform (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:499:23)\n    at setOption (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:467:36)\n    at parseOptions (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:293:13)\n    at new MongoClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\mongo_client.js:67:61)\n    at NativeConnection.createClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\connection.js:338:14)\n    at NativeConnection.openUri (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\connection.js:1081:34)\n    at Mongoose.connect (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\mongoose.js:475:15)\n    at runDB (file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/database/index.js:16:20)\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:18:9\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:19:3","errorLabelSet":{}},"msg":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:03.026Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTION ERROR ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:03.026Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:05:03.338Z","h":"DESKTOP-OD76OO7","reconnectAttempts":1}
+{"l":"warn","t":"2026-10-04T17:05:03.343Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:03.343Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:03.344Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:05:05.352Z","h":"DESKTOP-OD76OO7","reconnectAttempts":2}
+{"l":"warn","t":"2026-10-04T17:05:05.353Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:05.353Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:05.354Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"warn","t":"2026-10-04T17:05:09.005Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:09.007Z","h":"DESKTOP-OD76OO7","err":{"type":"MongoParseError","message":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader","stack":"MongoParseError: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader\n    at transform (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:499:23)\n    at setOption (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:467:36)\n    at parseOptions (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:293:13)\n    at new MongoClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\mongo_client.js:67:61)\n    at NativeConnection.createClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\connection.js:338:14)\n    at NativeConnection.openUri (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\connection.js:1081:34)\n    at Mongoose.connect (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\mongoose.js:475:15)\n    at runDB (file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/database/index.js:16:20)\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:18:9\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:19:3","errorLabelSet":{}},"msg":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:09.008Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTION ERROR ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:09.008Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:05:09.321Z","h":"DESKTOP-OD76OO7","reconnectAttempts":1}
+{"l":"warn","t":"2026-10-04T17:05:09.325Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:09.325Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:09.327Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:05:11.340Z","h":"DESKTOP-OD76OO7","reconnectAttempts":2}
+{"l":"warn","t":"2026-10-04T17:05:11.343Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:11.343Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:11.345Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"warn","t":"2026-10-04T17:05:12.339Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:12.341Z","h":"DESKTOP-OD76OO7","err":{"type":"MongoParseError","message":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader","stack":"MongoParseError: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader\n    at transform (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:499:23)\n    at setOption (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:467:36)\n    at parseOptions (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:293:13)\n    at new MongoClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\mongo_client.js:67:61)\n    at NativeConnection.createClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\connection.js:338:14)\n    at NativeConnection.openUri (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\connection.js:1081:34)\n    at Mongoose.connect (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\mongoose.js:475:15)\n    at runDB (file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/database/index.js:16:20)\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:18:9\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:19:3","errorLabelSet":{}},"msg":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:12.342Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTION ERROR ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:12.342Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:05:12.641Z","h":"DESKTOP-OD76OO7","reconnectAttempts":1}
+{"l":"warn","t":"2026-10-04T17:05:12.642Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:12.643Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:12.643Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:05:14.650Z","h":"DESKTOP-OD76OO7","reconnectAttempts":2}
+{"l":"warn","t":"2026-10-04T17:05:14.650Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:14.651Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:14.651Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:05:18.653Z","h":"DESKTOP-OD76OO7","reconnectAttempts":3}
+{"l":"warn","t":"2026-10-04T17:05:18.653Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:18.653Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:18.654Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:05:26.662Z","h":"DESKTOP-OD76OO7","reconnectAttempts":4}
+{"l":"warn","t":"2026-10-04T17:05:26.665Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:26.666Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:26.667Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:05:42.672Z","h":"DESKTOP-OD76OO7","reconnectAttempts":5}
+{"l":"warn","t":"2026-10-04T17:05:42.673Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:05:42.673Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:05:42.674Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:06:14.675Z","h":"DESKTOP-OD76OO7","reconnectAttempts":6}
+{"l":"warn","t":"2026-10-04T17:06:14.676Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:06:14.676Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:06:14.677Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:07:14.680Z","h":"DESKTOP-OD76OO7","reconnectAttempts":7}
+{"l":"warn","t":"2026-10-04T17:07:14.681Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:07:14.681Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:07:14.682Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:08:14.681Z","h":"DESKTOP-OD76OO7","reconnectAttempts":8}
+{"l":"warn","t":"2026-10-04T17:08:14.686Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:14.686Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:14.688Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"warn","t":"2026-10-04T17:08:20.190Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:20.192Z","h":"DESKTOP-OD76OO7","err":{"type":"MongoParseError","message":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader","stack":"MongoParseError: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader\n    at transform (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:499:23)\n    at setOption (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:467:36)\n    at parseOptions (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:293:13)\n    at new MongoClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\mongo_client.js:67:61)\n    at NativeConnection.createClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\connection.js:338:14)\n    at NativeConnection.openUri (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\connection.js:1081:34)\n    at Mongoose.connect (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\mongoose.js:475:15)\n    at runDB (file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/database/index.js:16:20)\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:18:9\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:19:3","errorLabelSet":{}},"msg":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:20.193Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTION ERROR ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:20.193Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:08:20.496Z","h":"DESKTOP-OD76OO7","reconnectAttempts":1}
+{"l":"warn","t":"2026-10-04T17:08:20.497Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:20.497Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:20.498Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:08:22.510Z","h":"DESKTOP-OD76OO7","reconnectAttempts":2}
+{"l":"warn","t":"2026-10-04T17:08:22.511Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:22.511Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:22.512Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:08:26.525Z","h":"DESKTOP-OD76OO7","reconnectAttempts":3}
+{"l":"warn","t":"2026-10-04T17:08:26.528Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:26.528Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:26.530Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"warn","t":"2026-10-04T17:08:28.920Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:28.922Z","h":"DESKTOP-OD76OO7","err":{"type":"MongoParseError","message":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader","stack":"MongoParseError: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader\n    at transform (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:499:23)\n    at setOption (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:467:36)\n    at parseOptions (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:293:13)\n    at new MongoClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\mongo_client.js:67:61)\n    at NativeConnection.createClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\connection.js:338:14)\n    at NativeConnection.openUri (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\connection.js:1081:34)\n    at Mongoose.connect (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\mongoose.js:475:15)\n    at runDB (file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/database/index.js:16:20)\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:18:9\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:19:3","errorLabelSet":{}},"msg":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:28.923Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTION ERROR ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:28.923Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:08:29.228Z","h":"DESKTOP-OD76OO7","reconnectAttempts":1}
+{"l":"warn","t":"2026-10-04T17:08:29.229Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:29.229Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:29.232Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"warn","t":"2026-10-04T17:08:30.383Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:30.386Z","h":"DESKTOP-OD76OO7","err":{"type":"MongoParseError","message":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader","stack":"MongoParseError: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader\n    at transform (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:499:23)\n    at setOption (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:467:36)\n    at parseOptions (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\connection_string.js:293:13)\n    at new MongoClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongodb\\lib\\mongo_client.js:67:61)\n    at NativeConnection.createClient (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\connection.js:338:14)\n    at NativeConnection.openUri (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\connection.js:1081:34)\n    at Mongoose.connect (C:\\Users\\Adm\\Desktop\\dir\\contributor\\report_loader\\node_modules\\mongoose\\lib\\mongoose.js:475:15)\n    at runDB (file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/database/index.js:16:20)\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:18:9\n    at file:///C:/Users/Adm/Desktop/dir/contributor/report_loader/src/app.js:19:3","errorLabelSet":{}},"msg":"authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:30.387Z","h":"DESKTOP-OD76OO7","msg":"---------- DB CONNECTION ERROR ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:30.387Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:08:30.693Z","h":"DESKTOP-OD76OO7","reconnectAttempts":1}
+{"l":"warn","t":"2026-10-04T17:08:30.694Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:30.694Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:30.695Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:08:32.698Z","h":"DESKTOP-OD76OO7","reconnectAttempts":2}
+{"l":"warn","t":"2026-10-04T17:08:32.702Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:32.702Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:32.704Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:08:36.708Z","h":"DESKTOP-OD76OO7","reconnectAttempts":3}
+{"l":"warn","t":"2026-10-04T17:08:36.710Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:36.711Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:36.713Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:08:44.726Z","h":"DESKTOP-OD76OO7","reconnectAttempts":4}
+{"l":"warn","t":"2026-10-04T17:08:44.727Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:08:44.727Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:08:44.728Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:09:00.741Z","h":"DESKTOP-OD76OO7","reconnectAttempts":5}
+{"l":"warn","t":"2026-10-04T17:09:00.744Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:09:00.744Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:09:00.746Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:09:32.753Z","h":"DESKTOP-OD76OO7","reconnectAttempts":6}
+{"l":"warn","t":"2026-10-04T17:09:32.754Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:09:32.754Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:09:32.755Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:10:32.760Z","h":"DESKTOP-OD76OO7","reconnectAttempts":7}
+{"l":"warn","t":"2026-10-04T17:10:32.761Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:10:32.761Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:10:32.761Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:11:32.763Z","h":"DESKTOP-OD76OO7","reconnectAttempts":8}
+{"l":"warn","t":"2026-10-04T17:11:32.764Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:11:32.764Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:11:32.765Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"info","t":"2026-10-04T17:12:32.772Z","h":"DESKTOP-OD76OO7","reconnectAttempts":9}
+{"l":"warn","t":"2026-10-04T17:12:32.773Z","h":"DESKTOP-OD76OO7","msg":"---------- DB DISCONNECTED ----------"}
+{"l":"fatal","t":"2026-10-04T17:12:32.773Z","h":"DESKTOP-OD76OO7","msg":"Reconnect attempt failed: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
+{"l":"fatal","t":"2026-10-04T17:12:32.774Z","h":"DESKTOP-OD76OO7","msg":"mongoose connection error: authMechanism one of MONGODB-AWS,DEFAULT,GSSAPI,PLAIN,SCRAM-SHA-1,SCRAM-SHA-256,MONGODB-X509,MONGODB-OIDC, got SCRAM-SHA-1RABBITMQ_USER=loader"}
