@@ -11,10 +11,12 @@ var defaultOptions = {
   timestamp: () => `,"t":"${new Date().toISOString()}"`,
 };
 
-var logger = pino(defaultOptions, pino.destination({ dest: "logs/app.log" }));
-var errorLogger = pino(
-  defaultOptions,
-  pino.destination({ dest: "logs/err.log" }),
-);
+var streams = [
+  { level: "trace", stream: process.stdout },
+  { level: "warn", stream: process.stderr },
+];
+
+var logger = pino(defaultOptions, pino.multistream(streams));
+var errorLogger = pino(defaultOptions, pino.multistream(streams));
 
 export { logger, errorLogger };
