@@ -5,8 +5,10 @@ var getClientOptions = () => {
     cryptSharedLibPath: process.env.MONGO_CRYPT_SHARED_PATH,
     cryptSharedLibRequired: true,
   };
-
-  var authOptions = JSON.parse(process.env.MONGO_AUTH_OPTIONS);
+  var auth = {
+    username: process.env.MONGO_AUTH_USER,
+    password: process.env.MONGO_AUTH_PWD,
+  };
 
   var autoEncryption = {
     kmsProviders,
@@ -16,10 +18,12 @@ var getClientOptions = () => {
   };
 
   var options = {
+    auth,
     autoEncryption,
-    serverSelectionTimeoutMS: 5000,
-    ...authOptions,
     autoIndex: false,
+    serverSelectionTimeoutMS: 5000,
+    authSource: process.env.MONGO_AUTH_DB,
+    authMechanism: process.env.MONGO_AUTH_MECHANISM || "SCRAM-SHA-1",
   };
 
   return options;
