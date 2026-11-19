@@ -27,7 +27,7 @@ var loader = async (userId, isServerStartupLoad = false) => {
   var isFirstIterationOfLoop = true;
 
   if (isServerStartupLoad) {
-    await nextReportDelay();
+   await nextReportDelay();
   }
 
   while (true) {

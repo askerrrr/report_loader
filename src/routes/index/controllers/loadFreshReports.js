@@ -63,9 +63,10 @@ var loadFreshReports = async (req, res, next) => {
               session,
             );
           } else {
-            var savedReportPeriodsFromDb = (
-              await dbUtils.getReportPeriods(userId, session)
-            ).reportPeriods;
+            var { basicReportData } = await dbUtils.getBasicReportsData(
+              userId,
+              session,
+            );
 
             var freshReportPeriodIndex = user?.freshReportPeriodIndex;
 
@@ -89,7 +90,7 @@ var loadFreshReports = async (req, res, next) => {
               filteringOfRequiredReportPeriods(
                 user,
                 [reportPeriodToLoad],
-                savedReportPeriodsFromDb,
+                basicReportData,
               );
 
             if (filteredRequiredReportPeriods.length) {

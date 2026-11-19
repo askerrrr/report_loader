@@ -1,4 +1,8 @@
-var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods, savedReportPeriodsFromDb) => {
+var filteringOfRequiredReportPeriods = (
+  userLoadingState,
+  requiredReportPeriods,
+  reportPeriodsFromDb,
+) => {
   var resultOfTheFirstFiltering = [];
   var abandonedReportsAddedToQueue = false;
   var { reportsQueue, abandonedReports, emptyReportPeriods } = userLoadingState;
@@ -6,7 +10,9 @@ var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods,
   while (requiredReportPeriods.length) {
     var period = requiredReportPeriods.shift();
 
-    var report = savedReportPeriodsFromDb.find((item) => item.dateFrom === period.dateFrom);
+    var report = reportPeriodsFromDb.find(
+      (item) => item.dateFrom === period.dateFrom,
+    );
 
     if (!report) {
       resultOfTheFirstFiltering.push(period);
@@ -48,7 +54,10 @@ var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods,
   }
 
   if (abandonedReports.length === 0) {
-    return { filteredRequiredReportPeriods: resultOfTheThirdFiltering, abandonedReportsAddedToQueue };
+    return {
+      filteredRequiredReportPeriods: resultOfTheThirdFiltering,
+      abandonedReportsAddedToQueue,
+    };
   }
 
   if (resultOfTheThirdFiltering.length === 0) {
@@ -58,7 +67,10 @@ var filteringOfRequiredReportPeriods = (userLoadingState, requiredReportPeriods,
   var mergedArray = [...abandonedReports, ...resultOfTheThirdFiltering];
   var mergedArrayWithoutRepeat = [...new Set([...mergedArray])];
 
-  return { filteredRequiredReportPeriods: mergedArrayWithoutRepeat, abandonedReportsAddedToQueue: true };
+  return {
+    filteredRequiredReportPeriods: mergedArrayWithoutRepeat,
+    abandonedReportsAddedToQueue: true,
+  };
 };
 
 export default filteringOfRequiredReportPeriods;

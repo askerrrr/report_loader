@@ -1,7 +1,11 @@
 import { Schema } from "mongoose";
+import basicReportDataSchema from "./basicReportData.js";
 
 var skuSchema = new Schema(
   {
+    userId: { type: String, required: true },
+    reportId: { type: Number, required: true },
+
     id: { type: Number, required: true },
     skuName: { type: String, required: true },
     qty: { type: Number, required: true, default: 0 },
@@ -32,35 +36,18 @@ var skuSchema = new Schema(
     averageStorageCost: { type: Number, required: true, default: 0 },
     averageAdvertisingCost: { type: Number, required: true, default: 0 },
   },
-  { _id: false },
-);
-var recordedToSchema = new Schema(
-  {
-    year: { type: Number, required: true },
-    month: { type: String, required: true },
-  },
-  { _id: false },
-);
-
-var reportSchema = new Schema(
-  {
-    userId: { type: String, required: true },
-    reportId: { type: Number, required: true },
-    dateFrom: { type: String, required: true },
-    dateTo: { type: String, required: true },
-    taxRate: { type: Number, default: 6 },
-    isCrossYearPeriod: { type: Boolean, default: false },
-    recordedTo: { type: recordedToSchema, required: true },
-    buybackReportIsExist: { type: Boolean, default: false },
-    isFinancesAccounted: { type: Boolean, default: false },
-    reportIsEmpty: { type: Boolean, default: false },
-    skus: [{ type: skuSchema, required: true }],
-  },
   { autoIndex: false },
 );
 
-reportSchema.index({ userId: 1 });
-reportSchema.index({ userId: 1, reportId: 1 }, { unique: true });
-reportSchema.index({ userId: 1, dateFrom: 1, dateTo: 1 }, { unique: true });
+skuSchema.index({ userId: 1 });
+skuSchema.index({ reportId: 1 });
+skuSchema.index(
+  { userId: 1, reportId: 1, skuName: 1, year: 1 },
+  { unique: true },
+);
 
-export default reportSchema;
+basicReportDataSchema.pre("deleteOne", async (next) => {
+  await skuS
+});
+
+export default skuSchema;

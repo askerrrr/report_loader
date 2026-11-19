@@ -5,6 +5,7 @@ import getNewSkusToListGoods from "./getNewSkusToListGoods.js";
 import getReportTargetYearAndMonth from "./getReportTargetYearAndMonth.js";
 
 var selectedFields = ["listGoods.id", "listGoods.skuName"];
+
 var monthList = [
   "январь",
   "февраль",
@@ -68,33 +69,22 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
     return { lastLoadedReport, reportPeriodIsEmpty: true };
   }
 
-  var report = {};
-  report.skus = reportSkus;
+  var basicReportData = {};
 
-  report.dateTo = dateTo;
-  report.userId = userId;
-  report.dateFrom = dateFrom;
-  report.reportId = reportId;
-  report.reportIsEmpty = !report.skus.length;
-  report.isCrossYearPeriod = isCrossYearPeriod;
-  report.recordedTo = { year: targetYear, month: monthList[targetMonthIndex] };
+  basicReportData.userId = userId;
+  basicReportData.reportId = reportId;
+  basicReportData.dateFrom = dateFrom;
+  basicReportData.dateTo = dateTo;
+  basicReportData.year = targetYear;
+  basicReportData.monthIndex = targetMonthIndex;
+  basicReportData.isCrossYearPeriod = isCrossYearPeriod;
 
-  var newReportPeriod = {
-    reportId,
-    dateFrom,
-    dateTo,
-    year: targetYear,
-    monthIndex: targetMonthIndex,
-    monthName: monthList[targetMonthIndex],
-  };
+  await dbUtils.createReport(basicReportData, reportSkus, session);
 
-  await dbUtils.saveReportToDb(report, session);
-  await dbUtils.addReportToReportPeriods(userId, newReportPeriod, session);
-
-  if (report.skus.length) {
+  if (reportSkus.length) {
     await dbUtils.updateTaxParamsToDb(userId, updatedTaxParams, session);
 
-    var skuNames = report.skus.map((sku) => sku.skuName);
+    var skuNames = reportSkus.map((sku) => sku.skuName);
 
     var { listGoods } = await dbUtils.getListGoodsFromDb(
       userId,
@@ -122,7 +112,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
     year: targetYear,
   };
 
-  return { lastLoadedReport, reportPeriodIsEmpty: report.reportIsEmpty };
+  return { lastLoadedReport, reportPeriodIsEmpty: !reportSkus.length };
 };
 
 export default reportsProcessing;

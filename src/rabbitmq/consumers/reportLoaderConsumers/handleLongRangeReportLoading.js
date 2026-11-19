@@ -14,14 +14,13 @@ var handleLongRangeReportLoading = async (data, session) => {
     userId,
     session,
   );
-  var savedReportPeriods = (await dbUtils.getReportPeriods(userId, session))
-    .reportPeriods;
+  var { basicReportData } = await dbUtils.getBasicReportsData(userId, session);
 
   var { filteredRequiredReportPeriods, abandonedReportsAddedToQueue } =
     filteringOfRequiredReportPeriods(
       userReportLoadingState,
       requiredReportPeriods,
-      savedReportPeriods,
+      basicReportData,
     );
 
   if (!filteredRequiredReportPeriods.length) {
