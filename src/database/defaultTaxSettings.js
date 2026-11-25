@@ -1,4 +1,4 @@
-var defaultTaxParams = [
+var defaultTaxSettings = [
   {
     year: 2023,
     taxRate: 6,
@@ -6,7 +6,6 @@ var defaultTaxParams = [
     paidTaxAmount: -45842,
     maxInsuranceFee: 0,
     retailAmount: 0,
-    taxableAmount: 0,
     finalProfit: 0,
     isInsuranceFeePaid: false,
     mandatoryInsuranceFeeRate: 10,
@@ -16,6 +15,8 @@ var defaultTaxParams = [
     excessInsuranceRate: 1,
     requiresAdditionalInsuranceFee: false,
     additionalInsuranceFee: 0,
+    otherExpenses: 0,
+    taxableAmount: 0,
   },
   {
     year: 2024,
@@ -24,7 +25,6 @@ var defaultTaxParams = [
     paidTaxAmount: -49500,
     maxInsuranceFee: 277571,
     retailAmount: 0,
-    taxableAmount: 0,
     finalProfit: 0,
     isInsuranceFeePaid: false,
     mandatoryInsuranceFeeRate: 10,
@@ -34,6 +34,8 @@ var defaultTaxParams = [
     excessInsuranceRate: 1,
     requiresAdditionalInsuranceFee: false,
     additionalInsuranceFee: 0,
+    otherExpenses: 0,
+    taxableAmount: 0,
     excessIncomeForAdditionalInsuranceFee: 300000,
   },
   {
@@ -43,7 +45,6 @@ var defaultTaxParams = [
     paidTaxAmount: -53658,
     maxInsuranceFee: 300888,
     retailAmount: 0,
-    taxableAmount: 0,
     finalProfit: 0,
     isInsuranceFeePaid: false,
     mandatoryInsuranceFeeRate: 10,
@@ -53,6 +54,8 @@ var defaultTaxParams = [
     excessInsuranceRate: 1,
     requiresAdditionalInsuranceFee: false,
     additionalInsuranceFee: 0,
+    otherExpenses: 0,
+    taxableAmount: 0,
     excessIncomeForAdditionalInsuranceFee: 300000,
   },
   {
@@ -62,7 +65,6 @@ var defaultTaxParams = [
     paidTaxAmount: -57390,
     maxInsuranceFee: 321818,
     retailAmount: 0,
-    taxableAmount: 0,
     finalProfit: 0,
     isInsuranceFeePaid: false,
     mandatoryInsuranceFeeRate: 10,
@@ -72,6 +74,8 @@ var defaultTaxParams = [
     excessInsuranceRate: 1,
     requiresAdditionalInsuranceFee: false,
     additionalInsuranceFee: 0,
+    otherExpenses: 0,
+    taxableAmount: 0,
     excessIncomeForAdditionalInsuranceFee: 300000,
   },
   {
@@ -81,7 +85,6 @@ var defaultTaxParams = [
     paidTaxAmount: -61154,
     maxInsuranceFee: 0,
     retailAmount: 0,
-    taxableAmount: 0,
     finalProfit: 0,
     isInsuranceFeePaid: false,
     mandatoryInsuranceFeeRate: 10,
@@ -91,7 +94,8 @@ var defaultTaxParams = [
     excessInsuranceRate: 1,
     requiresAdditionalInsuranceFee: false,
     additionalInsuranceFee: 0,
+    taxableAmount: 0,
   },
 ];
 
-export default defaultTaxParams;
+export default defaultTaxSettings;

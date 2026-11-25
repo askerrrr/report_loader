@@ -42,7 +42,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   await dbUtils.updateLastReportRequestTimestamp(userId, session);
 
   var reportSkus = [];
-  var updatedTaxParams = [];
+  var updatedTaxSettings = [];
   var { reportId } = reports.weeklyFinancialReport[0];
   var { targetYear, targetMonthIndex } = getReportTargetYearAndMonth(
     dateFrom,
@@ -50,19 +50,23 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   );
 
   for (var currentYear = startYear; currentYear <= endYear; currentYear++) {
-    var taxParams = await dbUtils.addNewTaxYearToDb(
+    var { taxSetting } = await dbUtils.addNewUserTaxSetting(
       userId,
       currentYear,
       session,
     );
-    var { skus, recalculatedTaxParams } = await processReportSkus(
+    var { skus, recalculatedTaxSettings } = await processReportSkus(
       reports,
-      taxParams,
+      taxSetting,
       isCrossYearPeriod,
     );
 
     reportSkus.push(...skus);
-    updatedTaxParams.push({ year: currentYear, data: recalculatedTaxParams });
+
+    updatedTaxSettings.push({
+      year: currentYear,
+      data: recalculatedTaxSettings,
+    });
   }
 
   if (!reportSkus.length) {
@@ -82,7 +86,7 @@ var reportsProcessing = async (userId, dateFrom, dateTo, token, session) => {
   await dbUtils.createReport(basicReportData, reportSkus, session);
 
   if (reportSkus.length) {
-    await dbUtils.updateTaxParamsToDb(userId, updatedTaxParams, session);
+    await dbUtils.updateTaxSettings(userId, updatedTaxSettings, session);
 
     var skuNames = reportSkus.map((sku) => sku.skuName);
 

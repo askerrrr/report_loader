@@ -2,14 +2,14 @@ import getUser from "./getUser.js";
 import getToken from "./getToken.js";
 import createReport from "./createReport.js";
 import saveNewSkusToDb from "./saveNewSkusToDb.js";
-import addNewTaxYearToDb from "./addNewTaxYear.js";
 import getReportsQueue from "./getReportsQueue.js";
 import saveListGoodsToDb from "./saveListGoodsToDb.js";
+import updateTaxSettings from "./updateTaxSettings.js";
 import getListGoodsFromDb from "./getListGoodsFromDb.js";
 import pushToReportsQueue from "./pushToReportsQueue.js";
 import updateReportsQueue from "./updateReportsQueue.js";
-import updateTaxParamsToDb from "./updateTaxParamsToDb.js";
 import getBasicReportsData from "./getBasicReportsData.js";
+import addNewUserTaxSetting from "./addNewUserTaxSetting.js";
 import resetAbandonedReports from "./resetAbandonedReports.js";
 import updateLastLoadedReport from "./updateLastLoadedReport.js";
 import getLoadingProgressStatus from "./getLoadingProgressStatus.js";
@@ -32,15 +32,15 @@ export default {
   getToken,
   createReport,
   saveNewSkusToDb,
-  addNewTaxYearToDb,
   getReportsQueue,
   saveListGoodsToDb,
   getListGoodsFromDb,
   pushToReportsQueue,
   updateReportsQueue,
-  updateTaxParamsToDb,
   resetAbandonedReports,
   getBasicReportsData,
+  addNewUserTaxSetting,
+  updateTaxSettings,
   getUserReportLoadingState,
   updateLastLoadedReport,
   setLoadingProgressStatus,
